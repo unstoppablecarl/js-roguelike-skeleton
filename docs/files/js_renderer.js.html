@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>js/renderer.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Color operations.Abstract pathfinder.html">Color operations.Abstract pathfinder</a></li>
+            
+                <li><a href="../classes/Color operations.Array2d.html">Color operations.Array2d</a></li>
+            
+                <li><a href="../classes/Color operations.Console.html">Color operations.Console</a></li>
+            
+                <li><a href="../classes/Color operations.Entity.html">Color operations.Entity</a></li>
+            
+                <li><a href="../classes/Color operations.Entity.Types.html">Color operations.Entity.Types</a></li>
+            
+                <li><a href="../classes/Color operations.EntityManager.html">Color operations.EntityManager</a></li>
+            
+                <li><a href="../classes/Color operations.Fov.html">Color operations.Fov</a></li>
+            
+                <li><a href="../classes/Color operations.Game.html">Color operations.Game</a></li>
+            
+                <li><a href="../classes/Color operations.Input.html">Color operations.Input</a></li>
+            
+                <li><a href="../classes/Color operations.Lighting.html">Color operations.Lighting</a></li>
+            
+                <li><a href="../classes/Color operations.Lighting computation, based on a traditional FOV for multiple light sources and multiple passes..html">Color operations.Lighting computation, based on a traditional FOV for multiple light sources and multiple passes.</a></li>
+            
+                <li><a href="../classes/Color operations.Mouse.html">Color operations.Mouse</a></li>
+            
+                <li><a href="../classes/Color operations.Player.html">Color operations.Player</a></li>
+            
+                <li><a href="../classes/Color operations.Recursive shadowcasting algorithm
+Currently only supports 4/8 topologies, not hexagonal.
+Based on Peter Harkins&#x27; implementation of Björn Bergström&#x27;s algorithm described here: http://www.roguebasin.com/index.php?title=FOV_using_recursive_shadowcasting.html">Color operations.Recursive shadowcasting algorithm
+Currently only supports 4/8 topologies, not hexagonal.
+Based on Peter Harkins&#x27; implementation of Björn Bergström&#x27;s algorithm described here: http://www.roguebasin.com/index.php?title=FOV_using_recursive_shadowcasting</a></li>
+            
+                <li><a href="../classes/Color operations.Renderer.html">Color operations.Renderer</a></li>
+            
+                <li><a href="../classes/Color operations.Simplified A* algorithm: all edges have a value of 1.html">Color operations.Simplified A* algorithm: all edges have a value of 1</a></li>
+            
+                <li><a href="../classes/Color operations.Simplified Dijkstra&#x27;s algorithm: all edges have a value of 1.html">Color operations.Simplified Dijkstra&#x27;s algorithm: all edges have a value of 1</a></li>
+            
+                <li><a href="../classes/Color operations.Stats.html">Color operations.Stats</a></li>
+            
+                <li><a href="../classes/Color operations.Stats.Types.html">Color operations.Stats.Types</a></li>
+            
+                <li><a href="../classes/Color operations.Tile.html">Color operations.Tile</a></li>
+            
+                <li><a href="../classes/Color operations.Tile.Types.html">Color operations.Tile.Types</a></li>
+            
+                <li><a href="../classes/Color operations.Util.html">Color operations.Util</a></li>
+            
+                <li><a href="../classes/Contains text tokenization and breaking routines.Abstract display backend module.html">Contains text tokenization and breaking routines.Abstract display backend module</a></li>
+            
+                <li><a href="../classes/Contains text tokenization and breaking routines.Hexagonal backend.html">Contains text tokenization and breaking routines.Hexagonal backend</a></li>
+            
+                <li><a href="../classes/Contains text tokenization and breaking routines.Rectangular backend.html">Contains text tokenization and breaking routines.Rectangular backend</a></li>
+            
+                <li><a href="../classes/Contains text tokenization and breaking routines.Visual map display.html">Contains text tokenization and breaking routines.Visual map display</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..(Markov process)-based string generator. 
+Copied from a &lt;a href=&quot;http://www.roguebasin.roguelikedevelopment.org/index.php?title=Names_from_a_high_order_Markov_Process_and_a_simplified_Katz_back-off_scheme&quot;&gt;RogueBasin article&lt;/a&gt;. 
+Offers configurable order and prior..html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..(Markov process)-based string generator. 
+Copied from a &lt;a href=&quot;http://www.roguebasin.roguelikedevelopment.org/index.php?title=Names_from_a_high_order_Markov_Process_and_a_simplified_Katz_back-off_scheme&quot;&gt;RogueBasin article&lt;/a&gt;. 
+Offers configurable order and prior.</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..2D simplex noise generator.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..2D simplex noise generator</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Abstract FOV algorithm.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Abstract FOV algorithm</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Abstract scheduler.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Abstract scheduler</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Action-based scheduler.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Action-based scheduler</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Asynchronous main loop.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Asynchronous main loop</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Base map generator.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Base map generator</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Cellular automaton map generator.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Cellular automaton map generator</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Corridor.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Corridor</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Discrete shadowcasting algorithm. Obsoleted by Precise shadowcasting..html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Discrete shadowcasting algorithm. Obsoleted by Precise shadowcasting.</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Dungeon feature; has own .create() method.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Dungeon feature; has own .create() method</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Dungeon generator which tries to fill the space evenly. Generates independent rooms and tries to connect them..html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Dungeon generator which tries to fill the space evenly. Generates independent rooms and tries to connect them.</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Dungeon generator which uses the &quot;orginal&quot; Rogue dungeon generation algorithm. See http://kuoi.com/~kamikaze/GameDesign/art07_rogue_dungeon.php.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Dungeon generator which uses the &quot;orginal&quot; Rogue dungeon generation algorithm. See http://kuoi.com/~kamikaze/GameDesign/art07_rogue_dungeon.php</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Dungeon map: has rooms and corridors.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Dungeon map: has rooms and corridors</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Generic event queue: stores events and retrieves them based on their time.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Generic event queue: stores events and retrieves them based on their time</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Icey&#x27;s Maze generator
+See http://www.roguebasin.roguelikedevelopment.org/index.php?title=Simple_maze for explanation.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Icey&#x27;s Maze generator
+See http://www.roguebasin.roguelikedevelopment.org/index.php?title=Simple_maze for explanation</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Maze generator - Eller&#x27;s algorithm
+See http://homepages.cwi.nl/~tromp/maze.html for explanation.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Maze generator - Eller&#x27;s algorithm
+See http://homepages.cwi.nl/~tromp/maze.html for explanation</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Precise shadowcasting algorithm.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Precise shadowcasting algorithm</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Random dungeon generator using human-like digging patterns.
+Heavily based on Mike Anderson&#x27;s ideas from the &quot;Tyrant&quot; algo, mentioned at 
+http://www.roguebasin.roguelikedevelopment.org/index.php?title=Dungeon-Building_Algorithm..html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Random dungeon generator using human-like digging patterns.
+Heavily based on Mike Anderson&#x27;s ideas from the &quot;Tyrant&quot; algo, mentioned at 
+http://www.roguebasin.roguelikedevelopment.org/index.php?title=Dungeon-Building_Algorithm.</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Recursively divided maze, http://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Recursively divided maze, http://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Room.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Room</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Simple empty rectangular room.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Simple empty rectangular room</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Simple fair scheduler (round-robin style).html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Simple fair scheduler (round-robin style)</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Speed-based scheduler.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Speed-based scheduler</a></li>
+            
+                <li><a href="../classes/This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Tile backend.html">This code is an implementation of Alea algorithm; (C) 2010 Johannes Baagøe.
+Alea is licensed according to the http://en.wikipedia.org/wiki/MIT_License..Tile backend</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: js/renderer.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+(function(root) {
+    &#x27;use strict&#x27;;
+
+    /**
+    * Responsible for rendering the state of the game map.
+    * @class Renderer
+    * @constructor
+    * @param {Game} game - Game instance this obj is attached to.
+    * @param {Number} width - Width of the map view in tiles.
+    * @param {Number} height - Height of the map view in tiles.
+    * @param {String} [canvasClassName=&#x27;renderer&#x27;] - Css class name for the canvas element.
+    */
+    var Renderer = function Renderer(game, width, height, canvasClassName) {
+        this.game = game;
+        this.canvas = document.createElement(&#x27;canvas&#x27;);
+        this.ctx = this.canvas.getContext(&#x27;2d&#x27;);
+        this.canvas.className = canvasClassName || &#x27;renderer&#x27;;
+        this.buffer = this.canvas.cloneNode();
+        this.bufferCtx = this.buffer.getContext(&#x27;2d&#x27;);
+        this.resize(width, height);
+
+    };
+
+    Renderer.prototype = {
+        constructor: Renderer,
+
+        /**
+        * Game instance this obj is attached to.
+        * @property game
+        * @type Game
+        */
+        game: null,
+
+        /**
+        * Canvas element this renderer draws to.
+        * @property canvas
+        * @type HTMLCanvasElement
+        */
+        canvas: null,
+
+        /**
+        * Drawing context of this.canvas
+        * @property ctx
+        * @type CanvasRenderingContext2D
+        */
+        ctx: null,
+
+        /**
+        * Canvas element this renderer draws to as a buffer for this.canvas.
+        * @property buffer
+        * @type HTMLCanvasElement
+        */
+        buffer: null,
+
+        /**
+        * Drawing context of this.buffer
+        * @property bufferCtx
+        * @type CanvasRenderingContext2D
+        */
+        bufferCtx: null,
+
+        /**
+        * Background color of map view.
+        * @property bgColor
+        * @type String
+        */
+        bgColor: &#x27;#000&#x27;,
+
+        /**
+        * Color overlayed when mouse is over a tile.
+        * @property hoverColor
+        * @type String
+        */
+        hoverColor: &#x27;rgba(0,0,200, 0.5)&#x27;,
+
+        /**
+        * Size of each tile is drawn.
+        * @property tileSize
+        * @type Number
+        */
+        tileSize: 16,
+
+        /**
+        * Font used to render tile characters.
+        * @property font
+        * @type String
+        */
+        font: &#x27;monospace&#x27;,// &quot;DejaVuSansMono&quot;,
+
+        /**
+        * Map view width in tiles.
+        * @property width
+        * @type Number
+        */
+        width: 20,
+
+        /**
+        * Map view height in tiles.
+        * @property height
+        * @type Number
+        */
+        height: 20,
+
+        /**
+        * Distance in tiles from center to upper left corner of map view on the x axis.
+        * @property offsetX
+        * @type Number
+        */
+        offsetX: null,
+
+        /**
+        * Distance in tiles from center to upper left corner of map view on the y axis.
+        * @property offsetY
+        * @type Number
+        */
+        offsetY: null,
+
+        /**
+        * The map coord of the tile drawn in the upper left corner of the map view on the x axis.
+        * @property originX
+        * @type Number
+        */
+        originX: null,
+
+        /**
+        * The map coord of the tile drawn in the upper left corner of the map view on the y axis.
+        * @property originY
+        * @type Number
+        */
+        originY: null,
+
+        /**
+        * The map coord of the tile currently being hovered by the mouse on the x axis.
+        * @property hoveredTileX
+        * @type Number|Null
+        */
+        hoveredTileX: null,
+
+        /**
+        * The map coord of the tile currently being hovered by the mouse on the y axis.
+        * @property hoveredTileY
+        * @type Number|Null
+        */
+        hoveredTileY: null,
+
+        /**
+        * Resizes canvas elements to match the tileSize and map view with/height. Also adjusts behavior to accomodate high pixel density screens.
+        * @method resize
+        */
+        resize: function(width, height){
+            if(width !== void 0){
+                this.width = width;
+            }
+            if(height !== void 0){
+                this.height = height;
+            }
+
+            width = this.width * this.tileSize;
+            height = this.height * this.tileSize;
+
+            var devicePixelRatio = window.devicePixelRatio || 1;
+
+            if(devicePixelRatio !== 1){
+
+                this.canvas.style.width = width + &#x27;px&#x27;;
+                this.canvas.style.height = height + &#x27;px&#x27;;
+
+                this.buffer.style.width = width + &#x27;px&#x27;;
+                this.buffer.style.height = height + &#x27;px&#x27;;
+
+                width = Math.round(width * devicePixelRatio);
+                height = Math.round(height * devicePixelRatio);
+
+                this.ctx.scale(devicePixelRatio, devicePixelRatio);
+                this.bufferCtx.scale(devicePixelRatio, devicePixelRatio);
+            }
+
+            this.canvas.width = width;
+            this.canvas.height = height;
+
+            this.buffer.width = width;
+            this.buffer.height = height;
+
+            this.offsetX = Math.floor(this.width * 0.5);
+            this.offsetY = Math.floor(this.width * 0.5);
+
+        },
+
+        /**
+        * Converts mouse pixel coords to map tile coords. Mouse pixel coords must be relative to the current window.
+        * @method mouseToTileCoords
+        * @param {Number} x - Mouse pixel coord on the x axis.
+        * @param {Number} y - Mouse pixel coord on the y axis.
+        * @returns {Tile|False}
+        */
+        mouseToTileCoords: function(x, y){
+            var pos = this.canvas.getBoundingClientRect(),
+                mx = x - pos.left,
+                my = y - pos.top,
+                tile = this.pixelToTileCoords(mx, my);
+            return tile;
+        },
+
+        /**
+        * Converts map view pixel coords to map tile coords. Map view pixel coords are relative to the top left of the canvas element.
+        * @method pixelToTileCoords
+        * @param {Number} x - Map view pixel coord on the x axis.
+        * @param {Number} y - Map view pixel coord on the y axis.
+        * @returns {Tile|False}
+        */
+        pixelToTileCoords: function(x, y){
+            var tileX = Math.floor(x / this.tileSize) + this.originX,
+                tileY = Math.floor(y / this.tileSize) + this.originY,
+                tile = this.game.map.get(tileX, tileY);
+
+            if(!tile){
+                return false;
+            }
+
+            return tile;
+        },
+
+        /**
+        * Draws the current game state to the map view.
+        * @method draw
+        */
+        draw: function() {
+
+            var map = this.game.map,
+                player = this.game.player,
+                playerX = player.x,
+                playerY = player.y;
+
+            // upper left view tile coords
+            this.originX = playerX - this.offsetX;
+            this.originY = playerY - this.offsetY;
+
+            // fill the bg
+            this.bufferCtx.fillStyle = this.bgColor;
+            this.bufferCtx.fillRect(
+                0,
+                0,
+                this.canvas.width,
+                this.canvas.height
+            );
+
+            for (var x = this.width - 1; x &gt;= 0; x--) {
+                for (var y = this.height - 1; y &gt;= 0; y--) {
+
+                    var tileX = x + this.originX,
+                        tileY = y + this.originY;
+
+                    var visible = this.game.fov.get(tileX, tileY),
+                        mapTile = map.get(tileX, tileY);
+
+
+
+                    if(!mapTile){
+                        continue;
+                    }
+
+                    var explored = mapTile.explored;
+
+                    if(!explored &amp;&amp; !visible){
+                        continue;
+                    }
+
+                    var tileData = {
+                        char: null,
+                        color: null,
+                        bgColor: null,
+                    };
+
+                    tileData.char = mapTile.char;
+                    tileData.color = mapTile.color;
+                    tileData.bgColor = mapTile.bgColor;
+
+                    var entity = false;
+                    if (tileX === playerX &amp;&amp; tileY === playerY) {
+                        entity = player;
+                    } else if(visible){
+                        var entityTile = this.game.entityManager.get(tileX, tileY);
+                        if (entityTile) {
+                            entity = entityTile;
+                        }
+                    }
+
+                    if(entity){
+                        if(entity.char){
+                            tileData.char = entity.char;
+                        }
+                        if(entity.color){
+                            tileData.color = entity.color;
+                        }
+                        if(entity.bgColor){
+                            tileData.bgColor = entity.bgColor;
+                        }
+                    }
+
+
+                    if(visible){
+                        this.game.lighting.shadeTile(tileX, tileY, tileData);
+                    }
+
+                    if(tileX === this.hoveredTileX &amp;&amp; tileY === this.hoveredTileY){
+                        tileData.bgColor = this.hoverColor;
+                    }
+
+                    if(!visible){
+                        this.bufferCtx.globalAlpha = 0.36;
+                    }
+                    this.drawTile(tileX, tileY, tileData);
+                    this.bufferCtx.globalAlpha = 1;
+
+                }
+            }
+
+            this.ctx.drawImage(this.buffer, 0, 0, this.canvas.width, this.canvas.height);
+
+        },
+
+        /**
+        * Draws a single tile to the map view.
+        * @method drawTile
+        * @param {Number} x - Map tile coord on the x axis.
+        * @param {Number} y - Map tile coord on the y axis.
+        * @param {Object} tileData - Object containing tile draw settings.
+        * @param {Object} [tileData.char] - The character to draw.
+        * @param {Object} [tileData.color] - The color of the character displayed.
+        * @param {Object} [tileData.bgColor] - The background color of the tile.
+        * @param {CanvasRenderingContext2D} [ctx=this.bufferCtx] - The canvas context to draw to.
+        */
+        drawTile: function(x, y, tileData, ctx) {
+            ctx = ctx || this.bufferCtx;
+            x -= this.originX;
+            y -= this.originY;
+            if(tileData.bgColor){
+                ctx.fillStyle = tileData.bgColor;
+                ctx.fillRect(
+                    x * this.tileSize,
+                    y * this.tileSize,
+                    this.tileSize,
+                    this.tileSize
+                );
+            }
+
+            if(tileData.char &amp;&amp; tileData.color){
+                ctx.fillStyle = tileData.color;
+                ctx.textAlign = &#x27;center&#x27;;
+                ctx.textBaseline = &#x27;middle&#x27;;
+                ctx.font = this.tileSize + &#x27;px &#x27; + this.font;
+                ctx.fillText(
+                    tileData.char,
+                    x * (this.tileSize) + (this.tileSize * 0.5),
+                    y * (this.tileSize) + (this.tileSize * 0.5)
+                );
+            }
+        }
+    };
+
+    root.RL.Renderer = Renderer;
+
+}(this));
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

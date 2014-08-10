@@ -1,0 +1,15 @@
+{
+  "name": "rl-js-skeleton",
+  "version": "0.0.0",
+  "description": "## Goals",
+  "main": "index.js",
+  "scripts": {
+    "docs": "./node_modules/yuidocjs/lib/cli.js -o ./docs ./js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "yuidocjs": "^0.3.50"
+  }
+}

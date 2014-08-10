@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'DejaVuSansMono';
+    src: url('../fonts/DejaVuSansMono.eot');
+    src: url('../fonts/DejaVuSansMono.eot?#iefix') format('eot'),
+         url('../fonts/DejaVuSansMono.woff') format('woff'),
+         url('../fonts/DejaVuSansMono.ttf') format('truetype');
+}
+
+body {
+    background: #000;
+    color: #aaa;
+    font-family: verdana;
+    font-family: "DejaVuSansMono", "DejaVu Sans Mono", monospace;
+}
+
+h1 {
+    font-weight: normal;
+    margin: 0 0 10px;
+}
+
+.page {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.map-container canvas{
+    border: 1px solid #222;
+    margin: 1em 0;
+}
+
+.console-container {
+    font-family: monospace;
+    color: #aaa;
+    background: #111;
+    border: 1px solid #222;
+    padding: 1em;
+}
+
+.console-container strong {
+    color: #ccc;
+}
