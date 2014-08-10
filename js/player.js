@@ -87,12 +87,19 @@
                 moveX = 1;
             }
 
-            if (moveX === 0 && moveY === 0) {
-                return;
+            if (moveX !== 0 || moveY !== 0) {
+                this.move(moveX, moveY);
             }
 
-            var targetX = this.x + moveX,
-                targetY = this.y + moveY,
+            if(action === 'wait'){
+                this.wait();
+            }
+
+        },
+
+        move: function(x, y){
+            var targetX = this.x + x,
+                targetY = this.y + y,
                 // targeted tile (attempting to move into)
                 targetTile = this.game.map.get(targetX, targetY),
                 // entity occupying target tile (if any)
@@ -105,14 +112,24 @@
             }
             // if passable move player to target tile
             else if (targetTile.passable) {
-                this.x = targetX;
-                this.y = targetY;
+                this.moveTo(targetX, targetY);
             }
-            // log a message about the imppasible tile
             else {
                 targetTile.bump(this);
             }
         },
+
+        wait: function(){
+
+        },
+
+        /**
+        * Changes the position of this entity on the map.
+        * @method moveTo
+        */
+        moveTo: function(x, y){
+            this.game.entityManager.move(x, y, this);
+        }
     };
 
     root.RL.Player = Player;

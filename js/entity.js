@@ -106,7 +106,7 @@
 
         /**
         * Changes the position of this entity on the map.
-        * @method update
+        * @method moveTo
         */
         moveTo: function(x, y) {
             this.game.entityManager.move(x, y, this);
@@ -136,8 +136,7 @@
                         // push target entity into tile
                         this.moveTo(targetX, targetY);
                         // move player into previously occupied tile
-                        entity.x = prevX;
-                        entity.y = prevY;
+                        entity.moveTo(prevX, prevY);
                     }
                 }
 

@@ -113,6 +113,8 @@
         * @method start
         */
         start: function() {
+            // set player position
+            this.entityManager.move(this.player.x, this.player.y, this.player);
             this.fov.update(this.player.x, this.player.y);
             this.lighting.update();
             this.renderer.draw();
