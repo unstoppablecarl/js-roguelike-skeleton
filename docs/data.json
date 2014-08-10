@@ -155,16 +155,6 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/stats.js": {
-            "name": "js/stats.js",
-            "modules": {},
-            "classes": {
-                "Color operations.Stats": 1,
-                "Color operations.Stats.Types": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
         "js/tile.js": {
             "name": "js/tile.js",
             "modules": {},
@@ -1204,7 +1194,7 @@
             "extension_for": [],
             "namespace": "Color operations",
             "file": "js/entity.js",
-            "line": 148,
+            "line": 147,
             "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222',\n           pushable: false\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -1438,56 +1428,6 @@
                     "optdefault": "'renderer'"
                 }
             ]
-        },
-        "Color operations.Stats": {
-            "name": "Color operations.Stats",
-            "shortname": "Stats",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "namespace": "Color operations",
-            "file": "js/stats.js",
-            "line": 4,
-            "description": "Represents a Stats in the game map",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "game",
-                    "description": "- Game instance this obj is attached to.",
-                    "type": "Object"
-                },
-                {
-                    "name": "type",
-                    "description": "- Type of Stats. When created this object is merged with the value of Stats.Types[type].",
-                    "type": "String"
-                },
-                {
-                    "name": "x",
-                    "description": "- The map Stats coordinate position of this Stats on the x axis.",
-                    "type": "Number"
-                },
-                {
-                    "name": "y",
-                    "description": "- The map Stats coordinate position of this Stats on the y axis.",
-                    "type": "Number"
-                }
-            ]
-        },
-        "Color operations.Stats.Types": {
-            "name": "Color operations.Stats.Types",
-            "shortname": "Stats.Types",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "namespace": "Color operations",
-            "file": "js/stats.js",
-            "line": 55,
-            "description": "Describes different types of Statss. Used by the Stats constructor 'type' param.\n\n    Stats.Types = {\n        floor: {\n           name: 'Floor',\n           char: '.',\n           color: '#333',\n           bgColor: '#111',\n           passable: true,\n           blocksLos: false\n        },\n        // ...\n    }",
-            "statsic": ""
         },
         "Color operations.Tile": {
             "name": "Color operations.Tile",
@@ -5096,7 +5036,7 @@
             "line": 107,
             "description": "Changes the position of this entity on the map.",
             "itemtype": "method",
-            "name": "update",
+            "name": "moveTo",
             "class": "Color operations.Entity",
             "namespace": "Color operations"
         },
@@ -5352,7 +5292,7 @@
         },
         {
             "file": "js/game.js",
-            "line": 121,
+            "line": 123,
             "description": "Handler for user input actions.",
             "itemtype": "method",
             "name": "onKeyAction",
@@ -5368,7 +5308,7 @@
         },
         {
             "file": "js/game.js",
-            "line": 134,
+            "line": 136,
             "description": "Handler for user mouse tile click.",
             "itemtype": "method",
             "name": "onTileClick",
@@ -5384,7 +5324,7 @@
         },
         {
             "file": "js/game.js",
-            "line": 149,
+            "line": 151,
             "description": "Handler for user mouse tile hover.",
             "itemtype": "method",
             "name": "onTileHover",
@@ -5914,6 +5854,15 @@
             "namespace": "Color operations"
         },
         {
+            "file": "js/player.js",
+            "line": 126,
+            "description": "Changes the position of this entity on the map.",
+            "itemtype": "method",
+            "name": "moveTo",
+            "class": "Color operations.Player",
+            "namespace": "Color operations"
+        },
+        {
             "file": "js/renderer.js",
             "line": 27,
             "description": "Game instance this obj is attached to.",
@@ -6202,16 +6151,6 @@
                 }
             ],
             "class": "Color operations.Renderer",
-            "namespace": "Color operations"
-        },
-        {
-            "file": "js/stats.js",
-            "line": 22,
-            "description": "Game instance this obj is attached to.",
-            "itemtype": "property",
-            "name": "game",
-            "type": "Game",
-            "class": "Color operations.Stats",
             "namespace": "Color operations"
         },
         {
@@ -6664,10 +6603,6 @@
         {
             "message": "replacing incorrect tag: returns with return",
             "line": " js/renderer.js:204"
-        },
-        {
-            "message": "unknown tag: statsic",
-            "line": " js/stats.js:55"
         },
         {
             "message": "Missing item type\nHiDPI Canvas Polyfill (1.0.9)\n\nAuthor: Jonathan D. Johnson (http://jondavidjohn.com)\nHomepage: https://github.com/jondavidjohn/hidpi-canvas-polyfill\nIssue Tracker: https://github.com/jondavidjohn/hidpi-canvas-polyfill/issues\nLicense: Apache 2.0",

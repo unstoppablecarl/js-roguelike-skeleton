@@ -18,8 +18,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "Color operations.Renderer",
         "Color operations.Simplified A* algorithm: all edges have a value of 1",
         "Color operations.Simplified Dijkstra's algorithm: all edges have a value of 1",
-        "Color operations.Stats",
-        "Color operations.Stats.Types",
         "Color operations.Tile",
         "Color operations.Tile.Types",
         "Color operations.Util",
