@@ -16,7 +16,6 @@ A roguelike micro-framework for JS beginners. Designed to give a starting point 
 - object oriented design
 - minimal dependencies
 - core code produces a single global variable RL
-
 - **Avoided non-begginer techniques**
     - game loop / animation
     - object inheritance
