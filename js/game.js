@@ -1,4 +1,4 @@
-+(function(root) {
+(function(root) {
     'use strict';
 
     /**
@@ -113,7 +113,7 @@
         * @method start
         */
         start: function() {
-            // set player position
+            // set player position (player is not added to the enitity manager)
             this.entityManager.move(this.player.x, this.player.y, this.player);
             this.fov.update(this.player.x, this.player.y);
             this.lighting.update();
