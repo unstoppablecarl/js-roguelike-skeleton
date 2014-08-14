@@ -1,5 +1,9 @@
 {
-    "project": {},
+    "project": {
+        "name": "rl-js-skeleton",
+        "description": "## Goals",
+        "version": "0.0.0"
+    },
     "files": {
         "js/array-2d.js": {
             "name": "js/array-2d.js",
