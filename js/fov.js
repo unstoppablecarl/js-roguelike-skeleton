@@ -10,10 +10,6 @@
     var Fov = function Fov(game) {
         this.game = game;
         this.fovMap = new RL.Array2d();
-        this.checkVisible = this.checkVisible.bind(this);
-
-        this._fov = new ROT.FOV.PreciseShadowcasting(this.checkVisible);
-
     };
 
     Fov.prototype = {
@@ -38,37 +34,43 @@
         /**
         * Max visible distance in tiles
         *
-        * @property maxSightRange
+        * @property maxViewDistance
         * @type Number
         */
-        maxSightRange: 10,
-
-        /**
-        * ROT.FOV instance
-        *
-        * @property _fov
-        * @private
-        * @type ROT.FOV
-        */
-        _fov: null,
-
+        maxViewDistance: 10,
         /**
         * Calculates the fov data relative to given coords;
         * @method update
         * @param {Number} x - The map coordinate position to calculate Fov from on the x axis.
         * @param {Number} y - The map coordinate position to calculate Fov from on the y axis.
+        * @param {Number} [maxViewDistance] - Max visible distance (this.maxViewDistance used if not set).
         */
-        update: function(x, y){
+        update: function(x, y, maxViewDistance){
+
+            if(maxViewDistance === void 0){
+                maxViewDistance = this.maxViewDistance;
+            }
+
             this.fovMap.reset();
-            var _this = this;
-            this._fov.compute(x, y, this.maxSightRange, function(x, y, range, visibility){
 
-                //set tile to explored
-                var tile = _this.game.map.get(x, y);
-                tile.explored = true;
+            var radius = maxViewDistance,
+                i, j;
 
-                _this.fovMap.set(x, y, visibility);
-            });
+            for (i = -radius; i <= radius; i++){
+                for (j = -radius; j <= radius; j++){
+                    if(i * i + j * j < radius * radius){
+                        var x2 = x + i,
+                            y2 = y + j,
+                            visible = this.checkLos(x, y, x2, y2);
+                        if(visible){
+                            var tile = this.game.map.get(x2, y2);
+                            tile.explored = true;
+                            this.fovMap.set(x2, y2, 1);
+                        }
+                    }
+                }
+            }
+
         },
 
         /**
@@ -83,11 +85,60 @@
 
         /**
         * Checks if a tile blocks line of sight
-        * @method checkVisible
+        * @method checkMapTileVisible
         */
-        checkVisible: function(x, y){
+        checkMapTileVisible: function(x, y){
             var tile = this.game.map.get(x, y);
             return tile && !tile.blocksLos;
+        },
+
+        /**
+        * Checks if an unobstructed line can be drawn from coords 0 to 1. Typically used for Line of Sight checks
+        * @method checkLos
+        * @param {Number} x0 - Start coord x.
+        * @param {Number} y0 - Start coord y.
+        * @param {Number} x1 - End coord x.
+        * @param {Number} y1 - End coord y.
+        */
+        checkLos: function(x0, y0, x1, y1){
+
+            var sx, sy, xnext, ynext, dx, dy, denom, dist;
+            dx = x1 - x0;
+            dy = y1 - y0;
+            if (x0 < x1){
+                sx = 1;
+            }
+            else{
+                sx = -1;
+            }
+
+            if (y0 < y1){
+                sy = 1;
+            }
+            else{
+                sy = -1;
+            }
+            // sx and sy are switches that enable us to compute the LOS in a single quarter of x/y plan
+            xnext = x0;
+            ynext = y0;
+            denom = Math.sqrt(dx * dx + dy * dy);
+            while (xnext != x1 || ynext != y1){
+                if (!this.checkMapTileVisible(xnext, ynext)){
+                    return false;
+                }
+                // Line-to-point distance formula < 0.5
+                if(Math.abs(dy * (xnext - x0 + sx) - dx * (ynext - y0)) / denom < 0.5){
+                    xnext += sx;
+                }
+                else if(Math.abs(dy * (xnext - x0) - dx * (ynext - y0 + sy)) / denom < 0.5){
+                    ynext += sy;
+                }
+                else {
+                    xnext += sx;
+                    ynext += sy;
+                }
+            }
+            return true;
         },
 
         /**

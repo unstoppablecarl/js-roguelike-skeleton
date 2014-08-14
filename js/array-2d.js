@@ -294,7 +294,7 @@
         * Used for projecting path of ranged attacks, pushed entities, ect.
         * @method findNearest
         * @param {Number} tileX - Position on the x axis of the coord at the center of the radius.
-        * @param {Number} tileY - Position on the x axis of the coord at the center of the radius.
+        * @param {Number} tileY - Position on the y axis of the coord at the center of the radius.
         * @param {Number} maxRadius - Maxium search radius from given coord.
         * @param {Function} check - A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;})
         * @param {Bool} withCoords - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
@@ -380,7 +380,8 @@
             }
 
             return false;
-        }
+        },
+
     };
 
     root.RL.Array2d = Array2d;
