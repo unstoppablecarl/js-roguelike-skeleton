@@ -191,7 +191,7 @@
         * @method mouseToTileCoords
         * @param {Number} x - Mouse pixel coord on the x axis.
         * @param {Number} y - Mouse pixel coord on the y axis.
-        * @returns {Tile|False}
+        * @return {Tile|False}
         */
         mouseToTileCoords: function(x, y){
             var pos = this.canvas.getBoundingClientRect(),
@@ -206,7 +206,7 @@
         * @method pixelToTileCoords
         * @param {Number} x - Map view pixel coord on the x axis.
         * @param {Number} y - Map view pixel coord on the y axis.
-        * @returns {Tile|False}
+        * @return {Tile|False}
         */
         pixelToTileCoords: function(x, y){
             var tileX = Math.floor(x / this.tileSize) + this.originX,

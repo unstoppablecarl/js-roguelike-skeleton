@@ -51,7 +51,7 @@
 
         /**
         * Updates the size of this Array2d without destroying data
-        * @method updateSize
+        * @method setSize
         */
         setSize: function(width, height) {
             this.width = width;
@@ -82,7 +82,7 @@
         * @method get
         * @param {Number} x - Position on the x axis of the value being retrieved.
         * @param {Number} y - Position on the y axis of the value being retrieved.
-        * @returns {Mixed}
+        * @return {Mixed}
         */
         get: function(x, y) {
             if (x < 0 || x >= this.width || y < 0 || y >= this.height) {
@@ -107,7 +107,7 @@
         * @param {Number} y - Position on the x axis of the coord to get adjacent values of.
         * @param {Bool} withCoords - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
         * @param {Function} filter - A function to filter the values returned (function(value, x, y){ return true;})
-        * @returns {Array} An array of adjacent coord values.
+        * @return {Array} An array of adjacent coord values.
         */
         getAdjacent: function(x, y, withCoords, filter) {
             filter = filter || false;
@@ -118,17 +118,15 @@
 
             var add = function(x, y) {
                 var val = _this.get(x, y);
-                if (val !== void 0) {
-                    if (filter === false || (filter(val, x, y))) {
-                        if (withCoords) {
-                            out.push({
-                                x: x,
-                                y: y,
-                                value: val
-                            });
-                        } else {
-                            out.push(val);
-                        }
+                if (filter === false || (filter(val, x, y))) {
+                    if (withCoords) {
+                        out.push({
+                            x: x,
+                            y: y,
+                            value: val
+                        });
+                    } else {
+                        out.push(val);
                     }
                 }
             };
@@ -185,7 +183,7 @@
         * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
         * @param {Function} [filter=undefined] - A function to filter the values returned (function(value, x, y){ return true;})
         * @param {Bool} [includeTarget=false] - If true the value of the coordinates given will be included in the returned array.
-        * @returns {Array} An array of coord values within a square radius of the given coords.
+        * @return {Array} An array of coord values within a square radius of the given coords.
         */
         getWithinSquareRadius: function(x, y, radius, withCoords, filter, includeTarget) {
             withCoords = withCoords || false;
@@ -242,8 +240,8 @@
         * @param {Number} x1 - Position on the x axis of the coord 1.
         * @param {Number} y1 - Position on the y axis of the coord 1.
         * @param {Function} [condition=false] - A function to determine when to end the line. A coord value returning true when passed to the function will end the line. (function(value, x, y){ return true;})
-        * @param {Bool} withCoords - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
-        * @returns {Array} An array of coord values.
+        * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
+        * @return {Array} An array of coord values.
         */
         getLineTo: function(x0, y0, x1, y1, condition, withCoords) {
             withCoords = withCoords || false;
@@ -296,9 +294,9 @@
         * @param {Number} tileX - Position on the x axis of the coord at the center of the radius.
         * @param {Number} tileY - Position on the y axis of the coord at the center of the radius.
         * @param {Number} maxRadius - Maxium search radius from given coord.
-        * @param {Function} check - A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;})
-        * @param {Bool} withCoords - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
-        * @returns {Array} An array of coord values within a square radius of the given coords.
+        * @param {Function} [check] - A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;})
+        * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
+        * @return {Array} An array of coord values within a square radius of the given coords.
         */
         findNearest: function(startX, startY, maxRadius, check, withCoords) {
             withCoords = withCoords || false;
@@ -382,6 +380,73 @@
             return false;
         },
 
+        /**
+        * Retrieves an array of the filtered values.
+        * @method filter
+        * @param {Function} check - A function to determine if a value is to be included in results (returns true). (function(value, x, y){ return true;})
+        * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
+        * @return {Array} An array of coord values matched by the check function.
+        */
+        filter: function(check, withCoords){
+            withCoords = withCoords || false;
+            var output = [];
+            for (var x = 0; x < this.width; x++) {
+                for (var y = 0; y < this.width; y++) {
+                    var val = this.get(x, y);
+                    if(check(val, x, y)){
+                        if (withCoords) {
+                            output.push({
+                                x: x,
+                                y: y,
+                                value: val
+                            });
+                        } else {
+                            output.push(val);
+                        }
+                    }
+                }
+            }
+            return output;
+        },
+
+        /**
+        * Creates a copy of this Array2d. Shallow copies values.
+        * @method copy
+        * @return {Array2d}
+        */
+        copy: function(){
+            var newArray = new Array2d(this.width, this.height);
+            for(var x = this.width - 1; x >= 0; x--){
+                for(var y = this.height - 1; y >= 0; y--){
+                    var val = this.get(x, y);
+                    if(val !== void 0){
+                        newArray.set(x, y, val);
+                    }
+                }
+            }
+            return newArray;
+        },
+
+        /**
+        * Loops over each coord value.
+        * @method each
+        * @param {Function} func - A function to call on each coord value. (function(value, x, y){})
+        * @param {Object} [context] - Context to call the function with (func.call(context, val, x, y))
+        * @return {Array2d}
+        */
+        each: function(func, context){
+            for(var x = this.width - 1; x >= 0; x--){
+                for(var y = this.height - 1; y >= 0; y--){
+                    var val = this.get(x, y);
+                    if(context){
+                        func.call(context, val, x, y);
+                    } else {
+                        func(val, x, y);
+                    }
+
+                }
+            }
+        }
     };
 
     root.RL.Array2d = Array2d;

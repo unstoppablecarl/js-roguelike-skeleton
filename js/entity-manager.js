@@ -44,7 +44,7 @@
         * @method get
         * @param {Number} x - The map tile coordinate position of the entity on the x axis.
         * @param {Number} y - The map tile coordinate position of the entity on the y axis.
-        * @returns Entity|false
+        * @return Entity|false
         */
         get: function(x, y) {
             return this.entityMap.get(x, y);

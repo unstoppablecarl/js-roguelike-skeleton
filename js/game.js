@@ -140,6 +140,7 @@
         */
         onTileClick: function(tile){
             var entityTile = this.entityManager.get(tile.x, tile.y);
+            console.log('tile', tile);
             if(entityTile){
                 this.console.log('Looks like a <strong>' + entityTile.name + '</strong> standing on a <strong>' + tile.name + '</strong> to me.');
             }

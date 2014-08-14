@@ -1,0 +1,7 @@
+{
+    "port": 3000,
+    "nocode": false,
+    "outdir": "./docs",
+    "paths": ["./js"],
+    "exclude": ".DS_Store,.svn,CVS,.git,build_rollup_tmp,build_tmp,js/vendor"
+}

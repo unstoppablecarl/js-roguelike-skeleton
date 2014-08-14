@@ -65,7 +65,7 @@
         * Converts a user input key code to an action bound to that key or false if none is bound.
         * @method getActionFromKeyCode
         * @param {String} keyCode - The key code to retrieve an action bound to.
-        * @returns String|bool The action bound to the keyCode or false.
+        * @return String|bool The action bound to the keyCode or false.
         */
         getActionFromKeyCode: function(keyCode) {
             if (keyCode in this.bindings) {
@@ -80,7 +80,7 @@
         * If an action is not bound to the key pressed, true is returned allowing the default browser behavior of the keypress to function.
         * @method onKeyDown
         * @param {Object} event - The onkeydown event.
-        * @returns bool
+        * @return bool
         */
         onKeyDown: function(event) {
             var keyCode = event.keyCode;

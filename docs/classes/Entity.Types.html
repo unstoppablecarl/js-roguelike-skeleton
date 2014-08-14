@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/player.js</title>
+    <title>Entity.Types</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -112,149 +112,73 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: js/player.js</h1>
+                        <h1>Entity.Types Class</h1>
+<div class="box meta">
+    
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-(function(root) {
-    &#x27;use strict&#x27;;
+    
 
-    /**
-    * Represents the player.
-    * @class Player
-    * @constructor
-    * @param {Game} game - game instance this obj is attached to
-    */
-    var Player = function Player(game) {
-        this.game = game;
-    };
+    
+        <div class="foundat">
+            Defined in: <a href="../files/js_entity.js.html#l147"><code>js&#x2F;entity.js:147</code></a>
+        </div>
+    
 
-    Player.prototype = {
-        constructor: Player,
+    
 
-        /**
-        * Game instance this obj is attached to.
-        * @property game
-        * @type Game
-        */
-        game: null,
+    
+</div>
 
-        /**
-        * Name used when referencing describing this player.
-        * Used in console messages.
-        * @property name
-        * @type String
-        */
-        name: &#x27;Player&#x27;,
 
-        /**
-        * The map tile coordinate position of the player on the x axis.
-        * @property x
-        * @type Number
-        */
-        x: null,
 
-        /**
-        * The map tile coordinate position of the player on the y axis.
-        * @property y
-        * @type Number
-        */
-        y: null,
+<div class="box intro">
+    <p>Describes different types of entities. Used by the Entity constructor &#39;type&#39; param.</p>
+<pre class="code prettyprint"><code>Entity.Types = {
+    zombie: {
+       name: &#39;Zombie&#39;,
+       char: &#39;z&#39;,
+       color: &#39;red&#39;,
+       bgColor: &#39;#222&#39;,
+       pushable: false
+    },
+    // ...
+}</code></pre>
 
-        /**
-        * The character displayed when rendering this player.
-        * @property char
-        * @type String
-        */
-        char: &#x27;@&#x27;,
+</div>
 
-        /**
-        * The color of the character displayed when rendering this player.
-        * @property color
-        * @type String|bool
-        */
-        color: &#x27;#fff&#x27;,
 
-        /**
-        * The background color the character displayed when rendering this player.
-        * @property bgColor
-        * @type String|bool
-        */
-        bgColor: false,
 
-        /**
-        * Called when user key is pressed with action of key pressed as an arg.
-        * @method update
-        * @param {String} action - action bound to key pressed by user
-        */
-        update: function(action) {
-            if (!action) {
-                return;
-            }
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-            var moveX = 0,
-                moveY = 0;
+        
+        
+        
+        
+    </ul>
 
-            if (action === &#x27;up&#x27;) {
-                moveY = -1;
-            } else if (action === &#x27;down&#x27;) {
-                moveY = 1;
-            } else if (action === &#x27;left&#x27;) {
-                moveX = -1;
-            } else if (action === &#x27;right&#x27;) {
-                moveX = 1;
-            }
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
 
-            if (moveX !== 0 || moveY !== 0) {
-                this.move(moveX, moveY);
-            }
+            
 
-            if(action === &#x27;wait&#x27;){
-                this.wait();
-            }
+            
 
-        },
+            
 
-        move: function(x, y){
-            var targetX = this.x + x,
-                targetY = this.y + y,
-                // targeted tile (attempting to move into)
-                targetTile = this.game.map.get(targetX, targetY),
-                // entity occupying target tile (if any)
-                targetTileEnt = this.game.entityManager.get(targetX, targetY);
+            
+        </div>
 
-            // if there is an entity in the target tile
-            if (targetTileEnt) {
-                this.game.console.log(&#x27;Excuses me &lt;strong&gt;Mr.&#x27; + targetTileEnt.name + &#x27;&lt;/strong&gt;, you appear to be in the way.&#x27;);
-                targetTileEnt.bump(this);
-            }
-            // if passable move player to target tile
-            else if (targetTile.passable) {
-                this.moveTo(targetX, targetY);
-            }
-            else {
-                targetTile.bump(this);
-            }
-        },
+        
 
-        wait: function(){
+        
 
-        },
+        
 
-        /**
-        * Changes the position of this entity on the map.
-        * @method moveTo
-        */
-        moveTo: function(x, y){
-            this.game.entityManager.move(x, y, this);
-        }
-    };
-
-    root.RL.Player = Player;
-
-}(this));
-
-    </pre>
+        
+    </div>
 </div>
 
                     </div>
