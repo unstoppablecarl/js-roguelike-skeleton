@@ -298,12 +298,12 @@
         * @param {Number} x - Position on the x axis of the coord at the center of the radius.
         * @param {Number} y - Position on the x axis of the coord at the center of the radius.
         * @param {Number} radius - Radius of the area to retrieve tiles from.
-        * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
         * @param {Function} [filter=undefined] - A function to filter the values returned (function(value, x, y){ return true;})
+        * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
         * @param {Bool} [includeTarget=false] - If true the value of the coordinates given will be included in the returned array.
         * @return {Array} An array of coord values within a square radius of the given coords.
         */
-        getWithinSquareRadius: function(x, y, radius, withCoords, filter, includeTarget) {
+        getWithinSquareRadius: function(x, y, radius, filter, withCoords, includeTarget) {
             withCoords = withCoords || false;
             includeTarget = includeTarget || false;
             var tileX = x,
@@ -352,7 +352,7 @@
 
         /**
         * Retrieves an array of values of coords along a line starting at point 0 and crossing point 1 until it hits the edge of the 2d array or a coord value returning true when passed to the condtion function.
-        * @method getLineTo
+        * @method getLineThrough
         * @param {Number} x0 - Position on the x axis of the coord 0.
         * @param {Number} y0 - Position on the y axis of the coord 0.
         * @param {Number} x1 - Position on the x axis of the coord 1.
@@ -361,7 +361,7 @@
         * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
         * @return {Array} An array of coord values.
         */
-        getLineTo: function(x0, y0, x1, y1, condition, withCoords) {
+        getLineThrough: function(x0, y0, x1, y1, condition, withCoords) {
             withCoords = withCoords || false;
             condition = condition || false;
             var output = [],
@@ -412,7 +412,7 @@
         * @param {Number} tileX - Position on the x axis of the coord at the center of the radius.
         * @param {Number} tileY - Position on the y axis of the coord at the center of the radius.
         * @param {Number} maxRadius - Maxium search radius from given coord.
-        * @param {Function} [check] - A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;})
+        * @param {Function} [check] - A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;}) If no check function is provided any tile with a truthy value will be matched.
         * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
         * @return {Array} An array of coord values within a square radius of the given coords.
         */
@@ -426,7 +426,7 @@
             var checkVal = function(val, x, y) {
                 var result;
 
-                if ((check &amp;&amp; check(val, x, y)) || val) {
+                if ((check &amp;&amp; check(val, x, y)) || (!check &amp;&amp; val)) {
                     if (withCoords) {
                         results.push({
                             x: x,

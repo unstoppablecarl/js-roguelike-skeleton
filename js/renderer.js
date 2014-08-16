@@ -74,6 +74,13 @@
         hoverColor: 'rgba(0,0,200, 0.5)',
 
         /**
+        * Alpha value applied to non-visible tiles
+        * @property nonVisibleTileAlpha
+        * @type Number
+        */
+        nonVisibleTileAlpha: 0.36,
+
+        /**
         * Size of each tile is drawn.
         * @property tileSize
         * @type Number
@@ -102,42 +109,42 @@
         height: 20,
 
         /**
-        * Distance in tiles from center to upper left corner of map view on the x axis.
+        * The x distance in tiles from center to upper left corner of map view.
         * @property offsetX
         * @type Number
         */
         offsetX: null,
 
         /**
-        * Distance in tiles from center to upper left corner of map view on the y axis.
+        * The y distance in tiles from center to upper left corner of map view.
         * @property offsetY
         * @type Number
         */
         offsetY: null,
 
         /**
-        * The map coord of the tile drawn in the upper left corner of the map view on the x axis.
+        * The map tile x coord of the tile drawn in the upper left corner of the map view.
         * @property originX
         * @type Number
         */
         originX: null,
 
         /**
-        * The map coord of the tile drawn in the upper left corner of the map view on the y axis.
+        * The map tile y coord of the tile drawn in the upper left corner of the map view.
         * @property originY
         * @type Number
         */
         originY: null,
 
         /**
-        * The map coord of the tile currently being hovered by the mouse on the x axis.
+        * The map tile x coord of the tile currently being hovered by the mouse.
         * @property hoveredTileX
         * @type Number|Null
         */
         hoveredTileX: null,
 
         /**
-        * The map coord of the tile currently being hovered by the mouse on the y axis.
+        * The map tile y coord of the tile currently being hovered by the mouse.
         * @property hoveredTileY
         * @type Number|Null
         */
@@ -189,134 +196,188 @@
         /**
         * Converts mouse pixel coords to map tile coords. Mouse pixel coords must be relative to the current window.
         * @method mouseToTileCoords
-        * @param {Number} x - Mouse pixel coord on the x axis.
-        * @param {Number} y - Mouse pixel coord on the y axis.
-        * @return {Tile|False}
+        * @param {Number} x - Mouse pixel x coord.
+        * @param {Number} y - Mouse pixel y coord.
+        * @return {Object|False} {x: 0, y: 0}
         */
         mouseToTileCoords: function(x, y){
             var pos = this.canvas.getBoundingClientRect(),
                 mx = x - pos.left,
-                my = y - pos.top,
-                tile = this.pixelToTileCoords(mx, my);
-            return tile;
+                my = y - pos.top;
+            return this.pixelToTileCoords(mx, my);
         },
 
         /**
         * Converts map view pixel coords to map tile coords. Map view pixel coords are relative to the top left of the canvas element.
         * @method pixelToTileCoords
-        * @param {Number} x - Map view pixel coord on the x axis.
-        * @param {Number} y - Map view pixel coord on the y axis.
-        * @return {Tile|False}
+        * @param {Number} x - Map view pixel x coord.
+        * @param {Number} y - Map view pixel y coord.
+        * @return {Object|False}  {x: 0, y: 0}
         */
         pixelToTileCoords: function(x, y){
-            var tileX = Math.floor(x / this.tileSize) + this.originX,
-                tileY = Math.floor(y / this.tileSize) + this.originY,
-                tile = this.game.map.get(tileX, tileY);
-
-            if(!tile){
-                return false;
-            }
-
-            return tile;
+            return {
+                x: Math.floor(x / this.tileSize) + this.originX,
+                y: Math.floor(y / this.tileSize) + this.originY
+            };
         },
 
         /**
-        * Draws the current game state to the map view.
-        * @method draw
+        * Sets the center map tile of the view.
+        * @method setCenter
+        * @param {Number} centerX - Center map tile x coord.
+        * @param {Number} centerY - Center map tile y coord.
         */
-        draw: function() {
+        setCenter: function(centerX, centerY){
+            // origin = map tile coords of the tile in the upper left of view
+            this.originX = centerX - this.offsetX;
+            this.originY = centerY - this.offsetY;
+        },
 
-            var map = this.game.map,
-                player = this.game.player,
-                playerX = player.x,
-                playerY = player.y;
+        /**
+        * Draws map and entity tiles. All parameters will fall back to this.game.<param> if not provided.
+        * @method draw
+        * @param {Map} [map] - Map object to draw.
+        * @param {EntityManager} [entityManager] - EntityManager object to draw entities from.
+        * @param {Player} [player] - Player object to draw.
+        * @param {Fov} [fov] - Fov object to check visibility of tiles.
+        * @param {Lighting} [lighting] - Lighting object to shade map tiles with.
+        */
+        draw: function(map, entityManager, player, fov, lighting){
+            if(this.game){
+                map = map || this.game.map;
+                entityManager = entityManager || this.game.entityManager;
+                player = player || this.game.player;
+                fov = fov || this.game.fov;
+                lighting = lighting || this.game.lighting;
+            }
+            var ctx = this.bufferCtx;
+            this.drawMap(ctx, map, fov, lighting);
+            if(entityManager || player){
+                this.drawEntities(ctx, entityManager, player, fov);
+            }
+            // draw from buffer canvas to canvas in DOM only once all buffer draws are complete
+            this.ctx.drawImage(this.buffer, 0, 0, this.canvas.width, this.canvas.height);
+        },
 
-            // upper left view tile coords
-            this.originX = playerX - this.offsetX;
-            this.originY = playerY - this.offsetY;
-
+        /**
+        * Draws map tiles
+        * @method drawMap
+        * @param {CanvasRenderingContext2D} ctx - Canvas context to draw to
+        * @param {Map} map - Map object to draw.
+        * @param {Fov} [fov] - Fov object to check visibility of tiles.
+        * @param {Lighting} [lighting] - Lighting object to shade map tiles with.
+        */
+        drawMap: function(ctx, map, fov, lighting){
             // fill the bg
-            this.bufferCtx.fillStyle = this.bgColor;
-            this.bufferCtx.fillRect(
+            ctx.fillStyle = this.bgColor;
+            ctx.fillRect(
                 0,
                 0,
                 this.canvas.width,
                 this.canvas.height
             );
 
+            // count down for performance
             for (var x = this.width - 1; x >= 0; x--) {
                 for (var y = this.height - 1; y >= 0; y--) {
 
+                    // get the actual map tile coord from view coord using offset
                     var tileX = x + this.originX,
-                        tileY = y + this.originY;
-
-                    var visible = this.game.fov.get(tileX, tileY),
+                        tileY = y + this.originY,
+                        visible = true,
                         mapTile = map.get(tileX, tileY);
-
-
 
                     if(!mapTile){
                         continue;
                     }
 
+                    // if fov is provided check for visibility
+                    if(fov && !fov.get(tileX, tileY)){
+                        visible = false;
+                    }
+
                     var explored = mapTile.explored;
 
+                    // if maptile has not been explored and is not visible draw nothing
                     if(!explored && !visible){
                         continue;
                     }
 
                     var tileData = {
-                        char: null,
-                        color: null,
-                        bgColor: null,
+                        char: mapTile.char,
+                        color: mapTile.color,
+                        bgColor: mapTile.bgColor,
                     };
 
-                    tileData.char = mapTile.char;
-                    tileData.color = mapTile.color;
-                    tileData.bgColor = mapTile.bgColor;
-
-                    var entity = false;
-                    if (tileX === playerX && tileY === playerY) {
-                        entity = player;
-                    } else if(visible){
-                        var entityTile = this.game.entityManager.get(tileX, tileY);
-                        if (entityTile) {
-                            entity = entityTile;
-                        }
+                    if(lighting){
+                        lighting.shadeTile(tileX, tileY, tileData);
                     }
 
-                    if(entity){
-                        if(entity.char){
-                            tileData.char = entity.char;
-                        }
-                        if(entity.color){
-                            tileData.color = entity.color;
-                        }
-                        if(entity.bgColor){
-                            tileData.bgColor = entity.bgColor;
-                        }
-                    }
-
-
-                    if(visible){
-                        this.game.lighting.shadeTile(tileX, tileY, tileData);
-                    }
-
+                    // change the bg color of the hovered tile
                     if(tileX === this.hoveredTileX && tileY === this.hoveredTileY){
                         tileData.bgColor = this.hoverColor;
                     }
 
                     if(!visible){
-                        this.bufferCtx.globalAlpha = 0.36;
+                        ctx.globalAlpha = this.nonVisibleTileAlpha;
                     }
-                    this.drawTile(tileX, tileY, tileData);
-                    this.bufferCtx.globalAlpha = 1;
-
+                    this.drawTile(tileX, tileY, tileData, ctx);
+                    ctx.globalAlpha = 1;
                 }
             }
+        },
 
-            this.ctx.drawImage(this.buffer, 0, 0, this.canvas.width, this.canvas.height);
+        /**
+        * Draws entity tiles
+        * @method drawEntities
+        * @param {CanvasRenderingContext2D} ctx - Canvas context to draw to.
+        * @param {EntityManager} entityManager - EntityManager object to draw entities from.
+        * @param {Player} [player] - Player object to draw.
+        * @param {FOV} [fov] - Fov object to check visibility of tiles.
+        */
+        drawEntities: function(ctx, entityManager, player, fov){
 
+            var playerX,
+                playerY;
+
+            if(player){
+                playerX = player.x;
+                playerY = player.y;
+            }
+
+            // count down for performance
+            for (var x = this.width - 1; x >= 0; x--) {
+                for (var y = this.height - 1; y >= 0; y--) {
+
+                    // get the actual map tile coord from view coord using offset
+                    var tileX = x + this.originX,
+                        tileY = y + this.originY,
+                        entity = false;
+
+                    // if fov is provided check for visibility
+                    if(fov && !fov.get(tileX, tileY)){
+                        continue;
+                    }
+
+                    // check if the entity is the player
+                    if (player && tileX === playerX && tileY === playerY) {
+                            entity = player;
+                    } else {
+                        entity = entityManager.get(tileX, tileY);
+                    }
+
+                    if(!entity){
+                        continue;
+                    }
+
+                    var tileData = {
+                        char: entity.char,
+                        color: entity.color,
+                        bgColor: entity.bgColor,
+                    };
+                    this.drawTile(tileX, tileY, tileData, ctx);
+                }
+            }
         },
 
         /**

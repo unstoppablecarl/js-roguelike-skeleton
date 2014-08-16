@@ -322,7 +322,7 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getLineTo">getLineTo</a>
+                                <a href="#method_getLineThrough">getLineThrough</a>
 
                                 
                                 
@@ -902,7 +902,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
 
                     <div class="param-description">
                         <ul>
-<li>A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;})</li>
+<li>A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;}) If no check function is provided any tile with a truthy value will be matched.</li>
 </ul>
 
                     </div>
@@ -1265,8 +1265,8 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
 </div>
 
                 
-                    <div id="method_getLineTo" class="method item">
-    <h3 class="name"><code>getLineTo</code></h3>
+                    <div id="method_getLineThrough" class="method item">
+    <h3 class="name"><code>getLineThrough</code></h3>
 
     
         <div class="args">
@@ -1523,13 +1523,13 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             
                 <li class="arg">
                     
-                        <code class="optional">[withCoords=false]</code>
+                        <code class="optional">[filter=undefined]</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code class="optional">[filter=undefined]</code>
+                        <code class="optional">[withCoords=false]</code>
                     
                 </li>
             
@@ -1649,25 +1649,6 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             
                 <li class="param">
                     
-                        <code class="param-name optional">[withCoords=false]</code>
-                        <span class="type">Bool</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
                         <code class="param-name optional">[filter=undefined]</code>
                         <span class="type">Function</span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
@@ -1678,6 +1659,25 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
                     <div class="param-description">
                         <ul>
 <li>A function to filter the values returned (function(value, x, y){ return true;})</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[withCoords=false]</code>
+                        <span class="type">Bool</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])</li>
 </ul>
 
                     </div>

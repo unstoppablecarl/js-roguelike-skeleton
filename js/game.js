@@ -14,7 +14,7 @@
         this.renderer = new RL.Renderer(this);
         this.console = new RL.Console(this);
         this.fov = new RL.Fov(this);
-        this.lighting = new RL.Lighting(this);
+        this.lighting = new RL.LightingROT(this);
 
         // player purposefully not added to entity manager (matter of preference)
         this.player = new RL.Player(this);
@@ -117,6 +117,7 @@
             this.entityManager.move(this.player.x, this.player.y, this.player);
             this.fov.update(this.player.x, this.player.y);
             this.lighting.update();
+            this.renderer.setCenter(this.player.x, this.player.y);
             this.renderer.draw();
         },
 
@@ -130,6 +131,7 @@
             this.entityManager.update();
             this.fov.update(this.player.x, this.player.y);
             this.lighting.update();
+            this.renderer.setCenter(this.player.x, this.player.y);
             this.renderer.draw();
         },
 

@@ -1,0 +1,58 @@
+a, a:visited {
+    color: blue;
+}
+
+.btn,
+.btn:visited {
+    display: inline-block;
+    background: #333;
+    padding: 3px 6px;
+    color: #d6d6d6;
+    text-decoration: none;
+}
+.btn:hover {
+    background: #444;
+    color: #fff;
+}
+
+.btn-block {
+    display:block;
+}
+
+
+
+
+pre {
+    margin:0;
+    padding:0;
+}
+code {
+    font-size: 12px;
+    line-height: 1;
+}
+
+.ex-col-left {
+    width: 33%;
+    float: left;
+}
+
+.ex-col-right {
+    width: 66%;
+    float: right;
+}
+
+.ex-code-input {
+    width: 100%;
+    min-height: 300px;
+    font-family: monospace;
+}
+
+.example-container {
+    padding: 10px;
+    border: 1px solid #333;
+    overflow: hidden;
+}
+
+strong {
+    color: #d6d6d6;
+}

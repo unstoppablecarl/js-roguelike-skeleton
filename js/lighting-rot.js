@@ -11,7 +11,7 @@
     * @param {Number} [settings.passes] - Number of computation passes (1: no reflectivity used, 2: reflectivity used)
     * @param {Number} [settings.emissionThreshold] - Minimal amount of light at a cell to be re-emited (only for passes>1).
     */
-    var Lighting = function Lighting(game, settings) {
+    var LightingROT = function LightingROT(game, settings) {
         settings = settings || {};
         this.game = game;
         this.LightingMap = new RL.Array2d();
@@ -31,8 +31,8 @@
 
     };
 
-    Lighting.prototype = {
-        constructor: Lighting,
+    LightingROT.prototype = {
+        constructor: LightingROT,
 
         /**
         * Game instance this obj is attached to.
@@ -171,6 +171,6 @@
 
     };
 
-    root.RL.Lighting = Lighting;
+    root.RL.LightingROT = LightingROT;
 
 }(this));

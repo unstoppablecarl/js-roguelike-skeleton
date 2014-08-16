@@ -78,8 +78,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/lighting.js": {
-            "name": "js/lighting.js",
+        "js/lighting-rot.js": {
+            "name": "js/lighting-rot.js",
             "modules": {},
             "classes": {
                 "Lighting": 1
@@ -368,7 +368,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 4,
             "description": "Represents lighting in the game map. requires ROT.js",
             "is_constructor": 1,
@@ -740,18 +740,18 @@
                     "type": "Number"
                 },
                 {
-                    "name": "withCoords",
-                    "description": "- If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])",
-                    "type": "Bool",
-                    "optional": true,
-                    "optdefault": "false"
-                },
-                {
                     "name": "filter",
                     "description": "- A function to filter the values returned (function(value, x, y){ return true;})",
                     "type": "Function",
                     "optional": true,
                     "optdefault": "undefined"
+                },
+                {
+                    "name": "withCoords",
+                    "description": "- If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])",
+                    "type": "Bool",
+                    "optional": true,
+                    "optdefault": "false"
                 },
                 {
                     "name": "includeTarget",
@@ -772,7 +772,7 @@
             "line": 235,
             "description": "Retrieves an array of values of coords along a line starting at point 0 and crossing point 1 until it hits the edge of the 2d array or a coord value returning true when passed to the condtion function.",
             "itemtype": "method",
-            "name": "getLineTo",
+            "name": "getLineThrough",
             "params": [
                 {
                     "name": "x0",
@@ -839,7 +839,7 @@
                 },
                 {
                     "name": "check",
-                    "description": "- A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;})",
+                    "description": "- A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;}) If no check function is provided any tile with a truthy value will be matched.",
                     "type": "Function",
                     "optional": true
                 },
@@ -1641,7 +1641,7 @@
         },
         {
             "file": "js/game.js",
-            "line": 123,
+            "line": 124,
             "description": "Handler for user input actions.",
             "itemtype": "method",
             "name": "onKeyAction",
@@ -1656,7 +1656,7 @@
         },
         {
             "file": "js/game.js",
-            "line": 136,
+            "line": 138,
             "description": "Handler for user mouse tile click.",
             "itemtype": "method",
             "name": "onTileClick",
@@ -1671,7 +1671,7 @@
         },
         {
             "file": "js/game.js",
-            "line": 152,
+            "line": 154,
             "description": "Handler for user mouse tile hover.",
             "itemtype": "method",
             "name": "onTileHover",
@@ -1802,7 +1802,7 @@
             "class": "Input"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 37,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
@@ -1811,7 +1811,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 45,
             "description": "Array2d storing Lighting data.",
             "itemtype": "property",
@@ -1820,7 +1820,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 53,
             "description": "Reflectivity of visible tiles.",
             "itemtype": "property",
@@ -1829,7 +1829,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 61,
             "description": "Ambient light",
             "itemtype": "property",
@@ -1838,7 +1838,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 69,
             "description": "ROT.FOV instance",
             "itemtype": "property",
@@ -1849,7 +1849,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 78,
             "description": "ROT.Lighting instance",
             "itemtype": "property",
@@ -1860,7 +1860,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 87,
             "description": "Calculates the Lighting data relative to given coords;",
             "itemtype": "method",
@@ -1868,7 +1868,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 119,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
@@ -1888,7 +1888,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 129,
             "description": "Set a light position and color",
             "itemtype": "method",
@@ -1923,7 +1923,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 142,
             "description": "Returns the reflectivity value of a tile",
             "itemtype": "method",
@@ -1931,7 +1931,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 153,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
@@ -1939,7 +1939,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting.js",
+            "file": "js/lighting-rot.js",
             "line": 162,
             "description": "Sets the size of the map to mange Lighting within.",
             "itemtype": "method",
@@ -2041,7 +2041,7 @@
         },
         {
             "file": "js/mouse.js",
-            "line": 99,
+            "line": 100,
             "description": "Hander for mouse enter events",
             "itemtype": "method",
             "name": "mouseEnter",
@@ -2056,7 +2056,7 @@
         },
         {
             "file": "js/mouse.js",
-            "line": 108,
+            "line": 109,
             "description": "Hander for mouse leave events",
             "itemtype": "method",
             "name": "mouseLeave",
@@ -2071,7 +2071,7 @@
         },
         {
             "file": "js/mouse.js",
-            "line": 119,
+            "line": 120,
             "description": "Hander for mouse move events",
             "itemtype": "method",
             "name": "mouseMove",
@@ -2236,6 +2236,15 @@
         {
             "file": "js/renderer.js",
             "line": 76,
+            "description": "Alpha value applied to non-visible tiles",
+            "itemtype": "property",
+            "name": "nonVisibleTileAlpha",
+            "type": "Number",
+            "class": "Renderer"
+        },
+        {
+            "file": "js/renderer.js",
+            "line": 83,
             "description": "Size of each tile is drawn.",
             "itemtype": "property",
             "name": "tileSize",
@@ -2244,7 +2253,7 @@
         },
         {
             "file": "js/renderer.js",
-            "line": 83,
+            "line": 90,
             "description": "Font used to render tile characters.",
             "itemtype": "property",
             "name": "font",
@@ -2253,7 +2262,7 @@
         },
         {
             "file": "js/renderer.js",
-            "line": 90,
+            "line": 97,
             "description": "Map view width in tiles.",
             "itemtype": "property",
             "name": "width",
@@ -2262,7 +2271,7 @@
         },
         {
             "file": "js/renderer.js",
-            "line": 97,
+            "line": 104,
             "description": "Map view height in tiles.",
             "itemtype": "property",
             "name": "height",
@@ -2271,8 +2280,8 @@
         },
         {
             "file": "js/renderer.js",
-            "line": 104,
-            "description": "Distance in tiles from center to upper left corner of map view on the x axis.",
+            "line": 111,
+            "description": "The x distance in tiles from center to upper left corner of map view.",
             "itemtype": "property",
             "name": "offsetX",
             "type": "Number",
@@ -2280,8 +2289,8 @@
         },
         {
             "file": "js/renderer.js",
-            "line": 111,
-            "description": "Distance in tiles from center to upper left corner of map view on the y axis.",
+            "line": 118,
+            "description": "The y distance in tiles from center to upper left corner of map view.",
             "itemtype": "property",
             "name": "offsetY",
             "type": "Number",
@@ -2289,8 +2298,8 @@
         },
         {
             "file": "js/renderer.js",
-            "line": 118,
-            "description": "The map coord of the tile drawn in the upper left corner of the map view on the x axis.",
+            "line": 125,
+            "description": "The map tile x coord of the tile drawn in the upper left corner of the map view.",
             "itemtype": "property",
             "name": "originX",
             "type": "Number",
@@ -2298,8 +2307,8 @@
         },
         {
             "file": "js/renderer.js",
-            "line": 125,
-            "description": "The map coord of the tile drawn in the upper left corner of the map view on the y axis.",
+            "line": 132,
+            "description": "The map tile y coord of the tile drawn in the upper left corner of the map view.",
             "itemtype": "property",
             "name": "originY",
             "type": "Number",
@@ -2307,8 +2316,8 @@
         },
         {
             "file": "js/renderer.js",
-            "line": 132,
-            "description": "The map coord of the tile currently being hovered by the mouse on the x axis.",
+            "line": 139,
+            "description": "The map tile x coord of the tile currently being hovered by the mouse.",
             "itemtype": "property",
             "name": "hoveredTileX",
             "type": "Number|Null",
@@ -2316,8 +2325,8 @@
         },
         {
             "file": "js/renderer.js",
-            "line": 139,
-            "description": "The map coord of the tile currently being hovered by the mouse on the y axis.",
+            "line": 146,
+            "description": "The map tile y coord of the tile currently being hovered by the mouse.",
             "itemtype": "property",
             "name": "hoveredTileY",
             "type": "Number|Null",
@@ -2325,7 +2334,7 @@
         },
         {
             "file": "js/renderer.js",
-            "line": 146,
+            "line": 153,
             "description": "Resizes canvas elements to match the tileSize and map view with/height. Also adjusts behavior to accomodate high pixel density screens.",
             "itemtype": "method",
             "name": "resize",
@@ -2333,63 +2342,179 @@
         },
         {
             "file": "js/renderer.js",
-            "line": 189,
+            "line": 196,
             "description": "Converts mouse pixel coords to map tile coords. Mouse pixel coords must be relative to the current window.",
             "itemtype": "method",
             "name": "mouseToTileCoords",
             "params": [
                 {
                     "name": "x",
-                    "description": "- Mouse pixel coord on the x axis.",
+                    "description": "- Mouse pixel x coord.",
                     "type": "Number"
                 },
                 {
                     "name": "y",
-                    "description": "- Mouse pixel coord on the y axis.",
+                    "description": "- Mouse pixel y coord.",
                     "type": "Number"
                 }
             ],
             "return": {
-                "description": "",
-                "type": "Tile|False"
+                "description": "{x: 0, y: 0}",
+                "type": "Object|False"
             },
             "class": "Renderer"
         },
         {
             "file": "js/renderer.js",
-            "line": 204,
+            "line": 210,
             "description": "Converts map view pixel coords to map tile coords. Map view pixel coords are relative to the top left of the canvas element.",
             "itemtype": "method",
             "name": "pixelToTileCoords",
             "params": [
                 {
                     "name": "x",
-                    "description": "- Map view pixel coord on the x axis.",
+                    "description": "- Map view pixel x coord.",
                     "type": "Number"
                 },
                 {
                     "name": "y",
-                    "description": "- Map view pixel coord on the y axis.",
+                    "description": "- Map view pixel y coord.",
                     "type": "Number"
                 }
             ],
             "return": {
-                "description": "",
-                "type": "Tile|False"
+                "description": "{x: 0, y: 0}",
+                "type": "Object|False"
             },
             "class": "Renderer"
         },
         {
             "file": "js/renderer.js",
-            "line": 223,
-            "description": "Draws the current game state to the map view.",
+            "line": 224,
+            "description": "Sets the center map tile of the view.",
             "itemtype": "method",
-            "name": "draw",
+            "name": "setCenter",
+            "params": [
+                {
+                    "name": "centerX",
+                    "description": "- Center map tile x coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "centerY",
+                    "description": "- Center map tile y coord.",
+                    "type": "Number"
+                }
+            ],
             "class": "Renderer"
         },
         {
             "file": "js/renderer.js",
-            "line": 322,
+            "line": 236,
+            "description": "Draws map and entity tiles. All parameters will fall back to this.game.<param> if not provided.",
+            "itemtype": "method",
+            "name": "draw",
+            "params": [
+                {
+                    "name": "map",
+                    "description": "- Map object to draw.",
+                    "type": "Map",
+                    "optional": true
+                },
+                {
+                    "name": "entityManager",
+                    "description": "- EntityManager object to draw entities from.",
+                    "type": "EntityManager",
+                    "optional": true
+                },
+                {
+                    "name": "player",
+                    "description": "- Player object to draw.",
+                    "type": "Player",
+                    "optional": true
+                },
+                {
+                    "name": "fov",
+                    "description": "- Fov object to check visibility of tiles.",
+                    "type": "Fov",
+                    "optional": true
+                },
+                {
+                    "name": "lighting",
+                    "description": "- Lighting object to shade map tiles with.",
+                    "type": "Lighting",
+                    "optional": true
+                }
+            ],
+            "class": "Renderer"
+        },
+        {
+            "file": "js/renderer.js",
+            "line": 262,
+            "description": "Draws map tiles",
+            "itemtype": "method",
+            "name": "drawMap",
+            "params": [
+                {
+                    "name": "ctx",
+                    "description": "- Canvas context to draw to",
+                    "type": "CanvasRenderingContext2D"
+                },
+                {
+                    "name": "map",
+                    "description": "- Map object to draw.",
+                    "type": "Map"
+                },
+                {
+                    "name": "fov",
+                    "description": "- Fov object to check visibility of tiles.",
+                    "type": "Fov",
+                    "optional": true
+                },
+                {
+                    "name": "lighting",
+                    "description": "- Lighting object to shade map tiles with.",
+                    "type": "Lighting",
+                    "optional": true
+                }
+            ],
+            "class": "Renderer"
+        },
+        {
+            "file": "js/renderer.js",
+            "line": 330,
+            "description": "Draws entity tiles",
+            "itemtype": "method",
+            "name": "drawEntities",
+            "params": [
+                {
+                    "name": "ctx",
+                    "description": "- Canvas context to draw to.",
+                    "type": "CanvasRenderingContext2D"
+                },
+                {
+                    "name": "entityManager",
+                    "description": "- EntityManager object to draw entities from.",
+                    "type": "EntityManager"
+                },
+                {
+                    "name": "player",
+                    "description": "- Player object to draw.",
+                    "type": "Player",
+                    "optional": true
+                },
+                {
+                    "name": "fov",
+                    "description": "- Fov object to check visibility of tiles.",
+                    "type": "FOV",
+                    "optional": true
+                }
+            ],
+            "class": "Renderer"
+        },
+        {
+            "file": "js/renderer.js",
+            "line": 383,
             "description": "Draws a single tile to the map view.",
             "itemtype": "method",
             "name": "drawTile",

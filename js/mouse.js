@@ -90,7 +90,8 @@
         mouseClick: function(e){
             var mx = e.clientX,
                 my = e.clientY,
-                tile = this.game.renderer.mouseToTileCoords(mx, my);
+                coords = this.game.renderer.mouseToTileCoords(mx, my),
+                tile = this.game.map.get(coords.x, coords.y);
             if(tile){
                 this.onTileClick(tile);
             }
@@ -124,7 +125,6 @@
         mouseMove: function(e) {
             var tile = this.game.renderer.mouseToTileCoords(e.clientX, e.clientY);
             this.onTileHover(tile);
-
         },
     };
 

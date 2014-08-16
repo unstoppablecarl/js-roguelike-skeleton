@@ -336,6 +336,20 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_drawEntities">drawEntities</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_drawMap">drawMap</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_drawTile">drawTile</a>
 
                                 
@@ -358,6 +372,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_resize">resize</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setCenter">setCenter</a>
 
                                 
                                 
@@ -451,6 +472,13 @@
                             </li>
                         
                             <li class="index-item property">
+                                <a href="#property_nonVisibleTileAlpha">nonVisibleTileAlpha</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
                                 <a href="#property_offsetX">offsetX</a>
 
                                 
@@ -510,7 +538,41 @@
     <h3 class="name"><code>draw</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[map]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[entityManager]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[player]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[fov]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[lighting]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -538,7 +600,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l223"><code>js&#x2F;renderer.js:223</code></a>
+        <a href="../files/js_renderer.js.html#l236"><code>js&#x2F;renderer.js:236</code></a>
         
         </p>
 
@@ -549,10 +611,443 @@
     </div>
 
     <div class="description">
-        <p>Draws the current game state to the map view.</p>
+        <p>Draws map and entity tiles. All parameters will fall back to this.game.<param> if not provided.</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[map]</code>
+                        <span class="type">Map</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Map object to draw.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[entityManager]</code>
+                        <span class="type"><a href="../classes/EntityManager.html" class="crosslink">EntityManager</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>EntityManager object to draw entities from.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[player]</code>
+                        <span class="type"><a href="../classes/Player.html" class="crosslink">Player</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Player object to draw.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[fov]</code>
+                        <span class="type"><a href="../classes/Fov.html" class="crosslink">Fov</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Fov object to check visibility of tiles.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[lighting]</code>
+                        <span class="type"><a href="../classes/Lighting.html" class="crosslink">Lighting</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Lighting object to shade map tiles with.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_drawEntities" class="method item">
+    <h3 class="name"><code>drawEntities</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>ctx</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>entityManager</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[player]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[fov]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_renderer.js.html#l330"><code>js&#x2F;renderer.js:330</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Draws entity tiles</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">ctx</code>
+                        <span class="type">CanvasRenderingContext2D</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Canvas context to draw to.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">entityManager</code>
+                        <span class="type"><a href="../classes/EntityManager.html" class="crosslink">EntityManager</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>EntityManager object to draw entities from.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[player]</code>
+                        <span class="type"><a href="../classes/Player.html" class="crosslink">Player</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Player object to draw.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[fov]</code>
+                        <span class="type">FOV</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Fov object to check visibility of tiles.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_drawMap" class="method item">
+    <h3 class="name"><code>drawMap</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>ctx</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>map</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[fov]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[lighting]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_renderer.js.html#l262"><code>js&#x2F;renderer.js:262</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Draws map tiles</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">ctx</code>
+                        <span class="type">CanvasRenderingContext2D</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Canvas context to draw to</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">map</code>
+                        <span class="type">Map</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Map object to draw.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[fov]</code>
+                        <span class="type"><a href="../classes/Fov.html" class="crosslink">Fov</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Fov object to check visibility of tiles.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[lighting]</code>
+                        <span class="type"><a href="../classes/Lighting.html" class="crosslink">Lighting</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Lighting object to shade map tiles with.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -621,7 +1116,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l322"><code>js&#x2F;renderer.js:322</code></a>
+        <a href="../files/js_renderer.js.html#l383"><code>js&#x2F;renderer.js:383</code></a>
         
         </p>
 
@@ -805,7 +1300,7 @@
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/Tile.html" class="crosslink">Tile</a> | False</span>
+            <span class="type">Object | False</span>
         </span>
     
 
@@ -832,7 +1327,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l189"><code>js&#x2F;renderer.js:189</code></a>
+        <a href="../files/js_renderer.js.html#l196"><code>js&#x2F;renderer.js:196</code></a>
         
         </p>
 
@@ -863,7 +1358,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Mouse pixel coord on the x axis.</li>
+<li>Mouse pixel x coord.</li>
 </ul>
 
                     </div>
@@ -881,7 +1376,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Mouse pixel coord on the y axis.</li>
+<li>Mouse pixel y coord.</li>
 </ul>
 
                     </div>
@@ -900,8 +1395,10 @@
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="../classes/Tile.html" class="crosslink">Tile</a> | False</span>:
+                        <span class="type">Object | False</span>:
                     
+                    <p>{x: 0, y: 0}</p>
+
                 
             </div>
         </div>
@@ -936,7 +1433,7 @@
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/Tile.html" class="crosslink">Tile</a> | False</span>
+            <span class="type">Object | False</span>
         </span>
     
 
@@ -963,7 +1460,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l204"><code>js&#x2F;renderer.js:204</code></a>
+        <a href="../files/js_renderer.js.html#l210"><code>js&#x2F;renderer.js:210</code></a>
         
         </p>
 
@@ -994,7 +1491,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Map view pixel coord on the x axis.</li>
+<li>Map view pixel x coord.</li>
 </ul>
 
                     </div>
@@ -1012,7 +1509,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Map view pixel coord on the y axis.</li>
+<li>Map view pixel y coord.</li>
 </ul>
 
                     </div>
@@ -1031,8 +1528,10 @@
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="../classes/Tile.html" class="crosslink">Tile</a> | False</span>:
+                        <span class="type">Object | False</span>:
                     
+                    <p>{x: 0, y: 0}</p>
+
                 
             </div>
         </div>
@@ -1074,7 +1573,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l146"><code>js&#x2F;renderer.js:146</code></a>
+        <a href="../files/js_renderer.js.html#l153"><code>js&#x2F;renderer.js:153</code></a>
         
         </p>
 
@@ -1089,6 +1588,121 @@
 
     </div>
 
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setCenter" class="method item">
+    <h3 class="name"><code>setCenter</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>centerX</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>centerY</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_renderer.js.html#l224"><code>js&#x2F;renderer.js:224</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the center map tile of the view.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">centerX</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Center map tile x coord.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">centerY</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Center map tile y coord.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -1353,7 +1967,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l83"><code>js&#x2F;renderer.js:83</code></a>
+        <a href="../files/js_renderer.js.html#l90"><code>js&#x2F;renderer.js:90</code></a>
         
         </p>
 
@@ -1443,7 +2057,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l97"><code>js&#x2F;renderer.js:97</code></a>
+        <a href="../files/js_renderer.js.html#l104"><code>js&#x2F;renderer.js:104</code></a>
         
         </p>
 
@@ -1533,7 +2147,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l132"><code>js&#x2F;renderer.js:132</code></a>
+        <a href="../files/js_renderer.js.html#l139"><code>js&#x2F;renderer.js:139</code></a>
         
         </p>
 
@@ -1543,7 +2157,7 @@
     </div>
 
     <div class="description">
-        <p>The map coord of the tile currently being hovered by the mouse on the x axis.</p>
+        <p>The map tile x coord of the tile currently being hovered by the mouse.</p>
 
     </div>
 
@@ -1578,7 +2192,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l139"><code>js&#x2F;renderer.js:139</code></a>
+        <a href="../files/js_renderer.js.html#l146"><code>js&#x2F;renderer.js:146</code></a>
         
         </p>
 
@@ -1588,7 +2202,52 @@
     </div>
 
     <div class="description">
-        <p>The map coord of the tile currently being hovered by the mouse on the y axis.</p>
+        <p>The map tile y coord of the tile currently being hovered by the mouse.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_nonVisibleTileAlpha" class="property item">
+    <h3 class="name"><code>nonVisibleTileAlpha</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_renderer.js.html#l76"><code>js&#x2F;renderer.js:76</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Alpha value applied to non-visible tiles</p>
 
     </div>
 
@@ -1623,7 +2282,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l104"><code>js&#x2F;renderer.js:104</code></a>
+        <a href="../files/js_renderer.js.html#l111"><code>js&#x2F;renderer.js:111</code></a>
         
         </p>
 
@@ -1633,7 +2292,7 @@
     </div>
 
     <div class="description">
-        <p>Distance in tiles from center to upper left corner of map view on the x axis.</p>
+        <p>The x distance in tiles from center to upper left corner of map view.</p>
 
     </div>
 
@@ -1668,7 +2327,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l111"><code>js&#x2F;renderer.js:111</code></a>
+        <a href="../files/js_renderer.js.html#l118"><code>js&#x2F;renderer.js:118</code></a>
         
         </p>
 
@@ -1678,7 +2337,7 @@
     </div>
 
     <div class="description">
-        <p>Distance in tiles from center to upper left corner of map view on the y axis.</p>
+        <p>The y distance in tiles from center to upper left corner of map view.</p>
 
     </div>
 
@@ -1713,7 +2372,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l118"><code>js&#x2F;renderer.js:118</code></a>
+        <a href="../files/js_renderer.js.html#l125"><code>js&#x2F;renderer.js:125</code></a>
         
         </p>
 
@@ -1723,7 +2382,7 @@
     </div>
 
     <div class="description">
-        <p>The map coord of the tile drawn in the upper left corner of the map view on the x axis.</p>
+        <p>The map tile x coord of the tile drawn in the upper left corner of the map view.</p>
 
     </div>
 
@@ -1758,7 +2417,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l125"><code>js&#x2F;renderer.js:125</code></a>
+        <a href="../files/js_renderer.js.html#l132"><code>js&#x2F;renderer.js:132</code></a>
         
         </p>
 
@@ -1768,7 +2427,7 @@
     </div>
 
     <div class="description">
-        <p>The map coord of the tile drawn in the upper left corner of the map view on the y axis.</p>
+        <p>The map tile y coord of the tile drawn in the upper left corner of the map view.</p>
 
     </div>
 
@@ -1803,7 +2462,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l76"><code>js&#x2F;renderer.js:76</code></a>
+        <a href="../files/js_renderer.js.html#l83"><code>js&#x2F;renderer.js:83</code></a>
         
         </p>
 
@@ -1848,7 +2507,7 @@
             
         
         
-        <a href="../files/js_renderer.js.html#l90"><code>js&#x2F;renderer.js:90</code></a>
+        <a href="../files/js_renderer.js.html#l97"><code>js&#x2F;renderer.js:97</code></a>
         
         </p>
 
