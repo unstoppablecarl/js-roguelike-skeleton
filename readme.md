@@ -2,6 +2,8 @@
 
 A roguelike micro-framework for JS beginners. Designed to give a well designed and organized starting point for developers new to programming and or JS. It does NOT provide map generation tools, other libraries like rot.js can be used to serve that purpose.
 
+(Examples and API Docs)[http://unstoppablecarl.github.io/js-roguelike-skeleton/]
+
 ### Features
 
 - Game
