@@ -2,7 +2,7 @@
     'use strict';
 
     /**
-    * Manages a 2d array of x,y coords.
+    * Manages a 2d array of values mapped to x,y coords.
     * @class Array2d
     * @constructor
     * @param {Number} width - Width of the 2d Array.
@@ -50,7 +50,7 @@
         },
 
         /**
-        * Updates the size of this Array2d without destroying data
+        * Updates the size of this Array2d without destroying data.
         * @method setSize
         */
         setSize: function(width, height) {
