@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/console.js - rl-js-skeleton</title>
+    <title>src/util.js - rl-js-skeleton</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -112,72 +112,43 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: js/console.js</h1>
+                        <h1 class="file-heading">File: src/util.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 (function(root) {
     &#x27;use strict&#x27;;
+
     /**
-    * Manages the display and history of console messages to the user.
-    * @class Console
+    * Utility functions
+    * @class Util
     * @constructor
-    * @param {Game} game - Game instance this obj is attached to.
-    * @param {Number} [messageHistoryCount=5] - Number of messages to display at once.
-    * @param {String} [elClassName=&#x27;console&#x27;] - Css class name to assign to the console element.
+    * @static
     */
-    var Console = function Console(game, messageHistoryCount, elClassName) {
-        this.el = document.createElement(&#x27;div&#x27;);
-        this.el.className = elClassName || &#x27;console&#x27;;
-        this.messageHistoryCount = messageHistoryCount || 5;
-        this.game = game;
-    };
-
-    Console.prototype = {
-        constructor: Console,
+    var Util = {
         /**
-        * Game instance this obj is attached to.
-        * @property game
-        * @type Game
+        * Merges settings with default values.
+        * @method merge
+        * @param {Object} defaults - Default values to merge with.
+        * @param {Object} settings - Settings to merge with default values.
         */
-        game: null,
-
-        /**
-        * Element containing console messages.
-        * Must be manually added to the DOM
-        * @property el
-        * @type HTMLElement
-        */
-        el: null,
-
-        /**
-        * Number of messages to display at once.
-        * @property messageHistoryCount
-        * @type Number
-        */
-        messageHistoryCount: 5,
-
-        /**
-        * Adds a message to the console.
-        * @method log
-        * @param {String} - Message to be added.
-        */
-        log: function(message){
-            if(this.el.children.length &gt; this.messageHistoryCount - 1){
-                var childEl = this.el.childNodes[0];
-                childEl.remove();
+        merge: function(defaults, settings) {
+            var out = {};
+            for (var key in defaults) {
+                if (key in settings) {
+                    out[key] = settings[key];
+                } else {
+                    out[key] = defaults[key];
+                }
             }
-
-            var messageEl = document.createElement(&#x27;div&#x27;);
-            messageEl.innerHTML = message;
-            this.el.appendChild(messageEl);
-
-        },
+            return out;
+        }
     };
 
-    root.RL.Console = Console;
+    root.RL.Util = Util;
 
 }(this));
+
     </pre>
 </div>
 

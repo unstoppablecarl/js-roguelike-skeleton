@@ -16,7 +16,7 @@ var keyBindings = {
 input.addBindings(keyBindings);
 
 // element to show the actions triggered
-var inputElement = document.getElementById('input');
+var inputElement = document.getElementById('input-actions');
 
 // set a function to trigger functionality based on the input action triggered
 input.onKeyAction = function(action){

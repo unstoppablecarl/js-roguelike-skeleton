@@ -1,0 +1,115 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'DejaVuSansMono';
+    src: url('../fonts/DejaVuSansMono.eot');
+    src: url('../fonts/DejaVuSansMono.eot?#iefix') format('eot'),
+         url('../fonts/DejaVuSansMono.woff') format('woff'),
+         url('../fonts/DejaVuSansMono.ttf') format('truetype');
+}
+
+body {
+    background: #000;
+    color: #aaa;
+    font-family: verdana;
+    font-family: "DejaVuSansMono", "DejaVu Sans Mono", monospace;
+    font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #d6d6d6;
+    font-weight: normal;
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+h1 {
+    padding: 0 0 10px;
+    border-bottom: 1px solid #333;
+}
+a, a:visited {
+    color: #147CC2;
+}
+
+strong {
+    color: #d6d6d6;
+}
+
+p {
+    color: #aaa;
+    margin: 0 0 10px;
+}
+
+
+pre {
+    margin:0;
+    padding:0;
+}
+code {
+    font-size: 12px;
+    line-height: 1;
+}
+
+.page {
+    width: 960px;
+    margin: 0 auto;
+}
+
+canvas {
+    border: 1px solid #333;
+}
+
+.btn,
+.btn:visited {
+    display: inline-block;
+    background: #333;
+    padding: 3px 6px;
+    color: #d6d6d6;
+    text-decoration: none;
+}
+.btn:hover {
+    background: #444;
+    color: #fff;
+}
+
+.btn-block {
+    display:block;
+}
+
+.ex-col-left {
+    width: 33%;
+    float: left;
+}
+
+.ex-col-right {
+    width: 66%;
+    float: right;
+}
+
+.ex-code-input {
+    width: 100%;
+    min-height: 300px;
+    font-family: monospace;
+}
+
+.section {
+    padding: 10px;
+    border: 1px solid #333;
+    border-width: 0 1px 1px;
+    overflow: hidden;
+}
+
+.section:first-child{
+    border-width: 1px;
+}
+
+.console-container {
+    font-family: monospace;
+    color: #aaa;
+    background: #111;
+    border: 1px solid #222;
+    padding: 1em;
+}
+
+.console-container strong {
+    color: #ccc;
+}

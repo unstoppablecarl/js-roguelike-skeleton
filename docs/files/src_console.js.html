@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/player.js - rl-js-skeleton</title>
+    <title>src/console.js - rl-js-skeleton</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -112,26 +112,29 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: js/player.js</h1>
+                        <h1 class="file-heading">File: src/console.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 (function(root) {
     &#x27;use strict&#x27;;
-
     /**
-    * Represents the player.
-    * @class Player
+    * Manages the display and history of console messages to the user.
+    * @class Console
     * @constructor
-    * @param {Game} game - game instance this obj is attached to
+    * @param {Game} game - Game instance this obj is attached to.
+    * @param {Number} [messageHistoryCount=5] - Number of messages to display at once.
+    * @param {String} [elClassName=&#x27;console&#x27;] - Css class name to assign to the console element.
     */
-    var Player = function Player(game) {
+    var Console = function Console(game, messageHistoryCount, elClassName) {
+        this.el = document.createElement(&#x27;div&#x27;);
+        this.el.className = elClassName || &#x27;console&#x27;;
+        this.messageHistoryCount = messageHistoryCount || 5;
         this.game = game;
     };
 
-    Player.prototype = {
-        constructor: Player,
-
+    Console.prototype = {
+        constructor: Console,
         /**
         * Game instance this obj is attached to.
         * @property game
@@ -140,120 +143,41 @@
         game: null,
 
         /**
-        * Name used when referencing describing this player.
-        * Used in console messages.
-        * @property name
-        * @type String
+        * Element containing console messages.
+        * Must be manually added to the DOM
+        * @property el
+        * @type HTMLElement
         */
-        name: &#x27;Player&#x27;,
+        el: null,
 
         /**
-        * The map tile coordinate position of the player on the x axis.
-        * @property x
+        * Number of messages to display at once.
+        * @property messageHistoryCount
         * @type Number
         */
-        x: null,
+        messageHistoryCount: 5,
 
         /**
-        * The map tile coordinate position of the player on the y axis.
-        * @property y
-        * @type Number
+        * Adds a message to the console.
+        * @method log
+        * @param {String} - Message to be added.
         */
-        y: null,
-
-        /**
-        * The character displayed when rendering this player.
-        * @property char
-        * @type String
-        */
-        char: &#x27;@&#x27;,
-
-        /**
-        * The color of the character displayed when rendering this player.
-        * @property color
-        * @type String|bool
-        */
-        color: &#x27;#fff&#x27;,
-
-        /**
-        * The background color the character displayed when rendering this player.
-        * @property bgColor
-        * @type String|bool
-        */
-        bgColor: false,
-
-        /**
-        * Called when user key is pressed with action of key pressed as an arg.
-        * @method update
-        * @param {String} action - action bound to key pressed by user
-        */
-        update: function(action) {
-            if (!action) {
-                return;
+        log: function(message){
+            if(this.el.children.length &gt; this.messageHistoryCount - 1){
+                var childEl = this.el.childNodes[0];
+                childEl.remove();
             }
 
-            var moveX = 0,
-                moveY = 0;
-
-            if (action === &#x27;up&#x27;) {
-                moveY = -1;
-            } else if (action === &#x27;down&#x27;) {
-                moveY = 1;
-            } else if (action === &#x27;left&#x27;) {
-                moveX = -1;
-            } else if (action === &#x27;right&#x27;) {
-                moveX = 1;
-            }
-
-            if (moveX !== 0 || moveY !== 0) {
-                this.move(moveX, moveY);
-            }
-
-            if(action === &#x27;wait&#x27;){
-                this.wait();
-            }
+            var messageEl = document.createElement(&#x27;div&#x27;);
+            messageEl.innerHTML = message;
+            this.el.appendChild(messageEl);
 
         },
-
-        move: function(x, y){
-            var targetX = this.x + x,
-                targetY = this.y + y,
-                // targeted tile (attempting to move into)
-                targetTile = this.game.map.get(targetX, targetY),
-                // entity occupying target tile (if any)
-                targetTileEnt = this.game.entityManager.get(targetX, targetY);
-
-            // if there is an entity in the target tile
-            if (targetTileEnt) {
-                this.game.console.log(&#x27;Excuses me &lt;strong&gt;Mr.&#x27; + targetTileEnt.name + &#x27;&lt;/strong&gt;, you appear to be in the way.&#x27;);
-                targetTileEnt.bump(this);
-            }
-            // if passable move player to target tile
-            else if (targetTile.passable) {
-                this.moveTo(targetX, targetY);
-            }
-            else {
-                targetTile.bump(this);
-            }
-        },
-
-        wait: function(){
-
-        },
-
-        /**
-        * Changes the position of this entity on the map.
-        * @method moveTo
-        */
-        moveTo: function(x, y){
-            this.game.entityManager.move(x, y, this);
-        }
     };
 
-    root.RL.Player = Player;
+    root.RL.Console = Console;
 
 }(this));
-
     </pre>
 </div>
 

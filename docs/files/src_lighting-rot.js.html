@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/tile.js - rl-js-skeleton</title>
+    <title>src/lighting-rot.js - rl-js-skeleton</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -112,7 +112,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: js/tile.js</h1>
+                        <h1 class="file-heading">File: src/lighting-rot.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -120,34 +120,37 @@
     &#x27;use strict&#x27;;
 
     /**
-    * Represents a tile in the game map
-    * @class Tile
+    * Represents lighting in the game map. requires ROT.js
+    * @class Lighting
     * @constructor
-    * @param {Object} game - Game instance this obj is attached to.
-    * @param {String} type - Type of tile. When created this object is merged with the value of Tile.Types[type].
-    * @param {Number} x - The map tile coordinate position of this tile on the x axis.
-    * @param {Number} y - The map tile coordinate position of this tile on the y axis.
+    * @param {Game} game - Game instance this obj is attached to.
+    * @param {Object} [settings]- Lighting settings object.
+    * @param {Number} [settings.range] - Maximum range for the most powerful light source.
+    * @param {Number} [settings.passes] - Number of computation passes (1: no reflectivity used, 2: reflectivity used)
+    * @param {Number} [settings.emissionThreshold] - Minimal amount of light at a cell to be re-emited (only for passes&gt;1).
     */
-    var Tile = function Tile(game, type, x, y) {
+    var LightingROT = function LightingROT(game, settings) {
+        settings = settings || {};
         this.game = game;
-        this.x = x;
-        this.y = y;
-        this.type = type;
+        this.LightingMap = new RL.Array2d();
+        this.checkVisible = this.checkVisible.bind(this);
+        this.getTileReflectivity = this.getTileReflectivity.bind(this);
 
-        var typeData = Tile.Types[type];
-        if(!typeData){
-            throw new Error(&#x27;TileType &quot;&#x27; + type + &#x27;&quot; not found.&#x27;);
-        }
-        for(var key in typeData){
-            this[key] = typeData[key];
-        }
+        this._fov = new ROT.FOV.PreciseShadowcasting(this.checkVisible);
 
-        // make sure &quot;this&quot; is always this Tile instance when calling bump
-        this.bump = this.bump.bind(this);
+        settings = RL.Util.merge({
+            range: 5,
+            passes: 2,
+            emissionThreshold: 100,
+        }, settings);
+
+        this._lighting = new ROT.Lighting(this.getTileReflectivity, settings);
+        this._lighting.setFOV(this._fov);
+
     };
 
-    Tile.prototype = {
-        constructor: Tile,
+    LightingROT.prototype = {
+        constructor: LightingROT,
 
         /**
         * Game instance this obj is attached to.
@@ -158,144 +161,135 @@
         game: null,
 
         /**
-        * The type of entity this is.
-        * When created this object is merged with the value of Tile.Types[type].
-        * @property type
-        * @type Object
+        * Array2d storing Lighting data.
+        *
+        * @property LightingMap
+        * @type Array2d
         */
-        type: null,
+        LightingMap: null,
 
         /**
-        * If this tile has been explored by the player.
-        * @property explored
-        * @type Bool
-        */
-        explored: false,
-
-        /**
-        * If entities can move through this tile.
-        * @property passable
-        * @type Bool
-        */
-        passable: false,
-
-        /**
-        * If this tile blocks line of sight.
-        * @property passable
-        * @type Bool
-        */
-        blocksLos: false,
-
-        /**
-        * The tile map coordinate position on the x axis.
-        * @property x
+        * Reflectivity of visible tiles.
+        *
+        * @property reflectivity
         * @type Number
         */
-        x: null,
+        reflectivity: 0.3,
 
         /**
-        * The tile map coordinate position on the y axis.
-        * @property y
-        * @type Number
+        * Ambient light
+        *
+        * @property ambientLight
+        * @type Array
         */
-        y: null,
+        ambientLight: [200, 200, 200],
 
         /**
-        * The character displayed when rendering this tile.
-        * @property char
-        * @type String
+        * ROT.FOV instance
+        *
+        * @property _fov
+        * @private
+        * @type ROT.FOV
         */
-        char: null,
+        _fov: null,
 
         /**
-        * The color of the character displayed when rendering this tile. Not rendered if false.
-        * @property color
-        * @type String|bool
+        * ROT.Lighting instance
+        *
+        * @property _lighting
+        * @private
+        * @type ROT.Lighting
         */
-        color: null,
+        _lighting: null,
 
         /**
-        * The background color the character displayed when rendering this tile. Not rendered if false.
-        * @property bgColor
-        * @type String|bool
+        * Calculates the Lighting data relative to given coords;
+        * @method update
         */
-        bgColor: false,
+        update: function(){
+            // this.LightingMap.reset();
+            var _this = this;
+            this._lighting.compute(this.LightingMap.set.bind(this.LightingMap));
+        },
 
-        /**
-        * Handles the behavior of a player or other entity attempting to move into this tile. Only used if this.passable = false.
-        * @method bump
-        * @param {Object} entity - The player or entity attemplting to move into this tile.
-        */
-        bump: function(entity){
-            if(!this.passable){
-                this.game.console.log(&#x27;You cannot move through this &lt;strong&gt;&#x27; + this.name + &#x27;&lt;/strong&gt; no matter how hard you try.&#x27;);
+        shadeTile: function(x, y, tileData){
+            var light = this.ambientLight;
+            var lighting = this.get(x, y);
+
+            if(lighting){
+                light = ROT.Color.add(this.ambientLight, lighting);
             }
-        },
-    };
 
-    /**
-    * Describes different types of tiles. Used by the Tile constructor &#x27;type&#x27; param.
-    *
-    *     Tile.Types = {
-    *         floor: {
-    *            name: &#x27;Floor&#x27;,
-    *            char: &#x27;.&#x27;,
-    *            color: &#x27;#333&#x27;,
-    *            bgColor: &#x27;#111&#x27;,
-    *            passable: true,
-    *            blocksLos: false
-    *         },
-    *         // ...
-    *     }
-    *
-    * @class Tile.Types
-    * @static
-    */
-    Tile.Types = {
-        floor: {
-            name: &#x27;Floor&#x27;,
-            char: &#x27;.&#x27;,
-            color: &#x27;#333&#x27;,
-            bgColor: &#x27;#111&#x27;,
-            passable: true,
-            blocksLos: false
-        },
-        wall: {
-            name: &#x27;Wall&#x27;,
-            char: &#x27;#&#x27;,
-            color: &#x27;#666&#x27;,
-            bgColor: &#x27;#222&#x27;,
-            passable: false,
-            blocksLos: true
-        },
-        light: {
-            name: &#x27;Light&#x27;,
-            char: &#x27;+&#x27;,
-            color: &#x27;#fff&#x27;,
-            bgColor: &#x27;#333&#x27;,
-            passable: false,
-            blocksLos: false
-        },
-        door: {
-            name: &#x27;Door&#x27;,
-            char: &#x27;+&#x27;,
-            color: &#x27;yellow&#x27;,
-            bgColor: &#x27;#222&#x27;,
-            passable: false,
-            blocksLos: true,
-            bump: function(entity){
-                if(!this.passable){
-                    this.passable = true;
-                    this.blocksLos = false;
-                    this.char = &quot;&#x27;&quot;;
-                    this.game.console.log(&#x27;You open the &lt;strong&gt;&#x27; + this.name + &#x27;&lt;/strong&gt;.&#x27;);
-
-                }
+            if(tileData.color){
+                var color = ROT.Color.fromString(tileData.color);
+                color = ROT.Color.multiply(color, light);
+                tileData.color = ROT.Color.toRGB(color);
             }
+
+            if(tileData.bgColor){
+                var bgColor = ROT.Color.fromString(tileData.bgColor);
+                bgColor = ROT.Color.multiply(bgColor, light);
+                tileData.bgColor = ROT.Color.toRGB(bgColor);
+            }
+
+        },
+
+        /**
+        * Retrieves the visibility of the tile at given coords
+        * @method get
+        * @param {Number} x - The map coordinate position to get Lighting visibility from on the x axis.
+        * @param {Number} y - The map coordinate position to get Lighting visibility from on the y axis.
+        */
+        get: function(x, y){
+            return this.LightingMap.get(x, y);
+        },
+
+        /**
+        * Set a light position and color
+        * @method set
+        * @param {Number} x - The map coordinate position to set lightin on the x axis.
+        * @param {Number} y - The map coordinate position to set lightin on the y axis.
+        * @param {Number} r - Red.
+        * @param {Number} g - Green.
+        * @param {Number} b - Blue.
+        */
+        set: function(x, y, r, g, b){
+            this._lighting.setLight(x, y, [r, g, b]);
+        },
+
+        /**
+        * Returns the reflectivity value of a tile
+        * @method getTileReflectivity
+        */
+        getTileReflectivity: function(x, y){
+            if(this.checkVisible(x,y)){
+                return 0;
+            }
+            return this.reflectivity;
+        },
+
+        /**
+        * Checks if a tile blocks line of sight
+        * @method checkVisible
+        */
+        checkVisible: function(x, y){
+            var tile = this.game.map.get(x, y);
+            return tile &amp;&amp; !tile.blocksLos;
+        },
+
+        /**
+        * Sets the size of the map to mange Lighting within.
+        * @method setSize
+        * @param {Number} width - Width of current map in tiles.
+        * @param {Number} height - Height of current map in tiles.
+        */
+        setSize: function(width, height){
+            this.LightingMap.setSize(width, height);
         }
+
     };
 
-    root.RL.Tile = Tile;
+    root.RL.LightingROT = LightingROT;
 
 }(this));
 

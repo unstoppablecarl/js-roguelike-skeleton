@@ -1,12 +1,12 @@
 {
     "project": {
         "name": "rl-js-skeleton",
-        "description": "## Goals",
+        "description": "A roguelike micro-framework for JS beginners. Designed to give a well designed and organized starting point for developers new to programming and or JS. It does NOT provide map generation tools, other libraries like rot.js can be used to serve that purpose.",
         "version": "0.0.0"
     },
     "files": {
-        "js/array-2d.js": {
-            "name": "js/array-2d.js",
+        "src/array-2d.js": {
+            "name": "src/array-2d.js",
             "modules": {},
             "classes": {
                 "Array2d": 1
@@ -14,8 +14,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/console.js": {
-            "name": "js/console.js",
+        "src/console.js": {
+            "name": "src/console.js",
             "modules": {},
             "classes": {
                 "Console": 1
@@ -23,8 +23,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/entity-manager.js": {
-            "name": "js/entity-manager.js",
+        "src/entity-manager.js": {
+            "name": "src/entity-manager.js",
             "modules": {},
             "classes": {
                 "EntityManager": 1
@@ -32,8 +32,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/entity.js": {
-            "name": "js/entity.js",
+        "src/entity.js": {
+            "name": "src/entity.js",
             "modules": {},
             "classes": {
                 "Entity": 1,
@@ -42,8 +42,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/fov-rot.js": {
-            "name": "js/fov-rot.js",
+        "src/fov-rot.js": {
+            "name": "src/fov-rot.js",
             "modules": {},
             "classes": {
                 "FovROT": 1
@@ -51,8 +51,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/fov.js": {
-            "name": "js/fov.js",
+        "src/fov.js": {
+            "name": "src/fov.js",
             "modules": {},
             "classes": {
                 "Fov": 1
@@ -60,8 +60,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/game.js": {
-            "name": "js/game.js",
+        "src/game.js": {
+            "name": "src/game.js",
             "modules": {},
             "classes": {
                 "Game": 1
@@ -69,8 +69,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/input.js": {
-            "name": "js/input.js",
+        "src/input.js": {
+            "name": "src/input.js",
             "modules": {},
             "classes": {
                 "Input": 1
@@ -78,8 +78,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/lighting-rot.js": {
-            "name": "js/lighting-rot.js",
+        "src/lighting-rot.js": {
+            "name": "src/lighting-rot.js",
             "modules": {},
             "classes": {
                 "Lighting": 1
@@ -87,8 +87,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/mouse.js": {
-            "name": "js/mouse.js",
+        "src/mouse.js": {
+            "name": "src/mouse.js",
             "modules": {},
             "classes": {
                 "Mouse": 1
@@ -96,8 +96,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/player.js": {
-            "name": "js/player.js",
+        "src/player.js": {
+            "name": "src/player.js",
             "modules": {},
             "classes": {
                 "Player": 1
@@ -105,8 +105,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/renderer.js": {
-            "name": "js/renderer.js",
+        "src/renderer.js": {
+            "name": "src/renderer.js",
             "modules": {},
             "classes": {
                 "Renderer": 1
@@ -114,8 +114,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/tile.js": {
-            "name": "js/tile.js",
+        "src/tile.js": {
+            "name": "src/tile.js",
             "modules": {},
             "classes": {
                 "Tile": 1,
@@ -124,8 +124,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/util.js": {
-            "name": "js/util.js",
+        "src/util.js": {
+            "name": "src/util.js",
             "modules": {},
             "classes": {
                 "Util": 1
@@ -144,7 +144,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 4,
             "description": "Manages a 2d array of x,y coords.",
             "is_constructor": 1,
@@ -169,7 +169,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/console.js",
+            "file": "src/console.js",
             "line": 3,
             "description": "Manages the display and history of console messages to the user.",
             "is_constructor": 1,
@@ -203,7 +203,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/entity-manager.js",
+            "file": "src/entity-manager.js",
             "line": 4,
             "description": "Manages the current state of all entities.",
             "is_constructor": 1,
@@ -233,7 +233,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 4,
             "description": "Represents an entity in the game. Usually a character or enemy.",
             "is_constructor": 1,
@@ -258,7 +258,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 147,
             "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222',\n           pushable: false\n        },\n        // ...\n    }",
             "static": 1
@@ -271,7 +271,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 4,
             "description": "Represents a FovROT in the game map. requires ROT.js",
             "is_constructor": 1,
@@ -291,7 +291,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/fov.js",
+            "file": "src/fov.js",
             "line": 4,
             "description": "Represents a Fov in the game map. requires ROT.js",
             "is_constructor": 1,
@@ -311,7 +311,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 4,
             "description": "Represents the game.",
             "is_constructor": 1
@@ -324,7 +324,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/input.js",
+            "file": "src/input.js",
             "line": 4,
             "description": "Helper for binding user key input to actions.",
             "is_constructor": 1,
@@ -368,7 +368,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 4,
             "description": "Represents lighting in the game map. requires ROT.js",
             "is_constructor": 1,
@@ -414,7 +414,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/mouse.js",
+            "file": "src/mouse.js",
             "line": 4,
             "description": "Helper for handling user mouse input.",
             "is_constructor": 1,
@@ -458,7 +458,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/player.js",
+            "file": "src/player.js",
             "line": 4,
             "description": "Represents the player.",
             "is_constructor": 1,
@@ -478,7 +478,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 4,
             "description": "Responsible for rendering the state of the game map.",
             "is_constructor": 1,
@@ -515,7 +515,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 4,
             "description": "Represents a tile in the game map",
             "is_constructor": 1,
@@ -550,7 +550,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 118,
             "description": "Describes different types of tiles. Used by the Tile constructor 'type' param.\n\n    Tile.Types = {\n        floor: {\n           name: 'Floor',\n           char: '.',\n           color: '#333',\n           bgColor: '#111',\n           passable: true,\n           blocksLos: false\n        },\n        // ...\n    }",
             "static": 1
@@ -563,7 +563,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js/util.js",
+            "file": "src/util.js",
             "line": 4,
             "description": "Utility functions",
             "is_constructor": 1,
@@ -572,7 +572,7 @@
     },
     "classitems": [
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 20,
             "description": "Width of the 2d Array.",
             "itemtype": "property",
@@ -581,7 +581,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 27,
             "description": "Height of the 2d Array.",
             "itemtype": "property",
@@ -590,7 +590,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 34,
             "description": "2d Array data",
             "itemtype": "property",
@@ -599,7 +599,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 41,
             "description": "Resets the 2d array, clearing all data and initializing with this.width and this.height.",
             "itemtype": "method",
@@ -607,7 +607,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 52,
             "description": "Updates the size of this Array2d without destroying data",
             "itemtype": "method",
@@ -615,7 +615,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 66,
             "description": "Sets a value at given coords.",
             "itemtype": "method",
@@ -640,7 +640,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 80,
             "description": "Gets a value from given coords.",
             "itemtype": "method",
@@ -664,7 +664,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 94,
             "description": "Removes a value from given coords.",
             "itemtype": "method",
@@ -684,7 +684,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 103,
             "description": "Retrieves an array of values of adjacent coords.",
             "itemtype": "method",
@@ -718,7 +718,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 177,
             "description": "Retrieves an array of values of coords within a given radius.",
             "itemtype": "method",
@@ -768,7 +768,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 235,
             "description": "Retrieves an array of values of coords along a line starting at point 0 and crossing point 1 until it hits the edge of the 2d array or a coord value returning true when passed to the condtion function.",
             "itemtype": "method",
@@ -816,7 +816,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 290,
             "description": "Retrieves an array of the nearest coord values meeting checked requirements. If multiple coord values were matched at the same nearest distance, the returned array will contain multiple matched coord values.\nUsed for projecting path of ranged attacks, pushed entities, ect.",
             "itemtype": "method",
@@ -858,7 +858,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 383,
             "description": "Retrieves an array of the filtered values.",
             "itemtype": "method",
@@ -884,7 +884,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 412,
             "description": "Creates a copy of this Array2d. Shallow copies values.",
             "itemtype": "method",
@@ -896,7 +896,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/array-2d.js",
+            "file": "src/array-2d.js",
             "line": 430,
             "description": "Loops over each coord value.",
             "itemtype": "method",
@@ -921,7 +921,7 @@
             "class": "Array2d"
         },
         {
-            "file": "js/console.js",
+            "file": "src/console.js",
             "line": 20,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
@@ -930,7 +930,7 @@
             "class": "Console"
         },
         {
-            "file": "js/console.js",
+            "file": "src/console.js",
             "line": 27,
             "description": "Element containing console messages.\nMust be manually added to the DOM",
             "itemtype": "property",
@@ -939,7 +939,7 @@
             "class": "Console"
         },
         {
-            "file": "js/console.js",
+            "file": "src/console.js",
             "line": 35,
             "description": "Number of messages to display at once.",
             "itemtype": "property",
@@ -948,7 +948,7 @@
             "class": "Console"
         },
         {
-            "file": "js/console.js",
+            "file": "src/console.js",
             "line": 42,
             "description": "Adds a message to the console.",
             "itemtype": "method",
@@ -963,7 +963,7 @@
             "class": "Console"
         },
         {
-            "file": "js/entity-manager.js",
+            "file": "src/entity-manager.js",
             "line": 21,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
@@ -972,7 +972,7 @@
             "class": "EntityManager"
         },
         {
-            "file": "js/entity-manager.js",
+            "file": "src/entity-manager.js",
             "line": 28,
             "description": "Array containing all entities.",
             "itemtype": "property",
@@ -981,7 +981,7 @@
             "class": "EntityManager"
         },
         {
-            "file": "js/entity-manager.js",
+            "file": "src/entity-manager.js",
             "line": 35,
             "description": "Array2d containing all entities by their current map tile coord",
             "itemtype": "property",
@@ -990,7 +990,7 @@
             "class": "EntityManager"
         },
         {
-            "file": "js/entity-manager.js",
+            "file": "src/entity-manager.js",
             "line": 42,
             "description": "Retrieves an entity by map tile coords.",
             "itemtype": "method",
@@ -1013,7 +1013,7 @@
             "class": "EntityManager"
         },
         {
-            "file": "js/entity-manager.js",
+            "file": "src/entity-manager.js",
             "line": 53,
             "description": "Adds an entity to the manager.",
             "itemtype": "method",
@@ -1038,7 +1038,7 @@
             "class": "EntityManager"
         },
         {
-            "file": "js/entity-manager.js",
+            "file": "src/entity-manager.js",
             "line": 68,
             "description": "Removes an entity to the manager.",
             "itemtype": "method",
@@ -1053,7 +1053,7 @@
             "class": "EntityManager"
         },
         {
-            "file": "js/entity-manager.js",
+            "file": "src/entity-manager.js",
             "line": 79,
             "description": "Changes the position of an entity already added to this entityManager.",
             "itemtype": "method",
@@ -1078,7 +1078,7 @@
             "class": "EntityManager"
         },
         {
-            "file": "js/entity-manager.js",
+            "file": "src/entity-manager.js",
             "line": 93,
             "description": "Calls the entity.update() method on all entities. Removes dead entities. Typically called after a player has resolved their actions.",
             "itemtype": "method",
@@ -1086,7 +1086,7 @@
             "class": "EntityManager"
         },
         {
-            "file": "js/entity-manager.js",
+            "file": "src/entity-manager.js",
             "line": 109,
             "description": "Resets this entityManager.",
             "itemtype": "method",
@@ -1094,7 +1094,7 @@
             "class": "EntityManager"
         },
         {
-            "file": "js/entity-manager.js",
+            "file": "src/entity-manager.js",
             "line": 118,
             "description": "Sets the size of the map to manage entities within.",
             "itemtype": "method",
@@ -1114,7 +1114,7 @@
             "class": "EntityManager"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 27,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
@@ -1123,7 +1123,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 34,
             "description": "The type of entity this is.\nWhen created this object is merged with the value of Entity.Types[type].",
             "itemtype": "property",
@@ -1132,7 +1132,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 42,
             "description": "Name used when referencing describing this entity.\nUsed in console messages.",
             "itemtype": "property",
@@ -1141,7 +1141,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 50,
             "description": "The map tile coordinate position of the entity on the x axis.",
             "itemtype": "property",
@@ -1150,7 +1150,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 57,
             "description": "The map tile coordinate position of the entity on the y axis.",
             "itemtype": "property",
@@ -1159,7 +1159,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 64,
             "description": "The character displayed when rendering this entity.",
             "itemtype": "property",
@@ -1168,7 +1168,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 71,
             "description": "The color of the character displayed when rendering this entity. Not rendered if false.",
             "itemtype": "property",
@@ -1177,7 +1177,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 78,
             "description": "The background color the character displayed when rendering this entity. Not rendered if false.",
             "itemtype": "property",
@@ -1186,7 +1186,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 85,
             "description": "Determines if this entity has been killed and needs to be removed.",
             "itemtype": "property",
@@ -1195,7 +1195,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 92,
             "description": "Determines if this entity can be pushed by the player.",
             "itemtype": "property",
@@ -1204,7 +1204,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 99,
             "description": "Called after a player action has been resolved. Resolves this entities turn.",
             "itemtype": "method",
@@ -1212,7 +1212,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 107,
             "description": "Changes the position of this entity on the map.",
             "itemtype": "method",
@@ -1220,7 +1220,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/entity.js",
+            "file": "src/entity.js",
             "line": 115,
             "description": "Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.",
             "itemtype": "method",
@@ -1235,7 +1235,7 @@
             "class": "Entity"
         },
         {
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 20,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
@@ -1244,7 +1244,7 @@
             "class": "FovROT"
         },
         {
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 27,
             "description": "Array2d storing fovROT visibility fovMap",
             "itemtype": "property",
@@ -1253,7 +1253,7 @@
             "class": "FovROT"
         },
         {
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 34,
             "description": "Field Range of view 90, 180, or 360.",
             "itemtype": "property",
@@ -1262,7 +1262,7 @@
             "class": "FovROT"
         },
         {
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 41,
             "description": "Direction of fov (used as default) (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'].",
             "itemtype": "property",
@@ -1271,7 +1271,7 @@
             "class": "FovROT"
         },
         {
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 48,
             "description": "Max visible distance in tiles",
             "itemtype": "property",
@@ -1280,7 +1280,7 @@
             "class": "FovROT"
         },
         {
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 55,
             "description": "Validates a fieldRange value.",
             "itemtype": "method",
@@ -1295,7 +1295,7 @@
             "class": "FovROT"
         },
         {
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 68,
             "description": "Converts a string direction to an rot",
             "itemtype": "method",
@@ -1310,7 +1310,7 @@
             "class": "FovROT"
         },
         {
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 91,
             "description": "Calculates the fovROT data relative to given coords;",
             "itemtype": "method",
@@ -1352,7 +1352,7 @@
             "class": "FovROT"
         },
         {
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 153,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
@@ -1372,7 +1372,7 @@
             "class": "FovROT"
         },
         {
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 163,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
@@ -1380,7 +1380,7 @@
             "class": "FovROT"
         },
         {
-            "file": "js/fov-rot.js",
+            "file": "src/fov-rot.js",
             "line": 172,
             "description": "Sets the size of the map to mange fovROT within.",
             "itemtype": "method",
@@ -1400,7 +1400,7 @@
             "class": "FovROT"
         },
         {
-            "file": "js/fov.js",
+            "file": "src/fov.js",
             "line": 18,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
@@ -1409,7 +1409,7 @@
             "class": "Fov"
         },
         {
-            "file": "js/fov.js",
+            "file": "src/fov.js",
             "line": 26,
             "description": "Array2d storing fov visibility fovMap",
             "itemtype": "property",
@@ -1418,7 +1418,7 @@
             "class": "Fov"
         },
         {
-            "file": "js/fov.js",
+            "file": "src/fov.js",
             "line": 34,
             "description": "Max visible distance in tiles",
             "itemtype": "property",
@@ -1427,7 +1427,7 @@
             "class": "Fov"
         },
         {
-            "file": "js/fov.js",
+            "file": "src/fov.js",
             "line": 41,
             "description": "Calculates the fov data relative to given coords;",
             "itemtype": "method",
@@ -1453,7 +1453,7 @@
             "class": "Fov"
         },
         {
-            "file": "js/fov.js",
+            "file": "src/fov.js",
             "line": 76,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
@@ -1473,7 +1473,7 @@
             "class": "Fov"
         },
         {
-            "file": "js/fov.js",
+            "file": "src/fov.js",
             "line": 86,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
@@ -1481,7 +1481,7 @@
             "class": "Fov"
         },
         {
-            "file": "js/fov.js",
+            "file": "src/fov.js",
             "line": 95,
             "description": "Checks if an unobstructed line can be drawn from coords 0 to 1. Typically used for Line of Sight checks",
             "itemtype": "method",
@@ -1511,7 +1511,7 @@
             "class": "Fov"
         },
         {
-            "file": "js/fov.js",
+            "file": "src/fov.js",
             "line": 144,
             "description": "Sets the size of the map to mange fov within.",
             "itemtype": "method",
@@ -1531,7 +1531,7 @@
             "class": "Fov"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 35,
             "description": "The current map.",
             "itemtype": "property",
@@ -1540,7 +1540,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 42,
             "description": "The current entityManager.",
             "itemtype": "property",
@@ -1549,7 +1549,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 49,
             "description": "The current Fov.",
             "itemtype": "property",
@@ -1558,7 +1558,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 56,
             "description": "The current Lighting.",
             "itemtype": "property",
@@ -1567,7 +1567,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 63,
             "description": "The current renderer.",
             "itemtype": "property",
@@ -1576,7 +1576,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 70,
             "description": "The current console.",
             "itemtype": "property",
@@ -1585,7 +1585,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 77,
             "description": "The current player.",
             "itemtype": "property",
@@ -1594,7 +1594,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 84,
             "description": "The current input.",
             "itemtype": "property",
@@ -1603,7 +1603,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 91,
             "description": "The current mouse.",
             "itemtype": "property",
@@ -1612,7 +1612,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 98,
             "description": "Sets the size of the map resizing this.map and this.entityManager.",
             "itemtype": "method",
@@ -1632,7 +1632,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 111,
             "description": "Starts the game.",
             "itemtype": "method",
@@ -1640,7 +1640,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 124,
             "description": "Handler for user input actions.",
             "itemtype": "method",
@@ -1655,7 +1655,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 138,
             "description": "Handler for user mouse tile click.",
             "itemtype": "method",
@@ -1670,7 +1670,7 @@
             "class": "Game"
         },
         {
-            "file": "js/game.js",
+            "file": "src/game.js",
             "line": 154,
             "description": "Handler for user mouse tile hover.",
             "itemtype": "method",
@@ -1685,7 +1685,7 @@
             "class": "Game"
         },
         {
-            "file": "js/input.js",
+            "file": "src/input.js",
             "line": 39,
             "description": "An object of key val pairs mapping keyCode to action",
             "itemtype": "property",
@@ -1694,7 +1694,7 @@
             "class": "Input"
         },
         {
-            "file": "js/input.js",
+            "file": "src/input.js",
             "line": 46,
             "description": "Function called when a key bound to an action is pressed (function(action){}).",
             "itemtype": "property",
@@ -1703,7 +1703,7 @@
             "class": "Input"
         },
         {
-            "file": "js/input.js",
+            "file": "src/input.js",
             "line": 53,
             "description": "Bind a user action to a key input",
             "itemtype": "method",
@@ -1723,7 +1723,7 @@
             "class": "Input"
         },
         {
-            "file": "js/input.js",
+            "file": "src/input.js",
             "line": 64,
             "description": "Converts a user input key code to an action bound to that key or false if none is bound.",
             "itemtype": "method",
@@ -1741,7 +1741,7 @@
             "class": "Input"
         },
         {
-            "file": "js/input.js",
+            "file": "src/input.js",
             "line": 77,
             "description": "Event handler for document.onkeydown. Triggered when a key is pressed.\nIf an action is bound to the key pressed, false is returned to cancel the default browser behavior of the keypress.\nIf an action is not bound to the key pressed, true is returned allowing the default browser behavior of the keypress to function.",
             "itemtype": "method",
@@ -1759,7 +1759,7 @@
             "class": "Input"
         },
         {
-            "file": "js/input.js",
+            "file": "src/input.js",
             "line": 99,
             "description": "Loads multiple action key bindings",
             "itemtype": "method",
@@ -1793,7 +1793,7 @@
             "class": "Input"
         },
         {
-            "file": "js/input.js",
+            "file": "src/input.js",
             "line": 126,
             "static": 1,
             "itemtype": "property",
@@ -1802,7 +1802,7 @@
             "class": "Input"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 37,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
@@ -1811,7 +1811,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 45,
             "description": "Array2d storing Lighting data.",
             "itemtype": "property",
@@ -1820,7 +1820,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 53,
             "description": "Reflectivity of visible tiles.",
             "itemtype": "property",
@@ -1829,7 +1829,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 61,
             "description": "Ambient light",
             "itemtype": "property",
@@ -1838,7 +1838,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 69,
             "description": "ROT.FOV instance",
             "itemtype": "property",
@@ -1849,7 +1849,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 78,
             "description": "ROT.Lighting instance",
             "itemtype": "property",
@@ -1860,7 +1860,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 87,
             "description": "Calculates the Lighting data relative to given coords;",
             "itemtype": "method",
@@ -1868,7 +1868,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 119,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
@@ -1888,7 +1888,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 129,
             "description": "Set a light position and color",
             "itemtype": "method",
@@ -1923,7 +1923,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 142,
             "description": "Returns the reflectivity value of a tile",
             "itemtype": "method",
@@ -1931,7 +1931,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 153,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
@@ -1939,7 +1939,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/lighting-rot.js",
+            "file": "src/lighting-rot.js",
             "line": 162,
             "description": "Sets the size of the map to mange Lighting within.",
             "itemtype": "method",
@@ -1959,7 +1959,7 @@
             "class": "Lighting"
         },
         {
-            "file": "js/mouse.js",
+            "file": "src/mouse.js",
             "line": 30,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
@@ -1968,7 +1968,7 @@
             "class": "Mouse"
         },
         {
-            "file": "js/mouse.js",
+            "file": "src/mouse.js",
             "line": 37,
             "description": "A function to handle tile mouse click events",
             "itemtype": "method",
@@ -1983,7 +1983,7 @@
             "class": "Mouse"
         },
         {
-            "file": "js/mouse.js",
+            "file": "src/mouse.js",
             "line": 44,
             "description": "Current mouse x axis coord relative to upper left corner of mapview element.",
             "itemtype": "property",
@@ -1992,7 +1992,7 @@
             "class": "Mouse"
         },
         {
-            "file": "js/mouse.js",
+            "file": "src/mouse.js",
             "line": 50,
             "description": "Current mouse y axis coord relative to upper left corner of mapview element.",
             "itemtype": "property",
@@ -2001,7 +2001,7 @@
             "class": "Mouse"
         },
         {
-            "file": "js/mouse.js",
+            "file": "src/mouse.js",
             "line": 57,
             "description": "True if mouse is currently over mapview.",
             "itemtype": "property",
@@ -2010,7 +2010,7 @@
             "class": "Mouse"
         },
         {
-            "file": "js/mouse.js",
+            "file": "src/mouse.js",
             "line": 64,
             "description": "Hander for mouse events",
             "itemtype": "method",
@@ -2025,7 +2025,7 @@
             "class": "Mouse"
         },
         {
-            "file": "js/mouse.js",
+            "file": "src/mouse.js",
             "line": 85,
             "description": "Hander for mouse click events",
             "itemtype": "method",
@@ -2040,7 +2040,7 @@
             "class": "Mouse"
         },
         {
-            "file": "js/mouse.js",
+            "file": "src/mouse.js",
             "line": 100,
             "description": "Hander for mouse enter events",
             "itemtype": "method",
@@ -2055,7 +2055,7 @@
             "class": "Mouse"
         },
         {
-            "file": "js/mouse.js",
+            "file": "src/mouse.js",
             "line": 109,
             "description": "Hander for mouse leave events",
             "itemtype": "method",
@@ -2070,7 +2070,7 @@
             "class": "Mouse"
         },
         {
-            "file": "js/mouse.js",
+            "file": "src/mouse.js",
             "line": 120,
             "description": "Hander for mouse move events",
             "itemtype": "method",
@@ -2085,7 +2085,7 @@
             "class": "Mouse"
         },
         {
-            "file": "js/player.js",
+            "file": "src/player.js",
             "line": 17,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
@@ -2094,7 +2094,7 @@
             "class": "Player"
         },
         {
-            "file": "js/player.js",
+            "file": "src/player.js",
             "line": 24,
             "description": "Name used when referencing describing this player.\nUsed in console messages.",
             "itemtype": "property",
@@ -2103,7 +2103,7 @@
             "class": "Player"
         },
         {
-            "file": "js/player.js",
+            "file": "src/player.js",
             "line": 32,
             "description": "The map tile coordinate position of the player on the x axis.",
             "itemtype": "property",
@@ -2112,7 +2112,7 @@
             "class": "Player"
         },
         {
-            "file": "js/player.js",
+            "file": "src/player.js",
             "line": 39,
             "description": "The map tile coordinate position of the player on the y axis.",
             "itemtype": "property",
@@ -2121,7 +2121,7 @@
             "class": "Player"
         },
         {
-            "file": "js/player.js",
+            "file": "src/player.js",
             "line": 46,
             "description": "The character displayed when rendering this player.",
             "itemtype": "property",
@@ -2130,7 +2130,7 @@
             "class": "Player"
         },
         {
-            "file": "js/player.js",
+            "file": "src/player.js",
             "line": 53,
             "description": "The color of the character displayed when rendering this player.",
             "itemtype": "property",
@@ -2139,7 +2139,7 @@
             "class": "Player"
         },
         {
-            "file": "js/player.js",
+            "file": "src/player.js",
             "line": 60,
             "description": "The background color the character displayed when rendering this player.",
             "itemtype": "property",
@@ -2148,7 +2148,7 @@
             "class": "Player"
         },
         {
-            "file": "js/player.js",
+            "file": "src/player.js",
             "line": 67,
             "description": "Called when user key is pressed with action of key pressed as an arg.",
             "itemtype": "method",
@@ -2163,7 +2163,7 @@
             "class": "Player"
         },
         {
-            "file": "js/player.js",
+            "file": "src/player.js",
             "line": 126,
             "description": "Changes the position of this entity on the map.",
             "itemtype": "method",
@@ -2171,7 +2171,7 @@
             "class": "Player"
         },
         {
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 27,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
@@ -2180,7 +2180,7 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 34,
             "description": "Canvas element this renderer draws to.",
             "itemtype": "property",
@@ -2189,7 +2189,7 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 41,
             "description": "Drawing context of this.canvas",
             "itemtype": "property",
@@ -2198,7 +2198,7 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 48,
             "description": "Canvas element this renderer draws to as a buffer for this.canvas.",
             "itemtype": "property",
@@ -2207,7 +2207,7 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 55,
             "description": "Drawing context of this.buffer",
             "itemtype": "property",
@@ -2216,7 +2216,7 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 62,
             "description": "Background color of map view.",
             "itemtype": "property",
@@ -2225,7 +2225,7 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 69,
             "description": "Color overlayed when mouse is over a tile.",
             "itemtype": "property",
@@ -2234,7 +2234,7 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 76,
             "description": "Alpha value applied to non-visible tiles",
             "itemtype": "property",
@@ -2243,7 +2243,7 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 83,
             "description": "Size of each tile is drawn.",
             "itemtype": "property",
@@ -2252,7 +2252,7 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 90,
             "description": "Font used to render tile characters.",
             "itemtype": "property",
@@ -2261,8 +2261,17 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
+            "file": "src/renderer.js",
             "line": 97,
+            "description": "Device pixel ratio for high dpi screens.",
+            "itemtype": "property",
+            "name": "devicePixelRatio",
+            "type": "Number",
+            "class": "Renderer"
+        },
+        {
+            "file": "src/renderer.js",
+            "line": 104,
             "description": "Map view width in tiles.",
             "itemtype": "property",
             "name": "width",
@@ -2270,8 +2279,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 104,
+            "file": "src/renderer.js",
+            "line": 111,
             "description": "Map view height in tiles.",
             "itemtype": "property",
             "name": "height",
@@ -2279,8 +2288,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 111,
+            "file": "src/renderer.js",
+            "line": 118,
             "description": "The x distance in tiles from center to upper left corner of map view.",
             "itemtype": "property",
             "name": "offsetX",
@@ -2288,8 +2297,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 118,
+            "file": "src/renderer.js",
+            "line": 125,
             "description": "The y distance in tiles from center to upper left corner of map view.",
             "itemtype": "property",
             "name": "offsetY",
@@ -2297,8 +2306,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 125,
+            "file": "src/renderer.js",
+            "line": 132,
             "description": "The map tile x coord of the tile drawn in the upper left corner of the map view.",
             "itemtype": "property",
             "name": "originX",
@@ -2306,8 +2315,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 132,
+            "file": "src/renderer.js",
+            "line": 139,
             "description": "The map tile y coord of the tile drawn in the upper left corner of the map view.",
             "itemtype": "property",
             "name": "originY",
@@ -2315,8 +2324,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 139,
+            "file": "src/renderer.js",
+            "line": 146,
             "description": "The map tile x coord of the tile currently being hovered by the mouse.",
             "itemtype": "property",
             "name": "hoveredTileX",
@@ -2324,8 +2333,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 146,
+            "file": "src/renderer.js",
+            "line": 153,
             "description": "The map tile y coord of the tile currently being hovered by the mouse.",
             "itemtype": "property",
             "name": "hoveredTileY",
@@ -2333,16 +2342,16 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 153,
+            "file": "src/renderer.js",
+            "line": 160,
             "description": "Resizes canvas elements to match the tileSize and map view with/height. Also adjusts behavior to accomodate high pixel density screens.",
             "itemtype": "method",
             "name": "resize",
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 196,
+            "file": "src/renderer.js",
+            "line": 201,
             "description": "Converts mouse pixel coords to map tile coords. Mouse pixel coords must be relative to the current window.",
             "itemtype": "method",
             "name": "mouseToTileCoords",
@@ -2365,8 +2374,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 210,
+            "file": "src/renderer.js",
+            "line": 215,
             "description": "Converts map view pixel coords to map tile coords. Map view pixel coords are relative to the top left of the canvas element.",
             "itemtype": "method",
             "name": "pixelToTileCoords",
@@ -2389,8 +2398,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 224,
+            "file": "src/renderer.js",
+            "line": 229,
             "description": "Sets the center map tile of the view.",
             "itemtype": "method",
             "name": "setCenter",
@@ -2409,8 +2418,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 236,
+            "file": "src/renderer.js",
+            "line": 241,
             "description": "Draws map and entity tiles. All parameters will fall back to this.game.<param> if not provided.",
             "itemtype": "method",
             "name": "draw",
@@ -2449,8 +2458,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 262,
+            "file": "src/renderer.js",
+            "line": 267,
             "description": "Draws map tiles",
             "itemtype": "method",
             "name": "drawMap",
@@ -2481,8 +2490,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 330,
+            "file": "src/renderer.js",
+            "line": 335,
             "description": "Draws entity tiles",
             "itemtype": "method",
             "name": "drawEntities",
@@ -2513,8 +2522,8 @@
             "class": "Renderer"
         },
         {
-            "file": "js/renderer.js",
-            "line": 383,
+            "file": "src/renderer.js",
+            "line": 388,
             "description": "Draws a single tile to the map view.",
             "itemtype": "method",
             "name": "drawTile",
@@ -2565,7 +2574,7 @@
             "class": "Renderer"
         },
         {
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 34,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
@@ -2574,7 +2583,7 @@
             "class": "Tile"
         },
         {
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 42,
             "description": "The type of entity this is.\nWhen created this object is merged with the value of Tile.Types[type].",
             "itemtype": "property",
@@ -2583,7 +2592,7 @@
             "class": "Tile"
         },
         {
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 50,
             "description": "If this tile has been explored by the player.",
             "itemtype": "property",
@@ -2592,7 +2601,7 @@
             "class": "Tile"
         },
         {
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 57,
             "description": "If entities can move through this tile.",
             "itemtype": "property",
@@ -2601,7 +2610,7 @@
             "class": "Tile"
         },
         {
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 64,
             "description": "If this tile blocks line of sight.",
             "itemtype": "property",
@@ -2610,7 +2619,7 @@
             "class": "Tile"
         },
         {
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 71,
             "description": "The tile map coordinate position on the x axis.",
             "itemtype": "property",
@@ -2619,7 +2628,7 @@
             "class": "Tile"
         },
         {
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 78,
             "description": "The tile map coordinate position on the y axis.",
             "itemtype": "property",
@@ -2628,7 +2637,7 @@
             "class": "Tile"
         },
         {
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 85,
             "description": "The character displayed when rendering this tile.",
             "itemtype": "property",
@@ -2637,7 +2646,7 @@
             "class": "Tile"
         },
         {
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 92,
             "description": "The color of the character displayed when rendering this tile. Not rendered if false.",
             "itemtype": "property",
@@ -2646,7 +2655,7 @@
             "class": "Tile"
         },
         {
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 99,
             "description": "The background color the character displayed when rendering this tile. Not rendered if false.",
             "itemtype": "property",
@@ -2655,7 +2664,7 @@
             "class": "Tile"
         },
         {
-            "file": "js/tile.js",
+            "file": "src/tile.js",
             "line": 106,
             "description": "Handles the behavior of a player or other entity attempting to move into this tile. Only used if this.passable = false.",
             "itemtype": "method",
@@ -2670,7 +2679,7 @@
             "class": "Tile"
         },
         {
-            "file": "js/util.js",
+            "file": "src/util.js",
             "line": 11,
             "description": "Merges settings with default values.",
             "itemtype": "method",

@@ -2,23 +2,32 @@
 <html>
 
 <head>
-<title>Roguelike JS Skeleton | Array2d example</title>
-    <link rel="stylesheet" href="../../css/style.css" type="text/css">
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
-    <link rel="stylesheet" href="../vendor/prism.css" type="text/css">
+<title>Roguelike JS Skeleton - Examples - Array2d</title>
+    <link rel="stylesheet" href="../_assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="../_assets/css/prism.css" type="text/css">
 </head>
 
 <body>
     <div class="page">
-        <pre>
-Roguelike JS Skeleton - Examples - Array2d
+        <div class="section">
 
-<strong>Example setup code</strong> (Run before all examples) <a href="#" class="btn btn-toggle-setup">Show / Hide</a>
-        </pre>
-
-
-        <pre class="setup-code">
-            <code class="language-javascript">
+            <h1>Roguelike JS Skeleton - <a href="../index.html">Examples</a> - Array2d</h1>
+            <div class="ex-col-left">
+                <h2>Contents</h2>
+                <ol>
+                    <li><a href="#basic-map">Basic Map</a></li>
+                    <li><a href="#manipulate-coord-values">Manipulate coord values</a></li>
+                    <li><a href="#get-adjacent">Get Adjacent</a></li>
+                    <li><a href="#find-nearest">Find Nearest</a></li>
+                    <li><a href="#get-within-square-radius">Get within square radius</a></li>
+                    <li><a href="#filter">Filter</a></li>
+                    <li><a href="#get-line-through">Get line through</a></li>
+                </ol>
+            </div>
+            <div class="ex-col-right">
+                <p><strong>Example setup code</strong> (Run before all examples) <a href="#" class="btn btn-toggle-setup">Show</a></p>
+                <pre class="setup-code">
+                    <code class="language-javascript">
 var array2dFromMapData = function(mapData){
     var width = mapData[0].length,
         height = mapData.length;
@@ -60,13 +69,17 @@ var rendererFromArray2d = function(array2d){
     renderer.resize(array2d.width, array2d.height);
     return renderer;
 };
-            </code>
-        </pre>
+                    </code>
+                </pre>
+            </div>
+        </div>
 
-        <div class="example-container">
-            <pre><strong>Basic Map</strong></pre>
+
+
+        <div id="basic-map" class="example-container section">
+            <h2>Basic Map</h2>
             <div class="ex-col-left">
-                <div id="ex-1-container" class="map-container" style="float:left"></div>
+                <div id="ex-1-container" class="map-container"></div>
             </div>
             <div class="ex-col-right">
                 <a href="#" class="btn btn-block ex-btn-run">Run</a>
@@ -89,19 +102,17 @@ containerEl.appendChild(renderer.canvas);
 renderer.draw(array2d);
                     </code>
                 </pre>
-                <textarea class="ex-code-input">
-
-                </textarea>
+                <textarea class="ex-code-input"></textarea>
             </div>
         </div>
 
-        <div class="example-container">
-            <pre><strong>Manipulate coord values</strong></pre>
+        <div id="manipulate-coord-values" class="example-container section">
+            <h2>Manipulate coord values</h2>
             <div class="ex-col-left">
-                <div id="ex-2-container" class="map-container" style="float:left"></div>
+                <div id="ex-2-container" class="map-container"></div>
             </div>
             <div class="ex-col-right">
-            <a href="#" class="btn btn-block ex-btn-run">Run</a>
+                <a href="#" class="btn btn-block ex-btn-run">Run</a>
                 <pre class="ex-code">
                     <code class="language-javascript">
 var mapData = [
@@ -130,22 +141,18 @@ array2d.set(5, 4, {
     color: 'red'
 });
 
-
 // draw to show changes
 renderer.draw(array2d);
                     </code>
                 </pre>
-                <textarea class="ex-code-input">
-
-                </textarea>
-
+                <textarea class="ex-code-input"></textarea>
             </div>
         </div>
 
-        <div class="example-container">
-            <pre><strong>Get Adjacent</strong></pre>
+        <div id="get-adjacent" class="example-container section">
+            <h2>Get Adjacent</h2>
             <div class="ex-col-left">
-                <div id="ex-3-container" class="map-container" style="float:left"></div>
+                <div id="ex-3-container" class="map-container"></div>
             </div>
             <div class="ex-col-right">
             <a href="#" class="btn btn-block ex-btn-run">Run</a>
@@ -175,17 +182,14 @@ for (var i = 0; i < adjacentTiles.length; i++) {
 renderer.draw(array2d);
                     </code>
                 </pre>
-                <textarea class="ex-code-input">
-
-                </textarea>
-
+                <textarea class="ex-code-input"></textarea>
             </div>
         </div>
 
-        <div class="example-container">
-            <pre><strong>Find Nearest</strong></pre>
+        <div id="find-nearest" class="example-container section">
+            <h2>Find Nearest</h2>
             <div class="ex-col-left">
-                <div id="ex-4-container" class="map-container" style="float:left"></div>
+                <div id="ex-4-container" class="map-container"></div>
             </div>
             <div class="ex-col-right">
             <a href="#" class="btn btn-block ex-btn-run">Run</a>
@@ -228,57 +232,14 @@ for (var i = 0; i < nearestBTiles.length; i++) {
 renderer.draw(array2d);
                     </code>
                 </pre>
-                <textarea class="ex-code-input">
-
-                </textarea>
-
+                <textarea class="ex-code-input"></textarea>
             </div>
         </div>
 
-        <div class="example-container">
-            <pre><strong>Get Adjacent</strong></pre>
+        <div id="get-within-square-radius" class="example-container section">
+            <h2>Get within square radius</h2>
             <div class="ex-col-left">
-                <div id="ex-3-container" class="map-container" style="float:left"></div>
-            </div>
-            <div class="ex-col-right">
-            <a href="#" class="btn btn-block ex-btn-run">Run</a>
-                <pre class="ex-code">
-                    <code class="language-javascript">
-var mapData = [
-    '##########',
-    '#........#',
-    '#...X....#',
-    '#........#',
-    '#........#',
-    '##########',
-];
-var array2d = array2dFromMapData(mapData);
-var renderer = rendererFromArray2d(array2d);
-var containerEl = document.getElementById('ex-3-container');
-// clear contents and append elements created by the game to the DOM
-containerEl.innerHTML = '';
-containerEl.appendChild(renderer.canvas);
-
-var adjacentTiles = array2d.getAdjacent(4, 2);
-for (var i = 0; i < adjacentTiles.length; i++) {
-    adjacentTiles[i].bgColor = '#555';
-}
-
-// draw to show changes
-renderer.draw(array2d);
-                    </code>
-                </pre>
-                <textarea class="ex-code-input">
-
-                </textarea>
-
-            </div>
-        </div>
-
-        <div class="example-container">
-            <pre><strong>Get within square radius</strong></pre>
-            <div class="ex-col-left">
-                <div id="ex-5-container" class="map-container" style="float:left"></div>
+                <div id="ex-5-container" class="map-container"></div>
             </div>
             <div class="ex-col-right">
             <a href="#" class="btn btn-block ex-btn-run">Run</a>
@@ -311,17 +272,14 @@ for (var i = 0; i < tiles.length; i++) {
 renderer.draw(array2d);
                     </code>
                 </pre>
-                <textarea class="ex-code-input">
-
-                </textarea>
-
+                <textarea class="ex-code-input"></textarea>
             </div>
         </div>
 
-        <div class="example-container">
-            <pre><strong>Filter</strong></pre>
+        <div id="filter" class="example-container section">
+            <h2>Filter</h2>
             <div class="ex-col-left">
-                <div id="ex-6-container" class="map-container" style="float:left"></div>
+                <div id="ex-6-container" class="map-container"></div>
             </div>
             <div class="ex-col-right">
             <a href="#" class="btn btn-block ex-btn-run">Run</a>
@@ -354,17 +312,14 @@ for (var i = 0; i < tiles.length; i++) {
 renderer.draw(array2d);
                     </code>
                 </pre>
-                <textarea class="ex-code-input">
-
-                </textarea>
-
+                <textarea class="ex-code-input"></textarea>
             </div>
         </div>
 
-        <div class="example-container">
-            <pre><strong>Get line through</strong></pre>
+        <div id="get-line-through" class="example-container section">
+            <h2>Get line through</h2>
             <div class="ex-col-left">
-                <div id="ex-7-container" class="map-container" style="float:left"></div>
+                <div id="ex-7-container" class="map-container"></div>
             </div>
             <div class="ex-col-right">
             <a href="#" class="btn btn-block ex-btn-run">Run</a>
@@ -407,25 +362,21 @@ for (var i = 0; i < tiles.length; i++) {
 renderer.draw(array2d);
                     </code>
                 </pre>
-                <textarea class="ex-code-input">
-
-                </textarea>
-
+                <textarea class="ex-code-input"></textarea>
             </div>
         </div>
-
     </div>
 
 
-    <script src="../../js/vendor/hidpi-canvas.min.js"></script>
-    <script src="../vendor/jquery.min.js"></script>
-    <script src="../vendor/prism.js"></script>
-    <script src="../../js/rl.js"></script>
-    <script src="../../js/renderer.js"></script>
-    <script src="../../js/array-2d.js"></script>
+    <script src="../_assets/js/jquery.min.js"></script>
+    <script src="../_assets/js/prism.js"></script>
+
+    <script src="../../src/rl.js"></script>
+    <script src="../../src/renderer.js"></script>
+    <script src="../../src/array-2d.js"></script>
 
     <script src="main.js"></script>
-    <script src="../example.js"></script>
+    <script src="../_assets/js/example.js"></script>
 
 </body>
 

@@ -69,10 +69,8 @@ game.entityManager.add(5, 5, entStatue);
 game.player.x = 3;
 game.player.y = 3;
 
-
 game.lighting.set(3, 14, 255, 0, 0);
 game.lighting.set(7, 14, 0, 0, 255);
-
 
 // get existing DOM elements
 var mapContainerEl = document.getElementById('map-container');
@@ -82,6 +80,7 @@ var consoleContainerEl = document.getElementById('console-container');
 mapContainerEl.appendChild(game.renderer.canvas);
 consoleContainerEl.appendChild(game.console.el);
 
+game.console.log('The game starts.');
 // start the game
 game.start();
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/lighting-rot.js - rl-js-skeleton</title>
+    <title>src/entity.js - rl-js-skeleton</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -112,7 +112,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: js/lighting-rot.js</h1>
+                        <h1 class="file-heading">File: src/entity.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -120,176 +120,183 @@
     &#x27;use strict&#x27;;
 
     /**
-    * Represents lighting in the game map. requires ROT.js
-    * @class Lighting
+    * Represents an entity in the game. Usually a character or enemy.
+    * @class Entity
     * @constructor
     * @param {Game} game - Game instance this obj is attached to.
-    * @param {Object} [settings]- Lighting settings object.
-    * @param {Number} [settings.range] - Maximum range for the most powerful light source.
-    * @param {Number} [settings.passes] - Number of computation passes (1: no reflectivity used, 2: reflectivity used)
-    * @param {Number} [settings.emissionThreshold] - Minimal amount of light at a cell to be re-emited (only for passes&gt;1).
+    * @param {String} type - Type of entity. When created this object is merged with the value of Entity.Types[type].
     */
-    var LightingROT = function LightingROT(game, settings) {
-        settings = settings || {};
+    var Entity = function Entity(game, type) {
         this.game = game;
-        this.LightingMap = new RL.Array2d();
-        this.checkVisible = this.checkVisible.bind(this);
-        this.getTileReflectivity = this.getTileReflectivity.bind(this);
-
-        this._fov = new ROT.FOV.PreciseShadowcasting(this.checkVisible);
-
-        settings = RL.Util.merge({
-            range: 5,
-            passes: 2,
-            emissionThreshold: 100,
-        }, settings);
-
-        this._lighting = new ROT.Lighting(this.getTileReflectivity, settings);
-        this._lighting.setFOV(this._fov);
+        this.type = type;
+        var typeData = Entity.Types[type];
+        if(!typeData){
+            throw new Error(&#x27;EntityType &quot;&#x27; + type + &#x27;&quot; not found.&#x27;);
+        }
+        for(var key in typeData){
+            this[key] = typeData[key];
+        }
 
     };
 
-    LightingROT.prototype = {
-        constructor: LightingROT,
+    Entity.prototype = {
+        constructor: Entity,
 
         /**
         * Game instance this obj is attached to.
-        *
         * @property game
         * @type Game
         */
         game: null,
 
         /**
-        * Array2d storing Lighting data.
-        *
-        * @property LightingMap
-        * @type Array2d
+        * The type of entity this is.
+        * When created this object is merged with the value of Entity.Types[type].
+        * @property type
+        * @type String
         */
-        LightingMap: null,
+        type: null,
 
         /**
-        * Reflectivity of visible tiles.
-        *
-        * @property reflectivity
+        * Name used when referencing describing this entity.
+        * Used in console messages.
+        * @property name
+        * @type String
+        */
+        name: null,
+
+        /**
+        * The map tile coordinate position of the entity on the x axis.
+        * @property x
         * @type Number
         */
-        reflectivity: 0.3,
+        x: null,
 
         /**
-        * Ambient light
-        *
-        * @property ambientLight
-        * @type Array
+        * The map tile coordinate position of the entity on the y axis.
+        * @property y
+        * @type Number
         */
-        ambientLight: [200, 200, 200],
+        y: null,
 
         /**
-        * ROT.FOV instance
-        *
-        * @property _fov
-        * @private
-        * @type ROT.FOV
+        * The character displayed when rendering this entity.
+        * @property char
+        * @type String
         */
-        _fov: null,
+        char: &#x27;x&#x27;,
 
         /**
-        * ROT.Lighting instance
-        *
-        * @property _lighting
-        * @private
-        * @type ROT.Lighting
+        * The color of the character displayed when rendering this entity. Not rendered if false.
+        * @property color
+        * @type String|bool
         */
-        _lighting: null,
+        color: &#x27;#fff&#x27;,
 
         /**
-        * Calculates the Lighting data relative to given coords;
+        * The background color the character displayed when rendering this entity. Not rendered if false.
+        * @property bgColor
+        * @type String|bool
+        */
+        bgColor: false,
+
+        /**
+        * Determines if this entity has been killed and needs to be removed.
+        * @property dead
+        * @type bool
+        */
+        dead: false,
+
+        /**
+        * Determines if this entity can be pushed by the player.
+        * @property pushable
+        * @type bool
+        */
+        pushable: false,
+
+        /**
+        * Called after a player action has been resolved. Resolves this entities turn.
         * @method update
         */
-        update: function(){
-            // this.LightingMap.reset();
-            var _this = this;
-            this._lighting.compute(this.LightingMap.set.bind(this.LightingMap));
+        update: function() {
+
         },
 
-        shadeTile: function(x, y, tileData){
-            var light = this.ambientLight;
-            var lighting = this.get(x, y);
+        /**
+        * Changes the position of this entity on the map.
+        * @method moveTo
+        */
+        moveTo: function(x, y) {
+            this.game.entityManager.move(x, y, this);
+        },
 
-            if(lighting){
-                light = ROT.Color.add(this.ambientLight, lighting);
+        /**
+        * Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.
+        * @method bump
+        * @param {Entity} entity - The player or entity attemplting to move into this entity&#x27;s tile.
+        */
+        bump: function(entity){
+            // if this entity can be pushed and the pushing entity is the player
+            if(this.pushable &amp;&amp; entity === this.game.player){
+                var pusherX = entity.x,
+                    pusherY = entity.y,
+                    directionX = this.x - pusherX,
+                    directionY = this.y - pusherY,
+                    targetX = this.x + directionX,
+                    targetY = this.y + directionY;
+
+                var targetPushEnt = this.game.entityManager.get(targetX, targetY);
+                if(!targetPushEnt){
+                    var targetPushTile = this.game.map.get(targetX, targetY);
+                    if(targetPushTile.passable){
+                        var prevX = this.x,
+                            prevY = this.y;
+                        // push target entity into tile
+                        this.moveTo(targetX, targetY);
+                        // move player into previously occupied tile
+                        entity.moveTo(prevX, prevY);
+                    }
+                }
+
             }
-
-            if(tileData.color){
-                var color = ROT.Color.fromString(tileData.color);
-                color = ROT.Color.multiply(color, light);
-                tileData.color = ROT.Color.toRGB(color);
-            }
-
-            if(tileData.bgColor){
-                var bgColor = ROT.Color.fromString(tileData.bgColor);
-                bgColor = ROT.Color.multiply(bgColor, light);
-                tileData.bgColor = ROT.Color.toRGB(bgColor);
-            }
-
-        },
-
-        /**
-        * Retrieves the visibility of the tile at given coords
-        * @method get
-        * @param {Number} x - The map coordinate position to get Lighting visibility from on the x axis.
-        * @param {Number} y - The map coordinate position to get Lighting visibility from on the y axis.
-        */
-        get: function(x, y){
-            return this.LightingMap.get(x, y);
-        },
-
-        /**
-        * Set a light position and color
-        * @method set
-        * @param {Number} x - The map coordinate position to set lightin on the x axis.
-        * @param {Number} y - The map coordinate position to set lightin on the y axis.
-        * @param {Number} r - Red.
-        * @param {Number} g - Green.
-        * @param {Number} b - Blue.
-        */
-        set: function(x, y, r, g, b){
-            this._lighting.setLight(x, y, [r, g, b]);
-        },
-
-        /**
-        * Returns the reflectivity value of a tile
-        * @method getTileReflectivity
-        */
-        getTileReflectivity: function(x, y){
-            if(this.checkVisible(x,y)){
-                return 0;
-            }
-            return this.reflectivity;
-        },
-
-        /**
-        * Checks if a tile blocks line of sight
-        * @method checkVisible
-        */
-        checkVisible: function(x, y){
-            var tile = this.game.map.get(x, y);
-            return tile &amp;&amp; !tile.blocksLos;
-        },
-
-        /**
-        * Sets the size of the map to mange Lighting within.
-        * @method setSize
-        * @param {Number} width - Width of current map in tiles.
-        * @param {Number} height - Height of current map in tiles.
-        */
-        setSize: function(width, height){
-            this.LightingMap.setSize(width, height);
         }
-
     };
 
-    root.RL.LightingROT = LightingROT;
+    /**
+    * Describes different types of entities. Used by the Entity constructor &#x27;type&#x27; param.
+    *
+    *     Entity.Types = {
+    *         zombie: {
+    *            name: &#x27;Zombie&#x27;,
+    *            char: &#x27;z&#x27;,
+    *            color: &#x27;red&#x27;,
+    *            bgColor: &#x27;#222&#x27;,
+    *            pushable: false
+    *         },
+    *         // ...
+    *     }
+    *
+    * @class Entity.Types
+    * @static
+    */
+    Entity.Types = {
+        zombie: {
+            name: &#x27;Zombie&#x27;,
+            char: &#x27;z&#x27;,
+            color: &#x27;red&#x27;,
+            bgColor: &#x27;#222&#x27;,
+            pushable: false,
+        },
+        statue: {
+            name: &#x27;Statue&#x27;,
+            char: &#x27;s&#x27;,
+            color: &#x27;#808080&#x27;,
+            bgColor: &#x27;#222&#x27;,
+            pushable: true
+        }
+    };
+
+    root.RL.Entity = Entity;
 
 }(this));
 

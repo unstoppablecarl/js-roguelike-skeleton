@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/util.js - rl-js-skeleton</title>
+    <title>src/mouse.js - rl-js-skeleton</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -112,7 +112,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: js/util.js</h1>
+                        <h1 class="file-heading">File: src/mouse.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -120,32 +120,133 @@
     &#x27;use strict&#x27;;
 
     /**
-    * Utility functions
-    * @class Util
+    * Helper for handling user mouse input.
+    * @class Mouse
     * @constructor
-    * @static
+    * @param {Game} game - game instance this obj is attached to.
+    * @param {Function} onTileClick - A function to handle tile mouse click events. function(tile){}
+    * @param {Tile} onTileClick.tile Tile object clicked.
+    * @param {Function} onTileHover - A function to handle tile mouse hover events. function(tile){}
+    * @param {Tile} onTileHover.tile Tile object hovered.
     */
-    var Util = {
-        /**
-        * Merges settings with default values.
-        * @method merge
-        * @param {Object} defaults - Default values to merge with.
-        * @param {Object} settings - Settings to merge with default values.
-        */
-        merge: function(defaults, settings) {
-            var out = {};
-            for (var key in defaults) {
-                if (key in settings) {
-                    out[key] = settings[key];
-                } else {
-                    out[key] = defaults[key];
-                }
-            }
-            return out;
-        }
+    var Mouse = function Mouse(game, onTileClick, onTileHover) {
+        this.game = game;
+        this.onTileClick = onTileClick;
+        this.onTileHover = onTileHover;
+
+        var el = this.game.renderer.canvas;
+
+        el.addEventListener(&#x27;mousemove&#x27;, this);
+        el.addEventListener(&#x27;mouseenter&#x27;, this);
+        el.addEventListener(&#x27;mouseleave&#x27;, this);
+        el.addEventListener(&#x27;click&#x27;, this);
     };
 
-    root.RL.Util = Util;
+    Mouse.prototype = {
+        constructor: Mouse,
+
+        /**
+        * Game instance this obj is attached to.
+        * @property game
+        * @type Game
+        */
+        game: null,
+
+        /**
+        * A function to handle tile mouse click events
+        * @method onTileClick
+        * @param {Tile} tile - Tile object clicked.
+        */
+        onTileClick: null,
+
+        /**
+        * Current mouse x axis coord relative to upper left corner of mapview element.
+        * @property mapViewMouseX
+        * @type Number
+        */
+        mapViewMouseX: null,
+        /**
+        * Current mouse y axis coord relative to upper left corner of mapview element.
+        * @property mapViewMouseY
+        * @type Number
+        */
+        mapViewMouseY: null,
+
+        /**
+        * True if mouse is currently over mapview.
+        * @property mapViewMouseOver
+        * @type Bool
+        */
+        mapViewMouseOver: false,
+
+        /**
+        * Hander for mouse events
+        * @method handleEvent
+        * @param {Event} e - mouse event
+        */
+        handleEvent: function(e){
+            if(e.type === &#x27;mousemove&#x27;){
+                this.mouseMove(e);
+            }
+            else if(e.type === &#x27;mouseenter&#x27;){
+                this.mouseEnter(e);
+            }
+
+            else if(e.type === &#x27;mouseleave&#x27;){
+                this.mouseLeave(e);
+            }
+            else if(e.type === &#x27;click&#x27;){
+                this.mouseClick(e);
+            }
+        },
+
+        /**
+        * Hander for mouse click events
+        * @method mouseClick
+        * @param {Event} e - mouse event
+        */
+        mouseClick: function(e){
+            var mx = e.clientX,
+                my = e.clientY,
+                coords = this.game.renderer.mouseToTileCoords(mx, my),
+                tile = this.game.map.get(coords.x, coords.y);
+            if(tile){
+                this.onTileClick(tile);
+            }
+        },
+
+        /**
+        * Hander for mouse enter events
+        * @method mouseEnter
+        * @param {Event} e - mouse event
+        */
+        mouseEnter: function(e) {
+            this.mapViewMouseOver = true;
+        },
+
+        /**
+        * Hander for mouse leave events
+        * @method mouseLeave
+        * @param {Event} e - mouse event
+        */
+        mouseLeave: function(e) {
+            this.mapViewMouseOver = false;
+            this.mapViewMouseX = null;
+            this.mapViewMouseY = null;
+        },
+
+        /**
+        * Hander for mouse move events
+        * @method mouseMove
+        * @param {Event} e - mouse event
+        */
+        mouseMove: function(e) {
+            var tile = this.game.renderer.mouseToTileCoords(e.clientX, e.clientY);
+            this.onTileHover(tile);
+        },
+    };
+
+    root.RL.Mouse = Mouse;
 
 }(this));
 

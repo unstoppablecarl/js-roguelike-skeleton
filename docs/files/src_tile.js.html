@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/entity.js - rl-js-skeleton</title>
+    <title>src/tile.js - rl-js-skeleton</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -112,7 +112,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: js/entity.js</h1>
+                        <h1 class="file-heading">File: src/tile.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -120,30 +120,38 @@
     &#x27;use strict&#x27;;
 
     /**
-    * Represents an entity in the game. Usually a character or enemy.
-    * @class Entity
+    * Represents a tile in the game map
+    * @class Tile
     * @constructor
-    * @param {Game} game - Game instance this obj is attached to.
-    * @param {String} type - Type of entity. When created this object is merged with the value of Entity.Types[type].
+    * @param {Object} game - Game instance this obj is attached to.
+    * @param {String} type - Type of tile. When created this object is merged with the value of Tile.Types[type].
+    * @param {Number} x - The map tile coordinate position of this tile on the x axis.
+    * @param {Number} y - The map tile coordinate position of this tile on the y axis.
     */
-    var Entity = function Entity(game, type) {
+    var Tile = function Tile(game, type, x, y) {
         this.game = game;
+        this.x = x;
+        this.y = y;
         this.type = type;
-        var typeData = Entity.Types[type];
+
+        var typeData = Tile.Types[type];
         if(!typeData){
-            throw new Error(&#x27;EntityType &quot;&#x27; + type + &#x27;&quot; not found.&#x27;);
+            throw new Error(&#x27;TileType &quot;&#x27; + type + &#x27;&quot; not found.&#x27;);
         }
         for(var key in typeData){
             this[key] = typeData[key];
         }
 
+        // make sure &quot;this&quot; is always this Tile instance when calling bump
+        this.bump = this.bump.bind(this);
     };
 
-    Entity.prototype = {
-        constructor: Entity,
+    Tile.prototype = {
+        constructor: Tile,
 
         /**
         * Game instance this obj is attached to.
+        *
         * @property game
         * @type Game
         */
@@ -151,152 +159,143 @@
 
         /**
         * The type of entity this is.
-        * When created this object is merged with the value of Entity.Types[type].
+        * When created this object is merged with the value of Tile.Types[type].
         * @property type
-        * @type String
+        * @type Object
         */
         type: null,
 
         /**
-        * Name used when referencing describing this entity.
-        * Used in console messages.
-        * @property name
-        * @type String
+        * If this tile has been explored by the player.
+        * @property explored
+        * @type Bool
         */
-        name: null,
+        explored: false,
 
         /**
-        * The map tile coordinate position of the entity on the x axis.
+        * If entities can move through this tile.
+        * @property passable
+        * @type Bool
+        */
+        passable: false,
+
+        /**
+        * If this tile blocks line of sight.
+        * @property passable
+        * @type Bool
+        */
+        blocksLos: false,
+
+        /**
+        * The tile map coordinate position on the x axis.
         * @property x
         * @type Number
         */
         x: null,
 
         /**
-        * The map tile coordinate position of the entity on the y axis.
+        * The tile map coordinate position on the y axis.
         * @property y
         * @type Number
         */
         y: null,
 
         /**
-        * The character displayed when rendering this entity.
+        * The character displayed when rendering this tile.
         * @property char
         * @type String
         */
-        char: &#x27;x&#x27;,
+        char: null,
 
         /**
-        * The color of the character displayed when rendering this entity. Not rendered if false.
+        * The color of the character displayed when rendering this tile. Not rendered if false.
         * @property color
         * @type String|bool
         */
-        color: &#x27;#fff&#x27;,
+        color: null,
 
         /**
-        * The background color the character displayed when rendering this entity. Not rendered if false.
+        * The background color the character displayed when rendering this tile. Not rendered if false.
         * @property bgColor
         * @type String|bool
         */
         bgColor: false,
 
         /**
-        * Determines if this entity has been killed and needs to be removed.
-        * @property dead
-        * @type bool
-        */
-        dead: false,
-
-        /**
-        * Determines if this entity can be pushed by the player.
-        * @property pushable
-        * @type bool
-        */
-        pushable: false,
-
-        /**
-        * Called after a player action has been resolved. Resolves this entities turn.
-        * @method update
-        */
-        update: function() {
-
-        },
-
-        /**
-        * Changes the position of this entity on the map.
-        * @method moveTo
-        */
-        moveTo: function(x, y) {
-            this.game.entityManager.move(x, y, this);
-        },
-
-        /**
-        * Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.
+        * Handles the behavior of a player or other entity attempting to move into this tile. Only used if this.passable = false.
         * @method bump
-        * @param {Entity} entity - The player or entity attemplting to move into this entity&#x27;s tile.
+        * @param {Object} entity - The player or entity attemplting to move into this tile.
         */
         bump: function(entity){
-            // if this entity can be pushed and the pushing entity is the player
-            if(this.pushable &amp;&amp; entity === this.game.player){
-                var pusherX = entity.x,
-                    pusherY = entity.y,
-                    directionX = this.x - pusherX,
-                    directionY = this.y - pusherY,
-                    targetX = this.x + directionX,
-                    targetY = this.y + directionY;
-
-                var targetPushEnt = this.game.entityManager.get(targetX, targetY);
-                if(!targetPushEnt){
-                    var targetPushTile = this.game.map.get(targetX, targetY);
-                    if(targetPushTile.passable){
-                        var prevX = this.x,
-                            prevY = this.y;
-                        // push target entity into tile
-                        this.moveTo(targetX, targetY);
-                        // move player into previously occupied tile
-                        entity.moveTo(prevX, prevY);
-                    }
-                }
-
+            if(!this.passable){
+                this.game.console.log(&#x27;You cannot move through this &lt;strong&gt;&#x27; + this.name + &#x27;&lt;/strong&gt; no matter how hard you try.&#x27;);
             }
-        }
+        },
     };
 
     /**
-    * Describes different types of entities. Used by the Entity constructor &#x27;type&#x27; param.
+    * Describes different types of tiles. Used by the Tile constructor &#x27;type&#x27; param.
     *
-    *     Entity.Types = {
-    *         zombie: {
-    *            name: &#x27;Zombie&#x27;,
-    *            char: &#x27;z&#x27;,
-    *            color: &#x27;red&#x27;,
-    *            bgColor: &#x27;#222&#x27;,
-    *            pushable: false
+    *     Tile.Types = {
+    *         floor: {
+    *            name: &#x27;Floor&#x27;,
+    *            char: &#x27;.&#x27;,
+    *            color: &#x27;#333&#x27;,
+    *            bgColor: &#x27;#111&#x27;,
+    *            passable: true,
+    *            blocksLos: false
     *         },
     *         // ...
     *     }
     *
-    * @class Entity.Types
+    * @class Tile.Types
     * @static
     */
-    Entity.Types = {
-        zombie: {
-            name: &#x27;Zombie&#x27;,
-            char: &#x27;z&#x27;,
-            color: &#x27;red&#x27;,
-            bgColor: &#x27;#222&#x27;,
-            pushable: false,
+    Tile.Types = {
+        floor: {
+            name: &#x27;Floor&#x27;,
+            char: &#x27;.&#x27;,
+            color: &#x27;#333&#x27;,
+            bgColor: &#x27;#111&#x27;,
+            passable: true,
+            blocksLos: false
         },
-        statue: {
-            name: &#x27;Statue&#x27;,
-            char: &#x27;s&#x27;,
-            color: &#x27;#808080&#x27;,
+        wall: {
+            name: &#x27;Wall&#x27;,
+            char: &#x27;#&#x27;,
+            color: &#x27;#666&#x27;,
             bgColor: &#x27;#222&#x27;,
-            pushable: true
+            passable: false,
+            blocksLos: true
+        },
+        light: {
+            name: &#x27;Light&#x27;,
+            char: &#x27;+&#x27;,
+            color: &#x27;#fff&#x27;,
+            bgColor: &#x27;#333&#x27;,
+            passable: false,
+            blocksLos: false
+        },
+        door: {
+            name: &#x27;Door&#x27;,
+            char: &#x27;+&#x27;,
+            color: &#x27;yellow&#x27;,
+            bgColor: &#x27;#222&#x27;,
+            passable: false,
+            blocksLos: true,
+            bump: function(entity){
+                if(!this.passable){
+                    this.passable = true;
+                    this.blocksLos = false;
+                    this.char = &quot;&#x27;&quot;;
+                    this.game.console.log(&#x27;You open the &lt;strong&gt;&#x27; + this.name + &#x27;&lt;/strong&gt;.&#x27;);
+
+                }
+            }
         }
     };
 
-    root.RL.Entity = Entity;
+    root.RL.Tile = Tile;
 
 }(this));
 

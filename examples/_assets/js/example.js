@@ -1,4 +1,5 @@
 var $exContainer = $('.example-container');
+
 $exContainer.each(function(){
     var $this = $(this);
 
@@ -8,10 +9,8 @@ $exContainer.each(function(){
         $btnRun = $this.find('.ex-btn-run'),
         code = $exCode.text();
 
-    // Prism.highlightElement($exCode[0]);
     $exInput.val(code);
     $exInput.hide();
-
 
     var inputToCode = function(){
         $exInput.hide();
@@ -48,8 +47,20 @@ $exContainer.each(function(){
 
 var $btnToggleSetup = $('.btn-toggle-setup');
     $setupCode = $('.setup-code');
+
+$setupCode.hide();
+var setupCodeVisible = false;
+
 $btnToggleSetup.click(function(e){
     e.preventDefault();
-    $setupCode.toggle();
+    if(setupCodeVisible){
+        $btnToggleSetup.text('Show');
+        $setupCode.hide();
+        setupCodeVisible = false;
+    } else {
+        $btnToggleSetup.text('Hide');
+        $setupCode.show();
+        setupCodeVisible = true;
+    }
 
 });

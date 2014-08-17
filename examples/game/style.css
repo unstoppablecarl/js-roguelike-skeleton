@@ -1,0 +1,19 @@
+.map-container {
+    float:left;
+    margin: 0 10px 0 0;
+
+}
+
+.console-container {
+    font-family: monospace;
+    color: #aaa;
+    background: #111;
+    border: 1px solid #222;
+    padding: 1em;
+    margin: 0 0 0 330px;
+
+}
+
+.console-container strong {
+    color: #ccc;
+}

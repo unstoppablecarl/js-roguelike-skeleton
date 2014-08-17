@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/mouse.js - rl-js-skeleton</title>
+    <title>src/player.js - rl-js-skeleton</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -112,7 +112,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: js/mouse.js</h1>
+                        <h1 class="file-heading">File: src/player.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -120,30 +120,17 @@
     &#x27;use strict&#x27;;
 
     /**
-    * Helper for handling user mouse input.
-    * @class Mouse
+    * Represents the player.
+    * @class Player
     * @constructor
-    * @param {Game} game - game instance this obj is attached to.
-    * @param {Function} onTileClick - A function to handle tile mouse click events. function(tile){}
-    * @param {Tile} onTileClick.tile Tile object clicked.
-    * @param {Function} onTileHover - A function to handle tile mouse hover events. function(tile){}
-    * @param {Tile} onTileHover.tile Tile object hovered.
+    * @param {Game} game - game instance this obj is attached to
     */
-    var Mouse = function Mouse(game, onTileClick, onTileHover) {
+    var Player = function Player(game) {
         this.game = game;
-        this.onTileClick = onTileClick;
-        this.onTileHover = onTileHover;
-
-        var el = this.game.renderer.canvas;
-
-        el.addEventListener(&#x27;mousemove&#x27;, this);
-        el.addEventListener(&#x27;mouseenter&#x27;, this);
-        el.addEventListener(&#x27;mouseleave&#x27;, this);
-        el.addEventListener(&#x27;click&#x27;, this);
     };
 
-    Mouse.prototype = {
-        constructor: Mouse,
+    Player.prototype = {
+        constructor: Player,
 
         /**
         * Game instance this obj is attached to.
@@ -153,100 +140,117 @@
         game: null,
 
         /**
-        * A function to handle tile mouse click events
-        * @method onTileClick
-        * @param {Tile} tile - Tile object clicked.
+        * Name used when referencing describing this player.
+        * Used in console messages.
+        * @property name
+        * @type String
         */
-        onTileClick: null,
+        name: &#x27;Player&#x27;,
 
         /**
-        * Current mouse x axis coord relative to upper left corner of mapview element.
-        * @property mapViewMouseX
+        * The map tile coordinate position of the player on the x axis.
+        * @property x
         * @type Number
         */
-        mapViewMouseX: null,
+        x: null,
+
         /**
-        * Current mouse y axis coord relative to upper left corner of mapview element.
-        * @property mapViewMouseY
+        * The map tile coordinate position of the player on the y axis.
+        * @property y
         * @type Number
         */
-        mapViewMouseY: null,
+        y: null,
 
         /**
-        * True if mouse is currently over mapview.
-        * @property mapViewMouseOver
-        * @type Bool
+        * The character displayed when rendering this player.
+        * @property char
+        * @type String
         */
-        mapViewMouseOver: false,
+        char: &#x27;@&#x27;,
 
         /**
-        * Hander for mouse events
-        * @method handleEvent
-        * @param {Event} e - mouse event
+        * The color of the character displayed when rendering this player.
+        * @property color
+        * @type String|bool
         */
-        handleEvent: function(e){
-            if(e.type === &#x27;mousemove&#x27;){
-                this.mouseMove(e);
-            }
-            else if(e.type === &#x27;mouseenter&#x27;){
-                this.mouseEnter(e);
+        color: &#x27;#fff&#x27;,
+
+        /**
+        * The background color the character displayed when rendering this player.
+        * @property bgColor
+        * @type String|bool
+        */
+        bgColor: false,
+
+        /**
+        * Called when user key is pressed with action of key pressed as an arg.
+        * @method update
+        * @param {String} action - action bound to key pressed by user
+        */
+        update: function(action) {
+            if (!action) {
+                return;
             }
 
-            else if(e.type === &#x27;mouseleave&#x27;){
-                this.mouseLeave(e);
+            var moveX = 0,
+                moveY = 0;
+
+            if (action === &#x27;up&#x27;) {
+                moveY = -1;
+            } else if (action === &#x27;down&#x27;) {
+                moveY = 1;
+            } else if (action === &#x27;left&#x27;) {
+                moveX = -1;
+            } else if (action === &#x27;right&#x27;) {
+                moveX = 1;
             }
-            else if(e.type === &#x27;click&#x27;){
-                this.mouseClick(e);
+
+            if (moveX !== 0 || moveY !== 0) {
+                this.move(moveX, moveY);
+            }
+
+            if(action === &#x27;wait&#x27;){
+                this.wait();
+            }
+
+        },
+
+        move: function(x, y){
+            var targetX = this.x + x,
+                targetY = this.y + y,
+                // targeted tile (attempting to move into)
+                targetTile = this.game.map.get(targetX, targetY),
+                // entity occupying target tile (if any)
+                targetTileEnt = this.game.entityManager.get(targetX, targetY);
+
+            // if there is an entity in the target tile
+            if (targetTileEnt) {
+                this.game.console.log(&#x27;Excuses me &lt;strong&gt;Mr.&#x27; + targetTileEnt.name + &#x27;&lt;/strong&gt;, you appear to be in the way.&#x27;);
+                targetTileEnt.bump(this);
+            }
+            // if passable move player to target tile
+            else if (targetTile.passable) {
+                this.moveTo(targetX, targetY);
+            }
+            else {
+                targetTile.bump(this);
             }
         },
 
-        /**
-        * Hander for mouse click events
-        * @method mouseClick
-        * @param {Event} e - mouse event
-        */
-        mouseClick: function(e){
-            var mx = e.clientX,
-                my = e.clientY,
-                coords = this.game.renderer.mouseToTileCoords(mx, my),
-                tile = this.game.map.get(coords.x, coords.y);
-            if(tile){
-                this.onTileClick(tile);
-            }
+        wait: function(){
+
         },
 
         /**
-        * Hander for mouse enter events
-        * @method mouseEnter
-        * @param {Event} e - mouse event
+        * Changes the position of this entity on the map.
+        * @method moveTo
         */
-        mouseEnter: function(e) {
-            this.mapViewMouseOver = true;
-        },
-
-        /**
-        * Hander for mouse leave events
-        * @method mouseLeave
-        * @param {Event} e - mouse event
-        */
-        mouseLeave: function(e) {
-            this.mapViewMouseOver = false;
-            this.mapViewMouseX = null;
-            this.mapViewMouseY = null;
-        },
-
-        /**
-        * Hander for mouse move events
-        * @method mouseMove
-        * @param {Event} e - mouse event
-        */
-        mouseMove: function(e) {
-            var tile = this.game.renderer.mouseToTileCoords(e.clientX, e.clientY);
-            this.onTileHover(tile);
-        },
+        moveTo: function(x, y){
+            this.game.entityManager.move(x, y, this);
+        }
     };
 
-    root.RL.Mouse = Mouse;
+    root.RL.Player = Player;
 
 }(this));
 
