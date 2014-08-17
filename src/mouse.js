@@ -88,12 +88,14 @@
         * @param {Event} e - mouse event
         */
         mouseClick: function(e){
-            var mx = e.clientX,
-                my = e.clientY,
-                coords = this.game.renderer.mouseToTileCoords(mx, my),
-                tile = this.game.map.get(coords.x, coords.y);
-            if(tile){
-                this.onTileClick(tile);
+            if(this.onTileClick){
+                var mx = e.clientX,
+                    my = e.clientY,
+                    coords = this.game.renderer.mouseToTileCoords(mx, my),
+                    tile = this.game.map.get(coords.x, coords.y);
+                if(tile){
+                    this.onTileClick(tile);
+                }
             }
         },
 
@@ -123,8 +125,10 @@
         * @param {Event} e - mouse event
         */
         mouseMove: function(e) {
-            var tile = this.game.renderer.mouseToTileCoords(e.clientX, e.clientY);
-            this.onTileHover(tile);
+            if(this.onTileHover){
+                var coords = this.game.renderer.mouseToTileCoords(e.clientX, e.clientY);
+                this.onTileHover(coords);
+            }
         },
     };
 
