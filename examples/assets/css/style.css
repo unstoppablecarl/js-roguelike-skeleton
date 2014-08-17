@@ -25,6 +25,10 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     padding: 0 0 10px;
     border-bottom: 1px solid #333;
+    color: #fff;
+}
+h2 {
+    color: #fff;
 }
 a, a:visited {
     color: #147CC2;
