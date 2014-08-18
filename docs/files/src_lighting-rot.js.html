@@ -154,7 +154,6 @@
 
         /**
         * Game instance this obj is attached to.
-        *
         * @property game
         * @type Game
         */
@@ -162,7 +161,6 @@
 
         /**
         * Array2d storing Lighting data.
-        *
         * @property LightingMap
         * @type Array2d
         */
@@ -170,7 +168,6 @@
 
         /**
         * Reflectivity of visible tiles.
-        *
         * @property reflectivity
         * @type Number
         */
@@ -178,7 +175,6 @@
 
         /**
         * Ambient light
-        *
         * @property ambientLight
         * @type Array
         */
@@ -186,7 +182,6 @@
 
         /**
         * ROT.FOV instance
-        *
         * @property _fov
         * @private
         * @type ROT.FOV
@@ -195,7 +190,6 @@
 
         /**
         * ROT.Lighting instance
-        *
         * @property _lighting
         * @private
         * @type ROT.Lighting
@@ -212,6 +206,17 @@
             this._lighting.compute(this.LightingMap.set.bind(this.LightingMap));
         },
 
+        /**
+        * Shades tileData using lighting.
+        * @method shadeTile
+        * @param {Number} x - The x map coordinate to shade.
+        * @param {Number} y - The y map coordinate to shade.
+        * @param {Object} tileData - The tileData object to shade.
+        * @param {String} [tileData.char] - The character to be rendered.
+        * @param {String} [tileData.color] - The color of character to be rendered.
+        * @param {String} [tileData.bgColor] - The background color of the tile to be rendered.
+
+        */
         shadeTile: function(x, y, tileData){
             var light = this.ambientLight;
             var lighting = this.get(x, y);

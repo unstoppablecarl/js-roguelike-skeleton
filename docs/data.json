@@ -146,7 +146,7 @@
             "extension_for": [],
             "file": "src/array-2d.js",
             "line": 4,
-            "description": "Manages a 2d array of x,y coords.",
+            "description": "Manages a 2d array of values mapped to x,y coords.",
             "is_constructor": 1,
             "params": [
                 {
@@ -170,7 +170,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/console.js",
-            "line": 3,
+            "line": 4,
             "description": "Manages the display and history of console messages to the user.",
             "is_constructor": 1,
             "params": [
@@ -609,7 +609,7 @@
         {
             "file": "src/array-2d.js",
             "line": 52,
-            "description": "Updates the size of this Array2d without destroying data",
+            "description": "Updates the size of this Array2d without destroying data.",
             "itemtype": "method",
             "name": "setSize",
             "class": "Array2d"
@@ -685,7 +685,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 103,
+            "line": 104,
             "description": "Retrieves an array of values of adjacent coords.",
             "itemtype": "method",
             "name": "getAdjacent",
@@ -719,7 +719,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 177,
+            "line": 178,
             "description": "Retrieves an array of values of coords within a given radius.",
             "itemtype": "method",
             "name": "getWithinSquareRadius",
@@ -769,7 +769,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 235,
+            "line": 236,
             "description": "Retrieves an array of values of coords along a line starting at point 0 and crossing point 1 until it hits the edge of the 2d array or a coord value returning true when passed to the condtion function.",
             "itemtype": "method",
             "name": "getLineThrough",
@@ -817,7 +817,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 290,
+            "line": 291,
             "description": "Retrieves an array of the nearest coord values meeting checked requirements. If multiple coord values were matched at the same nearest distance, the returned array will contain multiple matched coord values.\nUsed for projecting path of ranged attacks, pushed entities, ect.",
             "itemtype": "method",
             "name": "findNearest",
@@ -859,7 +859,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 383,
+            "line": 384,
             "description": "Retrieves an array of the filtered values.",
             "itemtype": "method",
             "name": "filter",
@@ -885,7 +885,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 412,
+            "line": 413,
             "description": "Creates a copy of this Array2d. Shallow copies values.",
             "itemtype": "method",
             "name": "copy",
@@ -897,7 +897,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 430,
+            "line": 431,
             "description": "Loops over each coord value.",
             "itemtype": "method",
             "name": "each",
@@ -922,7 +922,7 @@
         },
         {
             "file": "src/console.js",
-            "line": 20,
+            "line": 22,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -931,7 +931,7 @@
         },
         {
             "file": "src/console.js",
-            "line": 27,
+            "line": 29,
             "description": "Element containing console messages.\nMust be manually added to the DOM",
             "itemtype": "property",
             "name": "el",
@@ -940,7 +940,7 @@
         },
         {
             "file": "src/console.js",
-            "line": 35,
+            "line": 37,
             "description": "Number of messages to display at once.",
             "itemtype": "property",
             "name": "messageHistoryCount",
@@ -949,7 +949,7 @@
         },
         {
             "file": "src/console.js",
-            "line": 42,
+            "line": 44,
             "description": "Adds a message to the console.",
             "itemtype": "method",
             "name": "log",
@@ -1296,7 +1296,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 68,
+            "line": 67,
             "description": "Converts a string direction to an rot",
             "itemtype": "method",
             "name": "validateDirection",
@@ -1311,7 +1311,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 91,
+            "line": 90,
             "description": "Calculates the fovROT data relative to given coords;",
             "itemtype": "method",
             "name": "update",
@@ -1353,7 +1353,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 153,
+            "line": 152,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
@@ -1373,7 +1373,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 163,
+            "line": 162,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "checkMapTileVisible",
@@ -1381,7 +1381,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 172,
+            "line": 171,
             "description": "Sets the size of the map to mange fovROT within.",
             "itemtype": "method",
             "name": "setSize",
@@ -1410,7 +1410,7 @@
         },
         {
             "file": "src/fov.js",
-            "line": 26,
+            "line": 25,
             "description": "Array2d storing fov visibility fovMap",
             "itemtype": "property",
             "name": "fovMap",
@@ -1419,7 +1419,7 @@
         },
         {
             "file": "src/fov.js",
-            "line": 34,
+            "line": 32,
             "description": "Max visible distance in tiles",
             "itemtype": "property",
             "name": "maxViewDistance",
@@ -1428,7 +1428,7 @@
         },
         {
             "file": "src/fov.js",
-            "line": 41,
+            "line": 39,
             "description": "Calculates the fov data relative to given coords;",
             "itemtype": "method",
             "name": "update",
@@ -1454,7 +1454,7 @@
         },
         {
             "file": "src/fov.js",
-            "line": 76,
+            "line": 74,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
@@ -1474,7 +1474,7 @@
         },
         {
             "file": "src/fov.js",
-            "line": 86,
+            "line": 84,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "checkMapTileVisible",
@@ -1482,7 +1482,7 @@
         },
         {
             "file": "src/fov.js",
-            "line": 95,
+            "line": 93,
             "description": "Checks if an unobstructed line can be drawn from coords 0 to 1. Typically used for Line of Sight checks",
             "itemtype": "method",
             "name": "checkLos",
@@ -1512,7 +1512,7 @@
         },
         {
             "file": "src/fov.js",
-            "line": 144,
+            "line": 142,
             "description": "Sets the size of the map to mange fov within.",
             "itemtype": "method",
             "name": "setSize",
@@ -1812,7 +1812,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 45,
+            "line": 44,
             "description": "Array2d storing Lighting data.",
             "itemtype": "property",
             "name": "LightingMap",
@@ -1821,7 +1821,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 53,
+            "line": 51,
             "description": "Reflectivity of visible tiles.",
             "itemtype": "property",
             "name": "reflectivity",
@@ -1830,7 +1830,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 61,
+            "line": 58,
             "description": "Ambient light",
             "itemtype": "property",
             "name": "ambientLight",
@@ -1839,7 +1839,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 69,
+            "line": 65,
             "description": "ROT.FOV instance",
             "itemtype": "property",
             "name": "_fov",
@@ -1850,7 +1850,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 78,
+            "line": 73,
             "description": "ROT.Lighting instance",
             "itemtype": "property",
             "name": "_lighting",
@@ -1861,7 +1861,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 87,
+            "line": 81,
             "description": "Calculates the Lighting data relative to given coords;",
             "itemtype": "method",
             "name": "update",
@@ -1869,7 +1869,52 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 119,
+            "line": 91,
+            "description": "Shades tileData using lighting.",
+            "itemtype": "method",
+            "name": "shadeTile",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The x map coordinate to shade.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The y map coordinate to shade.",
+                    "type": "Number"
+                },
+                {
+                    "name": "tileData",
+                    "description": "- The tileData object to shade.",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "char",
+                            "description": "- The character to be rendered.",
+                            "type": "String",
+                            "optional": true
+                        },
+                        {
+                            "name": "color",
+                            "description": "- The color of character to be rendered.",
+                            "type": "String",
+                            "optional": true
+                        },
+                        {
+                            "name": "bgColor",
+                            "description": "- The background color of the tile to be rendered.",
+                            "type": "String",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "class": "Lighting"
+        },
+        {
+            "file": "src/lighting-rot.js",
+            "line": 124,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
@@ -1889,7 +1934,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 129,
+            "line": 134,
             "description": "Set a light position and color",
             "itemtype": "method",
             "name": "set",
@@ -1924,7 +1969,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 142,
+            "line": 147,
             "description": "Returns the reflectivity value of a tile",
             "itemtype": "method",
             "name": "getTileReflectivity",
@@ -1932,7 +1977,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 153,
+            "line": 158,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "checkVisible",
@@ -1940,7 +1985,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 162,
+            "line": 167,
             "description": "Sets the size of the map to mange Lighting within.",
             "itemtype": "method",
             "name": "setSize",
@@ -1993,7 +2038,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 50,
+            "line": 51,
             "description": "Current mouse y axis coord relative to upper left corner of mapview element.",
             "itemtype": "property",
             "name": "mapViewMouseY",
@@ -2002,7 +2047,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 57,
+            "line": 58,
             "description": "True if mouse is currently over mapview.",
             "itemtype": "property",
             "name": "mapViewMouseOver",
@@ -2011,7 +2056,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 64,
+            "line": 65,
             "description": "Hander for mouse events",
             "itemtype": "method",
             "name": "handleEvent",
@@ -2026,7 +2071,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 85,
+            "line": 86,
             "description": "Hander for mouse click events",
             "itemtype": "method",
             "name": "mouseClick",
@@ -2041,7 +2086,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 100,
+            "line": 103,
             "description": "Hander for mouse enter events",
             "itemtype": "method",
             "name": "mouseEnter",
@@ -2056,7 +2101,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 109,
+            "line": 112,
             "description": "Hander for mouse leave events",
             "itemtype": "method",
             "name": "mouseLeave",
@@ -2071,7 +2116,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 120,
+            "line": 123,
             "description": "Hander for mouse move events",
             "itemtype": "method",
             "name": "mouseMove",
