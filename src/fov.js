@@ -5,7 +5,7 @@
     * Represents a Fov in the game map. requires ROT.js
     * @class Fov
     * @constructor
-    * @param {Object} game - Game instance this obj is attached to.
+    * @param {Game} game - Game instance this obj is attached to.
     */
     var Fov = function Fov(game) {
         this.game = game;
@@ -42,9 +42,10 @@
         * @param {Number} x - The map coordinate position to calculate Fov from on the x axis.
         * @param {Number} y - The map coordinate position to calculate Fov from on the y axis.
         * @param {Number} [maxViewDistance] - Max visible distance (this.maxViewDistance used if not set).
+        * @param {Array2d} [map=this.game.map] - The map to check the fov of.
         */
-        update: function(x, y, maxViewDistance){
-
+        update: function(x, y, maxViewDistance, map){
+            map = map || this.game.map;
             if(maxViewDistance === void 0){
                 maxViewDistance = this.maxViewDistance;
             }
@@ -61,7 +62,7 @@
                             y2 = y + j,
                             visible = this.checkLos(x, y, x2, y2);
                         if(visible){
-                            var tile = this.game.map.get(x2, y2);
+                            var tile = map.get(x2, y2);
                             // mark all drawn tiles as explored
                             tile.explored = true;
                             this.fovMap.set(x2, y2, 1);
@@ -74,8 +75,8 @@
         /**
         * Retrieves the visibility of the tile at given coords
         * @method get
-        * @param {Number} x - The map coordinate position to get Fov visibility from on the x axis.
-        * @param {Number} y - The map coordinate position to get Fov visibility from on the y axis.
+        * @param {Number} x - The x map tile coordinate to get Fov visibility of.
+        * @param {Number} y - The y map tile coordinate to get Fov visibility of.
         */
         get: function(x, y){
             return this.fovMap.get(x, y);
@@ -83,11 +84,14 @@
 
         /**
         * Checks if a tile blocks line of sight
-        * @method checkMapTileVisible
+        * @method mapTileBlocksLos
+        * @param {Number} x - The x map tile coord to check blocks line of sight.
+        * @param {Number} y - The y map tile coord to check blocks line of sight.
+        * @param {Array2d} [map=this.game.map] - The map to check tiles of.
         */
-        checkMapTileVisible: function(x, y){
+        mapTileBlocksLos: function(x, y, map){
             var tile = this.game.map.get(x, y);
-            return tile && !tile.blocksLos;
+            return !tile || tile.blocksLos;
         },
 
         /**
@@ -121,7 +125,7 @@
             ynext = y0;
             denom = Math.sqrt(dx * dx + dy * dy);
             while (xnext != x1 || ynext != y1){
-                if (!this.checkMapTileVisible(xnext, ynext)){
+                if (this.mapTileBlocksLos(xnext, ynext)){
                     return false;
                 }
                 // Line-to-point distance formula < 0.5
