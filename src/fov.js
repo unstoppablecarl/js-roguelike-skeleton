@@ -62,13 +62,13 @@
                             visible = this.checkLos(x, y, x2, y2);
                         if(visible){
                             var tile = this.game.map.get(x2, y2);
+                            // mark all drawn tiles as explored
                             tile.explored = true;
                             this.fovMap.set(x2, y2, 1);
                         }
                     }
                 }
             }
-
         },
 
         /**
