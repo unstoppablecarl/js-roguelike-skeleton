@@ -17,7 +17,6 @@
 
         /**
         * Game instance this obj is attached to.
-        *
         * @property game
         * @type Game
         */
@@ -25,7 +24,6 @@
 
         /**
         * Array2d storing fov visibility fovMap
-        *
         * @property fovMap
         * @type Array2d
         */
@@ -33,11 +31,11 @@
 
         /**
         * Max visible distance in tiles
-        *
         * @property maxViewDistance
         * @type Number
         */
         maxViewDistance: 10,
+
         /**
         * Calculates the fov data relative to given coords;
         * @method update

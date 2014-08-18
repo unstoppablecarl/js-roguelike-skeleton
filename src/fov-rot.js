@@ -64,7 +64,6 @@
             }
         },
 
-
         /**
         * Converts a string direction to an rot
         * @method validateDirection

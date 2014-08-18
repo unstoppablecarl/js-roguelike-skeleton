@@ -47,6 +47,7 @@
         * @type Number
         */
         mapViewMouseX: null,
+
         /**
         * Current mouse y axis coord relative to upper left corner of mapview element.
         * @property mapViewMouseY

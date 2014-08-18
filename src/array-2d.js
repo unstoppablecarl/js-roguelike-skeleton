@@ -100,6 +100,7 @@
         remove: function(x, y) {
             this.set(x, y, void 0);
         },
+
         /**
         * Retrieves an array of values of adjacent coords.
         * @method getAdjacent

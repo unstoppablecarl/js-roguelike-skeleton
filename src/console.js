@@ -1,5 +1,6 @@
 (function(root) {
     'use strict';
+
     /**
     * Manages the display and history of console messages to the user.
     * @class Console
@@ -17,6 +18,7 @@
 
     Console.prototype = {
         constructor: Console,
+
         /**
         * Game instance this obj is attached to.
         * @property game
