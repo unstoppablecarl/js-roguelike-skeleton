@@ -118,6 +118,7 @@
             this.mapViewMouseOver = false;
             this.mapViewMouseX = null;
             this.mapViewMouseY = null;
+            this.onTileHover(false);
         },
 
         /**
