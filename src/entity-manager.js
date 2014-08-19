@@ -55,14 +55,19 @@
         * @method add
         * @param {Number} x - The map tile coordinate position of the entity on the x axis.
         * @param {Number} y - The map tile coordinate position of the entity on the y axis.
-        * @param {Entity} ent - The entity to be added.
+        * @param {Entity|String} ent - The Entity being set at given coords. If ent is a string a new Entity will be created using the string as the Entity Type (see Entity.Types[type]).
+        * @return {Entity} The added entity
         */
         add: function(x, y, ent) {
+            if(typeof ent === 'string'){
+                ent = new RL.Entity(this.game, ent);
+            }
             ent.game = this.game;
             ent.x = x;
             ent.y = y;
             this.entities.push(ent);
             this.entityMap.set(x, y, ent);
+            return ent;
         },
 
         /**

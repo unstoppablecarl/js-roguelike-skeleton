@@ -28,6 +28,7 @@
         * @param {Number} x - Position on the x axis of the value being set.
         * @param {Number} y - Position on the y axis of the value being set.
         * @param {Tile|String} tile - The Tile being set at given coords. If Tile is a string a new tile will be created using the string as the Tile Type (see Tile.Types[type]).
+        * @return {Tile} the tile added
         */
         set: function(x, y, tile) {
             if (x < 0 || x >= this.width || y < 0 || y >= this.height) {
@@ -36,8 +37,8 @@
             if(typeof tile === 'string'){
                 tile = new RL.Tile(this.game, tile, x, y);
             }
-
             this.data[x][y] = tile;
+            return tile;
         },
 
         /**

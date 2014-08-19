@@ -83,9 +83,14 @@
         * @return bool
         */
         onKeyDown: function(event) {
+            // ignore if modifer keys pressed
+            if(event.ctrlKey || event.shiftKey || event.altKey || event.metaKey){
+                return true;
+            }
             var keyCode = event.keyCode;
             var action = this.getActionFromKeyCode(keyCode);
             // if no action bound to this keycode resolve the keydown event normally
+            console.log('action', action);
             if (action === false) {
                 return true;
             }
