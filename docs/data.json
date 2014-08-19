@@ -2177,6 +2177,29 @@
             "class": "Map"
         },
         {
+            "file": "src/map.js",
+            "line": 49,
+            "description": "Loads Tile data from an array of strings",
+            "itemtype": "method",
+            "name": "loadTilesFromArrayString",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The array of strings to load.",
+                    "type": "Array"
+                },
+                {
+                    "name": "charToType",
+                    "description": "- An object mapping string characters to Tile types (see Tile.Types[type]).",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n\n           var mapData = [\n               '####',\n               '#..#',\n               '#..#',\n               '####',\n           ],\n           // 'wall'\n           charToType = {\n               '#': 'wall',\n               '.': 'floor'\n           };\n           map.loadTilesFromArrayString(mapData, charToType);\n"
+            ],
+            "class": "Map"
+        },
+        {
             "file": "src/mouse.js",
             "line": 30,
             "description": "Game instance this obj is attached to.",

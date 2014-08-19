@@ -331,6 +331,13 @@
                                 
                             </li>
                         
+                            <li class="index-item method">
+                                <a href="#method_loadTilesFromArrayString">loadTilesFromArrayString</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method inherited">
                                 <a href="#method_remove">remove</a>
 
@@ -1965,6 +1972,141 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
         </div>
     
 
+    
+</div>
+
+                
+                    <div id="method_loadTilesFromArrayString" class="method item">
+    <h3 class="name"><code>loadTilesFromArrayString</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>charToType</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_map.js.html#l49"><code>src&#x2F;map.js:49</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Loads Tile data from an array of strings</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">Array</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The array of strings to load.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">charToType</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>An object mapping string characters to Tile types (see Tile.Types[type]).</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>       var mapData = [
+           &#39;####&#39;,
+           &#39;#..#&#39;,
+           &#39;#..#&#39;,
+           &#39;####&#39;,
+       ],
+       // &#39;wall&#39;
+       charToType = {
+           &#39;#&#39;: &#39;wall&#39;,
+           &#39;.&#39;: &#39;floor&#39;
+       };
+       map.loadTilesFromArrayString(mapData, charToType);</code></pre>
+
+            </div>
+        </div>
     
 </div>
 

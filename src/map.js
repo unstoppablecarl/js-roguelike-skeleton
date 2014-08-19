@@ -44,6 +44,44 @@
         canMoveThroughTile: function(x, y){
             var tile = this.get(x, y);
             return tile && tile.passable;
+        },
+
+        /**
+        * Loads Tile data from an array of strings
+        * @method loadTilesFromArrayString
+        * @param {Array} x - The array of strings to load.
+        * @param {Object} charToType - An object mapping string characters to Tile types (see Tile.Types[type]).
+        * @example
+
+            var mapData = [
+                '####',
+                '#..#',
+                '#..#',
+                '####',
+            ],
+            // 'wall'
+            charToType = {
+                '#': 'wall',
+                '.': 'floor'
+            };
+            map.loadTilesFromArrayString(mapData, charToType);
+        *
+        */
+        loadTilesFromArrayString: function(mapData, charToType){
+            var width = mapData[0].length,
+                height = mapData.length;
+
+            this.width = width;
+            this.height = height;
+            this.reset();
+
+            // loop over each coord in the Array2d (val will be undefined)
+            this.each(function(val, x, y){
+                var char = mapData[y][x],
+                    type = charToType[char],
+                    tile = new RL.Tile(this.game, type, x, y);
+                this.add(x, y, tile);
+            });
         }
     };
 
