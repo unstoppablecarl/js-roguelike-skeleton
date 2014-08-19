@@ -90,7 +90,8 @@
         *
         */
         loadTilesFromArrayString: function(mapData, charToType, defaultTileType){
-            var width = mapData[0].length,
+            var _this = this,
+                width = mapData[0].length,
                 height = mapData.length;
 
             this.width = width;
@@ -104,8 +105,8 @@
                 if(type === void 0 && defaultTileType){
                     type = defaultTileType;
                 }
-                var tile = new RL.Tile(this.game, type, x, y);
-                this.add(x, y, tile);
+                var tile = new RL.Tile(_this.game, type, x, y);
+                _this.set(x, y, tile);
             });
         }
     };

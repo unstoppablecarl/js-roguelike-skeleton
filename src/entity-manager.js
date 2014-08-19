@@ -123,8 +123,57 @@
         */
         setSize: function(width, height){
             this.entityMap.setSize(width, height);
-        }
+        },
 
+        /**
+        * Loads Entity data from an array of strings.
+        * @method loadEntitiesFromArrayString
+        * @param {Array} mapData - The array of strings to load.
+        * @param {Object} charToType - An object mapping string characters to Entity types (see Entity.Types[type]). Characters in mapData not in charToType are ignored.
+        * @param {Bool} [replaceCurrentEntities=false] - If true current entities at positons of entities being added will be removed. Otherwise new entities at occupied positions will be skipped.
+        * @example
+
+            // 'P' will be ignored and a floor tile will be placed at that position
+            var mapData = [
+                '####',
+                '#..#',
+                '#.Z#',
+                '####',
+            ],
+            charToType = {
+                'Z': 'zombie'
+            };
+
+            entityManager.loadTilesFromArrayString(mapData, charToType);
+        *
+        */
+        loadEntitiesFromArrayString: function(mapData, charToType, replaceCurrentEntities){
+            var _this = this,
+                width = mapData[0].length,
+                height = mapData.length;
+
+            if(width !== this.entityMap.width || height !== this.entityMap.height){
+                this.entityMap.setSize(width, height);
+            }
+
+            // loop over each coord in the Array2d (val will be undefined)
+            this.entityMap.each(function(val, x, y){
+                var currentEntity = val;
+                if(currentEntity){
+                    if(replaceCurrentEntities){
+                        this.remove(currentEntity);
+                    } else {
+                        return;
+                    }
+                }
+                var char = mapData[y][x],
+                    type = charToType[char];
+                if(type !== void 0){
+                    var entity = new RL.Entity(_this.game, type);
+                    _this.add(x, y, entity);
+                }
+            });
+        }
     };
 
     root.RL.EntityManager = EntityManager;
