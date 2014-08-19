@@ -107,7 +107,7 @@
 
             // if there is an entity in the target tile
             if (targetTileEnt) {
-                this.game.console.log('Excuses me <strong>Mr.' + targetTileEnt.name + '</strong>, you appear to be in the way.');
+                this.game.console.log('Excuse me <strong>Mr.' + targetTileEnt.name + '</strong>, you appear to be in the way.');
                 targetTileEnt.bump(this);
             }
             // if passable move player to target tile
