@@ -101,12 +101,7 @@
         * @method update
         */
         update: function() {
-            var moveX = this.x + 1,
-                moveY = this.y;
-            var targetTile = this.game.map.get(moveX, moveY);
-            if(targetTile.passable){
-                this.moveTo(moveX, moveY);
-            }
+
         },
 
         /**
