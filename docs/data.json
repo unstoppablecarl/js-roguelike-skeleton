@@ -1397,11 +1397,15 @@
                     "type": "String"
                 }
             ],
+            "return": {
+                "description": "[x, y]",
+                "type": "Array"
+            },
             "class": "FovROT"
         },
         {
             "file": "src/fov-rot.js",
-            "line": 90,
+            "line": 91,
             "description": "Calculates the fovROT data relative to given coords;",
             "itemtype": "method",
             "name": "update",
@@ -1443,7 +1447,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 152,
+            "line": 144,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
@@ -1459,19 +1463,27 @@
                     "type": "Number"
                 }
             ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
             "class": "FovROT"
         },
         {
             "file": "src/fov-rot.js",
-            "line": 162,
+            "line": 155,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "checkMapTileVisible",
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
             "class": "FovROT"
         },
         {
             "file": "src/fov-rot.js",
-            "line": 171,
+            "line": 164,
             "description": "Sets the size of the map to mange fovROT within.",
             "itemtype": "method",
             "name": "setSize",
@@ -1572,33 +1584,6 @@
         {
             "file": "src/fov.js",
             "line": 85,
-            "description": "Checks if a tile blocks line of sight",
-            "itemtype": "method",
-            "name": "mapTileBlocksLos",
-            "params": [
-                {
-                    "name": "x",
-                    "description": "- The x map tile coord to check blocks line of sight.",
-                    "type": "Number"
-                },
-                {
-                    "name": "y",
-                    "description": "- The y map tile coord to check blocks line of sight.",
-                    "type": "Number"
-                },
-                {
-                    "name": "map",
-                    "description": "- The map to check tiles of.",
-                    "type": "Array2d",
-                    "optional": true,
-                    "optdefault": "this.game.map"
-                }
-            ],
-            "class": "Fov"
-        },
-        {
-            "file": "src/fov.js",
-            "line": 97,
             "description": "Checks if an unobstructed line can be drawn from coords 0 to 1. Typically used for Line of Sight checks",
             "itemtype": "method",
             "name": "checkLos",
@@ -1622,13 +1607,26 @@
                     "name": "y1",
                     "description": "- End coord y.",
                     "type": "Number"
+                },
+                {
+                    "name": "map",
+                    "description": "- The Map object used when checking line of sight.",
+                    "type": "Map",
+                    "optional": true,
+                    "optdefault": "this.game.map"
+                },
+                {
+                    "name": "canSeeThroughTileFunc",
+                    "description": "- A function that determines if a tile blocks line of sight, returning true if the map tile at the x,y coords provided blocks line of sight (function(x, y){ return true; }). If not set map.canSeeThroughTile(x,y) is used instead.",
+                    "type": "Function",
+                    "optional": true
                 }
             ],
             "class": "Fov"
         },
         {
             "file": "src/fov.js",
-            "line": 146,
+            "line": 139,
             "description": "Sets the size of the map to mange fov within.",
             "itemtype": "method",
             "name": "setSize",

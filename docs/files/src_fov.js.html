@@ -203,27 +203,17 @@
         },
 
         /**
-        * Checks if a tile blocks line of sight
-        * @method mapTileBlocksLos
-        * @param {Number} x - The x map tile coord to check blocks line of sight.
-        * @param {Number} y - The y map tile coord to check blocks line of sight.
-        * @param {Array2d} [map=this.game.map] - The map to check tiles of.
-        */
-        mapTileBlocksLos: function(x, y, map){
-            var tile = this.game.map.get(x, y);
-            return !tile || tile.blocksLos;
-        },
-
-        /**
         * Checks if an unobstructed line can be drawn from coords 0 to 1. Typically used for Line of Sight checks
         * @method checkLos
         * @param {Number} x0 - Start coord x.
         * @param {Number} y0 - Start coord y.
         * @param {Number} x1 - End coord x.
         * @param {Number} y1 - End coord y.
+        * @param {Map} [map=this.game.map] - The Map object used when checking line of sight.
+        * @param {Function} [canSeeThroughTileFunc] - A function that determines if a tile blocks line of sight, returning true if the map tile at the x,y coords provided blocks line of sight (function(x, y){ return true; }). If not set map.canSeeThroughTile(x,y) is used instead.
         */
-        checkLos: function(x0, y0, x1, y1){
-
+        checkLos: function(x0, y0, x1, y1, map, canSeeThroughTileFunc){
+            map = map || this.game.map;
             var sx, sy, xnext, ynext, dx, dy, denom, dist;
             dx = x1 - x0;
             dy = y1 - y0;
@@ -245,7 +235,10 @@
             ynext = y0;
             denom = Math.sqrt(dx * dx + dy * dy);
             while (xnext != x1 || ynext != y1){
-                if (this.mapTileBlocksLos(xnext, ynext)){
+                if(canSeeThroughTileFunc !== void 0 &amp;&amp; !canSeeThroughTileFunc(xnext, ynext)){
+                    return false;
+                }
+                else if (!map.canSeeThroughTile(xnext, ynext)){
                     return false;
                 }
                 // Line-to-point distance formula &lt; 0.5

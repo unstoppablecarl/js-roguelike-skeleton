@@ -1,7 +1,10 @@
 
 // simple map generator to get you started
-var generateMap = function() {
-    var map = new RL.Array2d(20, 20);
+var generateMap = function(game) {
+    var map = new RL.Map(game);
+    map.width = 20;
+    map.height = 20;
+    map.reset();
     for (var x = map.width - 1; x >= 0; x--) {
         for (var y = map.height - 1; y >= 0; y--) {
             var tileType;
@@ -51,7 +54,7 @@ var keyBindings = {
 var game = new RL.Game();
 
 // generate and assign a map object (repaces empty default)
-game.map = generateMap();
+game.map = generateMap(game);
 
 game.setMapSize(game.map.width, game.map.height);
 

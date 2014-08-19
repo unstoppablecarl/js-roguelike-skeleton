@@ -68,6 +68,7 @@
         * Converts a string direction to an rot
         * @method validateDirection
         * @param {String} direction - Direction of fov (used as default) (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'].
+        * @return {Array} [x, y]
         */
         directionStringToRot: function(direction){
             var validDirections = ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'];
@@ -120,31 +121,22 @@
 
             var _this = this;
 
+            var checkVisibleFunc = function(x, y, range, visibility){
+                if(visibleCallback){
+                    visibleCallback(x, y, range, visibility);
+                }
+                _this.fovMap.set(x, y, visibility);
+            };
+
             if(fieldRange === 360){
-                this._fov.compute(x, y, maxViewDistance, function(x, y, range, visibility){
-                    if(visibleCallback){
-                        visibleCallback(x, y, range, visibility);
-                    }
-                    _this.fovMap.set(x, y, visibility);
-                });
+                this._fov.compute(x, y, maxViewDistance, checkVisibleFunc);
             }
             else {
-
                 if(fieldRange === 180){
-                    this._fov.compute180(x, y, maxViewDistance, direction, function(x, y, range, visibility){
-                        if(visibleCallback){
-                            visibleCallback(x, y, range, visibility);
-                        }
-                        _this.fovMap.set(x, y, visibility);
-                    });
+                    this._fov.compute180(x, y, maxViewDistance, direction, checkVisibleFunc);
                 }
                 else if(fieldRange === 90){
-                    this._fov.compute90(x, y, maxViewDistance, direction, function(x, y, range, visibility){
-                        if(visibleCallback){
-                            visibleCallback(x, y, range, visibility);
-                        }
-                        _this.fovMap.set(x, y, visibility);
-                    });
+                    this._fov.compute90(x, y, maxViewDistance, direction, checkVisibleFunc);
                 }
             }
         },
@@ -154,6 +146,7 @@
         * @method get
         * @param {Number} x - The map coordinate position to get FovROT visibility from on the x axis.
         * @param {Number} y - The map coordinate position to get FovROT visibility from on the y axis.
+        * @return {Bool}
         */
         get: function(x, y){
             return this.fovMap.get(x, y);
@@ -162,10 +155,10 @@
         /**
         * Checks if a tile blocks line of sight
         * @method checkMapTileVisible
+        * @return {Bool}
         */
         checkMapTileVisible: function(x, y){
-            var tile = this.game.map.get(x, y);
-            return tile && !tile.blocksLos;
+            return this.game.map.canSeeThroughTile(x, y);
         },
 
         /**

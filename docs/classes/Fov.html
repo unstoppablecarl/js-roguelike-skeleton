@@ -272,13 +272,6 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_mapTileBlocksLos">mapTileBlocksLos</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
                                 <a href="#method_setSize">setSize</a>
 
                                 
@@ -368,6 +361,18 @@
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code class="optional">[map=this.game.map]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[canSeeThroughTileFunc]</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -397,7 +402,7 @@
             
         
         
-        <a href="../files/src_fov.js.html#l97"><code>src&#x2F;fov.js:97</code></a>
+        <a href="../files/src_fov.js.html#l85"><code>src&#x2F;fov.js:85</code></a>
         
         </p>
 
@@ -483,6 +488,44 @@
                     <div class="param-description">
                         <ul>
 <li>End coord y.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[map=this.game.map]</code>
+                        <span class="type"><a href="../classes/Map.html" class="crosslink">Map</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The Map object used when checking line of sight.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[canSeeThroughTileFunc]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>A function that determines if a tile blocks line of sight, returning true if the map tile at the x,y coords provided blocks line of sight (function(x, y){ return true; }). If not set map.canSeeThroughTile(x,y) is used instead.</li>
 </ul>
 
                     </div>
@@ -615,146 +658,6 @@
 </div>
 
                 
-                    <div id="method_mapTileBlocksLos" class="method item">
-    <h3 class="name"><code>mapTileBlocksLos</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>y</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[map=this.game.map]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_fov.js.html#l85"><code>src&#x2F;fov.js:85</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Checks if a tile blocks line of sight</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The x map tile coord to check blocks line of sight.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">y</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The y map tile coord to check blocks line of sight.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[map=this.game.map]</code>
-                        <span class="type"><a href="../classes/Array2d.html" class="crosslink">Array2d</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The map to check tiles of.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="method_setSize" class="method item">
     <h3 class="name"><code>setSize</code></h3>
 
@@ -803,7 +706,7 @@
             
         
         
-        <a href="../files/src_fov.js.html#l146"><code>src&#x2F;fov.js:146</code></a>
+        <a href="../files/src_fov.js.html#l139"><code>src&#x2F;fov.js:139</code></a>
         
         </p>
 
