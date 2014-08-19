@@ -219,12 +219,35 @@
         * @method update
         */
         update: function() {
+            var moveX = this.x + 1,
+                moveY = this.y;
+            var targetTile = this.game.map.get(moveX, moveY);
+            if(targetTile.passable){
+                this.moveTo(moveX, moveY);
+            }
+        },
 
+        /**
+        * Checks if this entity can move to the specified map tile
+        * @method canMoveTo
+        * @param {Number} x - The tile map x coord to check if this entity can move to.
+        * @param {Number} y - The tile map y coord to check if this entity can move to.
+        * @return {Bool}
+        */
+        canMoveTo: function(x, y){
+            var entity = this.game.entityManager.get(x, y);
+            if(entity){
+                return false;
+            }
+            var tile = this.game.map.get(x, y);
+            return tile &amp;&amp; tile.passable;
         },
 
         /**
         * Changes the position of this entity on the map.
         * @method moveTo
+        * @param {Number} x - The tile map x coord to move to.
+        * @param {Number} y - The tile map y coord to move to.
         */
         moveTo: function(x, y) {
             this.game.entityManager.move(x, y, this);

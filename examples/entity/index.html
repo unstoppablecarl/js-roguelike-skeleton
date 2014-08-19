@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <title>Roguelike JS Skeleton - Examples - Entity</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="../assets/css/prism.css" type="text/css">
+</head>
+
+<body>
+    <div class="page">
+        <div class="section">
+
+            <h1>Roguelike JS Skeleton - <a href="../../index.html#examples">Examples</a> - Entity</h1>
+            <h2><a href="../../docs/classes/Entity.html">Entity API Docs</a></h2>
+            <div class="ex-col-left">
+                <h2>Contents</h2>
+                <ol>
+                    <li><a href="#basic-movement-behavior">Basic Movement Behavior</a></li>
+
+                </ol>
+            </div>
+            <div class="ex-col-right">
+                <p><strong>Example setup code</strong> (Run before all examples) <a href="#" class="btn btn-toggle-setup">Show</a></p>
+                <pre class="setup-code">
+                    <code class="language-javascript">
+var array2dFromMapData = function(game, mapData){
+    var width = mapData[0].length,
+        height = mapData.length;
+    var array2d = new RL.Array2d(width, height);
+    // loop over each coord in the Array2d (val will be undefined)
+    array2d.each(function(val, x, y){
+        var char = mapData[y][x];
+        var tileData = {
+            char: char,
+            bgColor: '#222',
+            color: '#fff'
+        },
+        tileType;
+        if(char === '.'){
+            tileType = 'floor';
+        }
+        else if(char === '#'){
+            tileType = 'wall';
+        }
+        var tile = new RL.Tile(game, tileType, x, y);
+
+        // set value at coord
+        array2d.set(x, y, tile);
+    });
+    return array2d;
+};
+
+var initBasicGame = function(mapContainerEl, mapData){
+    var keyBindings = {
+        up: ['UP_ARROW', 'K', 'W'],
+        down: ['DOWN_ARROW', 'J', 'S'],
+        left: ['LEFT_ARROW', 'H', 'A'],
+        right: ['RIGHT_ARROW', 'L', 'D'],
+        wait: ['SPACE']
+    };
+
+    // create the game instance
+    var game = new RL.Game();
+    // generate and assign a map object (repaces empty default)
+    game.map = array2dFromMapData(game, mapData);
+
+    game.setMapSize(game.map.width, game.map.height);
+
+    // add input keybindings
+    game.input.addBindings(keyBindings);
+
+    // set player starting position
+    game.player.x = 5;
+    game.player.y = 3;
+
+    // append elements created by the game to the DOM
+    mapContainerEl.appendChild(game.renderer.canvas);
+    return game;
+};
+                    </code>
+                </pre>
+            </div>
+        </div>
+
+        <div id="basic-movement-behavior" class="example-container section">
+            <h2>Basic Movement Behavior</h2>
+            <p>Move the player around and watch how the zombie behaves (hit SPACE to skip the players turn).</p>
+            <div class="ex-col-left">
+                <div id="ex-1-container" class="map-container"></div>
+            </div>
+            <div class="ex-col-right">
+                <a href="#" class="btn btn-block ex-btn-run">Run</a>
+                <pre class="ex-code">
+                    <code class="language-javascript">
+var mapData = [
+    '##########',
+    '#........#',
+    '#........#',
+    '#........#',
+    '#........#',
+    '##########',
+];
+var containerEl = document.getElementById('ex-1-container');
+containerEl.innerHTML = '';
+var game = initBasicGame(containerEl, mapData);
+
+// Define an Entity Type
+RL.Entity.Types.zombie = {
+    name: 'Zombie',
+    char: 'z',
+    color: 'red',
+    bgColor: '#222',
+    pushable: false,
+    currentDirection: 'right',
+
+    /**
+    * Gets the adjustment coord from a direction string.
+    * @method directionToAdjustCoord
+    * @param {String} direction - The current direction.
+    * @return {Object} {x: 0, y: 0}
+    */
+    directionToAdjustCoord: function(direction){
+        var directionCoords = {
+            up:     {x: 0, y:-1},
+            right:  {x: 1, y: 0},
+            down:   {x: 0, y: 1},
+            left:   {x:-1, y: 0}
+        };
+        return directionCoords[direction];
+    },
+
+    /**
+    * Gets the next direction in the list
+    * @method getNextDirection
+    * @param {String} direction - The current direction.
+    * @return {String}
+    */
+    getNextDirection: function(currentDirection){
+        var directions = ['up', 'right', 'down', 'left'],
+            currentDirIndex = directions.indexOf(currentDirection),
+            newDirIndex;
+        // if currentDirection is not valid or is the last in the array use the first direction in the array
+        if(currentDirIndex === -1 || currentDirIndex === directions.length - 1){
+            newDirIndex = 0;
+        } else {
+            newDirIndex = currentDirIndex + 1;
+        }
+        return directions[newDirIndex];
+    },
+
+    /**
+    * Called every turn by the entityManger (entity turns are triggered after player actions are complete)
+    * @method update
+    */
+    update: function(){
+        var startDir = this.currentDirection,
+            currentDir = this.currentDirection;
+
+        var i = 0;
+        while(i < 6){
+            i++;
+            var currentDirAdjustCoords = this.directionToAdjustCoord(currentDir),
+                targetX = this.x + currentDirAdjustCoords.x,
+                targetY = this.y + currentDirAdjustCoords.y;
+
+            if(this.canMoveTo(targetX, targetY)){
+                this.currentDirection = currentDir;
+                this.moveTo(targetX, targetY);
+                return;
+            }
+            currentDir = this.getNextDirection(currentDir);
+            // give up if all directions attempted
+            if(currentDir === startDir){
+                return false;
+            }
+        }
+    }
+};
+// create an instance of entity with the type zombie
+var entity = new RL.Entity(game, 'zombie');
+// add it to the game
+game.entityManager.add(1, 1, entity);
+game.start();
+                    </code>
+                </pre>
+                <textarea class="ex-code-input"></textarea>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/prism.js"></script>
+
+    <script src="../assets/js/rot.js"></script>
+
+    <script src="../../src/rl.js"></script>
+    <script src="../../src/util.js"></script>
+    <script src="../../src/array-2d.js"></script>
+    <script src="../../src/entity.js"></script>
+    <script src="../../src/entity-manager.js"></script>
+    <script src="../../src/input.js"></script>
+    <script src="../../src/mouse.js"></script>
+    <script src="../../src/player.js"></script>
+    <script src="../../src/renderer.js"></script>
+    <script src="../../src/tile.js"></script>
+    <script src="../../src/console.js"></script>
+    <script src="../../src/fov.js"></script>
+    <script src="../../src/lighting-rot.js"></script>
+    <script src="../../src/game.js"></script>
+
+    <script src="main.js"></script>
+    <script src="../assets/js/example.js"></script>
+
+</body>
+
+</html>

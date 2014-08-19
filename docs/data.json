@@ -259,7 +259,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/entity.js",
-            "line": 147,
+            "line": 170,
             "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222',\n           pushable: false\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -299,7 +299,7 @@
                 {
                     "name": "game",
                     "description": "- Game instance this obj is attached to.",
-                    "type": "Object"
+                    "type": "Game"
                 }
             ]
         },
@@ -1213,15 +1213,51 @@
         },
         {
             "file": "src/entity.js",
-            "line": 107,
-            "description": "Changes the position of this entity on the map.",
+            "line": 112,
+            "description": "Checks if this entity can move to the specified map tile",
             "itemtype": "method",
-            "name": "moveTo",
+            "name": "canMoveTo",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The tile map x coord to check if this entity can move to.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The tile map y coord to check if this entity can move to.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
             "class": "Entity"
         },
         {
             "file": "src/entity.js",
-            "line": 115,
+            "line": 128,
+            "description": "Changes the position of this entity on the map.",
+            "itemtype": "method",
+            "name": "moveTo",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The tile map x coord to move to.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The tile map y coord to move to.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Entity"
+        },
+        {
+            "file": "src/entity.js",
+            "line": 138,
             "description": "Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.",
             "itemtype": "method",
             "name": "bump",
@@ -1448,25 +1484,32 @@
                     "description": "- Max visible distance (this.maxViewDistance used if not set).",
                     "type": "Number",
                     "optional": true
+                },
+                {
+                    "name": "map",
+                    "description": "- The map to check the fov of.",
+                    "type": "Array2d",
+                    "optional": true,
+                    "optdefault": "this.game.map"
                 }
             ],
             "class": "Fov"
         },
         {
             "file": "src/fov.js",
-            "line": 74,
+            "line": 75,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
             "params": [
                 {
                     "name": "x",
-                    "description": "- The map coordinate position to get Fov visibility from on the x axis.",
+                    "description": "- The x map tile coordinate to get Fov visibility of.",
                     "type": "Number"
                 },
                 {
                     "name": "y",
-                    "description": "- The map coordinate position to get Fov visibility from on the y axis.",
+                    "description": "- The y map tile coordinate to get Fov visibility of.",
                     "type": "Number"
                 }
             ],
@@ -1474,15 +1517,34 @@
         },
         {
             "file": "src/fov.js",
-            "line": 84,
+            "line": 85,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
-            "name": "checkMapTileVisible",
+            "name": "mapTileBlocksLos",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The x map tile coord to check blocks line of sight.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The y map tile coord to check blocks line of sight.",
+                    "type": "Number"
+                },
+                {
+                    "name": "map",
+                    "description": "- The map to check tiles of.",
+                    "type": "Array2d",
+                    "optional": true,
+                    "optdefault": "this.game.map"
+                }
+            ],
             "class": "Fov"
         },
         {
             "file": "src/fov.js",
-            "line": 93,
+            "line": 97,
             "description": "Checks if an unobstructed line can be drawn from coords 0 to 1. Typically used for Line of Sight checks",
             "itemtype": "method",
             "name": "checkLos",
@@ -1512,7 +1574,7 @@
         },
         {
             "file": "src/fov.js",
-            "line": 142,
+            "line": 146,
             "description": "Sets the size of the map to mange fov within.",
             "itemtype": "method",
             "name": "setSize",
@@ -2116,7 +2178,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 123,
+            "line": 124,
             "description": "Hander for mouse move events",
             "itemtype": "method",
             "name": "mouseMove",
