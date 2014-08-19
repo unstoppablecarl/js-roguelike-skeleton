@@ -61,6 +61,8 @@
             
                 <li><a href="../classes/Lighting.html">Lighting</a></li>
             
+                <li><a href="../classes/Map.html">Map</a></li>
+            
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
                 <li><a href="../classes/Player.html">Player</a></li>
@@ -143,7 +145,7 @@
         constructor: Entity,
 
         /**
-        * Game instance this obj is attached to.
+        * Game instance this object is attached to.
         * @property game
         * @type Game
         */
@@ -158,7 +160,7 @@
         type: null,
 
         /**
-        * Name used when referencing describing this entity.
+        * Name used when referencing or describing this entity.
         * Used in console messages.
         * @property name
         * @type String
@@ -166,14 +168,14 @@
         name: null,
 
         /**
-        * The map tile coordinate position of the entity on the x axis.
+        * The x map tile coord of this entity.
         * @property x
         * @type Number
         */
         x: null,
 
         /**
-        * The map tile coordinate position of the entity on the y axis.
+        * The y map tile coord of this entity.
         * @property y
         * @type Number
         */
@@ -219,12 +221,7 @@
         * @method update
         */
         update: function() {
-            var moveX = this.x + 1,
-                moveY = this.y;
-            var targetTile = this.game.map.get(moveX, moveY);
-            if(targetTile.passable){
-                this.moveTo(moveX, moveY);
-            }
+
         },
 
         /**
@@ -239,8 +236,7 @@
             if(entity){
                 return false;
             }
-            var tile = this.game.map.get(x, y);
-            return tile &amp;&amp; tile.passable;
+            return this.game.map.canMoveThrough(x, y);
         },
 
         /**
@@ -280,7 +276,6 @@
                         entity.moveTo(prevX, prevY);
                     }
                 }
-
             }
         }
     };

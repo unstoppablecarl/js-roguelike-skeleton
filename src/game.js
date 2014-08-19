@@ -9,7 +9,7 @@
     var Game = function Game() {
 
         // un-populated instance of Array2d
-        this.map = new RL.Array2d();
+        this.map = new RL.Map();
         this.entityManager = new RL.EntityManager(this);
         this.renderer = new RL.Renderer(this);
         this.console = new RL.Console(this);

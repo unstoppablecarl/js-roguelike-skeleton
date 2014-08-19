@@ -87,6 +87,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/map.js": {
+            "name": "src/map.js",
+            "modules": {},
+            "classes": {
+                "Map": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/mouse.js": {
             "name": "src/mouse.js",
             "modules": {},
@@ -259,7 +268,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/entity.js",
-            "line": 170,
+            "line": 163,
             "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222',\n           pushable: false\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -403,6 +412,27 @@
                             "optional": true
                         }
                     ]
+                }
+            ]
+        },
+        "Map": {
+            "name": "Map",
+            "shortname": "Map",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/map.js",
+            "line": 4,
+            "description": "Manages map Tiles. Depends on Array2d (array-2d.js).",
+            "extends": "Array2d",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "game",
+                    "description": "- Game instance this obj is attached to.",
+                    "type": "Game"
                 }
             ]
         },
@@ -1116,7 +1146,7 @@
         {
             "file": "src/entity.js",
             "line": 27,
-            "description": "Game instance this obj is attached to.",
+            "description": "Game instance this object is attached to.",
             "itemtype": "property",
             "name": "game",
             "type": "Game",
@@ -1134,7 +1164,7 @@
         {
             "file": "src/entity.js",
             "line": 42,
-            "description": "Name used when referencing describing this entity.\nUsed in console messages.",
+            "description": "Name used when referencing or describing this entity.\nUsed in console messages.",
             "itemtype": "property",
             "name": "name",
             "type": "String",
@@ -1143,7 +1173,7 @@
         {
             "file": "src/entity.js",
             "line": 50,
-            "description": "The map tile coordinate position of the entity on the x axis.",
+            "description": "The x map tile coord of this entity.",
             "itemtype": "property",
             "name": "x",
             "type": "Number",
@@ -1152,7 +1182,7 @@
         {
             "file": "src/entity.js",
             "line": 57,
-            "description": "The map tile coordinate position of the entity on the y axis.",
+            "description": "The y map tile coord of this entity.",
             "itemtype": "property",
             "name": "y",
             "type": "Number",
@@ -1213,7 +1243,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 112,
+            "line": 107,
             "description": "Checks if this entity can move to the specified map tile",
             "itemtype": "method",
             "name": "canMoveTo",
@@ -1237,7 +1267,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 128,
+            "line": 122,
             "description": "Changes the position of this entity on the map.",
             "itemtype": "method",
             "name": "moveTo",
@@ -1257,7 +1287,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 138,
+            "line": 132,
             "description": "Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.",
             "itemtype": "method",
             "name": "bump",
@@ -2064,6 +2094,63 @@
                 }
             ],
             "class": "Lighting"
+        },
+        {
+            "file": "src/map.js",
+            "line": 18,
+            "description": "Game instance this obj is attached to.",
+            "itemtype": "property",
+            "name": "game",
+            "type": "Game",
+            "class": "Map"
+        },
+        {
+            "file": "src/map.js",
+            "line": 25,
+            "description": "Checks if a map tile can be seen through.",
+            "itemtype": "method",
+            "name": "canSeeThroughTile",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The x map tile coord to check.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The y map tile coord to check.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
+            "class": "Map"
+        },
+        {
+            "file": "src/map.js",
+            "line": 37,
+            "description": "Checks if a map tile can be moved through.",
+            "itemtype": "method",
+            "name": "canMoveThroughTile",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The x map tile coord to check.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The y map tile coord to check.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
+            "class": "Map"
         },
         {
             "file": "src/mouse.js",

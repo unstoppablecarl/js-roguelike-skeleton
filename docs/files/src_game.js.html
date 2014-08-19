@@ -61,6 +61,8 @@
             
                 <li><a href="../classes/Lighting.html">Lighting</a></li>
             
+                <li><a href="../classes/Map.html">Map</a></li>
+            
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
                 <li><a href="../classes/Player.html">Player</a></li>
@@ -127,7 +129,7 @@
     var Game = function Game() {
 
         // un-populated instance of Array2d
-        this.map = new RL.Array2d();
+        this.map = new RL.Map();
         this.entityManager = new RL.EntityManager(this);
         this.renderer = new RL.Renderer(this);
         this.console = new RL.Console(this);

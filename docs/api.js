@@ -11,6 +11,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "Game",
         "Input",
         "Lighting",
+        "Map",
         "Mouse",
         "Player",
         "Renderer",

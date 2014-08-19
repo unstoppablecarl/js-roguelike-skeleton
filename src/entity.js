@@ -25,7 +25,7 @@
         constructor: Entity,
 
         /**
-        * Game instance this obj is attached to.
+        * Game instance this object is attached to.
         * @property game
         * @type Game
         */
@@ -40,7 +40,7 @@
         type: null,
 
         /**
-        * Name used when referencing describing this entity.
+        * Name used when referencing or describing this entity.
         * Used in console messages.
         * @property name
         * @type String
@@ -48,14 +48,14 @@
         name: null,
 
         /**
-        * The map tile coordinate position of the entity on the x axis.
+        * The x map tile coord of this entity.
         * @property x
         * @type Number
         */
         x: null,
 
         /**
-        * The map tile coordinate position of the entity on the y axis.
+        * The y map tile coord of this entity.
         * @property y
         * @type Number
         */
@@ -116,8 +116,7 @@
             if(entity){
                 return false;
             }
-            var tile = this.game.map.get(x, y);
-            return tile && tile.passable;
+            return this.game.map.canMoveThrough(x, y);
         },
 
         /**
@@ -157,7 +156,6 @@
                         entity.moveTo(prevX, prevY);
                     }
                 }
-
             }
         }
     };
