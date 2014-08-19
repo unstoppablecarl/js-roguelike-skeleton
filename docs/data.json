@@ -634,19 +634,43 @@
             "description": "Resets the 2d array, clearing all data and initializing with this.width and this.height.",
             "itemtype": "method",
             "name": "reset",
+            "params": [
+                {
+                    "name": "width",
+                    "description": "- The new width.",
+                    "type": "Number"
+                },
+                {
+                    "name": "height",
+                    "description": "- The new height.",
+                    "type": "Number"
+                }
+            ],
             "class": "Array2d"
         },
         {
             "file": "src/array-2d.js",
-            "line": 52,
+            "line": 54,
             "description": "Updates the size of this Array2d without destroying data.",
             "itemtype": "method",
             "name": "setSize",
+            "params": [
+                {
+                    "name": "width",
+                    "description": "- The new width.",
+                    "type": "Number"
+                },
+                {
+                    "name": "height",
+                    "description": "- The new height.",
+                    "type": "Number"
+                }
+            ],
             "class": "Array2d"
         },
         {
             "file": "src/array-2d.js",
-            "line": 66,
+            "line": 70,
             "description": "Sets a value at given coords.",
             "itemtype": "method",
             "name": "set",
@@ -671,7 +695,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 80,
+            "line": 84,
             "description": "Gets a value from given coords.",
             "itemtype": "method",
             "name": "get",
@@ -695,7 +719,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 94,
+            "line": 98,
             "description": "Removes a value from given coords.",
             "itemtype": "method",
             "name": "remove",
@@ -715,7 +739,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 104,
+            "line": 108,
             "description": "Retrieves an array of values of adjacent coords.",
             "itemtype": "method",
             "name": "getAdjacent",
@@ -749,7 +773,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 178,
+            "line": 182,
             "description": "Retrieves an array of values of coords within a given radius.",
             "itemtype": "method",
             "name": "getWithinSquareRadius",
@@ -799,7 +823,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 236,
+            "line": 240,
             "description": "Retrieves an array of values of coords along a line starting at point 0 and crossing point 1 until it hits the edge of the 2d array or a coord value returning true when passed to the condtion function.",
             "itemtype": "method",
             "name": "getLineThrough",
@@ -847,7 +871,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 291,
+            "line": 295,
             "description": "Retrieves an array of the nearest coord values meeting checked requirements. If multiple coord values were matched at the same nearest distance, the returned array will contain multiple matched coord values.\nUsed for projecting path of ranged attacks, pushed entities, ect.",
             "itemtype": "method",
             "name": "findNearest",
@@ -889,7 +913,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 384,
+            "line": 388,
             "description": "Retrieves an array of the filtered values.",
             "itemtype": "method",
             "name": "filter",
@@ -915,7 +939,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 413,
+            "line": 417,
             "description": "Creates a copy of this Array2d. Shallow copies values.",
             "itemtype": "method",
             "name": "copy",
@@ -927,7 +951,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 431,
+            "line": 435,
             "description": "Loops over each coord value.",
             "itemtype": "method",
             "name": "each",

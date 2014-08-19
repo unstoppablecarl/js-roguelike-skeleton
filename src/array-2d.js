@@ -41,6 +41,8 @@
         /**
         * Resets the 2d array, clearing all data and initializing with this.width and this.height.
         * @method reset
+        * @param {Number} width - The new width.
+        * @param {Number} height - The new height.
         */
         reset: function() {
             this.data = [];
@@ -52,6 +54,8 @@
         /**
         * Updates the size of this Array2d without destroying data.
         * @method setSize
+        * @param {Number} width - The new width.
+        * @param {Number} height - The new height.
         */
         setSize: function(width, height) {
             this.width = width;
