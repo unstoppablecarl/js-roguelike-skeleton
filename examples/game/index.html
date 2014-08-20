@@ -36,7 +36,7 @@ var mapData = [
     "#.........#.........#",
     "#.#..#..#.#.........#",
     "#.........#...####+##",
-    "#..+...+..#...#.....#",
+    "#.........#...#.....#",
     "#.........#...#.....#",
     "#.........#...#.....#",
     "#####################"
@@ -53,19 +53,19 @@ var entityCharToType = {
     'S': 'statue'
 };
 
-game.map.loadTilesFromArrayString(mapData, mapCharToType, 'floor');
-game.entityManager.loadEntitiesFromArrayString(mapData, entityCharToType);
-
-// add some lights
-game.map.set(3,14, new RL.Tile(game, 'light', 3, 14));
-game.map.set(7,14, new RL.Tile(game, 'light', 7, 14));
-
 var keyBindings = {
     up: ['UP_ARROW', 'K', 'W'],
     down: ['DOWN_ARROW', 'J', 'S'],
     left: ['LEFT_ARROW', 'H', 'A'],
     right: ['RIGHT_ARROW', 'L', 'D'],
 };
+
+game.map.loadTilesFromArrayString(mapData, mapCharToType, 'floor');
+game.entityManager.loadEntitiesFromArrayString(mapData, entityCharToType);
+
+// add some lights
+game.lighting.set(3, 7, 255, 0, 0);
+game.lighting.set(7, 7, 0, 0, 255);
 
 // generate and assign a map object (repaces empty default)
 game.setMapSize(game.map.width, game.map.height);
@@ -75,10 +75,10 @@ game.input.addBindings(keyBindings);
 
 // create entities and add to game.entityManager
 var entZombie = new RL.Entity(game, 'zombie');
-game.entityManager.add(3, 7, entZombie);
+game.entityManager.add(2, 8, entZombie);
 
 // or just add by entity type
-game.entityManager.add(5, 7, 'zombie');
+game.entityManager.add(5, 9, 'zombie');
 
 // set player starting position
 game.player.x = 3;
