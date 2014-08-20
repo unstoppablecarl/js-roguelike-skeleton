@@ -13,7 +13,7 @@
         this.entityManager = new RL.EntityManager(this);
         this.renderer = new RL.Renderer(this);
         this.console = new RL.Console(this);
-        this.fov = new RL.Fov(this);
+        this.fov = new RL.FovROT(this);
         this.lighting = new RL.LightingROT(this);
 
         // player purposefully not added to entity manager (matter of preference)

@@ -66,11 +66,11 @@
 
         /**
         * Converts a string direction to an rot
-        * @method validateDirection
+        * @method directionStringToArray
         * @param {String} direction - Direction of fov (used as default) (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'].
         * @return {Array} [x, y]
         */
-        directionStringToRot: function(direction){
+        directionStringToArray: function(direction){
             var validDirections = ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'];
             if(validDirections.indexOf(direction) === -1){
                 throw new Error('direction must be one of: ' + validDirections.join(','));
@@ -96,9 +96,8 @@
         * @param {Number} [fieldRange = 360] - Field Range of view 90, 180, or 360.
         * @param {String|ROT.DIRS[8].x} [direction = 'up'] - Direction of fov (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'];.
         * @param {Number} [maxViewDistance] - Max visible distance in tiles. (this.maxViewDistance used if not set)
-        * @param {Function} [visibleCallback] - Function called on each visible tile (function(x, y, range, visibility){}).
         */
-        update: function(x, y, fieldRange, direction, maxViewDistance, visibleCallback){
+        update: function(x, y, fieldRange, direction, maxViewDistance){
             if(fieldRange === void 0){
                 fieldRange = this.fieldRange;
             }
@@ -122,8 +121,11 @@
             var _this = this;
 
             var checkVisibleFunc = function(x, y, range, visibility){
-                if(visibleCallback){
-                    visibleCallback(x, y, range, visibility);
+                if(visibility){
+                    var tile = _this.game.map.get(x, y);
+                    if(tile){
+                        tile.explored = true;
+                    }
                 }
                 _this.fovMap.set(x, y, visibility);
             };
