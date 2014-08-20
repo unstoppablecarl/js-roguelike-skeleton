@@ -17,11 +17,7 @@
         this.onTileHover = onTileHover;
 
         var el = this.game.renderer.canvas;
-
-        el.addEventListener('mousemove', this);
-        el.addEventListener('mouseenter', this);
-        el.addEventListener('mouseleave', this);
-        el.addEventListener('click', this);
+        this.startListening(el);
     };
 
     Mouse.prototype = {
@@ -61,6 +57,14 @@
         * @type Bool
         */
         mapViewMouseOver: false,
+
+        /**
+        * The dom element being rendered to and listened to for mouse events.
+        * @property _boundElement
+        * @protected
+        * @type HTMLElement
+        */
+        _boundElement: null,
 
         /**
         * Hander for mouse events
@@ -132,6 +136,39 @@
                 this.onTileHover(coords);
             }
         },
+
+        /**
+        * Binds event listener for mouse events.
+        * @method startListening
+        * @param {HTMLElement} element - The dom element being rendered to.
+        */
+        startListening: function(element){
+            if(this._boundElement){
+                this.stopListening();
+            }
+
+            element.addEventListener('mousemove', this);
+            element.addEventListener('mouseenter', this);
+            element.addEventListener('mouseleave', this);
+            element.addEventListener('click', this);
+
+            this._boundElement = element;
+        },
+
+        /**
+        * Unbinds event listener for mouse events.
+        * @method stopListening
+        */
+        stopListening: function(){
+            if(!this._boundElement){
+                return false;
+            }
+            var el = this._boundElement;
+            el.removeEventListener('mousemove', this);
+            el.removeEventListener('mouseenter', this);
+            el.removeEventListener('mouseleave', this);
+            el.removeEventListener('click', this);
+        }
     };
 
     root.RL.Mouse = Mouse;

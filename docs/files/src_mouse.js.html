@@ -135,11 +135,7 @@
         this.onTileHover = onTileHover;
 
         var el = this.game.renderer.canvas;
-
-        el.addEventListener(&#x27;mousemove&#x27;, this);
-        el.addEventListener(&#x27;mouseenter&#x27;, this);
-        el.addEventListener(&#x27;mouseleave&#x27;, this);
-        el.addEventListener(&#x27;click&#x27;, this);
+        this.startListening(el);
     };
 
     Mouse.prototype = {
@@ -179,6 +175,14 @@
         * @type Bool
         */
         mapViewMouseOver: false,
+
+        /**
+        * The dom element being rendered to and listened to for mouse events.
+        * @property _boundElement
+        * @protected
+        * @type HTMLElement
+        */
+        _boundElement: null,
 
         /**
         * Hander for mouse events
@@ -250,6 +254,39 @@
                 this.onTileHover(coords);
             }
         },
+
+        /**
+        * Binds event listener for mouse events.
+        * @method startListening
+        * @param {HTMLElement} element - The dom element being rendered to.
+        */
+        startListening: function(element){
+            if(this._boundElement){
+                this.stopListening();
+            }
+
+            element.addEventListener(&#x27;mousemove&#x27;, this);
+            element.addEventListener(&#x27;mouseenter&#x27;, this);
+            element.addEventListener(&#x27;mouseleave&#x27;, this);
+            element.addEventListener(&#x27;click&#x27;, this);
+
+            this._boundElement = element;
+        },
+
+        /**
+        * Unbinds event listener for mouse events.
+        * @method stopListening
+        */
+        stopListening: function(){
+            if(!this._boundElement){
+                return false;
+            }
+            var el = this._boundElement;
+            el.removeEventListener(&#x27;mousemove&#x27;, this);
+            el.removeEventListener(&#x27;mouseenter&#x27;, this);
+            el.removeEventListener(&#x27;mouseleave&#x27;, this);
+            el.removeEventListener(&#x27;click&#x27;, this);
+        }
     };
 
     root.RL.Mouse = Mouse;

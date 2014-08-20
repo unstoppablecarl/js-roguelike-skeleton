@@ -2110,7 +2110,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 30,
+            "line": 26,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -2119,7 +2119,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 37,
+            "line": 33,
             "description": "A function to handle tile mouse click events",
             "itemtype": "method",
             "name": "onTileClick",
@@ -2134,7 +2134,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 44,
+            "line": 40,
             "description": "Current mouse x axis coord relative to upper left corner of mapview element.",
             "itemtype": "property",
             "name": "mapViewMouseX",
@@ -2143,7 +2143,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 51,
+            "line": 47,
             "description": "Current mouse y axis coord relative to upper left corner of mapview element.",
             "itemtype": "property",
             "name": "mapViewMouseY",
@@ -2152,7 +2152,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 58,
+            "line": 54,
             "description": "True if mouse is currently over mapview.",
             "itemtype": "property",
             "name": "mapViewMouseOver",
@@ -2161,7 +2161,18 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 65,
+            "line": 61,
+            "description": "The dom element being rendered to and listened to for mouse events.",
+            "itemtype": "property",
+            "name": "_boundElement",
+            "access": "protected",
+            "tagname": "",
+            "type": "HTMLElement",
+            "class": "Mouse"
+        },
+        {
+            "file": "src/mouse.js",
+            "line": 69,
             "description": "Hander for mouse events",
             "itemtype": "method",
             "name": "handleEvent",
@@ -2176,7 +2187,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 86,
+            "line": 90,
             "description": "Hander for mouse click events",
             "itemtype": "method",
             "name": "mouseClick",
@@ -2191,7 +2202,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 103,
+            "line": 107,
             "description": "Hander for mouse enter events",
             "itemtype": "method",
             "name": "mouseEnter",
@@ -2206,7 +2217,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 112,
+            "line": 116,
             "description": "Hander for mouse leave events",
             "itemtype": "method",
             "name": "mouseLeave",
@@ -2221,7 +2232,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 124,
+            "line": 128,
             "description": "Hander for mouse move events",
             "itemtype": "method",
             "name": "mouseMove",
@@ -2232,6 +2243,29 @@
                     "type": "Event"
                 }
             ],
+            "class": "Mouse"
+        },
+        {
+            "file": "src/mouse.js",
+            "line": 140,
+            "description": "Binds event listener for mouse events.",
+            "itemtype": "method",
+            "name": "startListening",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "- The dom element being rendered to.",
+                    "type": "HTMLElement"
+                }
+            ],
+            "class": "Mouse"
+        },
+        {
+            "file": "src/mouse.js",
+            "line": 158,
+            "description": "Unbinds event listener for mouse events.",
+            "itemtype": "method",
+            "name": "stopListening",
             "class": "Mouse"
         },
         {
