@@ -144,6 +144,10 @@
             this._lighting.setLight(x, y, [r, g, b]);
         },
 
+        remove: function(x, y){
+            this._lighting.setLight(x, y);
+        },
+
         /**
         * Returns the reflectivity value of a tile
         * @method getTileReflectivity
