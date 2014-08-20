@@ -19,6 +19,9 @@
             this[key] = typeData[key];
         }
 
+        if(this.initialize){
+            this.initialize();
+        }
     };
 
     Entity.prototype = {
@@ -38,6 +41,14 @@
         * @type String
         */
         type: null,
+
+        /**
+        * Called when the entity is first created. Intended to be assigned by Entity.Types.
+        * @method initialize
+        */
+        initialize: function(){
+
+        },
 
         /**
         * Name used when referencing or describing this entity.
@@ -116,7 +127,7 @@
             if(entity){
                 return false;
             }
-            return this.game.map.canMoveThrough(x, y);
+            return this.game.map.canMoveThroughTile(x, y);
         },
 
         /**
