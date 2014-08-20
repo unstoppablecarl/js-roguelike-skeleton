@@ -11,50 +11,30 @@
 </head>
 
 <body>
-    <div class="page">
-        <div class="section">
+    <div class="container">
+        <a href="../../docs/classes/Entity.html" class="btn btn-primary pull-right">Entity API Docs</a>
+        <h1 class="page-title">Roguelike JS Skeleton - <a href="../../index.html#examples">Examples</a> - Entity</h1>
 
-            <h1>Roguelike JS Skeleton - <a href="../../index.html#examples">Examples</a> - Entity</h1>
-            <h2><a href="../../docs/classes/Entity.html">Entity API Docs</a></h2>
-            <div class="ex-col-left">
-                <h2>Contents</h2>
-                <ol>
-                    <li><a href="#basic-movement-behavior">Basic Movement Behavior</a></li>
-
-                </ol>
+        <div class="section row">
+            <div class="col-md-4 panel panel-default">
+                <div class="panel-heading">
+                    Contents
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li><a href="#basic-movement-behavior">Basic Movement Behavior</a></li>
+                    </ol>
+                </div>
             </div>
-            <div class="ex-col-right">
-                <p><strong>Example setup code</strong> (Run before all examples) <a href="#" class="btn btn-toggle-setup">Show</a></p>
+            <div class="col-md-8 panel panel-default">
+                <div class="panel-heading">
+                    <strong>Setup Code</strong> (Run before all examples)
+                    <a href="#" class="btn btn-primary btn-toggle-setup pull-right">Show</a>
+                </div>
                 <pre class="setup-code">
                     <code class="language-javascript">
-var array2dFromMapData = function(game, mapData){
-    var width = mapData[0].length,
-        height = mapData.length;
-    var array2d = new RL.Array2d(width, height);
-    // loop over each coord in the Array2d (val will be undefined)
-    array2d.each(function(val, x, y){
-        var char = mapData[y][x];
-        var tileData = {
-            char: char,
-            bgColor: '#222',
-            color: '#fff'
-        },
-        tileType;
-        if(char === '.'){
-            tileType = 'floor';
-        }
-        else if(char === '#'){
-            tileType = 'wall';
-        }
-        var tile = new RL.Tile(game, tileType, x, y);
-
-        // set value at coord
-        array2d.set(x, y, tile);
-    });
-    return array2d;
-};
-
 var initBasicGame = function(mapContainerEl, mapData){
+
     var keyBindings = {
         up: ['UP_ARROW', 'K', 'W'],
         down: ['DOWN_ARROW', 'J', 'S'],
@@ -63,10 +43,16 @@ var initBasicGame = function(mapContainerEl, mapData){
         wait: ['SPACE']
     };
 
+    var mapCharToType = {
+        '#': 'wall',
+        '.': 'floor'
+    };
+
     // create the game instance
     var game = new RL.Game();
     // generate and assign a map object (repaces empty default)
-    game.map = array2dFromMapData(game, mapData);
+
+    game.map.loadTilesFromArrayString(mapData, mapCharToType, 'floor');
 
     game.setMapSize(game.map.width, game.map.height);
 
@@ -79,6 +65,7 @@ var initBasicGame = function(mapContainerEl, mapData){
 
     // append elements created by the game to the DOM
     mapContainerEl.appendChild(game.renderer.canvas);
+    window.game = game;
     return game;
 };
                     </code>
@@ -86,14 +73,31 @@ var initBasicGame = function(mapContainerEl, mapData){
             </div>
         </div>
 
-        <div id="basic-movement-behavior" class="example-container section">
-            <h2>Basic Movement Behavior</h2>
-            <p>Move the player around and watch how the zombie behaves (hit SPACE to skip the players turn).</p>
-            <div class="ex-col-left">
-                <div id="ex-1-container" class="map-container"></div>
+        <div id="basic-movement-behavior" class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Basic Movement Behavior (and an attached light just for fun)
+                </div>
+                <div class="panel-body">
+                    <p>Move the player around and watch how the zombie behaves (hit SPACE to skip the players turn).</p>
+                </div>
             </div>
-            <div class="ex-col-right">
-                <a href="#" class="btn btn-block ex-btn-run">Run</a>
+            <div class="col-md-4 panel panel-default">
+                <div class="panel-heading">
+                    Game
+                </div>
+
+                <div id="ex-1-container" class="map-container game-container"></div>
+
+            </div>
+
+            <div class="col-md-8 panel panel-default ex-code-container">
+                <div class="panel-heading ex-controls">
+                    Example Code
+                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
+                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
+                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                </div>
                 <pre class="ex-code">
                     <code class="language-javascript">
 var mapData = [
@@ -116,6 +120,13 @@ RL.Entity.Types.zombie = {
     bgColor: '#222',
     pushable: false,
     currentDirection: 'right',
+    light_r: 50,
+    light_g: 50,
+    light_b: 255,
+
+    initialzie: function(){
+
+    },
 
     /**
     * Gets the adjustment coord from a direction string.
@@ -178,16 +189,33 @@ RL.Entity.Types.zombie = {
                 return false;
             }
         }
-    }
+    },
+
+    /**
+    * Changes the position of this entity on the map.
+    * @method moveTo
+    * @param {Number} x - The tile map x coord to move to.
+    * @param {Number} y - The tile map y coord to move to.
+    */
+    moveTo: function(x, y) {
+        // remove light from current position
+        if(this.game.lighting.get(this.x, this.y)){
+            this.game.lighting.remove(this.x, this.y);
+        }
+        // add to new position
+        this.game.lighting.set(x, y, this.light_r, this.light_g, this.light_b);
+        this.game.entityManager.move(x, y, this);
+    },
 };
 // create an instance of entity with the type zombie
 var entity = new RL.Entity(game, 'zombie');
 // add it to the game
 game.entityManager.add(1, 1, entity);
 game.start();
-                    </code>
-                </pre>
-                <textarea class="ex-code-input"></textarea>
+                        </code>
+                    </pre>
+                    <textarea class="ex-code-input"></textarea>
+                </div>
             </div>
         </div>
     </div>
@@ -201,6 +229,7 @@ game.start();
     <script src="../../src/rl.js"></script>
     <script src="../../src/util.js"></script>
     <script src="../../src/array-2d.js"></script>
+    <script src="../../src/map.js"></script>
     <script src="../../src/entity.js"></script>
     <script src="../../src/entity-manager.js"></script>
     <script src="../../src/input.js"></script>
@@ -209,7 +238,7 @@ game.start();
     <script src="../../src/renderer.js"></script>
     <script src="../../src/tile.js"></script>
     <script src="../../src/console.js"></script>
-    <script src="../../src/fov.js"></script>
+    <script src="../../src/fov-rot.js"></script>
     <script src="../../src/lighting-rot.js"></script>
     <script src="../../src/game.js"></script>
 

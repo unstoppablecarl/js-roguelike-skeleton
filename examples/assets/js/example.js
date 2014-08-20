@@ -1,48 +1,63 @@
-var $exContainer = $('.example-container');
+var $exCode = $('.ex-code-container');
 
-$exContainer.each(function(){
-    var $this = $(this);
-
-    var $exCodeContainer = $this.find('.ex-code'),
-        $exCode = $this.find('.ex-code code'),
-        $exInput = $this.find('.ex-code-input'),
+$exCode.each(function(){
+    var $this = $(this),
+        $pre = $this.find('.ex-code'),
+        $code = $pre.children('code:first-child'),
+        $input = $this.find('.ex-code-input'),
         $btnRun = $this.find('.ex-btn-run'),
-        code = $exCode.text();
+        $btnEdit = $this.find('.ex-btn-edit'),
+        $btnView = $this.find('.ex-btn-view'),
+        code = $code.text();
 
-    $exInput.val(code);
-    $exInput.hide();
+        $input.val(code);
+        $input.hide();
+        $btnView.hide();
 
-    var inputToCode = function(){
-        $exInput.hide();
-        $exCode.text($exInput.val());
-        $exCodeContainer.show();
-        Prism.highlightElement($exCode[0]);
-    };
+        var inputToCode = function(){
+            $input.hide();
+            $code.text($input.val());
+            $pre.show();
+            $btnEdit.show();
+            $btnView.hide();
+            Prism.highlightElement($code[0]);
+        };
 
-    var codeToInput = function(){
-        $exInput.show();
-        $exCodeContainer.hide();
-    };
+        var codeToInput = function(){
+            $input.show();
+            $pre.hide();
+            $btnEdit.hide();
+            $btnView.show();
+        };
 
-    var run = function(){
-        eval($exInput.val());
-    };
+        var run = function(){
+            eval($input.val());
+        };
 
-    $exCodeContainer.click(function(){
-       codeToInput();
-    });
+        $pre.click(function(){
+           codeToInput();
+        });
 
-    $exInput.blur(function(){
-        inputToCode();
-    });
+        $input.blur(function(){
+            inputToCode();
+        });
 
-    $btnRun.click(function(e){
-        e.preventDefault();
-        inputToCode();
+        $btnEdit.click(function(e){
+            e.preventDefault();
+            codeToInput();
+        });
+
+        $btnView.click(function(e){
+            e.preventDefault();
+            inputToCode();
+        });
+
+        $btnRun.click(function(e){
+            e.preventDefault();
+            run();
+        });
+
         run();
-    });
-
-    run();
 });
 
 var $btnToggleSetup = $('.btn-toggle-setup');

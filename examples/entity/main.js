@@ -1,35 +1,4 @@
 
-
-var array2dFromMapData = function(game, mapData){
-    var width = mapData[0].length,
-        height = mapData.length;
-    var array2d = new RL.Array2d(width, height);
-    // loop over each coord in the Array2d (val will be undefined)
-    array2d.each(function(val, x, y){
-        var char = mapData[y][x];
-        var tileData = {
-            char: char,
-            bgColor: '#222',
-            color: '#fff'
-        },
-        tileType;
-        if(char === '.'){
-            tileType = 'floor';
-        }
-        else if(char === '#'){
-            tileType = 'wall';
-        }
-        var tile = new RL.Tile(game, tileType, x, y);
-
-        // set value at coord
-        array2d.set(x, y, tile);
-    });
-
-    return array2d;
-};
-
-
-
 var initBasicGame = function(mapContainerEl, mapData){
 
     var keyBindings = {
@@ -40,10 +9,16 @@ var initBasicGame = function(mapContainerEl, mapData){
         wait: ['SPACE']
     };
 
+    var mapCharToType = {
+        '#': 'wall',
+        '.': 'floor'
+    };
+
     // create the game instance
     var game = new RL.Game();
     // generate and assign a map object (repaces empty default)
-    game.map = array2dFromMapData(game, mapData);
+
+    game.map.loadTilesFromArrayString(mapData, mapCharToType, 'floor');
 
     game.setMapSize(game.map.width, game.map.height);
 
@@ -56,7 +31,7 @@ var initBasicGame = function(mapContainerEl, mapData){
 
     // append elements created by the game to the DOM
     mapContainerEl.appendChild(game.renderer.canvas);
-
+    window.game = game;
     return game;
 };
 

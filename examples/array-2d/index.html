@@ -11,25 +11,32 @@
 </head>
 
 <body>
-    <div class="page">
-        <div class="section">
+    <div class="container">
+        <a href="../../docs/classes/Entity.html" class="btn btn-primary pull-right">Array2d API Docs</a>
+        <h1 class="page-title">Roguelike JS Skeleton - <a href="../../index.html#examples">Examples</a> - Array2d</h1>
 
-            <h1>Roguelike JS Skeleton - <a href="../../index.html#examples">Examples</a> - Array2d</h1>
-            <h2><a href="../../docs/classes/Array2d.html">Array2d API Docs</a></h2>
-            <div class="ex-col-left">
-                <h2>Contents</h2>
-                <ol>
-                    <li><a href="#basic-map">Basic Map</a></li>
-                    <li><a href="#manipulate-coord-values">Manipulate coord values</a></li>
-                    <li><a href="#get-adjacent">Get Adjacent</a></li>
-                    <li><a href="#find-nearest">Find Nearest</a></li>
-                    <li><a href="#get-within-square-radius">Get within square radius</a></li>
-                    <li><a href="#filter">Filter</a></li>
-                    <li><a href="#get-line-through">Get line through</a></li>
-                </ol>
+        <div class="section row">
+            <div class="col-md-4 panel panel-default">
+                <div class="panel-heading">
+                    Contents
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li><a href="#creating">Creating</a></li>
+                        <li><a href="#manipulate-coord-values">Manipulate coord values</a></li>
+                        <li><a href="#get-adjacent">Get Adjacent</a></li>
+                        <li><a href="#find-nearest">Find Nearest</a></li>
+                        <li><a href="#get-within-square-radius">Get within square radius</a></li>
+                        <li><a href="#filter">Filter</a></li>
+                        <li><a href="#get-line-through">Get line through</a></li>
+                    </ol>
+                </div>
             </div>
-            <div class="ex-col-right">
-                <p><strong>Example setup code</strong> (Run before all examples) <a href="#" class="btn btn-toggle-setup">Show</a></p>
+            <div class="col-md-8 panel panel-default">
+                <div class="panel-heading">
+                    <strong>Setup Code</strong> (Run before all examples)
+                    <a href="#" class="btn btn-primary btn-toggle-setup pull-right">Show</a>
+                </div>
                 <pre class="setup-code">
                     <code class="language-javascript">
 var array2dFromMapData = function(mapData){
@@ -62,6 +69,7 @@ var array2dFromMapData = function(mapData){
         // set value at coord
         array2d.set(x, y, tileData);
     });
+
     return array2d;
 };
 
@@ -78,15 +86,27 @@ var rendererFromArray2d = function(array2d){
             </div>
         </div>
 
-
-
-        <div id="basic-map" class="example-container section">
-            <h2>Basic Map</h2>
-            <div class="ex-col-left">
-                <div id="ex-1-container" class="map-container"></div>
+        <div id="creating" class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Creating
+                </div>
+                <br>
             </div>
-            <div class="ex-col-right">
-                <a href="#" class="btn btn-block ex-btn-run">Run</a>
+            <div class="col-md-4 panel panel-default">
+                <div class="panel-heading">
+                    Map View
+                </div>
+                <div id="ex-1-container" class="game-container"></div>
+            </div>
+
+            <div class="col-md-8 panel panel-default ex-code-container">
+                <div class="panel-heading ex-controls">
+                    Example Code
+                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
+                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
+                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                </div>
                 <pre class="ex-code">
                     <code class="language-javascript">
 var mapData = [
@@ -110,13 +130,27 @@ renderer.draw(array2d);
             </div>
         </div>
 
-        <div id="manipulate-coord-values" class="example-container section">
-            <h2>Manipulate coord values</h2>
-            <div class="ex-col-left">
-                <div id="ex-2-container" class="map-container"></div>
+        <div id="manipulate-coord-values" class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Manipulate Coord Values
+                </div>
+                <br>
             </div>
-            <div class="ex-col-right">
-                <a href="#" class="btn btn-block ex-btn-run">Run</a>
+            <div class="col-md-4 panel panel-default">
+                <div class="panel-heading">
+                    Map View
+                </div>
+                <div id="ex-2-container" class="game-container"></div>
+            </div>
+
+            <div class="col-md-8 panel panel-default ex-code-container">
+                <div class="panel-heading ex-controls">
+                    Example Code
+                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
+                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
+                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                </div>
                 <pre class="ex-code">
                     <code class="language-javascript">
 var mapData = [
@@ -153,13 +187,28 @@ renderer.draw(array2d);
             </div>
         </div>
 
-        <div id="get-adjacent" class="example-container section">
-            <h2>Get Adjacent</h2>
-            <div class="ex-col-left">
-                <div id="ex-3-container" class="map-container"></div>
+
+        <div id="get-adjacent" class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Get Adjacent
+                </div>
+                <br>
             </div>
-            <div class="ex-col-right">
-            <a href="#" class="btn btn-block ex-btn-run">Run</a>
+            <div class="col-md-4 panel panel-default">
+                <div class="panel-heading">
+                    Map View
+                </div>
+                <div id="ex-3-container" class="game-container"></div>
+            </div>
+
+            <div class="col-md-8 panel panel-default ex-code-container">
+                <div class="panel-heading ex-controls">
+                    Example Code
+                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
+                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
+                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                </div>
                 <pre class="ex-code">
                     <code class="language-javascript">
 var mapData = [
@@ -190,13 +239,27 @@ renderer.draw(array2d);
             </div>
         </div>
 
-        <div id="find-nearest" class="example-container section">
-            <h2>Find Nearest</h2>
-            <div class="ex-col-left">
-                <div id="ex-4-container" class="map-container"></div>
+        <div id="find-nearest" class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Find Nearest
+                </div>
+                <br>
             </div>
-            <div class="ex-col-right">
-            <a href="#" class="btn btn-block ex-btn-run">Run</a>
+            <div class="col-md-4 panel panel-default">
+                <div class="panel-heading">
+                    Find Nearest
+                </div>
+                <div id="ex-4-container" class="game-container"></div>
+            </div>
+
+            <div class="col-md-8 panel panel-default ex-code-container">
+                <div class="panel-heading ex-controls">
+                    Example Code
+                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
+                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
+                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                </div>
                 <pre class="ex-code">
                     <code class="language-javascript">
 var mapData = [
@@ -240,15 +303,30 @@ renderer.draw(array2d);
             </div>
         </div>
 
-        <div id="get-within-square-radius" class="example-container section">
-            <h2>Get within square radius</h2>
-            <div class="ex-col-left">
-                <div id="ex-5-container" class="map-container"></div>
+        <div id="get-within-square-radius" class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Get within square radius
+                </div>
+                <br>
             </div>
-            <div class="ex-col-right">
-            <a href="#" class="btn btn-block ex-btn-run">Run</a>
+            <div class="col-md-4 panel panel-default">
+                <div class="panel-heading">
+                    Map View
+                </div>
+                <div id="ex-5-container" class="game-container"></div>
+            </div>
+
+            <div class="col-md-8 panel panel-default ex-code-container">
+                <div class="panel-heading ex-controls">
+                    Example Code
+                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
+                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
+                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                </div>
                 <pre class="ex-code">
                     <code class="language-javascript">
+
 var mapData = [
     '##########',
     '#.....c.c#',
@@ -280,13 +358,27 @@ renderer.draw(array2d);
             </div>
         </div>
 
-        <div id="filter" class="example-container section">
-            <h2>Filter</h2>
-            <div class="ex-col-left">
-                <div id="ex-6-container" class="map-container"></div>
+        <div id="filter" class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Filter
+                </div>
+                <br>
             </div>
-            <div class="ex-col-right">
-            <a href="#" class="btn btn-block ex-btn-run">Run</a>
+            <div class="col-md-4 panel panel-default">
+                <div class="panel-heading">
+                    Map View
+                </div>
+                <div id="ex-6-container" class="game-container"></div>
+            </div>
+
+            <div class="col-md-8 panel panel-default ex-code-container">
+                <div class="panel-heading ex-controls">
+                    Example Code
+                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
+                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
+                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                </div>
                 <pre class="ex-code">
                     <code class="language-javascript">
 var mapData = [
@@ -320,13 +412,27 @@ renderer.draw(array2d);
             </div>
         </div>
 
-        <div id="get-line-through" class="example-container section">
-            <h2>Get line through</h2>
-            <div class="ex-col-left">
-                <div id="ex-7-container" class="map-container"></div>
+        <div id="get-line-through" class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Get line through
+                </div>
+                <br>
             </div>
-            <div class="ex-col-right">
-            <a href="#" class="btn btn-block ex-btn-run">Run</a>
+            <div class="col-md-4 panel panel-default">
+                <div class="panel-heading">
+                    Map View
+                </div>
+                <div id="ex-7-container" class="game-container"></div>
+            </div>
+
+            <div class="col-md-8 panel panel-default ex-code-container">
+                <div class="panel-heading ex-controls">
+                    Example Code
+                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
+                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
+                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                </div>
                 <pre class="ex-code">
                     <code class="language-javascript">
 var mapData = [
@@ -370,7 +476,6 @@ renderer.draw(array2d);
             </div>
         </div>
     </div>
-
 
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/prism.js"></script>

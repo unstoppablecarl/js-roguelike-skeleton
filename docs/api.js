@@ -6,7 +6,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "Entity",
         "Entity.Types",
         "EntityManager",
-        "Fov",
         "FovROT",
         "Game",
         "Input",

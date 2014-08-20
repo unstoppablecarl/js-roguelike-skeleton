@@ -12,19 +12,52 @@
 </head>
 
 <body>
-    <div class="page">
-        <div class="section">
+    <div class="container">
+        <a href="../../docs/classes/Input.html" class="btn btn-primary pull-right">Input API Docs</a>
+        <h1 class="page-title">Roguelike JS Skeleton - <a href="../../index.html#examples">Examples</a> - Input</h1>
 
-            <h1>Roguelike JS Skeleton - <a href="../../index.html#examples">Examples</a> - Game</h1>
-
-            <div id="map-container" class="map-container"></div>
-            <div id="console-container" class="console-container"></div>
+        <div class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Contents
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li><a href="#minimal">Minimal</a></li>
+                    </ol>
+                </div>
+            </div>
         </div>
 
-        <div class="example-container section">
-            <a href="#" class="btn btn-block ex-btn-run">Run</a>
-            <pre class="ex-code">
-                <code class="language-javascript">
+        <div id="minimal" class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Minimal Game
+                </div>
+                <div class="panel-body">
+                    <p>Move the player around and watch how the zombie behaves (hit SPACE to skip the players turn).</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 panel panel-default">
+                <div class="panel-heading">
+                    Game
+                </div>
+                <div class="game-container">
+                    <div id="ex-1-map-container" class="map-container"></div>
+                    <div id="ex-1-console-container" class="console-container"></div>
+                </div>
+            </div>
+
+            <div class="col-md-6 panel panel-default ex-code-container">
+                <div class="panel-heading ex-controls">
+                    Example Code
+                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
+                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
+                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                </div>
+                <pre class="ex-code">
+                    <code class="language-javascript">
 // create the game instance
 var game = new RL.Game();
 
@@ -88,8 +121,8 @@ game.lighting.set(3, 14, 255, 0, 0);
 game.lighting.set(7, 14, 0, 0, 255);
 
 // get existing DOM elements
-var mapContainerEl = document.getElementById('map-container');
-var consoleContainerEl = document.getElementById('console-container');
+var mapContainerEl = document.getElementById('ex-1-map-container');
+var consoleContainerEl = document.getElementById('ex-1-console-container');
 
 // empty existing elements
 mapContainerEl.innerHTML = '';
@@ -102,9 +135,10 @@ consoleContainerEl.appendChild(game.console.el);
 game.console.log('The game starts.');
 // start the game
 game.start();
-                </code>
-            </pre>
-            <textarea class="ex-code-input"></textarea>
+                    </code>
+                </pre>
+                <textarea class="ex-code-input"></textarea>
+            </div>
         </div>
     </div>
 

@@ -1,0 +1,75 @@
+
+@import "bootstrap/bootstrap.less";
+
+@font-face {
+    font-family: 'DejaVuSansMono';
+    src: url('../fonts/DejaVuSansMono.eot');
+    src: url('../fonts/DejaVuSansMono.eot?#iefix') format('eot'),
+         url('../fonts/DejaVuSansMono.woff') format('woff'),
+         url('../fonts/DejaVuSansMono.ttf') format('truetype');
+}
+
+.page-title {
+    margin-bottom: (@line-height-computed);
+}
+.section {
+    padding-bottom: (@line-height-computed / 2);
+}
+.section-heading {
+    .make-row();
+
+    background: #0f0f0f;
+    border-top: 1px solid #333;
+    > h1, h2, h3, h4, h5, h6 {
+        margin-top: (@line-height-computed / 2);
+        margin-bottom: (@line-height-computed / 2);
+    }
+    margin-top: (@line-height-computed / 2);
+    margin-bottom: (@line-height-computed);
+    padding-bottom: 1px;
+}
+
+.section-subheading {
+    background: #0f0f0f;
+    border-top: 1px solid #333;
+    > h1, h2, h3, h4, h5, h6 {
+        margin-top: (@line-height-computed / 2);
+        margin-bottom: (@line-height-computed / 2);
+    }
+    margin-bottom: (@line-height-computed);
+    padding-bottom: 1px;
+}
+
+.game-container {
+    border: 1px solid #333;
+}
+.ex-code {
+    width: 100%;
+}
+
+// .ex-controls {
+//     background: #0f0f0f;
+//     border-top: 1px solid #333;
+//     .heading {
+//         color: #fff;
+//         display: inline-block;
+//         font-weight: @btn-font-weight;
+//         text-align: center;
+//         vertical-align: middle;
+//         border: 1px solid transparent;
+
+//         white-space: nowrap;
+//         background: transparent;
+//         .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
+//     }
+// }
+.ex-code-input {
+    display: block;
+    font-family: 'DejaVuSansMono', monospace;
+    width: 100%;
+    min-height: 300px;
+}
+
+.panel-heading .btn {
+    margin-top: -5px;
+}

@@ -7,159 +7,184 @@
 </head>
 
 <body>
-    <div class="page">
-        <div class="section">
-            <h1>Roguelike JS Skeleton</h1>
-            <p>A simple JS roguelike micro-framework for developers new to programming and or JS.</p>
-            <ul>
-                <li>Well designed and organized starting structure</li>
-                <li>Modular toolkit of classes essential to roguelike development</li>
-                <li>Does NOT provide map generation tools (other libraries like rot.js should be used for this)</li>
-            </ul>
+    <div class="container">
+
+        <br>
+
+        <div class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Roguelike JS Skeleton
+                </div>
+                <div class="panel-body">
+                    <p>A simple JS roguelike micro-framework for developers new to programming and or JS.</p>
+                    <ul>
+                        <li>Well designed and organized starting structure</li>
+                        <li>Modular toolkit of classes essential to roguelike development</li>
+                        <li>Does NOT provide map generation tools (other libraries like rot.js should be used for this)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <div class="section">
-            <h2><a href="https://github.com/unstoppablecarl/js-roguelike-skeleton">Github Repo</a>
-            </h2>
-            <p>Code is well commented and designed to be read.</p>
+        <div class="section row">
+            <div class="col-md-6 panel panel-default">
+                <div class="panel-heading">
+                    Examples
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li><a href="examples/game/index.html">Game (working demo)</a>
+                        </li>
+                        <li><a href="examples/entity/index.html">Entity</a>
+                        </li>
+                        <li><a href="examples/array-2d/index.html">Array2d</a>
+                        </li>
+                        <li><a href="examples/input/index.html">Input</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-md-6 panel panel-default">
+                <div class="panel-heading">
+                    Resources
+                </div>
+                <div class="panel-body">
+                    <h2><a href="https://github.com/unstoppablecarl/js-roguelike-skeleton">Github Repo</a></h2>
+                    <p>Code is well commented and designed to be read/edited.</p>
+
+                    <h2><a href="docs/index.html">API Docs</a></h2>
+                    <p>Generated from source comments.</p>
+                </div>
+            </div>
         </div>
 
-        <div class="section">
-            <h2><a href="docs/index.html">API Docs</a>
-            </h2>
-            <p>Generated from source comments.</p>
-
-        </div>
-
-        <div id="examples" class="section">
-            <h2>Examples</h2>
-            <ol>
-                <li><a href="examples/game/index.html">Game (working demo)</a>
-                </li>
-                <li><a href="examples/entity/index.html">Entity</a>
-                </li>
-                <li><a href="examples/array-2d/index.html">Array2d</a>
-                </li>
-                <li><a href="examples/input/index.html">Input</a>
-                </li>
-            </ol>
-
-        </div>
-        <div class="section">
-
-            <h2>Design Goals</h2>
-            <h3>User Requirements</h2>
-                <ul>
-                    <li>basic js skill level</li>
-                </ul>
-                <h3>Code</h3>
-                <ul>
-                    <li>simple and easy to follow</li>
-                    <li>well commented and documented</li>
-                    <li>demonstrates good practices</li>
-                    <li>object oriented design</li>
-                    <li>minimal dependencies (ideally none).</li>
-                    <li>core code produces a single global variable
-                        <code>RL</code>
-                    </li>
-                </ul>
-
+        <div class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Design Goals
+                </div>
+            </div>
+            <div class="col-md-6 panel panel-default">
+                <div class="panel-body">
+                    <h3>User Requirements</h2>
+                    <ul>
+                        <li>basic js skill level</li>
+                    </ul>
+                    <h3>Code</h3>
+                    <ul>
+                        <li>simple and easy to follow</li>
+                        <li>well commented and documented</li>
+                        <li>demonstrates good practices</li>
+                        <li>object oriented design</li>
+                        <li>minimal dependencies (ideally none).</li>
+                        <li>core code produces a single global variable
+                            <code>RL</code>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 panel panel-default">
+                <div class="panel-body">
                 <h3>Avoided non-begginer techniques</h3>
-                <ul>
-                    <li>game loop / animation</li>
-                    <li>object inheritance</li>
-                    <li>build process</li>
-                    <li>inaccessable or un-modifiable code or behavior (getters, setters, private-ish varables etc)</li>
-                </ul>
+                    <ul>
+                        <li>game loop / animation</li>
+                        <li>object inheritance</li>
+                        <li>build process</li>
+                        <li>inaccessable or un-modifiable code or behavior (getters, setters, private-ish varables etc)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="section">
-            <h2>Toolkit Overview</h2>
 
-            <h3>Game</h3>
-            <ul>
-                <li>container for all game objects</li>
-                <li>handles updating state of game objects each turn</li>
-                <li>listens for player input to trigger and resolve new turns</li>
-            </ul>
+        <div class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Toolkit Overview
+                </div>
 
-            <h3>Array2d</h3>
-            <ul>
-                <li>2 dimensional array data management (x,y coord data)</li>
-                <li>manages values set at specific x,y coords</li>
-                <li>coord data maniuplation and searching (getAdjacent, findNearest, filter, getWithinSquareRadius etc.)</li>
-            </ul>
 
-            <h3>Console</h3>
-            <ul>
-                <li>display messages in a log format using html</li>
-                <li>"The troll hits you dealing 10 damage."</li>
-                <li>"You die."</li>
-            </ul>
+                <div class="panel-body">
+                    <h3>Game</h3>
+                    <ul>
+                        <li>container for all game objects</li>
+                        <li>handles updating state of game objects each turn</li>
+                        <li>listens for player input to trigger and resolve new turns</li>
+                    </ul>
 
-            <h3>Entity</h3>
-            <ul>
-                <li>object representing a game element usually a character or enemy</li>
-                <li>occupies a single game map tile</li>
-                <li>drawing settings (color, character, bg color, etc)</li>
-                <li>manages state (position, health, stats, etc)</li>
-            </ul>
+                    <h3>Array2d</h3>
+                    <ul>
+                        <li>2 dimensional array data management (x,y coord data)</li>
+                        <li>manages values set at specific x,y coords</li>
+                        <li>coord data maniuplation and searching (getAdjacent, findNearest, filter, getWithinSquareRadius etc.)</li>
+                    </ul>
 
-            <h3>EntityManager</h3>
-            <ul>
-                <li>maintains a list of all entities and their tile positions</li>
-                <li>handles adding, removing, moving entities within the game</li>
-            </ul>
+                    <h3>Console</h3>
+                    <ul>
+                        <li>display messages in a log format using html</li>
+                        <li>"The troll hits you dealing 10 damage."</li>
+                        <li>"You die."</li>
+                    </ul>
 
-            <h3>Player</h3>
-            <ul>
-                <li>object representing the player of the game (very similar to entity)</li>
-                <li>handles functionality triggered and converted by Input</li>
-                <li>handles functionality triggered by Mouse events</li>
-            </ul>
+                    <h3>Entity</h3>
+                    <ul>
+                        <li>object representing a game element usually a character or enemy</li>
+                        <li>occupies a single game map tile</li>
+                        <li>drawing settings (color, character, bg color, etc)</li>
+                        <li>manages state (position, health, stats, etc)</li>
+                    </ul>
 
-            <h3>Fov</h3>
-            <ul>
-                <li>caculates map tiles visible from a given x,y tile coord</li>
-                <li>stores visible map tiles for reference (ex: lookup and render tiles visible to player this turn)</li>
-            </ul>
+                    <h3>EntityManager</h3>
+                    <ul>
+                        <li>maintains a list of all entities and their tile positions</li>
+                        <li>handles adding, removing, moving entities within the game</li>
+                    </ul>
 
-            <h3>Renderer</h3>
-            <ul>
-                <li>renders the current game state using html5 canvas</li>
-            </ul>
+                    <h3>Player</h3>
+                    <ul>
+                        <li>object representing the player of the game (very similar to entity)</li>
+                        <li>handles functionality triggered and converted by Input</li>
+                        <li>handles functionality triggered by Mouse events</li>
+                    </ul>
 
-            <h3>Tile</h3>
-            <ul>
-                <li>represents a single map tile</li>
-                <li>display data color, character etc.</li>
-                <li>state data blocksLos, passable, etc.</li>
-            </ul>
+                    <h3>Renderer</h3>
+                    <ul>
+                        <li>renders the current game state using html5 canvas</li>
+                    </ul>
 
-            <h3>Input</h3>
-            <ul>
-                <li>converts key code input to readable strings like 'SPACE'</li>
-                <li>handles user key input event listening</li>
-                <li>binds user input into defined actions (ex: LEFT_ARROW = move_left)</li>
-            </ul>
+                    <h3>Tile</h3>
+                    <ul>
+                        <li>represents a single map tile</li>
+                        <li>display data color, character etc.</li>
+                        <li>state data blocksLos, passable, etc.</li>
+                    </ul>
 
-            <h3>Mouse</h3>
-            <ul>
-                <li>handle mouse interaction with specific tiles</li>
-            </ul>
+                    <h3>Input</h3>
+                    <ul>
+                        <li>converts key code input to readable strings like 'SPACE'</li>
+                        <li>handles user key input event listening</li>
+                        <li>binds user input into defined actions (ex: LEFT_ARROW = move_left)</li>
+                    </ul>
 
-            <h3>LightingROT</h3>
-            <ul>
-                <li>ROT.js dependent</li>
-                <li>manages position of lights</li>
-                <li>calculates illumination of map tiles</li>
-            </ul>
+                    <h3>Mouse</h3>
+                    <ul>
+                        <li>handle mouse interaction with specific tiles</li>
+                    </ul>
 
-            <h3>FovROT</h3>
-            <ul>
-                <li>ROT.js dependent</li>
-                <li>calculates fov but can be limited to 90 or 180 degree field of view from a given direction</li>
-            </ul>
+                    <h3>LightingROT</h3>
+                    <ul>
+                        <li>ROT.js dependent</li>
+                        <li>manages position of lights</li>
+                        <li>calculates illumination of map tiles</li>
+                    </ul>
 
+                    <h3>FovROT</h3>
+                    <ul>
+                        <li>ROT.js dependent</li>
+                        <li>calculates fov, can be limited to 90 or 180 degree field of view from a given direction</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </body>

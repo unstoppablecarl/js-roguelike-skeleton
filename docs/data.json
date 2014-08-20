@@ -1,9 +1,5 @@
 {
-    "project": {
-        "name": "rl-js-skeleton",
-        "description": "A roguelike micro-framework for JS beginners. Designed to give a well designed and organized starting point for developers new to programming and or JS. It does NOT provide map generation tools, other libraries like rot.js can be used to serve that purpose.",
-        "version": "0.0.0"
-    },
+    "project": {},
     "files": {
         "src/array-2d.js": {
             "name": "src/array-2d.js",
@@ -47,15 +43,6 @@
             "modules": {},
             "classes": {
                 "FovROT": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/fov.js": {
-            "name": "src/fov.js",
-            "modules": {},
-            "classes": {
-                "Fov": 1
             },
             "fors": {},
             "namespaces": {}
@@ -268,7 +255,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/entity.js",
-            "line": 163,
+            "line": 174,
             "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222',\n           pushable: false\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -289,26 +276,6 @@
                     "name": "game",
                     "description": "- Game instance this obj is attached to.",
                     "type": "Object"
-                }
-            ]
-        },
-        "Fov": {
-            "name": "Fov",
-            "shortname": "Fov",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "src/fov.js",
-            "line": 4,
-            "description": "Represents a Fov in the game map. requires ROT.js",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "game",
-                    "description": "- Game instance this obj is attached to.",
-                    "type": "Game"
                 }
             ]
         },
@@ -1085,15 +1052,19 @@
                 },
                 {
                     "name": "ent",
-                    "description": "- The entity to be added.",
-                    "type": "Entity"
+                    "description": "- The Entity being set at given coords. If ent is a string a new Entity will be created using the string as the Entity Type (see Entity.Types[type]).",
+                    "type": "Entity|String"
                 }
             ],
+            "return": {
+                "description": "The added entity",
+                "type": "Entity"
+            },
             "class": "EntityManager"
         },
         {
             "file": "src/entity-manager.js",
-            "line": 68,
+            "line": 73,
             "description": "Removes an entity to the manager.",
             "itemtype": "method",
             "name": "remove",
@@ -1108,7 +1079,7 @@
         },
         {
             "file": "src/entity-manager.js",
-            "line": 79,
+            "line": 84,
             "description": "Changes the position of an entity already added to this entityManager.",
             "itemtype": "method",
             "name": "move",
@@ -1133,7 +1104,7 @@
         },
         {
             "file": "src/entity-manager.js",
-            "line": 93,
+            "line": 98,
             "description": "Calls the entity.update() method on all entities. Removes dead entities. Typically called after a player has resolved their actions.",
             "itemtype": "method",
             "name": "update",
@@ -1141,7 +1112,7 @@
         },
         {
             "file": "src/entity-manager.js",
-            "line": 109,
+            "line": 114,
             "description": "Resets this entityManager.",
             "itemtype": "method",
             "name": "reset",
@@ -1149,7 +1120,7 @@
         },
         {
             "file": "src/entity-manager.js",
-            "line": 118,
+            "line": 123,
             "description": "Sets the size of the map to manage entities within.",
             "itemtype": "method",
             "name": "setSize",
@@ -1168,8 +1139,38 @@
             "class": "EntityManager"
         },
         {
+            "file": "src/entity-manager.js",
+            "line": 133,
+            "description": "Loads Entity data from an array of strings.",
+            "itemtype": "method",
+            "name": "loadEntitiesFromArrayString",
+            "params": [
+                {
+                    "name": "mapData",
+                    "description": "- The array of strings to load.",
+                    "type": "Array"
+                },
+                {
+                    "name": "charToType",
+                    "description": "- An object mapping string characters to Entity types (see Entity.Types[type]). Characters in mapData not in charToType are ignored.",
+                    "type": "Object"
+                },
+                {
+                    "name": "replaceCurrentEntities",
+                    "description": "- If true current entities at positons of entities being added will be removed. Otherwise new entities at occupied positions will be skipped.",
+                    "type": "Bool",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\n           // 'P' will be ignored and a floor tile will be placed at that position\n           var mapData = [\n               '####',\n               '#..#',\n               '#.Z#',\n               '####',\n           ],\n           charToType = {\n               'Z': 'zombie'\n           };\n\n           entityManager.loadTilesFromArrayString(mapData, charToType);\n"
+            ],
+            "class": "EntityManager"
+        },
+        {
             "file": "src/entity.js",
-            "line": 27,
+            "line": 30,
             "description": "Game instance this object is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -1178,7 +1179,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 34,
+            "line": 37,
             "description": "The type of entity this is.\nWhen created this object is merged with the value of Entity.Types[type].",
             "itemtype": "property",
             "name": "type",
@@ -1187,7 +1188,15 @@
         },
         {
             "file": "src/entity.js",
-            "line": 42,
+            "line": 45,
+            "description": "Called when the entity is first created. Intended to be assigned by Entity.Types.",
+            "itemtype": "method",
+            "name": "initialize",
+            "class": "Entity"
+        },
+        {
+            "file": "src/entity.js",
+            "line": 53,
             "description": "Name used when referencing or describing this entity.\nUsed in console messages.",
             "itemtype": "property",
             "name": "name",
@@ -1196,7 +1205,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 50,
+            "line": 61,
             "description": "The x map tile coord of this entity.",
             "itemtype": "property",
             "name": "x",
@@ -1205,7 +1214,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 57,
+            "line": 68,
             "description": "The y map tile coord of this entity.",
             "itemtype": "property",
             "name": "y",
@@ -1214,7 +1223,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 64,
+            "line": 75,
             "description": "The character displayed when rendering this entity.",
             "itemtype": "property",
             "name": "char",
@@ -1223,7 +1232,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 71,
+            "line": 82,
             "description": "The color of the character displayed when rendering this entity. Not rendered if false.",
             "itemtype": "property",
             "name": "color",
@@ -1232,7 +1241,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 78,
+            "line": 89,
             "description": "The background color the character displayed when rendering this entity. Not rendered if false.",
             "itemtype": "property",
             "name": "bgColor",
@@ -1241,7 +1250,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 85,
+            "line": 96,
             "description": "Determines if this entity has been killed and needs to be removed.",
             "itemtype": "property",
             "name": "dead",
@@ -1250,7 +1259,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 92,
+            "line": 103,
             "description": "Determines if this entity can be pushed by the player.",
             "itemtype": "property",
             "name": "pushable",
@@ -1259,7 +1268,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 99,
+            "line": 110,
             "description": "Called after a player action has been resolved. Resolves this entities turn.",
             "itemtype": "method",
             "name": "update",
@@ -1267,7 +1276,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 107,
+            "line": 118,
             "description": "Checks if this entity can move to the specified map tile",
             "itemtype": "method",
             "name": "canMoveTo",
@@ -1291,7 +1300,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 122,
+            "line": 133,
             "description": "Changes the position of this entity on the map.",
             "itemtype": "method",
             "name": "moveTo",
@@ -1311,7 +1320,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 132,
+            "line": 143,
             "description": "Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.",
             "itemtype": "method",
             "name": "bump",
@@ -1389,7 +1398,7 @@
             "line": 67,
             "description": "Converts a string direction to an rot",
             "itemtype": "method",
-            "name": "validateDirection",
+            "name": "directionStringToArray",
             "params": [
                 {
                     "name": "direction",
@@ -1435,19 +1444,13 @@
                     "description": "- Max visible distance in tiles. (this.maxViewDistance used if not set)",
                     "type": "Number",
                     "optional": true
-                },
-                {
-                    "name": "visibleCallback",
-                    "description": "- Function called on each visible tile (function(x, y, range, visibility){}).",
-                    "type": "Function",
-                    "optional": true
                 }
             ],
             "class": "FovROT"
         },
         {
             "file": "src/fov-rot.js",
-            "line": 144,
+            "line": 146,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
@@ -1471,7 +1474,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 155,
+            "line": 157,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "checkMapTileVisible",
@@ -1483,7 +1486,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 164,
+            "line": 166,
             "description": "Sets the size of the map to mange fovROT within.",
             "itemtype": "method",
             "name": "setSize",
@@ -1500,149 +1503,6 @@
                 }
             ],
             "class": "FovROT"
-        },
-        {
-            "file": "src/fov.js",
-            "line": 18,
-            "description": "Game instance this obj is attached to.",
-            "itemtype": "property",
-            "name": "game",
-            "type": "Game",
-            "class": "Fov"
-        },
-        {
-            "file": "src/fov.js",
-            "line": 25,
-            "description": "Array2d storing fov visibility fovMap",
-            "itemtype": "property",
-            "name": "fovMap",
-            "type": "Array2d",
-            "class": "Fov"
-        },
-        {
-            "file": "src/fov.js",
-            "line": 32,
-            "description": "Max visible distance in tiles",
-            "itemtype": "property",
-            "name": "maxViewDistance",
-            "type": "Number",
-            "class": "Fov"
-        },
-        {
-            "file": "src/fov.js",
-            "line": 39,
-            "description": "Calculates the fov data relative to given coords;",
-            "itemtype": "method",
-            "name": "update",
-            "params": [
-                {
-                    "name": "x",
-                    "description": "- The map coordinate position to calculate Fov from on the x axis.",
-                    "type": "Number"
-                },
-                {
-                    "name": "y",
-                    "description": "- The map coordinate position to calculate Fov from on the y axis.",
-                    "type": "Number"
-                },
-                {
-                    "name": "maxViewDistance",
-                    "description": "- Max visible distance (this.maxViewDistance used if not set).",
-                    "type": "Number",
-                    "optional": true
-                },
-                {
-                    "name": "map",
-                    "description": "- The map to check the fov of.",
-                    "type": "Array2d",
-                    "optional": true,
-                    "optdefault": "this.game.map"
-                }
-            ],
-            "class": "Fov"
-        },
-        {
-            "file": "src/fov.js",
-            "line": 75,
-            "description": "Retrieves the visibility of the tile at given coords",
-            "itemtype": "method",
-            "name": "get",
-            "params": [
-                {
-                    "name": "x",
-                    "description": "- The x map tile coordinate to get Fov visibility of.",
-                    "type": "Number"
-                },
-                {
-                    "name": "y",
-                    "description": "- The y map tile coordinate to get Fov visibility of.",
-                    "type": "Number"
-                }
-            ],
-            "class": "Fov"
-        },
-        {
-            "file": "src/fov.js",
-            "line": 85,
-            "description": "Checks if an unobstructed line can be drawn from coords 0 to 1. Typically used for Line of Sight checks",
-            "itemtype": "method",
-            "name": "checkLos",
-            "params": [
-                {
-                    "name": "x0",
-                    "description": "- Start coord x.",
-                    "type": "Number"
-                },
-                {
-                    "name": "y0",
-                    "description": "- Start coord y.",
-                    "type": "Number"
-                },
-                {
-                    "name": "x1",
-                    "description": "- End coord x.",
-                    "type": "Number"
-                },
-                {
-                    "name": "y1",
-                    "description": "- End coord y.",
-                    "type": "Number"
-                },
-                {
-                    "name": "map",
-                    "description": "- The Map object used when checking line of sight.",
-                    "type": "Map",
-                    "optional": true,
-                    "optdefault": "this.game.map"
-                },
-                {
-                    "name": "canSeeThroughTileFunc",
-                    "description": "- A function that determines if a tile blocks line of sight, returning true if the map tile at the x,y coords provided blocks line of sight (function(x, y){ return true; }). If not set map.canSeeThroughTile(x,y) is used instead.",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "Fov"
-        },
-        {
-            "file": "src/fov.js",
-            "line": 139,
-            "description": "Sets the size of the map to mange fov within.",
-            "itemtype": "method",
-            "name": "setSize",
-            "params": [
-                {
-                    "name": "width",
-                    "description": "- Width of current map in tiles.",
-                    "type": "Number"
-                },
-                {
-                    "name": "height",
-                    "description": "- Height of current map in tiles.",
-                    "type": "Number"
-                }
-            ],
-            "class": "Fov"
         },
         {
             "file": "src/game.js",
@@ -1874,7 +1734,7 @@
         },
         {
             "file": "src/input.js",
-            "line": 99,
+            "line": 104,
             "description": "Loads multiple action key bindings",
             "itemtype": "method",
             "name": "addBindings",
@@ -1908,7 +1768,7 @@
         },
         {
             "file": "src/input.js",
-            "line": 126,
+            "line": 131,
             "static": 1,
             "itemtype": "property",
             "name": "Keys",
@@ -2083,7 +1943,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 147,
+            "line": 151,
             "description": "Returns the reflectivity value of a tile",
             "itemtype": "method",
             "name": "getTileReflectivity",
@@ -2091,7 +1951,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 158,
+            "line": 162,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "checkVisible",
@@ -2099,7 +1959,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 167,
+            "line": 171,
             "description": "Sets the size of the map to mange Lighting within.",
             "itemtype": "method",
             "name": "setSize",
@@ -2129,6 +1989,35 @@
         {
             "file": "src/map.js",
             "line": 25,
+            "description": "Sets a value at given coords.",
+            "itemtype": "method",
+            "name": "set",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- Position on the x axis of the value being set.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Position on the y axis of the value being set.",
+                    "type": "Number"
+                },
+                {
+                    "name": "tile",
+                    "description": "- The Tile being set at given coords. If Tile is a string a new tile will be created using the string as the Tile Type (see Tile.Types[type]).",
+                    "type": "Tile|String"
+                }
+            ],
+            "return": {
+                "description": "the tile added",
+                "type": "Tile"
+            },
+            "class": "Map"
+        },
+        {
+            "file": "src/map.js",
+            "line": 44,
             "description": "Checks if a map tile can be seen through.",
             "itemtype": "method",
             "name": "canSeeThroughTile",
@@ -2152,7 +2041,7 @@
         },
         {
             "file": "src/map.js",
-            "line": 37,
+            "line": 56,
             "description": "Checks if a map tile can be moved through.",
             "itemtype": "method",
             "name": "canMoveThroughTile",
@@ -2176,13 +2065,13 @@
         },
         {
             "file": "src/map.js",
-            "line": 49,
+            "line": 68,
             "description": "Loads Tile data from an array of strings",
             "itemtype": "method",
             "name": "loadTilesFromArrayString",
             "params": [
                 {
-                    "name": "x",
+                    "name": "mapData",
                     "description": "- The array of strings to load.",
                     "type": "Array"
                 },
@@ -2190,10 +2079,16 @@
                     "name": "charToType",
                     "description": "- An object mapping string characters to Tile types (see Tile.Types[type]).",
                     "type": "Object"
+                },
+                {
+                    "name": "defaultTileType",
+                    "description": "- The tile type to use if a character is not in charToType. This is used to allow characters representing entites or non-tile objects to be included in the mapData.",
+                    "type": "String",
+                    "optional": true
                 }
             ],
             "example": [
-                "\n\n           var mapData = [\n               '####',\n               '#..#',\n               '#..#',\n               '####',\n           ],\n           // 'wall'\n           charToType = {\n               '#': 'wall',\n               '.': 'floor'\n           };\n           map.loadTilesFromArrayString(mapData, charToType);\n"
+                "\n\n           // 'P' will be ignored and a floor tile will be placed at that position\n           var mapData = [\n               '####',\n               '#..#',\n               '#.P#',\n               '####',\n           ],\n\n           charToType = {\n               '#': 'wall',\n               '.': 'floor'\n           },\n           defaultTileType = 'floor';\n\n           map.loadTilesFromArrayString(mapData, charToType, defaultTileType);\n"
             ],
             "class": "Map"
         },

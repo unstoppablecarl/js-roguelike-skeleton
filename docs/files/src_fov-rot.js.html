@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/fov-rot.js - rl-js-skeleton</title>
+    <title>src/fov-rot.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -15,11 +15,11 @@
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
             
-                <h1><img src="../assets/css/logo.png" title="rl-js-skeleton"></h1>
+                <h1><img src="../assets/css/logo.png" title=""></h1>
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.0</em>
+            <em>API Docs for: </em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -50,8 +50,6 @@
                 <li><a href="../classes/Entity.Types.html">Entity.Types</a></li>
             
                 <li><a href="../classes/EntityManager.html">EntityManager</a></li>
-            
-                <li><a href="../classes/Fov.html">Fov</a></li>
             
                 <li><a href="../classes/FovROT.html">FovROT</a></li>
             
@@ -186,11 +184,11 @@
 
         /**
         * Converts a string direction to an rot
-        * @method validateDirection
+        * @method directionStringToArray
         * @param {String} direction - Direction of fov (used as default) (not used for fieldRange 360) valid directions: [&#x27;up&#x27;, &#x27;down&#x27;, &#x27;left&#x27;, &#x27;right&#x27;, &#x27;up_left&#x27;, &#x27;up_right&#x27;, &#x27;down_left&#x27;, &#x27;down_right&#x27;].
         * @return {Array} [x, y]
         */
-        directionStringToRot: function(direction){
+        directionStringToArray: function(direction){
             var validDirections = [&#x27;up&#x27;, &#x27;down&#x27;, &#x27;left&#x27;, &#x27;right&#x27;, &#x27;up_left&#x27;, &#x27;up_right&#x27;, &#x27;down_left&#x27;, &#x27;down_right&#x27;];
             if(validDirections.indexOf(direction) === -1){
                 throw new Error(&#x27;direction must be one of: &#x27; + validDirections.join(&#x27;,&#x27;));
@@ -216,9 +214,8 @@
         * @param {Number} [fieldRange = 360] - Field Range of view 90, 180, or 360.
         * @param {String|ROT.DIRS[8].x} [direction = &#x27;up&#x27;] - Direction of fov (not used for fieldRange 360) valid directions: [&#x27;up&#x27;, &#x27;down&#x27;, &#x27;left&#x27;, &#x27;right&#x27;, &#x27;up_left&#x27;, &#x27;up_right&#x27;, &#x27;down_left&#x27;, &#x27;down_right&#x27;];.
         * @param {Number} [maxViewDistance] - Max visible distance in tiles. (this.maxViewDistance used if not set)
-        * @param {Function} [visibleCallback] - Function called on each visible tile (function(x, y, range, visibility){}).
         */
-        update: function(x, y, fieldRange, direction, maxViewDistance, visibleCallback){
+        update: function(x, y, fieldRange, direction, maxViewDistance){
             if(fieldRange === void 0){
                 fieldRange = this.fieldRange;
             }
@@ -242,8 +239,11 @@
             var _this = this;
 
             var checkVisibleFunc = function(x, y, range, visibility){
-                if(visibleCallback){
-                    visibleCallback(x, y, range, visibility);
+                if(visibility){
+                    var tile = _this.game.map.get(x, y);
+                    if(tile){
+                        tile.explored = true;
+                    }
                 }
                 _this.fovMap.set(x, y, visibility);
             };

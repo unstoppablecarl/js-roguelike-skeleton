@@ -11,15 +11,50 @@
 </head>
 
 <body>
-    <div class="page">
-        <div class="section example-container">
-            <h1>Roguelike JS Skeleton - <a href="../../index.html#examples">Examples</a> - Input</h1>
-            <h2><a href="../../docs/classes/Input.html">Input API Docs</a></h2>
-            <div class="ex-col-left">
-                <h3>Input Actions: </h3>
-                <div id="input-actions"></div>
+    <div class="container">
+        <a href="../../docs/classes/Input.html" class="btn btn-primary pull-right">Input API Docs</a>
+        <h1 class="page-title">Roguelike JS Skeleton - <a href="../../index.html#examples">Examples</a> - Input</h1>
+
+        <div class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Contents
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li><a href="#triggered-actions">Triggered Actions</a></li>
+                    </ol>
+                </div>
             </div>
-            <div class="ex-col-right">
+        </div>
+
+        <div id="triggered-actions" class="section row">
+
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Triggered Actions
+                </div>
+                <div class="panel-body">
+                    <p>Press a bound key and see the actions triggered.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 panel panel-default">
+                <div class="panel-heading">
+                    Triggered Action Log
+                </div>
+                <div class="panel-body">
+                    <div id="input-actions"></div>
+                </div>
+            </div>
+
+            <div class="col-md-8 panel panel-default ex-code-container">
+                <div class="panel-heading ex-controls">
+                    Example Code
+                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
+                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
+                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                </div>
                 <pre class="ex-code">
                     <code class="language-javascript">
 var input = new RL.Input();
@@ -41,25 +76,25 @@ var inputElement = document.getElementById('input-actions');
 
 // set a function to trigger functionality based on the input action triggered
 input.onKeyAction = function(action){
-    console.log(action);
-    inputElement.innerHTML += action + '<br>';
+    console.log(action, action + "&lt;br&gt;");
+    inputElement.innerHTML += action + '&lt;br&gt;';
 };
 
-// TRY PRESSING THE KEYS BOUND ABOVE
-
-// the Game class has a onKeyAction function that is used this way and automatically set look at Game.prototype.onKeyAction in game.js
+// The Game class has a onKeyAction function that is used this way and automatically set look at Game.prototype.onKeyAction in game.js
                     </code>
                 </pre>
+                <textarea class="ex-code-input"></textarea>
             </div>
-
         </div>
     </div>
 
+    <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/prism.js"></script>
 
     <script src="../../src/rl.js"></script>
     <script src="../../src/input.js"></script>
-    <script src="main.js"></script>
+
+    <script src="../assets/js/example.js"></script>
 </body>
 
 </html>

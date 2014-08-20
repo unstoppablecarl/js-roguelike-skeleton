@@ -1,7 +1,0 @@
-{
-    "options": {
-        "nocode": false,
-        "outdir": "./docs",
-        "paths": ["src"]
-    }
-}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Map - rl-js-skeleton</title>
+    <title>Map</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -15,11 +15,11 @@
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
             
-                <h1><img src="../assets/css/logo.png" title="rl-js-skeleton"></h1>
+                <h1><img src="../assets/css/logo.png" title=""></h1>
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.0</em>
+            <em>API Docs for: </em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -50,8 +50,6 @@
                 <li><a href="../classes/Entity.Types.html">Entity.Types</a></li>
             
                 <li><a href="../classes/EntityManager.html">EntityManager</a></li>
-            
-                <li><a href="../classes/Fov.html">Fov</a></li>
             
                 <li><a href="../classes/FovROT.html">FovROT</a></li>
             
@@ -470,7 +468,7 @@
             
         
         
-        <a href="../files/src_map.js.html#l37"><code>src&#x2F;map.js:37</code></a>
+        <a href="../files/src_map.js.html#l56"><code>src&#x2F;map.js:56</code></a>
         
         </p>
 
@@ -601,7 +599,7 @@
             
         
         
-        <a href="../files/src_map.js.html#l25"><code>src&#x2F;map.js:25</code></a>
+        <a href="../files/src_map.js.html#l44"><code>src&#x2F;map.js:44</code></a>
         
         </p>
 
@@ -1985,13 +1983,19 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             
                 <li class="arg">
                     
-                        <code>x</code>
+                        <code>mapData</code>
                     
                 </li>
             
                 <li class="arg">
                     
                         <code>charToType</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[defaultTileType]</code>
                     
                 </li>
             
@@ -2024,7 +2028,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             
         
         
-        <a href="../files/src_map.js.html#l49"><code>src&#x2F;map.js:49</code></a>
+        <a href="../files/src_map.js.html#l68"><code>src&#x2F;map.js:68</code></a>
         
         </p>
 
@@ -2047,7 +2051,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">x</code>
+                        <code class="param-name">mapData</code>
                         <span class="type">Array</span>
                     
 
@@ -2081,6 +2085,25 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
                     
                 </li>
             
+                <li class="param">
+                    
+                        <code class="param-name optional">[defaultTileType]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The tile type to use if a character is not in charToType. This is used to allow characters representing entites or non-tile objects to be included in the mapData.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
             </ul>
         </div>
     
@@ -2092,18 +2115,21 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>       var mapData = [
+                <pre class="code prettyprint"><code>       // &#39;P&#39; will be ignored and a floor tile will be placed at that position
+       var mapData = [
            &#39;####&#39;,
            &#39;#..#&#39;,
-           &#39;#..#&#39;,
+           &#39;#.P#&#39;,
            &#39;####&#39;,
        ],
-       // &#39;wall&#39;
+
        charToType = {
            &#39;#&#39;: &#39;wall&#39;,
            &#39;.&#39;: &#39;floor&#39;
-       };
-       map.loadTilesFromArrayString(mapData, charToType);</code></pre>
+       },
+       defaultTileType = &#39;floor&#39;;
+
+       map.loadTilesFromArrayString(mapData, charToType, defaultTileType);</code></pre>
 
             </div>
         </div>
@@ -2335,7 +2361,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
 </div>
 
                 
-                    <div id="method_set" class="method item inherited">
+                    <div id="method_set" class="method item">
     <h3 class="name"><code>set</code></h3>
 
     
@@ -2356,7 +2382,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             
                 <li class="arg">
                     
-                        <code>value</code>
+                        <code>tile</code>
                     
                 </li>
             
@@ -2364,6 +2390,10 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Tile.html" class="crosslink">Tile</a></span>
+        </span>
     
 
     
@@ -2380,13 +2410,16 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/Array2d.html#method_set">
+                Array2d
+            </a>
             
-                <p>Inherited from
-                <a href="../classes/Array2d.html#method_set">Array2d</a>:
+            but overwritten in
             
         
         
-        <a href="../files/src_array-2d.js.html#l70"><code>src&#x2F;array-2d.js:70</code></a>
+        <a href="../files/src_map.js.html#l25"><code>src&#x2F;map.js:25</code></a>
         
         </p>
 
@@ -2445,15 +2478,15 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">value</code>
-                        <span class="type">Mixed</span>
+                        <code class="param-name">tile</code>
+                        <span class="type"><a href="../classes/Tile.html" class="crosslink">Tile</a> | String</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The value being set at given coords.</li>
+<li>The Tile being set at given coords. If Tile is a string a new tile will be created using the string as the Tile Type (see Tile.Types[type]).</li>
 </ul>
 
                     </div>
@@ -2465,6 +2498,20 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
         </div>
     
 
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/Tile.html" class="crosslink">Tile</a></span>:
+                    
+                    <p>the tile added</p>
+
+                
+            </div>
+        </div>
     
 
     
