@@ -1660,7 +1660,7 @@
         },
         {
             "file": "src/input.js",
-            "line": 39,
+            "line": 36,
             "description": "An object of key val pairs mapping keyCode to action",
             "itemtype": "property",
             "name": "bindings",
@@ -1669,7 +1669,7 @@
         },
         {
             "file": "src/input.js",
-            "line": 46,
+            "line": 43,
             "description": "Function called when a key bound to an action is pressed (function(action){}).",
             "itemtype": "property",
             "name": "onKeyAction",
@@ -1678,7 +1678,7 @@
         },
         {
             "file": "src/input.js",
-            "line": 53,
+            "line": 50,
             "description": "Bind a user action to a key input",
             "itemtype": "method",
             "name": "bindAction",
@@ -1698,7 +1698,7 @@
         },
         {
             "file": "src/input.js",
-            "line": 64,
+            "line": 61,
             "description": "Converts a user input key code to an action bound to that key or false if none is bound.",
             "itemtype": "method",
             "name": "getActionFromKeyCode",
@@ -1716,25 +1716,7 @@
         },
         {
             "file": "src/input.js",
-            "line": 77,
-            "description": "Event handler for document.onkeydown. Triggered when a key is pressed.\nIf an action is bound to the key pressed, false is returned to cancel the default browser behavior of the keypress.\nIf an action is not bound to the key pressed, true is returned allowing the default browser behavior of the keypress to function.",
-            "itemtype": "method",
-            "name": "onKeyDown",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "- The onkeydown event.",
-                    "type": "Object"
-                }
-            ],
-            "return": {
-                "description": "bool"
-            },
-            "class": "Input"
-        },
-        {
-            "file": "src/input.js",
-            "line": 104,
+            "line": 75,
             "description": "Loads multiple action key bindings",
             "itemtype": "method",
             "name": "addBindings",
@@ -1768,7 +1750,41 @@
         },
         {
             "file": "src/input.js",
-            "line": 131,
+            "line": 101,
+            "description": "Event handler for document.addEventListener('keydown', this). Triggered when a key is pressed.\nIf an action is bound to the key pressed, false is returned to cancel the default browser behavior of the keypress.\nIf an action is not bound to the key pressed, true is returned allowing the default browser behavior of the keypress to function.",
+            "itemtype": "method",
+            "name": "handleEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "- The onkeydown event.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "bool"
+            },
+            "class": "Input"
+        },
+        {
+            "file": "src/input.js",
+            "line": 128,
+            "description": "Binds event listener for document keydown event.",
+            "itemtype": "method",
+            "name": "startListening",
+            "class": "Input"
+        },
+        {
+            "file": "src/input.js",
+            "line": 136,
+            "description": "Unbinds document keydown event listener",
+            "itemtype": "method",
+            "name": "stopListening",
+            "class": "Input"
+        },
+        {
+            "file": "src/input.js",
+            "line": 145,
             "static": 1,
             "itemtype": "property",
             "name": "Keys",

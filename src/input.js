@@ -27,10 +27,7 @@
         if (bindings !== void 0) {
             this.addBindings(bindings);
         }
-        // make sure "this" is this instance of Input when the following functions are called
-        this.onKeyDown = this.onKeyDown.bind(this);
-
-        document.onkeydown = this.onKeyDown;
+        this.startListening();
     };
 
     Input.prototype = {
@@ -74,32 +71,6 @@
             return false;
         },
 
-        /**
-        * Event handler for document.onkeydown. Triggered when a key is pressed.
-        * If an action is bound to the key pressed, false is returned to cancel the default browser behavior of the keypress.
-        * If an action is not bound to the key pressed, true is returned allowing the default browser behavior of the keypress to function.
-        * @method onKeyDown
-        * @param {Object} event - The onkeydown event.
-        * @return bool
-        */
-        onKeyDown: function(event) {
-            // ignore if modifer keys pressed
-            if(event.ctrlKey || event.shiftKey || event.altKey || event.metaKey){
-                return true;
-            }
-            var keyCode = event.keyCode;
-            var action = this.getActionFromKeyCode(keyCode);
-            // if no action bound to this keycode resolve the keydown event normally
-            console.log('action', action);
-            if (action === false) {
-                return true;
-            }
-            // call onKeyAction callback with the action matched
-            this.onKeyAction(action);
-
-            // cancel default browser keypress behavior
-            return false;
-        },
 
         /**
         * Loads multiple action key bindings
@@ -126,6 +97,49 @@
                 }
             }
         },
+
+        /**
+        * Event handler for document.addEventListener('keydown', this). Triggered when a key is pressed.
+        * If an action is bound to the key pressed, false is returned to cancel the default browser behavior of the keypress.
+        * If an action is not bound to the key pressed, true is returned allowing the default browser behavior of the keypress to function.
+        * @method handleEvent
+        * @param {Object} event - The onkeydown event.
+        * @return bool
+        */
+        handleEvent: function(event) {
+            // ignore if modifer keys pressed
+            if(event.ctrlKey || event.shiftKey || event.altKey || event.metaKey){
+                return true;
+            }
+            var keyCode = event.keyCode;
+            var action = this.getActionFromKeyCode(keyCode);
+            // if no action bound to this keycode resolve the keydown event normally
+            console.log('action', action);
+            if (action === false) {
+                return true;
+            }
+            // call onKeyAction callback with the action matched
+            this.onKeyAction(action);
+
+            // cancel default browser keypress behavior
+            return false;
+        },
+
+        /**
+        * Binds event listener for document keydown event.
+        * @method startListening
+        */
+        startListening: function(){
+            document.addEventListener('keydown', this);
+        },
+
+        /**
+        * Unbinds document keydown event listener
+        * @method stopListening
+        */
+        stopListening: function(){
+            document.removeEventListener('keydown', this);
+        }
     };
 
     /**
