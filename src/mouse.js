@@ -5,58 +5,32 @@
     * Helper for handling user mouse input.
     * @class Mouse
     * @constructor
-    * @param {Game} game - game instance this obj is attached to.
-    * @param {Function} onTileClick - A function to handle tile mouse click events. function(tile){}
-    * @param {Tile} onTileClick.tile Tile object clicked.
-    * @param {Function} onTileHover - A function to handle tile mouse hover events. function(tile){}
-    * @param {Tile} onTileHover.tile Tile object hovered.
+    * @param {Function} onClick - A function to handle mouse click events. function(x, y){}
+    * @param {Function} onHover - A function to handle mouse hover events. function(x, y){}
     */
-    var Mouse = function Mouse(game, onTileClick, onTileHover) {
-        this.game = game;
-        this.onTileClick = onTileClick;
-        this.onTileHover = onTileHover;
-
-        var el = this.game.renderer.canvas;
-        this.startListening(el);
+    var Mouse = function Mouse(onClick, onHover) {
+        this.onClick = onClick;
+        this.onHover = onHover;
     };
 
     Mouse.prototype = {
         constructor: Mouse,
 
         /**
-        * Game instance this obj is attached to.
-        * @property game
-        * @type Game
+        * A function to handle tile mouse click events.
+        * @method onClick
+        * @param {Number} x - Mouse x coord relative to window.
+        * @param {Number} y - Mouse y coord relative to window.
         */
-        game: null,
+        onClick: null,
 
         /**
-        * A function to handle tile mouse click events
-        * @method onTileClick
-        * @param {Tile} tile - Tile object clicked.
+        * A function to handle tile mouse hover events
+        * @method onHover
+        * @param {Number} x - Mouse x coord relative to window.
+        * @param {Number} y - Mouse y coord relative to window.
         */
-        onTileClick: null,
-
-        /**
-        * Current mouse x axis coord relative to upper left corner of mapview element.
-        * @property mapViewMouseX
-        * @type Number
-        */
-        mapViewMouseX: null,
-
-        /**
-        * Current mouse y axis coord relative to upper left corner of mapview element.
-        * @property mapViewMouseY
-        * @type Number
-        */
-        mapViewMouseY: null,
-
-        /**
-        * True if mouse is currently over mapview.
-        * @property mapViewMouseOver
-        * @type Bool
-        */
-        mapViewMouseOver: false,
+        onHover: null,
 
         /**
         * The dom element being rendered to and listened to for mouse events.
@@ -72,57 +46,18 @@
         * @param {Event} e - mouse event
         */
         handleEvent: function(e){
-            if(e.type === 'mousemove'){
-                this.mouseMove(e);
+            if(e.type === 'mousemove' && this.onHover){
+                this.onHover(e.clientX, e.clientY);
             }
-            else if(e.type === 'mouseenter'){
-                this.mouseEnter(e);
+            else if(e.type === 'mouseenter' && this.onHover){
+                this.onHover(e.clientX, e.clientY);
             }
-
-            else if(e.type === 'mouseleave'){
-                this.mouseLeave(e);
+            else if(e.type === 'mouseleave' && this.onHover){
+                this.onHover(false);
             }
-            else if(e.type === 'click'){
-                this.mouseClick(e);
+            else if(e.type === 'click' && this.onClick){
+                this.onClick(e.clientX, e.clientY);
             }
-        },
-
-        /**
-        * Hander for mouse click events
-        * @method mouseClick
-        * @param {Event} e - mouse event
-        */
-        mouseClick: function(e){
-            if(this.onTileClick){
-                var mx = e.clientX,
-                    my = e.clientY,
-                    coords = this.game.renderer.mouseToTileCoords(mx, my),
-                    tile = this.game.map.get(coords.x, coords.y);
-                if(tile){
-                    this.onTileClick(tile);
-                }
-            }
-        },
-
-        /**
-        * Hander for mouse enter events
-        * @method mouseEnter
-        * @param {Event} e - mouse event
-        */
-        mouseEnter: function(e) {
-            this.mapViewMouseOver = true;
-        },
-
-        /**
-        * Hander for mouse leave events
-        * @method mouseLeave
-        * @param {Event} e - mouse event
-        */
-        mouseLeave: function(e) {
-            this.mapViewMouseOver = false;
-            this.mapViewMouseX = null;
-            this.mapViewMouseY = null;
-            this.onTileHover(false);
         },
 
         /**
@@ -131,9 +66,9 @@
         * @param {Event} e - mouse event
         */
         mouseMove: function(e) {
-            if(this.onTileHover){
+            if(this.onHover){
                 var coords = this.game.renderer.mouseToTileCoords(e.clientX, e.clientY);
-                this.onTileHover(coords);
+                this.onHover(coords);
             }
         },
 

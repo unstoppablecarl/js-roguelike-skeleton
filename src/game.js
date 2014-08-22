@@ -21,12 +21,14 @@
 
         // make sure "this" is this instance of Input not document when this.onKeyAction is called
         this.onKeyAction = this.onKeyAction.bind(this);
-        this.onTileClick = this.onTileClick.bind(this);
-        this.onTileHover = this.onTileHover.bind(this);
+        this.onClick = this.onClick.bind(this);
+        this.onHover = this.onHover.bind(this);
 
         this.input = new RL.Input(this.onKeyAction);
-        this.mouse = new RL.Mouse(this, this.onTileClick, this.onTileHover);
+        this.mouse = new RL.Mouse(this.onClick, this.onHover);
 
+        var el = this.renderer.canvas;
+        this.mouse.startListening(el);
     };
 
     Game.prototype = {
@@ -136,13 +138,18 @@
         },
 
         /**
-        * Handler for user mouse tile click.
-        * @method onTileClick
-        * @param {Tile} tile - The tile clicked.
+        * A function to handle tile mouse click events.
+        * @method onClick
+        * @param {Number} x - Mouse x coord relative to window.
+        * @param {Number} y - Mouse y coord relative to window.
         */
-        onTileClick: function(tile){
+        onClick: function(x, y){
+            var coords = this.renderer.mouseToTileCoords(x, y),
+                tile = this.map.get(coords.x, coords.y);
+            if(!tile){
+                return;
+            }
             var entityTile = this.entityManager.get(tile.x, tile.y);
-            console.log('tile', tile);
             if(entityTile){
                 this.console.log('Looks like a <strong>' + entityTile.name + '</strong> standing on a <strong>' + tile.name + '</strong> to me.');
             }
@@ -152,17 +159,15 @@
         },
 
         /**
-        * Handler for user mouse tile hover.
-        * @method onTileHover
-        * @param {Tile} tile - The tile hovered.
+        * A function to handle tile mouse hover events
+        * @method onHover
+        * @param {Number} x - Mouse x coord relative to window.
+        * @param {Number} y - Mouse y coord relative to window.
         */
-        onTileHover: function(tile){
-            var prevX = this.renderer.hoveredTileX,
-                prevY = this.renderer.hoveredTileY,
-                x, y;
+        onHover: function(x, y){
+            var coords = this.renderer.mouseToTileCoords(x, y),
+                tile = this.map.get(coords.x, coords.y);
             if(tile){
-                x = tile.x;
-                y = tile.y;
                 this.renderer.hoveredTileX = tile.x;
                 this.renderer.hoveredTileY = tile.y;
             } else {
