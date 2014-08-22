@@ -79,7 +79,7 @@ var initBasicGame = function(mapContainerEl, mapData){
                     Basic Movement Behavior (and an attached light just for fun)
                 </div>
                 <div class="panel-body">
-                    <p>Move the player around and watch how the zombie behaves (hit SPACE to skip the players turn).</p>
+                    <p>Move the player around and watch how the zombie behaves. Move the player around with the W, A, S, D instead of arrow keys to avoid scrolling the window. Use SPACE to skip the players turn.</p>
                 </div>
             </div>
             <div class="col-md-4 panel panel-default">
@@ -94,12 +94,16 @@ var initBasicGame = function(mapContainerEl, mapData){
             <div class="col-md-8 panel panel-default ex-code-container">
                 <div class="panel-heading ex-controls">
                     Example Code
-                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
-                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
-                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                    <span class="pull-right">
+                        <a href="#" class="btn btn-primary ex-btn-run">Run</a>
+                        <a href="#" class="btn btn-primary ex-btn-edit">Edit</a>
+                        <a href="#" class="btn btn-primary ex-btn-view">View</a>
+                        <a href="#" class="btn btn-primary ex-btn-toggle">Show</a>
+                    </span>
                 </div>
-                <pre class="ex-code">
-                    <code class="language-javascript">
+                <div class="ex-code">
+                    <pre>
+                        <code class="language-javascript">
 var mapData = [
     '##########',
     '#........#',
@@ -212,9 +216,10 @@ var entity = new RL.Entity(game, 'zombie');
 // add it to the game
 game.entityManager.add(1, 1, entity);
 game.start();
-                        </code>
-                    </pre>
-                    <textarea class="ex-code-input"></textarea>
+                            </code>
+                        </pre>
+                        <textarea class="ex-code-input"></textarea>
+                    </div>
                 </div>
             </div>
         </div>

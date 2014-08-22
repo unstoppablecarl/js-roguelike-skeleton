@@ -103,12 +103,16 @@ var rendererFromArray2d = function(array2d){
             <div class="col-md-8 panel panel-default ex-code-container">
                 <div class="panel-heading ex-controls">
                     Example Code
-                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
-                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
-                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                    <span class="pull-right">
+                        <a href="#" class="btn btn-primary ex-btn-run">Run</a>
+                        <a href="#" class="btn btn-primary ex-btn-edit">Edit</a>
+                        <a href="#" class="btn btn-primary ex-btn-view">View</a>
+                        <a href="#" class="btn btn-primary ex-btn-toggle">Show</a>
+                    </span>
                 </div>
-                <pre class="ex-code">
-                    <code class="language-javascript">
+                <div class="ex-code">
+                    <pre>
+                        <code class="language-javascript">
 var mapData = [
     '##########',
     '#........#',
@@ -124,9 +128,10 @@ var containerEl = document.getElementById('ex-1-container');
 containerEl.innerHTML = '';
 containerEl.appendChild(renderer.canvas);
 renderer.draw(array2d);
-                    </code>
-                </pre>
-                <textarea class="ex-code-input"></textarea>
+                        </code>
+                    </pre>
+                    <textarea class="ex-code-input"></textarea>
+                </div>
             </div>
         </div>
 
@@ -147,12 +152,16 @@ renderer.draw(array2d);
             <div class="col-md-8 panel panel-default ex-code-container">
                 <div class="panel-heading ex-controls">
                     Example Code
-                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
-                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
-                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                    <span class="pull-right">
+                        <a href="#" class="btn btn-primary ex-btn-run">Run</a>
+                        <a href="#" class="btn btn-primary ex-btn-edit">Edit</a>
+                        <a href="#" class="btn btn-primary ex-btn-view">View</a>
+                        <a href="#" class="btn btn-primary ex-btn-toggle">Show</a>
+                    </span>
                 </div>
-                <pre class="ex-code">
-                    <code class="language-javascript">
+                <div class="ex-code">
+                    <pre>
+                        <code class="language-javascript">
 var mapData = [
     '##########',
     '#........#',
@@ -181,9 +190,10 @@ array2d.set(5, 4, {
 
 // draw to show changes
 renderer.draw(array2d);
-                    </code>
-                </pre>
-                <textarea class="ex-code-input"></textarea>
+                        </code>
+                    </pre>
+                    <textarea class="ex-code-input"></textarea>
+                </div>
             </div>
         </div>
 
@@ -205,12 +215,16 @@ renderer.draw(array2d);
             <div class="col-md-8 panel panel-default ex-code-container">
                 <div class="panel-heading ex-controls">
                     Example Code
-                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
-                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
-                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                    <span class="pull-right">
+                        <a href="#" class="btn btn-primary ex-btn-run">Run</a>
+                        <a href="#" class="btn btn-primary ex-btn-edit">Edit</a>
+                        <a href="#" class="btn btn-primary ex-btn-view">View</a>
+                        <a href="#" class="btn btn-primary ex-btn-toggle">Show</a>
+                    </span>
                 </div>
-                <pre class="ex-code">
-                    <code class="language-javascript">
+                <div class="ex-code">
+                    <pre>
+                        <code class="language-javascript">
 var mapData = [
     '##########',
     '#........#',
@@ -233,9 +247,10 @@ for (var i = 0; i < adjacentTiles.length; i++) {
 
 // draw to show changes
 renderer.draw(array2d);
-                    </code>
-                </pre>
-                <textarea class="ex-code-input"></textarea>
+                        </code>
+                    </pre>
+                    <textarea class="ex-code-input"></textarea>
+                </div>
             </div>
         </div>
 
@@ -256,12 +271,16 @@ renderer.draw(array2d);
             <div class="col-md-8 panel panel-default ex-code-container">
                 <div class="panel-heading ex-controls">
                     Example Code
-                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
-                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
-                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                    <span class="pull-right">
+                        <a href="#" class="btn btn-primary ex-btn-run">Run</a>
+                        <a href="#" class="btn btn-primary ex-btn-edit">Edit</a>
+                        <a href="#" class="btn btn-primary ex-btn-view">View</a>
+                        <a href="#" class="btn btn-primary ex-btn-toggle">Show</a>
+                    </span>
                 </div>
-                <pre class="ex-code">
-                    <code class="language-javascript">
+                <div class="ex-code">
+                    <pre>
+                        <code class="language-javascript">
 var mapData = [
     '##########',
     '#.c.....b#',
@@ -297,9 +316,10 @@ for (var i = 0; i < nearestBTiles.length; i++) {
 
 // draw to show changes
 renderer.draw(array2d);
-                    </code>
-                </pre>
-                <textarea class="ex-code-input"></textarea>
+                        </code>
+                    </pre>
+                    <textarea class="ex-code-input"></textarea>
+                </div>
             </div>
         </div>
 
@@ -320,12 +340,16 @@ renderer.draw(array2d);
             <div class="col-md-8 panel panel-default ex-code-container">
                 <div class="panel-heading ex-controls">
                     Example Code
-                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
-                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
-                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                    <span class="pull-right">
+                        <a href="#" class="btn btn-primary ex-btn-run">Run</a>
+                        <a href="#" class="btn btn-primary ex-btn-edit">Edit</a>
+                        <a href="#" class="btn btn-primary ex-btn-view">View</a>
+                        <a href="#" class="btn btn-primary ex-btn-toggle">Show</a>
+                    </span>
                 </div>
-                <pre class="ex-code">
-                    <code class="language-javascript">
+                <div class="ex-code">
+                    <pre>
+                        <code class="language-javascript">
 
 var mapData = [
     '##########',
@@ -352,9 +376,10 @@ for (var i = 0; i < tiles.length; i++) {
 
 // draw to show changes
 renderer.draw(array2d);
-                    </code>
-                </pre>
-                <textarea class="ex-code-input"></textarea>
+                        </code>
+                    </pre>
+                    <textarea class="ex-code-input"></textarea>
+                </div>
             </div>
         </div>
 
@@ -375,12 +400,16 @@ renderer.draw(array2d);
             <div class="col-md-8 panel panel-default ex-code-container">
                 <div class="panel-heading ex-controls">
                     Example Code
-                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
-                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
-                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                    <span class="pull-right">
+                        <a href="#" class="btn btn-primary ex-btn-run">Run</a>
+                        <a href="#" class="btn btn-primary ex-btn-edit">Edit</a>
+                        <a href="#" class="btn btn-primary ex-btn-view">View</a>
+                        <a href="#" class="btn btn-primary ex-btn-toggle">Show</a>
+                    </span>
                 </div>
-                <pre class="ex-code">
-                    <code class="language-javascript">
+                <div class="ex-code">
+                    <pre>
+                        <code class="language-javascript">
 var mapData = [
     '##########',
     '#.a...c.c#',
@@ -406,9 +435,10 @@ for (var i = 0; i < tiles.length; i++) {
 
 // draw to show changes
 renderer.draw(array2d);
-                    </code>
-                </pre>
-                <textarea class="ex-code-input"></textarea>
+                        </code>
+                    </pre>
+                    <textarea class="ex-code-input"></textarea>
+                </div>
             </div>
         </div>
 
@@ -429,12 +459,16 @@ renderer.draw(array2d);
             <div class="col-md-8 panel panel-default ex-code-container">
                 <div class="panel-heading ex-controls">
                     Example Code
-                    <a href="#" class="btn btn-primary ex-btn-run pull-right">Run</a>
-                    <a href="#" class="btn btn-primary ex-btn-edit pull-right">Edit</a>
-                    <a href="#" class="btn btn-primary ex-btn-view pull-right">View</a>
+                    <span class="pull-right">
+                        <a href="#" class="btn btn-primary ex-btn-run">Run</a>
+                        <a href="#" class="btn btn-primary ex-btn-edit">Edit</a>
+                        <a href="#" class="btn btn-primary ex-btn-view">View</a>
+                        <a href="#" class="btn btn-primary ex-btn-toggle">Show</a>
+                    </span>
                 </div>
-                <pre class="ex-code">
-                    <code class="language-javascript">
+                <div class="ex-code">
+                    <pre>
+                        <code class="language-javascript">
 var mapData = [
     '##########',
     '#........#',
@@ -470,9 +504,10 @@ for (var i = 0; i < tiles.length; i++) {
 
 // draw to show changes
 renderer.draw(array2d);
-                    </code>
-                </pre>
-                <textarea class="ex-code-input"></textarea>
+                        </code>
+                    </pre>
+                    <textarea class="ex-code-input"></textarea>
+                </div>
             </div>
         </div>
     </div>

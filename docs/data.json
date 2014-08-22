@@ -417,33 +417,14 @@
             "is_constructor": 1,
             "params": [
                 {
-                    "name": "game",
-                    "description": "- game instance this obj is attached to.",
-                    "type": "Game"
+                    "name": "onClick",
+                    "description": "- A function to handle mouse click events. function(x, y){}",
+                    "type": "Function"
                 },
                 {
-                    "name": "onTileClick",
-                    "description": "- A function to handle tile mouse click events. function(tile){}",
-                    "type": "Function",
-                    "props": [
-                        {
-                            "name": "tile",
-                            "description": "Tile object clicked.",
-                            "type": "Tile"
-                        }
-                    ]
-                },
-                {
-                    "name": "onTileHover",
-                    "description": "- A function to handle tile mouse hover events. function(tile){}",
-                    "type": "Function",
-                    "props": [
-                        {
-                            "name": "tile",
-                            "description": "Tile object hovered.",
-                            "type": "Tile"
-                        }
-                    ]
+                    "name": "onHover",
+                    "description": "- A function to handle mouse hover events. function(x, y){}",
+                    "type": "Function"
                 }
             ]
         },
@@ -1506,7 +1487,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 35,
+            "line": 37,
             "description": "The current map.",
             "itemtype": "property",
             "name": "map",
@@ -1515,7 +1496,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 42,
+            "line": 44,
             "description": "The current entityManager.",
             "itemtype": "property",
             "name": "entityManager",
@@ -1524,7 +1505,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 49,
+            "line": 51,
             "description": "The current Fov.",
             "itemtype": "property",
             "name": "fov",
@@ -1533,7 +1514,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 56,
+            "line": 58,
             "description": "The current Lighting.",
             "itemtype": "property",
             "name": "lighting",
@@ -1542,7 +1523,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 63,
+            "line": 65,
             "description": "The current renderer.",
             "itemtype": "property",
             "name": "renderer",
@@ -1551,7 +1532,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 70,
+            "line": 72,
             "description": "The current console.",
             "itemtype": "property",
             "name": "console",
@@ -1560,7 +1541,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 77,
+            "line": 79,
             "description": "The current player.",
             "itemtype": "property",
             "name": "player",
@@ -1569,7 +1550,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 84,
+            "line": 86,
             "description": "The current input.",
             "itemtype": "property",
             "name": "input",
@@ -1578,7 +1559,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 91,
+            "line": 93,
             "description": "The current mouse.",
             "itemtype": "property",
             "name": "mouse",
@@ -1587,7 +1568,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 98,
+            "line": 100,
             "description": "Sets the size of the map resizing this.map and this.entityManager.",
             "itemtype": "method",
             "name": "setMapSize",
@@ -1607,7 +1588,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 111,
+            "line": 113,
             "description": "Starts the game.",
             "itemtype": "method",
             "name": "start",
@@ -1615,7 +1596,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 124,
+            "line": 126,
             "description": "Handler for user input actions.",
             "itemtype": "method",
             "name": "onKeyAction",
@@ -1630,30 +1611,40 @@
         },
         {
             "file": "src/game.js",
-            "line": 138,
-            "description": "Handler for user mouse tile click.",
+            "line": 140,
+            "description": "A function to handle tile mouse click events.",
             "itemtype": "method",
-            "name": "onTileClick",
+            "name": "onClick",
             "params": [
                 {
-                    "name": "tile",
-                    "description": "- The tile clicked.",
-                    "type": "Tile"
+                    "name": "x",
+                    "description": "- Mouse x coord relative to window.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Mouse y coord relative to window.",
+                    "type": "Number"
                 }
             ],
             "class": "Game"
         },
         {
             "file": "src/game.js",
-            "line": 154,
-            "description": "Handler for user mouse tile hover.",
+            "line": 161,
+            "description": "A function to handle tile mouse hover events",
             "itemtype": "method",
-            "name": "onTileHover",
+            "name": "onHover",
             "params": [
                 {
-                    "name": "tile",
-                    "description": "- The tile hovered.",
-                    "type": "Tile"
+                    "name": "x",
+                    "description": "- Mouse x coord relative to window.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Mouse y coord relative to window.",
+                    "type": "Number"
                 }
             ],
             "class": "Game"
@@ -1959,7 +1950,14 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 151,
+            "line": 147,
+            "itemtype": "method",
+            "name": "remove",
+            "class": "Lighting"
+        },
+        {
+            "file": "src/lighting-rot.js",
+            "line": 154,
             "description": "Returns the reflectivity value of a tile",
             "itemtype": "method",
             "name": "getTileReflectivity",
@@ -1967,7 +1965,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 162,
+            "line": 165,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "checkVisible",
@@ -1975,7 +1973,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 171,
+            "line": 174,
             "description": "Sets the size of the map to mange Lighting within.",
             "itemtype": "method",
             "name": "setSize",
@@ -2110,58 +2108,47 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 26,
-            "description": "Game instance this obj is attached to.",
-            "itemtype": "property",
-            "name": "game",
-            "type": "Game",
-            "class": "Mouse"
-        },
-        {
-            "file": "src/mouse.js",
-            "line": 33,
-            "description": "A function to handle tile mouse click events",
+            "line": 19,
+            "description": "A function to handle tile mouse click events.",
             "itemtype": "method",
-            "name": "onTileClick",
+            "name": "onClick",
             "params": [
                 {
-                    "name": "tile",
-                    "description": "- Tile object clicked.",
-                    "type": "Tile"
+                    "name": "x",
+                    "description": "- Mouse x coord relative to window.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Mouse y coord relative to window.",
+                    "type": "Number"
                 }
             ],
             "class": "Mouse"
         },
         {
             "file": "src/mouse.js",
-            "line": 40,
-            "description": "Current mouse x axis coord relative to upper left corner of mapview element.",
-            "itemtype": "property",
-            "name": "mapViewMouseX",
-            "type": "Number",
+            "line": 27,
+            "description": "A function to handle tile mouse hover events",
+            "itemtype": "method",
+            "name": "onHover",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- Mouse x coord relative to window.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Mouse y coord relative to window.",
+                    "type": "Number"
+                }
+            ],
             "class": "Mouse"
         },
         {
             "file": "src/mouse.js",
-            "line": 47,
-            "description": "Current mouse y axis coord relative to upper left corner of mapview element.",
-            "itemtype": "property",
-            "name": "mapViewMouseY",
-            "type": "Number",
-            "class": "Mouse"
-        },
-        {
-            "file": "src/mouse.js",
-            "line": 54,
-            "description": "True if mouse is currently over mapview.",
-            "itemtype": "property",
-            "name": "mapViewMouseOver",
-            "type": "Bool",
-            "class": "Mouse"
-        },
-        {
-            "file": "src/mouse.js",
-            "line": 61,
+            "line": 35,
             "description": "The dom element being rendered to and listened to for mouse events.",
             "itemtype": "property",
             "name": "_boundElement",
@@ -2172,7 +2159,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 69,
+            "line": 43,
             "description": "Hander for mouse events",
             "itemtype": "method",
             "name": "handleEvent",
@@ -2187,52 +2174,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 90,
-            "description": "Hander for mouse click events",
-            "itemtype": "method",
-            "name": "mouseClick",
-            "params": [
-                {
-                    "name": "e",
-                    "description": "- mouse event",
-                    "type": "Event"
-                }
-            ],
-            "class": "Mouse"
-        },
-        {
-            "file": "src/mouse.js",
-            "line": 107,
-            "description": "Hander for mouse enter events",
-            "itemtype": "method",
-            "name": "mouseEnter",
-            "params": [
-                {
-                    "name": "e",
-                    "description": "- mouse event",
-                    "type": "Event"
-                }
-            ],
-            "class": "Mouse"
-        },
-        {
-            "file": "src/mouse.js",
-            "line": 116,
-            "description": "Hander for mouse leave events",
-            "itemtype": "method",
-            "name": "mouseLeave",
-            "params": [
-                {
-                    "name": "e",
-                    "description": "- mouse event",
-                    "type": "Event"
-                }
-            ],
-            "class": "Mouse"
-        },
-        {
-            "file": "src/mouse.js",
-            "line": 128,
+            "line": 63,
             "description": "Hander for mouse move events",
             "itemtype": "method",
             "name": "mouseMove",
@@ -2247,7 +2189,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 140,
+            "line": 75,
             "description": "Binds event listener for mouse events.",
             "itemtype": "method",
             "name": "startListening",
@@ -2262,7 +2204,7 @@
         },
         {
             "file": "src/mouse.js",
-            "line": 158,
+            "line": 93,
             "description": "Unbinds event listener for mouse events.",
             "itemtype": "method",
             "name": "stopListening",
@@ -2348,7 +2290,23 @@
         },
         {
             "file": "src/player.js",
+            "line": 100,
+            "description": "Move action.",
+            "itemtype": "method",
+            "name": "move",
+            "class": "Player"
+        },
+        {
+            "file": "src/player.js",
             "line": 126,
+            "description": "Wait action.",
+            "itemtype": "method",
+            "name": "wait",
+            "class": "Player"
+        },
+        {
+            "file": "src/player.js",
+            "line": 134,
             "description": "Changes the position of this entity on the map.",
             "itemtype": "method",
             "name": "moveTo",

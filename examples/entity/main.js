@@ -29,6 +29,9 @@ var initBasicGame = function(mapContainerEl, mapData){
     game.player.x = 5;
     game.player.y = 3;
 
+    // make the view a little smaller
+    game.renderer.resize(10, 14);
+
     // append elements created by the game to the DOM
     mapContainerEl.appendChild(game.renderer.canvas);
     window.game = game;

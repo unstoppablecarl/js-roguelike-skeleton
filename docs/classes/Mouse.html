@@ -148,19 +148,13 @@
             
                 <li class="arg">
                     
-                        <code>game</code>
+                        <code>onClick</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>onTileClick</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>onTileHover</code>
+                        <code>onHover</code>
                     
                 </li>
             
@@ -215,15 +209,15 @@
             
                 <li class="param">
                     
-                        <code class="param-name">game</code>
-                        <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
+                        <code class="param-name">onClick</code>
+                        <span class="type">Function</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>game instance this obj is attached to.</li>
+<li>A function to handle mouse click events. function(x, y){}</li>
 </ul>
 
                     </div>
@@ -233,7 +227,7 @@
             
                 <li class="param">
                     
-                        <code class="param-name">onTileClick</code>
+                        <code class="param-name">onHover</code>
                         <span class="type">Function</span>
                     
 
@@ -241,65 +235,11 @@
 
                     <div class="param-description">
                         <ul>
-<li>A function to handle tile mouse click events. function(tile){}</li>
+<li>A function to handle mouse hover events. function(x, y){}</li>
 </ul>
 
                     </div>
 
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">tile</code>
-                                    <span class="type"><a href="../classes/Tile.html" class="crosslink">Tile</a></span>
-                                
-
-                                <div class="param-description">
-                                    <p>Tile object clicked.</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">onTileHover</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>A function to handle tile mouse hover events. function(tile){}</li>
-</ul>
-
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">tile</code>
-                                    <span class="type"><a href="../classes/Tile.html" class="crosslink">Tile</a></span>
-                                
-
-                                <div class="param-description">
-                                    <p>Tile object hovered.</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
                     
                 </li>
             
@@ -347,27 +287,6 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_mouseClick">mouseClick</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_mouseEnter">mouseEnter</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_mouseLeave">mouseLeave</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
                                 <a href="#method_mouseMove">mouseMove</a>
 
                                 
@@ -375,7 +294,14 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_onTileClick">onTileClick</a>
+                                <a href="#method_onClick">onClick</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_onHover">onHover</a>
 
                                 
                                 
@@ -407,34 +333,6 @@
                         
                             <li class="index-item property protected">
                                 <a href="#property__boundElement">_boundElement</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_game">game</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_mapViewMouseOver">mapViewMouseOver</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_mapViewMouseX">mapViewMouseX</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_mapViewMouseY">mapViewMouseY</a>
 
                                 
                                 
@@ -496,7 +394,7 @@
             
         
         
-        <a href="../files/src_mouse.js.html#l69"><code>src&#x2F;mouse.js:69</code></a>
+        <a href="../files/src_mouse.js.html#l43"><code>src&#x2F;mouse.js:43</code></a>
         
         </p>
 
@@ -508,279 +406,6 @@
 
     <div class="description">
         <p>Hander for mouse events</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">e</code>
-                        <span class="type">Event</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>mouse event</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_mouseClick" class="method item">
-    <h3 class="name"><code>mouseClick</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>e</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_mouse.js.html#l90"><code>src&#x2F;mouse.js:90</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Hander for mouse click events</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">e</code>
-                        <span class="type">Event</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>mouse event</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_mouseEnter" class="method item">
-    <h3 class="name"><code>mouseEnter</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>e</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_mouse.js.html#l107"><code>src&#x2F;mouse.js:107</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Hander for mouse enter events</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">e</code>
-                        <span class="type">Event</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>mouse event</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_mouseLeave" class="method item">
-    <h3 class="name"><code>mouseLeave</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>e</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_mouse.js.html#l116"><code>src&#x2F;mouse.js:116</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Hander for mouse leave events</p>
 
     </div>
 
@@ -860,7 +485,7 @@
             
         
         
-        <a href="../files/src_mouse.js.html#l128"><code>src&#x2F;mouse.js:128</code></a>
+        <a href="../files/src_mouse.js.html#l63"><code>src&#x2F;mouse.js:63</code></a>
         
         </p>
 
@@ -909,8 +534,8 @@
 </div>
 
                 
-                    <div id="method_onTileClick" class="method item">
-    <h3 class="name"><code>onTileClick</code></h3>
+                    <div id="method_onClick" class="method item">
+    <h3 class="name"><code>onClick</code></h3>
 
     
         <div class="args">
@@ -918,7 +543,13 @@
             
                 <li class="arg">
                     
-                        <code>tile</code>
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
                     
                 </li>
             
@@ -951,7 +582,7 @@
             
         
         
-        <a href="../files/src_mouse.js.html#l33"><code>src&#x2F;mouse.js:33</code></a>
+        <a href="../files/src_mouse.js.html#l19"><code>src&#x2F;mouse.js:19</code></a>
         
         </p>
 
@@ -962,7 +593,7 @@
     </div>
 
     <div class="description">
-        <p>A function to handle tile mouse click events</p>
+        <p>A function to handle tile mouse click events.</p>
 
     </div>
 
@@ -974,15 +605,148 @@
             
                 <li class="param">
                     
-                        <code class="param-name">tile</code>
-                        <span class="type"><a href="../classes/Tile.html" class="crosslink">Tile</a></span>
+                        <code class="param-name">x</code>
+                        <span class="type">Number</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>Tile object clicked.</li>
+<li>Mouse x coord relative to window.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Mouse y coord relative to window.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_onHover" class="method item">
+    <h3 class="name"><code>onHover</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_mouse.js.html#l27"><code>src&#x2F;mouse.js:27</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A function to handle tile mouse hover events</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Mouse x coord relative to window.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Mouse y coord relative to window.</li>
 </ul>
 
                     </div>
@@ -1042,7 +806,7 @@
             
         
         
-        <a href="../files/src_mouse.js.html#l140"><code>src&#x2F;mouse.js:140</code></a>
+        <a href="../files/src_mouse.js.html#l75"><code>src&#x2F;mouse.js:75</code></a>
         
         </p>
 
@@ -1123,7 +887,7 @@
             
         
         
-        <a href="../files/src_mouse.js.html#l158"><code>src&#x2F;mouse.js:158</code></a>
+        <a href="../files/src_mouse.js.html#l93"><code>src&#x2F;mouse.js:93</code></a>
         
         </p>
 
@@ -1179,7 +943,7 @@
             
         
         
-        <a href="../files/src_mouse.js.html#l61"><code>src&#x2F;mouse.js:61</code></a>
+        <a href="../files/src_mouse.js.html#l35"><code>src&#x2F;mouse.js:35</code></a>
         
         </p>
 
@@ -1190,186 +954,6 @@
 
     <div class="description">
         <p>The dom element being rendered to and listened to for mouse events.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_game" class="property item">
-    <h3 class="name"><code>game</code></h3>
-    <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_mouse.js.html#l26"><code>src&#x2F;mouse.js:26</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Game instance this obj is attached to.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_mapViewMouseOver" class="property item">
-    <h3 class="name"><code>mapViewMouseOver</code></h3>
-    <span class="type">Bool</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_mouse.js.html#l54"><code>src&#x2F;mouse.js:54</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>True if mouse is currently over mapview.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_mapViewMouseX" class="property item">
-    <h3 class="name"><code>mapViewMouseX</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_mouse.js.html#l40"><code>src&#x2F;mouse.js:40</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Current mouse x axis coord relative to upper left corner of mapview element.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_mapViewMouseY" class="property item">
-    <h3 class="name"><code>mapViewMouseY</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_mouse.js.html#l47"><code>src&#x2F;mouse.js:47</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Current mouse y axis coord relative to upper left corner of mapview element.</p>
 
     </div>
 
