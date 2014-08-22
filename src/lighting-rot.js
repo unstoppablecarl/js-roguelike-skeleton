@@ -144,6 +144,9 @@
             this._lighting.setLight(x, y, [r, g, b]);
         },
 
+        /**
+        * @method remove
+        */
         remove: function(x, y){
             this._lighting.setLight(x, y);
         },

@@ -97,6 +97,10 @@
 
         },
 
+        /**
+        * Move action.
+        * @method move
+        */
         move: function(x, y){
             var targetX = this.x + x,
                 targetY = this.y + y,
@@ -119,8 +123,12 @@
             }
         },
 
+        /**
+        * Wait action.
+        * @method wait
+        */
         wait: function(){
-
+            this.game.console.log('You wait for a moment.');
         },
 
         /**
