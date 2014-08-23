@@ -137,16 +137,16 @@
         floor: {
             name: 'Floor',
             char: '.',
-            color: '#333',
-            bgColor: '#111',
+            color: '#444',
+            bgColor: '#222',
             passable: true,
             blocksLos: false
         },
         wall: {
             name: 'Wall',
             char: '#',
-            color: '#666',
-            bgColor: '#222',
+            color: '#777',
+            bgColor: '#2e2e2e',
             passable: false,
             blocksLos: true
         },

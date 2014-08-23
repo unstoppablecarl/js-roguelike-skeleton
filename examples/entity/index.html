@@ -121,11 +121,11 @@ RL.Entity.Types.zombie = {
     name: 'Zombie',
     char: 'z',
     color: 'red',
-    bgColor: '#222',
+    bgColor: false,
     pushable: false,
     currentDirection: 'right',
-    light_r: 50,
-    light_g: 50,
+    light_r: 100,
+    light_g: 100,
     light_b: 255,
 
     initialize: function(){
@@ -215,6 +215,8 @@ RL.Entity.Types.zombie = {
 var entity = new RL.Entity(game, 'zombie');
 // add it to the game
 game.entityManager.add(1, 1, entity);
+// use moveTo to create light initially
+entity.moveTo(1, 1);
 game.start();
                             </code>
                         </pre>

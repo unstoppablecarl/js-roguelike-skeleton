@@ -34,6 +34,7 @@ var initBasicGame = function(mapContainerEl, mapData){
 
     // append elements created by the game to the DOM
     mapContainerEl.appendChild(game.renderer.canvas);
+
     window.game = game;
     return game;
 };

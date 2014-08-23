@@ -193,7 +193,7 @@
             name: 'Zombie',
             char: 'z',
             color: 'red',
-            bgColor: '#222',
+            bgColor: false,
             pushable: false,
         },
         statue: {

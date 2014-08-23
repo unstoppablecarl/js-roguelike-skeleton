@@ -1784,7 +1784,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 37,
+            "line": 40,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -1793,25 +1793,34 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 44,
+            "line": 47,
             "description": "Array2d storing Lighting data.",
             "itemtype": "property",
-            "name": "LightingMap",
+            "name": "lightingMap",
             "type": "Array2d",
             "class": "Lighting"
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 51,
-            "description": "Reflectivity of visible tiles.",
+            "line": 54,
+            "description": "Reflectivity of wall tiles.",
             "itemtype": "property",
-            "name": "reflectivity",
+            "name": "defaultWallReflectivity",
             "type": "Number",
             "class": "Lighting"
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 58,
+            "line": 61,
+            "description": "Reflectivity of floor tiles.",
+            "itemtype": "property",
+            "name": "defaultFloorReflectivity",
+            "type": "Number",
+            "class": "Lighting"
+        },
+        {
+            "file": "src/lighting-rot.js",
+            "line": 68,
             "description": "Ambient light",
             "itemtype": "property",
             "name": "ambientLight",
@@ -1820,7 +1829,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 65,
+            "line": 75,
             "description": "ROT.FOV instance",
             "itemtype": "property",
             "name": "_fov",
@@ -1831,7 +1840,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 73,
+            "line": 83,
             "description": "ROT.Lighting instance",
             "itemtype": "property",
             "name": "_lighting",
@@ -1842,7 +1851,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 81,
+            "line": 91,
             "description": "Calculates the Lighting data relative to given coords;",
             "itemtype": "method",
             "name": "update",
@@ -1850,7 +1859,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 91,
+            "line": 99,
             "description": "Shades tileData using lighting.",
             "itemtype": "method",
             "name": "shadeTile",
@@ -1895,7 +1904,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 124,
+            "line": 147,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
@@ -1915,7 +1924,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 134,
+            "line": 157,
             "description": "Set a light position and color",
             "itemtype": "method",
             "name": "set",
@@ -1950,14 +1959,14 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 147,
+            "line": 170,
             "itemtype": "method",
             "name": "remove",
             "class": "Lighting"
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 154,
+            "line": 177,
             "description": "Returns the reflectivity value of a tile",
             "itemtype": "method",
             "name": "getTileReflectivity",
@@ -1965,7 +1974,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 165,
+            "line": 199,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "checkVisible",
@@ -1973,7 +1982,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 174,
+            "line": 208,
             "description": "Sets the size of the map to mange Lighting within.",
             "itemtype": "method",
             "name": "setSize",

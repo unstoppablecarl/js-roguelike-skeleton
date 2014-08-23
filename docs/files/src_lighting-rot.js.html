@@ -132,10 +132,10 @@
     var LightingROT = function LightingROT(game, settings) {
         settings = settings || {};
         this.game = game;
-        this.LightingMap = new RL.Array2d();
-        this.checkVisible = this.checkVisible.bind(this);
-        this.getTileReflectivity = this.getTileReflectivity.bind(this);
+        this.lightingMap = new RL.Array2d();
+        this.lightingMap.set = this.lightingMap.set.bind(this.lightingMap);
 
+        this.checkVisible = this.checkVisible.bind(this);
         this._fov = new ROT.FOV.PreciseShadowcasting(this.checkVisible);
 
         settings = RL.Util.merge({
@@ -144,9 +144,12 @@
             emissionThreshold: 100,
         }, settings);
 
+        this.getTileReflectivity = this.getTileReflectivity.bind(this);
         this._lighting = new ROT.Lighting(this.getTileReflectivity, settings);
         this._lighting.setFOV(this._fov);
 
+        // copy instance
+        this.ambientLight = this.ambientLight.slice();
     };
 
     LightingROT.prototype = {
@@ -161,24 +164,31 @@
 
         /**
         * Array2d storing Lighting data.
-        * @property LightingMap
+        * @property lightingMap
         * @type Array2d
         */
-        LightingMap: null,
+        lightingMap: null,
 
         /**
-        * Reflectivity of visible tiles.
-        * @property reflectivity
+        * Reflectivity of wall tiles.
+        * @property defaultWallReflectivity
         * @type Number
         */
-        reflectivity: 0.3,
+        defaultWallReflectivity: 0.1,
+
+        /**
+        * Reflectivity of floor tiles.
+        * @property defaultFloorReflectivity
+        * @type Number
+        */
+        defaultFloorReflectivity: 0.1,
 
         /**
         * Ambient light
         * @property ambientLight
         * @type Array
         */
-        ambientLight: [200, 200, 200],
+        ambientLight: [100, 100, 100],
 
         /**
         * ROT.FOV instance
@@ -201,9 +211,7 @@
         * @method update
         */
         update: function(){
-            // this.LightingMap.reset();
-            var _this = this;
-            this._lighting.compute(this.LightingMap.set.bind(this.LightingMap));
+            this._lighting.compute(this.lightingMap.set);
         },
 
         /**
@@ -215,11 +223,24 @@
         * @param {String} [tileData.char] - The character to be rendered.
         * @param {String} [tileData.color] - The color of character to be rendered.
         * @param {String} [tileData.bgColor] - The background color of the tile to be rendered.
-
         */
         shadeTile: function(x, y, tileData){
             var light = this.ambientLight;
             var lighting = this.get(x, y);
+
+            var overlay = function(c1, c2){
+                var out = c1.slice();
+                for (var i = 0; i &lt; 3; i++) {
+                    var a = c1[i],
+                        b = c2[i];
+                    if(b &lt; 128){
+                        out[i] = Math.round(2 * a * b / 255);
+                    } else {
+                        out[i] = Math.round(255 - 2 * (255 - a) * (255 - b) / 255);
+                    }
+                }
+                return out;
+            };
 
             if(lighting){
                 light = ROT.Color.add(this.ambientLight, lighting);
@@ -227,13 +248,15 @@
 
             if(tileData.color){
                 var color = ROT.Color.fromString(tileData.color);
-                color = ROT.Color.multiply(color, light);
+                color = overlay(light, color);
+
                 tileData.color = ROT.Color.toRGB(color);
             }
 
             if(tileData.bgColor){
                 var bgColor = ROT.Color.fromString(tileData.bgColor);
-                bgColor = ROT.Color.multiply(bgColor, light);
+                bgColor = overlay(light, bgColor);
+
                 tileData.bgColor = ROT.Color.toRGB(bgColor);
             }
 
@@ -246,7 +269,7 @@
         * @param {Number} y - The map coordinate position to get Lighting visibility from on the y axis.
         */
         get: function(x, y){
-            return this.LightingMap.get(x, y);
+            return this.lightingMap.get(x, y);
         },
 
         /**
@@ -274,10 +297,21 @@
         * @method getTileReflectivity
         */
         getTileReflectivity: function(x, y){
-            if(this.checkVisible(x,y)){
+            var tile = this.game.map.get(x, y);
+
+            if(!tile){
                 return 0;
             }
-            return this.reflectivity;
+
+            if(tile.lightingReflectivity){
+                return tile.lightingReflectivity;
+            }
+
+            if(tile.blocksLos){
+                return this.defaultWallReflectivity;
+            } else {
+                return this.defaultFloorReflectivity;
+            }
         },
 
         /**
@@ -296,7 +330,7 @@
         * @param {Number} height - Height of current map in tiles.
         */
         setSize: function(width, height){
-            this.LightingMap.setSize(width, height);
+            this.lightingMap.setSize(width, height);
         }
 
     };
