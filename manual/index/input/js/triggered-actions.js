@@ -29,8 +29,4 @@ input.onKeyAction = function(action){
     }
 };
 
-
-$.get('js/test.js', function(data){
-    console.log(data);
-});
 // The Game class has a onKeyAction function that is used this way and automatically set look at Game.prototype.onKeyAction in game.js
