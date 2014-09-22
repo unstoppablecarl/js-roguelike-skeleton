@@ -3,6 +3,8 @@
 
     /**
     * Represents lighting in the game map. requires ROT.js
+    * Manages position of lights.
+    * Calculates illumination of map tiles.
     * @class Lighting
     * @constructor
     * @param {Game} game - Game instance this obj is attached to.

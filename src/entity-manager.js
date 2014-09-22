@@ -2,7 +2,8 @@
     'use strict';
 
     /**
-    * Manages the current state of all entities.
+    * Manages a list of all entities and their tile positions.
+    * Handles adding, removing, moving entities within the game.
     * @class EntityManager
     * @constructor
     * @param {Game} game - Game instance this obj is attached to.

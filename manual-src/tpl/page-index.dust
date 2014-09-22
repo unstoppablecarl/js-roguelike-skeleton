@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <title>{title}</title>
+    <link href="{@relative_path current=nav_path target="assets/css/main.css" /}" rel="stylesheet">
+    <link href="{@relative_path current=nav_path target="assets/css/prism.css" /}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page container">
+
+        <div class="section row">
+            <div class="col-md-12 panel panel-default">
+                <div class="panel-heading">
+                    Roguelike JS Skeleton
+                </div>
+                <div class="panel-body">
+                    <p>A simple JS roguelike micro-framework for developers new to programming and or JS.</p>
+                    <ul>
+                        <li>Well designed and organized starting structure</li>
+                        <li>Modular toolkit of classes essential to roguelike development</li>
+                        <li>Does NOT provide map generation tools (other libraries like rot.js should be used for this)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section row">
+            <div class="col-md-6 panel panel-default">
+                <div class="panel-heading">
+                    Examples
+                </div>
+                <div class="panel-body">
+                    <ul>
+                    {#nav_children.primary}
+                    {> "tpl/nav" root_path=nav_path /}
+
+                    {/nav_children.primary}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 panel panel-default">
+                <div class="panel-heading">
+                    Resources
+                </div>
+                <div class="panel-body">
+                    <h2><a href="https://github.com/unstoppablecarl/js-roguelike-skeleton">Github Repo</a></h2>
+                    <p>Code is well commented and designed to be read/edited.</p>
+
+                    <h2><a href="docs/index.html">API Docs</a></h2>
+                    <p>Generated from source comments.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Design Goals
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <h3>User Requirements</h3>
+                            <ul>
+                                <li>basic js skill level</li>
+                            </ul>
+                            <h3>Code</h3>
+                            <ul>
+                                <li>simple and easy to follow</li>
+                                <li>well commented and documented</li>
+                                <li>demonstrates good practices</li>
+                                <li>object oriented design</li>
+                                <li>minimal dependencies (ideally none).</li>
+                                <li>core code produces a single global variable: <strong>RL</strong>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <h3>Avoided non-begginer techniques</h3>
+                            <ul>
+                                <li>game loop / animation</li>
+                                <li>object inheritance</li>
+                                <li>build process</li>
+                                <li>inaccessable or un-modifiable code or behavior (getters, setters, private-ish varables etc)</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {contents|s}
+
+        {> "tpl/footer" /}
+    </div>
+</body>
+
+</html>

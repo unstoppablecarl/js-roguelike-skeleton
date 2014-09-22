@@ -3,6 +3,8 @@
 
     /**
     * Represents an entity in the game. Usually a character or enemy.
+    * Manages state (position, health, stats, etc)
+    * Occupies a single game map tile.
     * @class Entity
     * @constructor
     * @param {Game} game - Game instance this obj is attached to.

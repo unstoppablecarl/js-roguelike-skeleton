@@ -3,6 +3,8 @@
 
     /**
     * Manages the display and history of console messages to the user.
+    * "The troll hits you dealing 10 damage."
+    * "You die."
     * @class Console
     * @constructor
     * @param {Game} game - Game instance this obj is attached to.

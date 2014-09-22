@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <title>{title}</title>
+    <link href="{@relative_path current=nav_path target="assets/css/prism.css" /}" rel="stylesheet">
+    <link href="{@relative_path current=nav_path target="assets/css/main.css" /}" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="page container">
+        <div class="section">
+            {> "tpl/breadcrumb" /}
+            {?nav_children.primary}
+                <p>
+                {#yui_class_data.description}
+                    {yui_class_data.description}
+                {:else}
+                    No class description.
+                {/yui_class_data.description}
+                </p>
+            {/nav_children.primary}
+        </div>
+
+        <div class="section row">
+            <div class="col-md-6 panel panel-default">
+                <div class="panel-heading">
+                    Examples
+                </div>
+                <div class="panel-body">
+                    <ol>
+                    {#nav_children.primary}
+                        {> "tpl/nav" root_path=nav_path /}
+                    {/nav_children.primary}
+                    </ol>
+                </div>
+            </div>
+            <div class="col-md-6 panel panel-default">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Related API Docs
+                    </div>
+                    <div id="related-docs" class="panel-body collapse in">
+                        <ul>{#related_docs}
+                            <li>
+                                <a href="../{@relative_path current="/{nav_path}" target="{url}" /}">{name}</a>
+                            </li>
+                        {/related_docs}</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#contents}
+        <div class="section">
+            {contents|s}
+        </div>
+        {/contents}
+
+        <script src="{@relative_path current=nav_path target="assets/js/jquery.min.js" /}"></script>
+        <script src="{@relative_path current=nav_path target="assets/js/prism.js" /}"></script>
+        <script src="{@relative_path current=nav_path target="assets/js/bootstrap/button.js" /}"></script>
+        <script src="{@relative_path current=nav_path target="assets/js/bootstrap/collapse.js" /}"></script>
+
+        {> "tpl/footer" /}
+    </div>
+</body>
+
+</html>

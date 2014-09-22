@@ -2,7 +2,7 @@
     'use strict';
 
     /**
-    * Represents a tile in the game map
+    * Represents a tile in the game map.
     * @class Tile
     * @constructor
     * @param {Object} game - Game instance this obj is attached to.

@@ -11,8 +11,6 @@ module.exports = function(grunt) {
                 sourceMapFilename: 'examples/assets/css/style.css.map',
                 // Override the default url that points to the sourcemap from the compiled css file.
                 sourceMapURL: 'style.css.map',
-                // Sets the base path for the less file paths in the source map.
-                // sourceMapRootpath: '/packages/app/assets'
             }
         },
         watch: {
@@ -20,13 +18,16 @@ module.exports = function(grunt) {
                 files: ['examples/assets/less/**/*.less'],
                 tasks: ['less:examples'],
             },
+            manual: {
+                files: [
+                'manual-src/assets/*',
+                'manual-src/src/**/*.md',
+                'manual-src/tpl/**/*.dust'
+                ],
+            }
         },
         yuidoc: {
             examples: {
-                // name: '<%= pkg.name %>',
-                // description: '<%= pkg.description %>',
-                // version: '<%= pkg.version %>',
-                // url: '<%= pkg.homepage %>',
                 options: {
                     paths: 'src',
                     outdir: 'docs'

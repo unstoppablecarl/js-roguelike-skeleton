@@ -2,7 +2,7 @@
     'use strict';
 
     /**
-    * Responsible for rendering the state of the game map.
+    * Renders the current game state using html5 canvas.
     * @class Renderer
     * @constructor
     * @param {Game} game - Game instance this obj is attached to.

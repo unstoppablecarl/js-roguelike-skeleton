@@ -1,0 +1,13 @@
+<li>
+{#file}
+     <a href="{@relative_path current=root_path target=path /}">{title}</a>
+{:else}
+    {name}
+{/file}
+{#children}
+<ul>
+    {> "tpl/nav":. root_path=root_path /}
+</ul>
+{:else}
+{/children}
+</li>

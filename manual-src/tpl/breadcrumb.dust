@@ -1,0 +1,4 @@
+<ol class="breadcrumb">{#breadcrumb_path root_path=nav_path}
+                <li>{#file}<a href="{@relative_path current=root_path target=nav_path /}">{title}</a>{:else}name={name}{/file}</li>{/breadcrumb_path}
+                <li class="active">{title}</li>
+            </ol>

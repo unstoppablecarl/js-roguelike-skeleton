@@ -2,7 +2,9 @@
     'use strict';
 
     /**
-    * Represents the game.
+    * Container for all game objects.
+    * Handles updating the state of game objects each turn.
+    * Listens for player input to trigger and resolve new turns.
     * @class Game
     * @constructor
     */

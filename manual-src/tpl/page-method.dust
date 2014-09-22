@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <title>{title}</title>
+    <link href="{@relative_path current=nav_path target="assets/css/prism.css" /}" rel="stylesheet">
+    <link href="{@relative_path current=nav_path target="assets/css/main.css" /}" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="page container">
+
+        <div class="section">
+            {> "tpl/breadcrumb" /}
+        </div>
+
+        <div class="section">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Example
+                </div>
+                <div class="panel-body">
+                    {?example_content}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <!-- Example Content Start -->
+                            {contents|s}
+                            <!-- Example Content End -->
+                        </div>
+                        <div class="col-sm-6">
+                            {example_content|s}
+                        </div>
+                    </div>
+                    {:else}
+                    <!-- Example Content Start -->
+                    {contents|s}
+                    <!-- Example Content End -->
+                    {/example_content}
+                </div>
+            </div>
+        </div>
+
+        <div class="row section">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-target="#js-files">Show/Hide</button>
+                        Js Files
+                    </div>
+                    <div id="js-files" class="panel-body collapse in">
+                    {?scripts}
+                        <h4>Example</h4>
+                        <div class="section">
+                        {#scripts}
+                            <div class="btn-group">
+                                <a href="{.}" class="btn btn-link">{.}</a>
+                            </div>
+                        {/scripts}
+                        </div>
+                    {/scripts}
+                    {?lib_scripts}
+                        <h4>Lib</h4>
+                        <div class="section">
+                        {#lib_scripts}
+                            <div class="btn-group">
+                                <a href="{.}" class="btn btn-link">{.}</a>
+                            </div>
+                        {/lib_scripts}
+                        </div>
+                    {/lib_scripts}
+                    {?vendor_scripts}
+                        <h4>Vendor</h4>
+                        <div class="section">
+                        {#vendor_scripts}
+                            <div class="btn-group">
+                                <a href="{.}" class="btn btn-link">{.}</a>
+                            </div>
+                        {/vendor_scripts}
+                        </div>
+                    {/vendor_scripts}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-target="#related-docs">Show/Hide</button>
+                        Related API Docs
+                    </div>
+                    <div id="related-docs" class="panel-body collapse in">
+                        <ul>{#related_docs}
+                            <li>
+                                <a href="../{@relative_path current="/{nav_path}" target="{url}" /}">{name}</a>
+                            </li>
+                        {/related_docs}</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="{@relative_path current=nav_path target="assets/js/jquery.min.js" /}"></script>
+        <script src="{@relative_path current=nav_path target="assets/js/prism.js" /}"></script>
+        <script src="{@relative_path current=nav_path target="assets/js/main.js" /}"></script>
+        <script src="{@relative_path current=nav_path target="assets/js/bootstrap/button.js" /}"></script>
+        <script src="{@relative_path current=nav_path target="assets/js/bootstrap/collapse.js" /}"></script>
+
+        <!-- Load Vendor js files -->
+        {#vendor_scripts}<script src="{.}"></script>
+        {/vendor_scripts}
+
+        <!-- Load Lib js files -->
+        {#lib_scripts}<script src="{.}"></script>
+        {/lib_scripts}
+
+        <!-- Load Example js files -->
+        {#scripts}<script src="{.}"></script>
+        {/scripts}
+
+        {> "tpl/footer" /}
+    </div>
+</body>
+
+</html>

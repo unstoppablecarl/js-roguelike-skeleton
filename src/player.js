@@ -3,6 +3,8 @@
 
     /**
     * Represents the player.
+    * Very similar to Entity
+    * Handles functionality triggered by keyboard and mouse Input
     * @class Player
     * @constructor
     * @param {Game} game - game instance this obj is attached to
