@@ -20,8 +20,13 @@ inputElement.innerHTML = '';
 
 // set a function to trigger functionality based on the input action triggered
 input.onKeyAction = function(action){
-    console.log(action, action + "<br>");
-    inputElement.innerHTML += action + '<br>';
+    console.log(action);
+    inputElement.innerHTML += '<div>' + action + '</div>';
+
+    // remove the first element if there are more than 5
+    if(inputElement.childElementCount > 5){
+        inputElement.removeChild(inputElement.children[0]);
+    }
 };
 
 // The Game class has a onKeyAction function that is used this way and automatically set look at Game.prototype.onKeyAction in game.js
