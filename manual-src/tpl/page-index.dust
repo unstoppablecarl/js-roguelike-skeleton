@@ -6,7 +6,6 @@
 
     <title>{title}</title>
     <link href="{@relative_path current=nav_path target="assets/css/main.css" /}" rel="stylesheet">
-    <link href="{@relative_path current=nav_path target="assets/css/prism.css" /}" rel="stylesheet">
 </head>
 
 <body>
@@ -51,7 +50,7 @@
                     <h2><a href="https://github.com/unstoppablecarl/js-roguelike-skeleton">Github Repo</a></h2>
                     <p>Code is well commented and designed to be read/edited.</p>
 
-                    <h2><a href="docs/index.html">API Docs</a></h2>
+                    <h2><a href="../docs/index.html">API Docs</a></h2>
                     <p>Generated from source comments.</p>
                 </div>
             </div>

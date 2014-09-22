@@ -5,7 +5,6 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
     <title>{title}</title>
-    <link href="{@relative_path current=nav_path target="assets/css/prism.css" /}" rel="stylesheet">
     <link href="{@relative_path current=nav_path target="assets/css/main.css" /}" rel="stylesheet">
 
 </head>
@@ -60,7 +59,6 @@
         {/contents}
 
         <script src="{@relative_path current=nav_path target="assets/js/jquery.min.js" /}"></script>
-        <script src="{@relative_path current=nav_path target="assets/js/prism.js" /}"></script>
         <script src="{@relative_path current=nav_path target="assets/js/bootstrap/button.js" /}"></script>
         <script src="{@relative_path current=nav_path target="assets/js/bootstrap/collapse.js" /}"></script>
 
