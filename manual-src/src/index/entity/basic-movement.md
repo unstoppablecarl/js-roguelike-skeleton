@@ -1,5 +1,5 @@
 ---
-title: Basic Movement Behavior (and an attached light just for fun)
+title: Basic Movement Behavior
 template: page-method.dust
 nav_sort: 1
 nav_groups: primary
@@ -32,7 +32,7 @@ scripts:
  - js/init.js
  - js/basic-movement.js
 
-example_content: Move the player around and watch how the zombie behaves. Move with the W, A, S, D instead of arrow keys to avoid scrolling the window. Use SPACE to skip the players turn.
+example_content: Move the player around and watch how the zombie behaves. Move with the W, A, S, D instead of arrow keys to avoid scrolling the window. Use SPACE to skip the players turn. Just for fun a light that follows the zombie has been added.
 
 ---
 

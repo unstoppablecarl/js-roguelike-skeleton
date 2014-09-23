@@ -12,7 +12,7 @@
 <body>
     <div class="page container">
         <div class="section">
-            {> "tpl/breadcrumb" /}
+            {> "manual-src/tpl/breadcrumb" /}
             {?nav_children.primary}
                 <p>
                 {#yui_class_data.description}
@@ -32,7 +32,7 @@
                 <div class="panel-body">
                     <ol>
                     {#nav_children.primary}
-                        {> "tpl/nav" root_path=nav_path /}
+                        {> "manual-src/tpl/nav" root_path=nav_path /}
                     {/nav_children.primary}
                     </ol>
                 </div>
@@ -62,7 +62,7 @@
         <script src="{@relative_path current=nav_path target="assets/js/bootstrap/button.js" /}"></script>
         <script src="{@relative_path current=nav_path target="assets/js/bootstrap/collapse.js" /}"></script>
 
-        {> "tpl/footer" /}
+        {> "manual-src/tpl/footer" /}
     </div>
 </body>
 

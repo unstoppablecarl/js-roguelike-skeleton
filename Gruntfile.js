@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-
+'use strict';
     grunt.initConfig({
         less: {
             examples: {
@@ -20,9 +20,10 @@ module.exports = function(grunt) {
             },
             manual: {
                 files: [
-                'manual-src/assets/*',
-                'manual-src/src/**/*.md',
-                'manual-src/tpl/**/*.dust'
+                    'manual-src/assets/*',
+                    'manual-src/src/**/*.md',
+                    'manual-src/src/**/*.js',
+                    'manual-src/tpl/**/*.dust'
                 ],
             }
         },
@@ -33,6 +34,9 @@ module.exports = function(grunt) {
                     outdir: 'docs'
                 }
             }
+        },
+        metalsmith: {
+
         }
     });
 
@@ -40,8 +44,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
+    var metalsmithTask = require('./manual-src/task.js');
+    grunt.registerTask('metalsmith', 'metalsmith build task', metalsmithTask);
+
     grunt.registerTask('build', [
         'less:examples',
         'yuidoc:examples',
+        'metalsmith'
     ]);
 };

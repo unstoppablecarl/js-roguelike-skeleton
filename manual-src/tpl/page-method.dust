@@ -13,7 +13,7 @@
     <div class="page container">
 
         <div class="section">
-            {> "tpl/breadcrumb" /}
+            {> "manual-src/tpl/breadcrumb" /}
         </div>
 
         <div class="section">
@@ -118,7 +118,7 @@
         {#scripts}<script src="{.}"></script>
         {/scripts}
 
-        {> "tpl/footer" /}
+        {> "manual-src/tpl/footer" /}
     </div>
 </body>
 

@@ -1,6 +1,7 @@
 var input = new RL.Input();
 
 // key bindings: a list of actions bound to a list of keys to trigger them
+// see Input.Keys in input.js for a full list of key names available.
 var keyBindings = {
     up: ['UP_ARROW', 'K', 'W'],
     down: ['DOWN_ARROW', 'J', 'S'],
@@ -29,4 +30,5 @@ input.onKeyAction = function(action){
     }
 };
 
-// The Game class has a onKeyAction function that is used this way and automatically set look at Game.prototype.onKeyAction in game.js
+// The Game class has an onKeyAction function that is used this way and is automatically set by the game constructor.
+// See Game.prototype.onKeyAction in game.js

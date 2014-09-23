@@ -36,7 +36,7 @@
                 <div class="panel-body">
                     <ul>
                     {#nav_children.primary}
-                    {> "tpl/nav" root_path=nav_path /}
+                    {> "manual-src/tpl/nav" root_path=nav_path /}
 
                     {/nav_children.primary}
                     </ul>
@@ -101,7 +101,7 @@
 
         {contents|s}
 
-        {> "tpl/footer" /}
+        {> "manual-src/tpl/footer" /}
     </div>
 </body>
 

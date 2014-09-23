@@ -6,7 +6,7 @@
 {/file}
 {#children}
 <ul>
-    {> "tpl/nav":. root_path=root_path /}
+    {> "manual-src/tpl/nav":. root_path=root_path /}
 </ul>
 {:else}
 {/children}
