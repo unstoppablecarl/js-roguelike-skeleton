@@ -1,18 +1,25 @@
-// types of tiles are defined by adding objects to the RL.Tile.Types objects
-// each type has a typeName and is accessed like this RL.Tile.Types[typeName];
-// methods on a tile type object override methods with the same name on an object instance ( var tile = new RL.Tile() ) ( RL.Tile.prototype )
-// See tile.js to review the types available by default
+/*
+    Types of tiles are defined by adding objects to the RL.Tile.Types object.
+    Each type has a typeName and is accessed like this RL.Tile.Types[typeName];
+    When creating a new Tile() object the second param is the typeName ( var tile = new RL.Tile(game, type, x, y) ).
+    Methods on a tile type object are added to tile object instances of that type replacing methods with the same name
+    See tile.js to review the types available by default.
+*/
 
 RL.Tile.Types.pit = {
     name: 'Pit',
     char: 'O',
     color: '#333',
     bgColor: '#000',
-    passable: false,
-    blocksLos: false
+    passable: true,
+    blocksLos: false,
+    // when an entity enters this tile it is instantly killed
+    onEntityEnter: function(entity){
+        entity.dead = true;
+    }
 };
 
-var game; // new RL.Game();
+var game = null; // left null for simplicity of example. normally an instance of RL.Game
 var x = 0;
 var y = 0;
-var tile = new RL.Tile(game, 'pit', x, y);
+var pitTile = new RL.Tile(game, 'pit', x, y);

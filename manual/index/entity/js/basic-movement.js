@@ -102,7 +102,13 @@ RL.Entity.Types.zombie = {
         }
         // add to new position
         this.game.lighting.set(x, y, this.light_r, this.light_g, this.light_b);
+
+        // coppied from Entity.prototype.moveTo()
         this.game.entityManager.move(x, y, this);
+        var tile = this.game.map.get(x, y);
+        if(tile){
+            tile.onEntityEnter(this);
+        }
     },
 };
 // create an instance of entity with the type zombie

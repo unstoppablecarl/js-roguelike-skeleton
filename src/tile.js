@@ -113,6 +113,18 @@
                 this.game.console.log('You cannot move through this <strong>' + this.name + '</strong> no matter how hard you try.');
             }
         },
+
+        /**
+        * Handles entity entering a new tile.
+        * Called after chaning the entities position
+        * @method onEntityEnterTile
+        * @param {Entity} entity - The entity entering the tile
+        * @param {Number} x - Map tile coord.
+        * @param {Number} y - Map tile coord.
+        */
+        onEntityEnter: function(entity){
+            // add behavior here
+        }
     };
 
     /**

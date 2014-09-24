@@ -255,7 +255,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/entity.js",
-            "line": 176,
+            "line": 181,
             "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222',\n           pushable: false\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -529,7 +529,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/tile.js",
-            "line": 118,
+            "line": 130,
             "description": "Describes different types of tiles. Used by the Tile constructor 'type' param.\n\n    Tile.Types = {\n        floor: {\n           name: 'Floor',\n           char: '.',\n           color: '#333',\n           bgColor: '#111',\n           passable: true,\n           blocksLos: false\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -1282,7 +1282,7 @@
         {
             "file": "src/entity.js",
             "line": 135,
-            "description": "Changes the position of this entity on the map.",
+            "description": "Changes the position of this entity on the map.\nthis.canMoveTo() should always be checked before calling this.moveTo",
             "itemtype": "method",
             "name": "moveTo",
             "params": [
@@ -1301,7 +1301,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 145,
+            "line": 150,
             "description": "Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.",
             "itemtype": "method",
             "name": "bump",
@@ -1597,7 +1597,7 @@
         {
             "file": "src/game.js",
             "line": 128,
-            "description": "Handler for user input actions.",
+            "description": "Handles user input actions.",
             "itemtype": "method",
             "name": "onKeyAction",
             "params": [
@@ -1612,7 +1612,7 @@
         {
             "file": "src/game.js",
             "line": 142,
-            "description": "A function to handle tile mouse click events.",
+            "description": "Handles tile mouse click events.",
             "itemtype": "method",
             "name": "onClick",
             "params": [
@@ -1632,7 +1632,7 @@
         {
             "file": "src/game.js",
             "line": 163,
-            "description": "A function to handle tile mouse hover events",
+            "description": "Handles tile mouse hover events",
             "itemtype": "method",
             "name": "onHover",
             "params": [
@@ -2825,6 +2825,31 @@
                     "name": "entity",
                     "description": "- The player or entity attemplting to move into this tile.",
                     "type": "Object"
+                }
+            ],
+            "class": "Tile"
+        },
+        {
+            "file": "src/tile.js",
+            "line": 117,
+            "description": "Handles entity entering a new tile.\nCalled after chaning the entities position",
+            "itemtype": "method",
+            "name": "onEntityEnterTile",
+            "params": [
+                {
+                    "name": "entity",
+                    "description": "- The entity entering the tile",
+                    "type": "Entity"
+                },
+                {
+                    "name": "x",
+                    "description": "- Map tile coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Map tile coord.",
+                    "type": "Number"
                 }
             ],
             "class": "Tile"

@@ -252,12 +252,17 @@
 
         /**
         * Changes the position of this entity on the map.
+        * this.canMoveTo() should always be checked before calling this.moveTo
         * @method moveTo
         * @param {Number} x - The tile map x coord to move to.
         * @param {Number} y - The tile map y coord to move to.
         */
         moveTo: function(x, y) {
             this.game.entityManager.move(x, y, this);
+            var tile = this.game.map.get(x, y);
+            if(tile){
+                tile.onEntityEnter(this);
+            }
         },
 
         /**
