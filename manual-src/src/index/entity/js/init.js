@@ -1,4 +1,4 @@
-var initBasicGame = function(mapContainerEl, mapData){
+var initBasicGame = function(mapContainerEl, mapData, charToType){
 
     var keyBindings = {
         up: ['UP_ARROW', 'K', 'W'],
@@ -8,7 +8,7 @@ var initBasicGame = function(mapContainerEl, mapData){
         wait: ['SPACE']
     };
 
-    var mapCharToType = {
+    var mapCharToType = charToType || {
         '#': 'wall',
         '.': 'floor'
     };

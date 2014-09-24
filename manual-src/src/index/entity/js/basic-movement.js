@@ -2,13 +2,35 @@ var mapData = [
     '##########',
     '#........#',
     '#........#',
-    '#........#',
+    '#......0.#',
     '#........#',
     '##########',
 ];
 var containerEl = document.getElementById('example-container');
 containerEl.innerHTML = '';
-var game = initBasicGame(containerEl, mapData);
+
+
+RL.Tile.Types.pit = {
+    name: 'Pit',
+    char: '0',
+    color: '#333',
+    bgColor: '#000',
+    passable: true,
+    blocksLos: false,
+    // when an entity enters this tile it is instantly killed
+    onEntityEnter: function(entity){
+        console.log('enter');
+        entity.dead = true;
+    }
+};
+var charToType = {
+        '#': 'wall',
+        '.': 'floor',
+        '0': 'pit'
+    };
+
+var game = initBasicGame(containerEl, mapData, charToType);
+
 
 // Define an Entity Type
 RL.Entity.Types.zombie = {

@@ -255,7 +255,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/entity.js",
-            "line": 181,
+            "line": 173,
             "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222',\n           pushable: false\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -275,7 +275,7 @@
                 {
                     "name": "game",
                     "description": "- Game instance this obj is attached to.",
-                    "type": "Object"
+                    "type": "Game"
                 }
             ]
         },
@@ -1281,7 +1281,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 135,
+            "line": 131,
             "description": "Changes the position of this entity on the map.\nthis.canMoveTo() should always be checked before calling this.moveTo",
             "itemtype": "method",
             "name": "moveTo",
@@ -1301,7 +1301,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 150,
+            "line": 142,
             "description": "Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.",
             "itemtype": "method",
             "name": "bump",
@@ -1316,7 +1316,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 20,
+            "line": 18,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -1325,7 +1325,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 27,
+            "line": 25,
             "description": "Array2d storing fovROT visibility fovMap",
             "itemtype": "property",
             "name": "fovMap",
@@ -1334,7 +1334,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 34,
+            "line": 32,
             "description": "Field Range of view 90, 180, or 360.",
             "itemtype": "property",
             "name": "fieldRange",
@@ -1343,16 +1343,16 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 41,
+            "line": 39,
             "description": "Direction of fov (used as default) (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'].",
             "itemtype": "property",
-            "name": "fieldRange",
+            "name": "direction",
             "type": "String",
             "class": "FovROT"
         },
         {
             "file": "src/fov-rot.js",
-            "line": 48,
+            "line": 46,
             "description": "Max visible distance in tiles",
             "itemtype": "property",
             "name": "maxViewDistance",
@@ -1361,7 +1361,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 55,
+            "line": 53,
             "description": "Validates a fieldRange value.",
             "itemtype": "method",
             "name": "validateFieldRange",
@@ -1376,7 +1376,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 67,
+            "line": 65,
             "description": "Converts a string direction to an rot",
             "itemtype": "method",
             "name": "directionStringToArray",
@@ -1395,7 +1395,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 91,
+            "line": 89,
             "description": "Calculates the fovROT data relative to given coords;",
             "itemtype": "method",
             "name": "update",
@@ -1412,18 +1412,23 @@
                 },
                 {
                     "name": "[fieldRange",
-                    "description": "= 360] - Field Range of view 90, 180, or 360.",
+                    "description": "= this.fieldRange || 360] - Field Range of view 90, 180, or 360.",
                     "type": "Number"
                 },
                 {
                     "name": "[direction",
-                    "description": "= 'up'] - Direction of fov (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'];.",
+                    "description": "= this.direction || 'up'] - Direction of fov (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'];.",
                     "type": "String|ROT.DIRS[8].x"
                 },
                 {
-                    "name": "maxViewDistance",
-                    "description": "- Max visible distance in tiles. (this.maxViewDistance used if not set)",
-                    "type": "Number",
+                    "name": "[maxViewDistance",
+                    "description": "= this.maxViewDistance] - Max visible distance in tiles.",
+                    "type": "Number"
+                },
+                {
+                    "name": "entity",
+                    "description": "- The entity to check tile visibility with.",
+                    "type": "Entity",
                     "optional": true
                 }
             ],
@@ -1431,19 +1436,19 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 146,
+            "line": 137,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
             "params": [
                 {
                     "name": "x",
-                    "description": "- The map coordinate position to get FovROT visibility from on the x axis.",
+                    "description": "- The map coord position to get FovROT visibility from.",
                     "type": "Number"
                 },
                 {
                     "name": "y",
-                    "description": "- The map coordinate position to get FovROT visibility from on the y axis.",
+                    "description": "- The map coord position to get FovROT visibility from.",
                     "type": "Number"
                 }
             ],
@@ -1455,19 +1460,56 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 157,
+            "line": 148,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
-            "name": "checkMapTileVisible",
+            "name": "entityCanSeeThrough",
+            "params": [
+                {
+                    "name": "entity",
+                    "description": "- The entity to make a callback for.",
+                    "type": "Entity"
+                }
+            ],
             "return": {
                 "description": "",
-                "type": "Bool"
+                "type": "Function"
             },
             "class": "FovROT"
         },
         {
             "file": "src/fov-rot.js",
-            "line": 166,
+            "line": 161,
+            "description": "Sets the visibility of a checked map tile",
+            "itemtype": "method",
+            "name": "setMapTileVisible",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The map coord position to set.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The map coord position to set.",
+                    "type": "Number"
+                },
+                {
+                    "name": "range",
+                    "description": "- The distance from this fov origin.",
+                    "type": "Number"
+                },
+                {
+                    "name": "visibility",
+                    "description": "- The visibility of this tile coord.",
+                    "type": "Number"
+                }
+            ],
+            "class": "FovROT"
+        },
+        {
+            "file": "src/fov-rot.js",
+            "line": 173,
             "description": "Sets the size of the map to mange fovROT within.",
             "itemtype": "method",
             "name": "setSize",
@@ -1487,7 +1529,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 39,
+            "line": 38,
             "description": "The current map.",
             "itemtype": "property",
             "name": "map",
@@ -1496,7 +1538,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 46,
+            "line": 45,
             "description": "The current entityManager.",
             "itemtype": "property",
             "name": "entityManager",
@@ -1505,16 +1547,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 53,
-            "description": "The current Fov.",
-            "itemtype": "property",
-            "name": "fov",
-            "type": "Fov",
-            "class": "Game"
-        },
-        {
-            "file": "src/game.js",
-            "line": 60,
+            "line": 52,
             "description": "The current Lighting.",
             "itemtype": "property",
             "name": "lighting",
@@ -1523,7 +1556,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 67,
+            "line": 59,
             "description": "The current renderer.",
             "itemtype": "property",
             "name": "renderer",
@@ -1532,7 +1565,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 74,
+            "line": 66,
             "description": "The current console.",
             "itemtype": "property",
             "name": "console",
@@ -1541,7 +1574,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 81,
+            "line": 73,
             "description": "The current player.",
             "itemtype": "property",
             "name": "player",
@@ -1550,7 +1583,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 88,
+            "line": 80,
             "description": "The current input.",
             "itemtype": "property",
             "name": "input",
@@ -1559,7 +1592,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 95,
+            "line": 87,
             "description": "The current mouse.",
             "itemtype": "property",
             "name": "mouse",
@@ -1568,7 +1601,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 102,
+            "line": 94,
             "description": "Sets the size of the map resizing this.map and this.entityManager.",
             "itemtype": "method",
             "name": "setMapSize",
@@ -1588,7 +1621,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 115,
+            "line": 107,
             "description": "Starts the game.",
             "itemtype": "method",
             "name": "start",
@@ -1596,7 +1629,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 128,
+            "line": 120,
             "description": "Handles user input actions.",
             "itemtype": "method",
             "name": "onKeyAction",
@@ -1611,7 +1644,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 142,
+            "line": 138,
             "description": "Handles tile mouse click events.",
             "itemtype": "method",
             "name": "onClick",
@@ -1631,7 +1664,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 163,
+            "line": 159,
             "description": "Handles tile mouse hover events",
             "itemtype": "method",
             "name": "onHover",
@@ -1647,6 +1680,84 @@
                     "type": "Number"
                 }
             ],
+            "class": "Game"
+        },
+        {
+            "file": "src/game.js",
+            "line": 178,
+            "description": "Checks if an entity can move through and into a map tile.\nThis is where code for special cases like flying, swimming and ghosts moving through walls should be placed.",
+            "itemtype": "method",
+            "name": "entityCanMoveTo",
+            "params": [
+                {
+                    "name": "entity",
+                    "description": "- The entity to check.",
+                    "type": "Entity"
+                },
+                {
+                    "name": "x",
+                    "description": "- The x map tile coord to check.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The y map tile coord to check.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
+            "class": "Game"
+        },
+        {
+            "file": "src/game.js",
+            "line": 203,
+            "description": "Changes the position of an entity on the map.\nUpdates entity position in this.entityManager and calls tile.onEntityEnter\nthis.entityCanMoveTo() should always be checked before calling this.entityMoveTo",
+            "itemtype": "method",
+            "name": "entityMoveTo",
+            "params": [
+                {
+                    "name": "entity",
+                    "description": "- The entity to move.",
+                    "type": "Entity"
+                },
+                {
+                    "name": "x",
+                    "description": "- The tile map x coord to move to.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The tile map y coord to move to.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Game"
+        },
+        {
+            "file": "src/game.js",
+            "line": 220,
+            "description": "Checks if a map tile can be seen through.\nThis is where code for special cases like smoke, fog, x-ray vision should go.",
+            "itemtype": "method",
+            "name": "entityCanSeeThrough",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The x map tile coord to check.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The y map tile coord to check.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
             "class": "Game"
         },
         {
@@ -2221,7 +2332,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 19,
+            "line": 31,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -2230,7 +2341,16 @@
         },
         {
             "file": "src/player.js",
-            "line": 26,
+            "line": 38,
+            "description": "FovRot instance representing this entity's vision.",
+            "itemtype": "property",
+            "name": "fov",
+            "type": "FovROT",
+            "class": "Player"
+        },
+        {
+            "file": "src/player.js",
+            "line": 45,
             "description": "Name used when referencing describing this player.\nUsed in console messages.",
             "itemtype": "property",
             "name": "name",
@@ -2239,7 +2359,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 34,
+            "line": 53,
             "description": "The map tile coordinate position of the player on the x axis.",
             "itemtype": "property",
             "name": "x",
@@ -2248,7 +2368,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 41,
+            "line": 60,
             "description": "The map tile coordinate position of the player on the y axis.",
             "itemtype": "property",
             "name": "y",
@@ -2257,7 +2377,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 48,
+            "line": 67,
             "description": "The character displayed when rendering this player.",
             "itemtype": "property",
             "name": "char",
@@ -2266,7 +2386,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 55,
+            "line": 74,
             "description": "The color of the character displayed when rendering this player.",
             "itemtype": "property",
             "name": "color",
@@ -2275,7 +2395,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 62,
+            "line": 81,
             "description": "The background color the character displayed when rendering this player.",
             "itemtype": "property",
             "name": "bgColor",
@@ -2284,7 +2404,34 @@
         },
         {
             "file": "src/player.js",
-            "line": 69,
+            "line": 88,
+            "description": "Field Range of this.fov (90, 180, or 360)",
+            "itemtype": "property",
+            "name": "fovFieldRange",
+            "type": "Number",
+            "class": "Player"
+        },
+        {
+            "file": "src/player.js",
+            "line": 95,
+            "description": "Direction of fov (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'].",
+            "itemtype": "property",
+            "name": "fovDirection",
+            "type": "String",
+            "class": "Player"
+        },
+        {
+            "file": "src/player.js",
+            "line": 102,
+            "description": "Max visible distance in tiles",
+            "itemtype": "property",
+            "name": "fovMaxViewDistance",
+            "type": "Number",
+            "class": "Player"
+        },
+        {
+            "file": "src/player.js",
+            "line": 109,
             "description": "Called when user key is pressed with action of key pressed as an arg.",
             "itemtype": "method",
             "name": "update",
@@ -2299,7 +2446,15 @@
         },
         {
             "file": "src/player.js",
-            "line": 102,
+            "line": 142,
+            "description": "Updates this.fov",
+            "itemtype": "method",
+            "name": "updateFov",
+            "class": "Player"
+        },
+        {
+            "file": "src/player.js",
+            "line": 155,
             "description": "Move action.",
             "itemtype": "method",
             "name": "move",
@@ -2307,7 +2462,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 128,
+            "line": 181,
             "description": "Wait action.",
             "itemtype": "method",
             "name": "wait",
@@ -2315,10 +2470,46 @@
         },
         {
             "file": "src/player.js",
-            "line": 136,
-            "description": "Changes the position of this entity on the map.",
+            "line": 189,
+            "description": "Checks if this entity can move to the specified map tile",
+            "itemtype": "method",
+            "name": "canMoveTo",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The tile map x coord to check if this entity can move to.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The tile map y coord to check if this entity can move to.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/player.js",
+            "line": 200,
+            "description": "Changes the position of this entity on the map.\nthis.canMoveTo() should always be checked before calling this.moveTo",
             "itemtype": "method",
             "name": "moveTo",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The tile map x coord to move to.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The tile map y coord to move to.",
+                    "type": "Number"
+                }
+            ],
             "class": "Player"
         },
         {

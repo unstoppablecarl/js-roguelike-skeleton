@@ -243,11 +243,7 @@
         * @return {Bool}
         */
         canMoveTo: function(x, y){
-            var entity = this.game.entityManager.get(x, y);
-            if(entity){
-                return false;
-            }
-            return this.game.map.canMoveThroughTile(x, y);
+            return this.game.entityCanMoveTo(this, x, y);
         },
 
         /**
@@ -258,11 +254,7 @@
         * @param {Number} y - The tile map y coord to move to.
         */
         moveTo: function(x, y) {
-            this.game.entityManager.move(x, y, this);
-            var tile = this.game.map.get(x, y);
-            if(tile){
-                tile.onEntityEnter(this);
-            }
+            return this.game.entityMoveTo(this, x, y);
         },
 
         /**

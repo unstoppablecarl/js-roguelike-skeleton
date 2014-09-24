@@ -370,7 +370,7 @@
                 map = map || this.game.map;
                 entityManager = entityManager || this.game.entityManager;
                 player = player || this.game.player;
-                fov = fov || this.game.fov;
+                fov = fov || player.fov;
                 lighting = lighting || this.game.lighting;
             }
             var ctx = this.bufferCtx;

@@ -258,6 +258,13 @@ Handles functionality triggered by keyboard and mouse Input</p>
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
+                                <a href="#method_canMoveTo">canMoveTo</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_move">move</a>
 
                                 
@@ -273,6 +280,13 @@ Handles functionality triggered by keyboard and mouse Input</p>
                         
                             <li class="index-item method">
                                 <a href="#method_update">update</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_updateFov">updateFov</a>
 
                                 
                                 
@@ -311,6 +325,34 @@ Handles functionality triggered by keyboard and mouse Input</p>
                         
                             <li class="index-item property">
                                 <a href="#property_color">color</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_fov">fov</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_fovDirection">fovDirection</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_fovFieldRange">fovFieldRange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_fovMaxViewDistance">fovMaxViewDistance</a>
 
                                 
                                 
@@ -358,6 +400,137 @@ Handles functionality triggered by keyboard and mouse Input</p>
                 <h2 class="off-left">Methods</h2>
 
                 
+                    <div id="method_canMoveTo" class="method item">
+    <h3 class="name"><code>canMoveTo</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_player.js.html#l189"><code>src&#x2F;player.js:189</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks if this entity can move to the specified map tile</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The tile map x coord to check if this entity can move to.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The tile map y coord to check if this entity can move to.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_move" class="method item">
     <h3 class="name"><code>move</code></h3>
 
@@ -390,7 +563,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l102"><code>src&#x2F;player.js:102</code></a>
+        <a href="../files/src_player.js.html#l155"><code>src&#x2F;player.js:155</code></a>
         
         </p>
 
@@ -417,7 +590,23 @@ Handles functionality triggered by keyboard and mouse Input</p>
     <h3 class="name"><code>moveTo</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -445,7 +634,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l136"><code>src&#x2F;player.js:136</code></a>
+        <a href="../files/src_player.js.html#l200"><code>src&#x2F;player.js:200</code></a>
         
         </p>
 
@@ -456,10 +645,55 @@ Handles functionality triggered by keyboard and mouse Input</p>
     </div>
 
     <div class="description">
-        <p>Changes the position of this entity on the map.</p>
+        <p>Changes the position of this entity on the map.
+this.canMoveTo() should always be checked before calling this.moveTo</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The tile map x coord to move to.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The tile map y coord to move to.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -510,7 +744,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l69"><code>src&#x2F;player.js:69</code></a>
+        <a href="../files/src_player.js.html#l109"><code>src&#x2F;player.js:109</code></a>
         
         </p>
 
@@ -559,6 +793,61 @@ Handles functionality triggered by keyboard and mouse Input</p>
 </div>
 
                 
+                    <div id="method_updateFov" class="method item">
+    <h3 class="name"><code>updateFov</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_player.js.html#l142"><code>src&#x2F;player.js:142</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Updates this.fov</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method_wait" class="method item">
     <h3 class="name"><code>wait</code></h3>
 
@@ -591,7 +880,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l128"><code>src&#x2F;player.js:128</code></a>
+        <a href="../files/src_player.js.html#l181"><code>src&#x2F;player.js:181</code></a>
         
         </p>
 
@@ -645,7 +934,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l62"><code>src&#x2F;player.js:62</code></a>
+        <a href="../files/src_player.js.html#l81"><code>src&#x2F;player.js:81</code></a>
         
         </p>
 
@@ -690,7 +979,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l48"><code>src&#x2F;player.js:48</code></a>
+        <a href="../files/src_player.js.html#l67"><code>src&#x2F;player.js:67</code></a>
         
         </p>
 
@@ -735,7 +1024,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l55"><code>src&#x2F;player.js:55</code></a>
+        <a href="../files/src_player.js.html#l74"><code>src&#x2F;player.js:74</code></a>
         
         </p>
 
@@ -746,6 +1035,186 @@ Handles functionality triggered by keyboard and mouse Input</p>
 
     <div class="description">
         <p>The color of the character displayed when rendering this player.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_fov" class="property item">
+    <h3 class="name"><code>fov</code></h3>
+    <span class="type"><a href="../classes/FovROT.html" class="crosslink">FovROT</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_player.js.html#l38"><code>src&#x2F;player.js:38</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>FovRot instance representing this entity&#39;s vision.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_fovDirection" class="property item">
+    <h3 class="name"><code>fovDirection</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_player.js.html#l95"><code>src&#x2F;player.js:95</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Direction of fov (not used for fieldRange 360) valid directions: [&#39;up&#39;, &#39;down&#39;, &#39;left&#39;, &#39;right&#39;, &#39;up_left&#39;, &#39;up_right&#39;, &#39;down_left&#39;, &#39;down_right&#39;].</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_fovFieldRange" class="property item">
+    <h3 class="name"><code>fovFieldRange</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_player.js.html#l88"><code>src&#x2F;player.js:88</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Field Range of this.fov (90, 180, or 360)</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_fovMaxViewDistance" class="property item">
+    <h3 class="name"><code>fovMaxViewDistance</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_player.js.html#l102"><code>src&#x2F;player.js:102</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Max visible distance in tiles</p>
 
     </div>
 
@@ -780,7 +1249,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l19"><code>src&#x2F;player.js:19</code></a>
+        <a href="../files/src_player.js.html#l31"><code>src&#x2F;player.js:31</code></a>
         
         </p>
 
@@ -825,7 +1294,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l26"><code>src&#x2F;player.js:26</code></a>
+        <a href="../files/src_player.js.html#l45"><code>src&#x2F;player.js:45</code></a>
         
         </p>
 
@@ -871,7 +1340,7 @@ Used in console messages.</p>
             
         
         
-        <a href="../files/src_player.js.html#l34"><code>src&#x2F;player.js:34</code></a>
+        <a href="../files/src_player.js.html#l53"><code>src&#x2F;player.js:53</code></a>
         
         </p>
 
@@ -916,7 +1385,7 @@ Used in console messages.</p>
             
         
         
-        <a href="../files/src_player.js.html#l41"><code>src&#x2F;player.js:41</code></a>
+        <a href="../files/src_player.js.html#l60"><code>src&#x2F;player.js:60</code></a>
         
         </p>
 

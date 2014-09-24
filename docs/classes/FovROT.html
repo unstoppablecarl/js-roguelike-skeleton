@@ -204,7 +204,7 @@
                 <li class="param">
                     
                         <code class="param-name">game</code>
-                        <span class="type">Object</span>
+                        <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
                     
 
                     
@@ -256,13 +256,6 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_checkMapTileVisible">checkMapTileVisible</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
                                 <a href="#method_directionStringToArray">directionStringToArray</a>
 
                                 
@@ -270,7 +263,21 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_entityCanSeeThrough">entityCanSeeThrough</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_get">get</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setMapTileVisible">setMapTileVisible</a>
 
                                 
                                 
@@ -308,7 +315,7 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_fieldRange">fieldRange</a>
+                                <a href="#property_direction">direction</a>
 
                                 
                                 
@@ -354,77 +361,6 @@
         
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_checkMapTileVisible" class="method item">
-    <h3 class="name"><code>checkMapTileVisible</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Bool</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_fov-rot.js.html#l157"><code>src&#x2F;fov-rot.js:157</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Checks if a tile blocks line of sight</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Bool</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
 
                 
                     <div id="method_directionStringToArray" class="method item">
@@ -473,7 +409,7 @@
             
         
         
-        <a href="../files/src_fov-rot.js.html#l67"><code>src&#x2F;fov-rot.js:67</code></a>
+        <a href="../files/src_fov-rot.js.html#l65"><code>src&#x2F;fov-rot.js:65</code></a>
         
         </p>
 
@@ -536,6 +472,113 @@
 </div>
 
                 
+                    <div id="method_entityCanSeeThrough" class="method item">
+    <h3 class="name"><code>entityCanSeeThrough</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>entity</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_fov-rot.js.html#l148"><code>src&#x2F;fov-rot.js:148</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks if a tile blocks line of sight</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">entity</code>
+                        <span class="type"><a href="../classes/Entity.html" class="crosslink">Entity</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The entity to make a callback for.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_get" class="method item">
     <h3 class="name"><code>get</code></h3>
 
@@ -588,7 +631,7 @@
             
         
         
-        <a href="../files/src_fov-rot.js.html#l146"><code>src&#x2F;fov-rot.js:146</code></a>
+        <a href="../files/src_fov-rot.js.html#l137"><code>src&#x2F;fov-rot.js:137</code></a>
         
         </p>
 
@@ -619,7 +662,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>The map coordinate position to get FovROT visibility from on the x axis.</li>
+<li>The map coord position to get FovROT visibility from.</li>
 </ul>
 
                     </div>
@@ -637,7 +680,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>The map coordinate position to get FovROT visibility from on the y axis.</li>
+<li>The map coord position to get FovROT visibility from.</li>
 </ul>
 
                     </div>
@@ -661,6 +704,169 @@
                 
             </div>
         </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_setMapTileVisible" class="method item">
+    <h3 class="name"><code>setMapTileVisible</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>range</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>visibility</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_fov-rot.js.html#l161"><code>src&#x2F;fov-rot.js:161</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the visibility of a checked map tile</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The map coord position to set.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The map coord position to set.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">range</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The distance from this fov origin.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">visibility</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The visibility of this tile coord.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
     
 
     
@@ -715,7 +921,7 @@
             
         
         
-        <a href="../files/src_fov-rot.js.html#l166"><code>src&#x2F;fov-rot.js:166</code></a>
+        <a href="../files/src_fov-rot.js.html#l173"><code>src&#x2F;fov-rot.js:173</code></a>
         
         </p>
 
@@ -815,7 +1021,13 @@
             
                 <li class="arg">
                     
-                        <code class="optional">[maxViewDistance]</code>
+                        <code>[maxViewDistance</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[entity]</code>
                     
                 </li>
             
@@ -848,7 +1060,7 @@
             
         
         
-        <a href="../files/src_fov-rot.js.html#l91"><code>src&#x2F;fov-rot.js:91</code></a>
+        <a href="../files/src_fov-rot.js.html#l89"><code>src&#x2F;fov-rot.js:89</code></a>
         
         </p>
 
@@ -914,7 +1126,7 @@
                     
 
                     <div class="param-description">
-                        <p>= 360] - Field Range of view 90, 180, or 360.</p>
+                        <p>= this.fieldRange || 360] - Field Range of view 90, 180, or 360.</p>
 
                     </div>
 
@@ -930,7 +1142,7 @@
                     
 
                     <div class="param-description">
-                        <p>= &#39;up&#39;] - Direction of fov (not used for fieldRange 360) valid directions: [&#39;up&#39;, &#39;down&#39;, &#39;left&#39;, &#39;right&#39;, &#39;up_left&#39;, &#39;up_right&#39;, &#39;down_left&#39;, &#39;down_right&#39;];.</p>
+                        <p>= this.direction || &#39;up&#39;] - Direction of fov (not used for fieldRange 360) valid directions: [&#39;up&#39;, &#39;down&#39;, &#39;left&#39;, &#39;right&#39;, &#39;up_left&#39;, &#39;up_right&#39;, &#39;down_left&#39;, &#39;down_right&#39;];.</p>
 
                     </div>
 
@@ -939,8 +1151,24 @@
             
                 <li class="param">
                     
-                        <code class="param-name optional">[maxViewDistance]</code>
+                        <code class="param-name">[maxViewDistance</code>
                         <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>= this.maxViewDistance] - Max visible distance in tiles.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[entity]</code>
+                        <span class="type"><a href="../classes/Entity.html" class="crosslink">Entity</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
@@ -948,7 +1176,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Max visible distance in tiles. (this.maxViewDistance used if not set)</li>
+<li>The entity to check tile visibility with.</li>
 </ul>
 
                     </div>
@@ -1008,7 +1236,7 @@
             
         
         
-        <a href="../files/src_fov-rot.js.html#l55"><code>src&#x2F;fov-rot.js:55</code></a>
+        <a href="../files/src_fov-rot.js.html#l53"><code>src&#x2F;fov-rot.js:53</code></a>
         
         </p>
 
@@ -1065,6 +1293,51 @@
                 <h2 class="off-left">Properties</h2>
 
                 
+                    <div id="property_direction" class="property item">
+    <h3 class="name"><code>direction</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_fov-rot.js.html#l39"><code>src&#x2F;fov-rot.js:39</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Direction of fov (used as default) (not used for fieldRange 360) valid directions: [&#39;up&#39;, &#39;down&#39;, &#39;left&#39;, &#39;right&#39;, &#39;up_left&#39;, &#39;up_right&#39;, &#39;down_left&#39;, &#39;down_right&#39;].</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="property_fieldRange" class="property item">
     <h3 class="name"><code>fieldRange</code></h3>
     <span class="type">Number</span>
@@ -1088,7 +1361,7 @@
             
         
         
-        <a href="../files/src_fov-rot.js.html#l34"><code>src&#x2F;fov-rot.js:34</code></a>
+        <a href="../files/src_fov-rot.js.html#l32"><code>src&#x2F;fov-rot.js:32</code></a>
         
         </p>
 
@@ -1099,51 +1372,6 @@
 
     <div class="description">
         <p>Field Range of view 90, 180, or 360.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_fieldRange" class="property item">
-    <h3 class="name"><code>fieldRange</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_fov-rot.js.html#l41"><code>src&#x2F;fov-rot.js:41</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Direction of fov (used as default) (not used for fieldRange 360) valid directions: [&#39;up&#39;, &#39;down&#39;, &#39;left&#39;, &#39;right&#39;, &#39;up_left&#39;, &#39;up_right&#39;, &#39;down_left&#39;, &#39;down_right&#39;].</p>
 
     </div>
 
@@ -1178,7 +1406,7 @@
             
         
         
-        <a href="../files/src_fov-rot.js.html#l27"><code>src&#x2F;fov-rot.js:27</code></a>
+        <a href="../files/src_fov-rot.js.html#l25"><code>src&#x2F;fov-rot.js:25</code></a>
         
         </p>
 
@@ -1223,7 +1451,7 @@
             
         
         
-        <a href="../files/src_fov-rot.js.html#l20"><code>src&#x2F;fov-rot.js:20</code></a>
+        <a href="../files/src_fov-rot.js.html#l18"><code>src&#x2F;fov-rot.js:18</code></a>
         
         </p>
 
@@ -1268,7 +1496,7 @@
             
         
         
-        <a href="../files/src_fov-rot.js.html#l48"><code>src&#x2F;fov-rot.js:48</code></a>
+        <a href="../files/src_fov-rot.js.html#l46"><code>src&#x2F;fov-rot.js:46</code></a>
         
         </p>
 

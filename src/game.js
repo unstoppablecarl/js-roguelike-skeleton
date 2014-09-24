@@ -15,7 +15,6 @@
         this.entityManager = new RL.EntityManager(this);
         this.renderer = new RL.Renderer(this);
         this.console = new RL.Console(this);
-        this.fov = new RL.FovROT(this);
         this.lighting = new RL.LightingROT(this);
 
         // player purposefully not added to entity manager (matter of preference)
@@ -49,13 +48,6 @@
         * @type EntityManager
         */
         entityManager: null,
-
-        /**
-        * The current Fov.
-        * @property fov
-        * @type Fov
-        */
-        fov: null,
 
         /**
         * The current Lighting.
@@ -107,7 +99,7 @@
         */
         setMapSize: function(width, height){
             this.map.setSize(width, height);
-            this.fov.setSize(width, height);
+            this.player.fov.setSize(width, height);
             this.entityManager.setSize(width, height);
             this.lighting.setSize(width, height);
         },
@@ -119,7 +111,7 @@
         start: function() {
             // set player position (player is not added to the enitity manager)
             this.entityManager.move(this.player.x, this.player.y, this.player);
-            this.fov.update(this.player.x, this.player.y);
+            this.player.updateFov();
             this.lighting.update();
             this.renderer.setCenter(this.player.x, this.player.y);
             this.renderer.draw();
@@ -133,10 +125,14 @@
         onKeyAction: function(action) {
             this.player.update(action);
             this.entityManager.update();
-            this.fov.update(this.player.x, this.player.y);
+            this.player.updateFov();
             this.lighting.update();
             this.renderer.setCenter(this.player.x, this.player.y);
             this.renderer.draw();
+
+            if(this.player.dead){
+                console.log('game over');
+            }
         },
 
         /**
@@ -177,6 +173,61 @@
                 this.renderer.hoveredTileY = null;
             }
             this.renderer.draw();
+        },
+
+        /**
+        * Checks if an entity can move through and into a map tile.
+        * This is where code for special cases like flying, swimming and ghosts moving through walls should be placed.
+        * @method entityCanMoveTo
+        * @param {Entity} entity - The entity to check.
+        * @param {Number} x - The x map tile coord to check.
+        * @param {Number} y - The y map tile coord to check.
+        * @return {Bool}
+        */
+        entityCanMoveTo: function(entity, x, y){
+            var tile = this.map.get(x, y);
+
+            // if tile blocks movement
+            if(!tile || !tile.passable){
+                return false;
+            }
+
+            // if already occupied
+            if(this.entityManager.get(x, y)){
+                return false;
+            }
+
+            return true;
+        },
+
+        /**
+        * Changes the position of an entity on the map.
+        * Updates entity position in this.entityManager and calls tile.onEntityEnter
+        * this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
+        * @method entityMoveTo
+        * @param {Entity} entity - The entity to move.
+        * @param {Number} x - The tile map x coord to move to.
+        * @param {Number} y - The tile map y coord to move to.
+        */
+        entityMoveTo: function(entity, x, y){
+            this.entityManager.move(x, y, entity);
+            var tile = this.map.get(x, y);
+            if(tile){
+                tile.onEntityEnter(entity);
+            }
+        },
+
+        /**
+        * Checks if a map tile can be seen through.
+        * This is where code for special cases like smoke, fog, x-ray vision should go.
+        * @method entityCanSeeThrough
+        * @param {Number} x - The x map tile coord to check.
+        * @param {Number} y - The y map tile coord to check.
+        * @return {Bool}
+        */
+        entityCanSeeThrough: function(entity, x, y){
+            var tile = this.map.get(x, y);
+            return tile && !tile.blocksLos;
         }
     };
 

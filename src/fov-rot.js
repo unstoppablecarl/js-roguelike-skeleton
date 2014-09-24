@@ -5,13 +5,11 @@
     * Represents a FovROT in the game map. requires ROT.js
     * @class FovROT
     * @constructor
-    * @param {Object} game - Game instance this obj is attached to.
+    * @param {Game} game - Game instance this obj is attached to.
     */
     var FovROT = function FovROT(game) {
         this.game = game;
         this.fovMap = new RL.Array2d();
-        this.checkMapTileVisible = this.checkMapTileVisible.bind(this);
-        this._fov = new ROT.FOV.RecursiveShadowcasting(this.checkMapTileVisible);
     };
 
     FovROT.prototype = {
@@ -40,7 +38,7 @@
 
         /**
         * Direction of fov (used as default) (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'].
-        * @property fieldRange
+        * @property direction
         * @type String
         */
         direction: 'up',
@@ -93,23 +91,25 @@
         * @method update
         * @param {Number} x - The map coordinate position to calculate FovROT from on the x axis.
         * @param {Number} y - The map coordinate position to calculate FovROT from on the y axis.
-        * @param {Number} [fieldRange = 360] - Field Range of view 90, 180, or 360.
-        * @param {String|ROT.DIRS[8].x} [direction = 'up'] - Direction of fov (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'];.
-        * @param {Number} [maxViewDistance] - Max visible distance in tiles. (this.maxViewDistance used if not set)
+        * @param {Number} [fieldRange = this.fieldRange || 360] - Field Range of view 90, 180, or 360.
+        * @param {String|ROT.DIRS[8].x} [direction = this.direction || 'up'] - Direction of fov (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'];.
+        * @param {Number} [maxViewDistance = this.maxViewDistance] - Max visible distance in tiles.
+        * @param {Entity} [entity] - The entity to check tile visibility with.
         */
-        update: function(x, y, fieldRange, direction, maxViewDistance){
+        update: function(x, y, fieldRange, direction, maxViewDistance, entity){
+
             if(fieldRange === void 0){
                 fieldRange = this.fieldRange;
             }
 
             if(direction === void 0){
-                direction = this.directionStringToArray(this.direction);
-            } else {
-                if(typeof direction === 'string'){
-                    direction = this.directionStringToArray(direction);
-                }
+                direction = this.direction;
             }
 
+            if(fieldRange !== 360 && typeof direction === 'string'){
+                direction = this.directionStringToArray(direction);
+            }
+            this.direction = direction;
             if(maxViewDistance === void 0){
                 maxViewDistance = this.maxViewDistance;
             }
@@ -117,28 +117,19 @@
             this.validateFieldRange(fieldRange);
 
             this.fovMap.reset();
+            var entityCanSeeThrough = this.getEntityCanSeeThroughCallback(entity);
+            var fov = new ROT.FOV.RecursiveShadowcasting(entityCanSeeThrough);
 
-            var _this = this;
-
-            var checkVisibleFunc = function(x, y, range, visibility){
-                if(visibility){
-                    var tile = _this.game.map.get(x, y);
-                    if(tile){
-                        tile.explored = true;
-                    }
-                }
-                _this.fovMap.set(x, y, visibility);
-            };
-
+            var setMapTileVisible = this.setMapTileVisible.bind(this);
             if(fieldRange === 360){
-                this._fov.compute(x, y, maxViewDistance, checkVisibleFunc);
+                fov.compute(x, y, maxViewDistance, setMapTileVisible);
             }
             else {
                 if(fieldRange === 180){
-                    this._fov.compute180(x, y, maxViewDistance, direction, checkVisibleFunc);
+                    fov.compute180(x, y, maxViewDistance, direction, setMapTileVisible);
                 }
                 else if(fieldRange === 90){
-                    this._fov.compute90(x, y, maxViewDistance, direction, checkVisibleFunc);
+                    fov.compute90(x, y, maxViewDistance, direction, setMapTileVisible);
                 }
             }
         },
@@ -146,8 +137,8 @@
         /**
         * Retrieves the visibility of the tile at given coords
         * @method get
-        * @param {Number} x - The map coordinate position to get FovROT visibility from on the x axis.
-        * @param {Number} y - The map coordinate position to get FovROT visibility from on the y axis.
+        * @param {Number} x - The map coord position to get FovROT visibility from.
+        * @param {Number} y - The map coord position to get FovROT visibility from.
         * @return {Bool}
         */
         get: function(x, y){
@@ -156,11 +147,27 @@
 
         /**
         * Checks if a tile blocks line of sight
-        * @method checkMapTileVisible
-        * @return {Bool}
+        * @method entityCanSeeThrough
+        * @param {Entity} entity - The entity to make a callback for.
+        * @return {Function}
         */
-        checkMapTileVisible: function(x, y){
-            return this.game.map.canSeeThroughTile(x, y);
+        getEntityCanSeeThroughCallback: function(entity){
+            var game = this.game;
+            return function(x, y){
+                return game.entityCanSeeThrough(entity, x, y);
+            };
+        },
+
+        /**
+        * Sets the visibility of a checked map tile
+        * @method setMapTileVisible
+        * @param {Number} x - The map coord position to set.
+        * @param {Number} y - The map coord position to set.
+        * @param {Number} range - The distance from this fov origin.
+        * @param {Number} visibility - The visibility of this tile coord.
+        */
+        setMapTileVisible: function(x, y, range, visibility){
+            this.fovMap.set(x, y, visibility);
         },
 
         /**
