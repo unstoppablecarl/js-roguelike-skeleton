@@ -2516,7 +2516,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 117,
+            "line": 116,
             "description": "Updates this.fov",
             "itemtype": "method",
             "name": "updateFov",
@@ -2524,7 +2524,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 130,
+            "line": 129,
             "description": "Checks if this entity can move to the specified map tile",
             "itemtype": "method",
             "name": "canMoveTo",
@@ -2548,7 +2548,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 141,
+            "line": 140,
             "description": "Changes the position of this entity on the map.\nthis.canMoveTo() should always be checked before calling this.moveTo",
             "itemtype": "method",
             "name": "moveTo",
@@ -2568,7 +2568,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 152,
+            "line": 151,
             "description": "Called when user key is pressed with action of key pressed as an arg.",
             "itemtype": "method",
             "name": "update",
@@ -2587,7 +2587,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 179,
+            "line": 174,
             "description": "Move action.",
             "itemtype": "method",
             "name": "move",
@@ -2611,7 +2611,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 207,
+            "line": 201,
             "description": "Wait action.",
             "itemtype": "method",
             "name": "wait",

@@ -126,14 +126,14 @@
             if(this.player.update(action)){
                 this.entityManager.update();
                 this.player.updateFov();
-            }
 
-            this.lighting.update();
-            this.renderer.setCenter(this.player.x, this.player.y);
-            this.renderer.draw();
+                this.lighting.update();
+                this.renderer.setCenter(this.player.x, this.player.y);
+                this.renderer.draw();
 
-            if(this.player.dead){
-                console.log('game over');
+                if(this.player.dead){
+                    console.log('game over');
+                }
             }
         },
 

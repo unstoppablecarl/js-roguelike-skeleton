@@ -155,12 +155,8 @@
         * @return {Bool} true if action was taken.
         */
         update: function(action) {
-            if (!action) {
-                return false;
-            }
-
-            var actionIsDirection = RL.Util.DIRECTIONS.indexOf(action) !== -1;
-            if(actionIsDirection){
+            // if the action is a direction
+            if(RL.Util.DIRECTIONS.indexOf(action) !== -1){
                 var offsetCoord = RL.Util.getOffsetCoordsFromDirection(action),
                     moveToX = this.x + offsetCoord.x,
                     moveToY = this.y + offsetCoord.y;

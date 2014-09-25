@@ -231,7 +231,6 @@
         */
         dead: false,
 
-
         /**
         * Updates this.fov
         * @method updateFov
@@ -274,12 +273,8 @@
         * @return {Bool} true if action was taken.
         */
         update: function(action) {
-            if (!action) {
-                return false;
-            }
-
-            var actionIsDirection = RL.Util.DIRECTIONS.indexOf(action) !== -1;
-            if(actionIsDirection){
+            // if the action is a direction
+            if(RL.Util.DIRECTIONS.indexOf(action) !== -1){
                 var offsetCoord = RL.Util.getOffsetCoordsFromDirection(action),
                     moveToX = this.x + offsetCoord.x,
                     moveToY = this.y + offsetCoord.y;
@@ -315,7 +310,6 @@
                 } else {
                     // targeted tile (attempting to move into)
                     var targetTile = this.game.map.get(x, y);
-                    console.log(&#x27;targetTile&#x27;, targetTile);
                     return targetTile.bump(this);
                 }
             }
@@ -329,7 +323,6 @@
         wait: function(){
             this.game.console.log(&#x27;You wait for a moment.&#x27;);
         },
-
 
     };
 
