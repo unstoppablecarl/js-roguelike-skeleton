@@ -67,12 +67,12 @@
 
         /**
         * Merges settings with default values.
-        * @method merge
+        * @method mergeDefaults
         * @static
         * @param {Object} defaults - Default values to merge with.
         * @param {Object} settings - Settings to merge with default values.
         */
-        merge: function(defaults, settings) {
+        mergeDefaults: function(defaults, settings) {
             var out = {};
             for (var key in defaults) {
                 if (key in settings) {

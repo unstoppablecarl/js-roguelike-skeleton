@@ -140,7 +140,7 @@
         this.checkVisible = this.checkVisible.bind(this);
         this._fov = new ROT.FOV.PreciseShadowcasting(this.checkVisible);
 
-        settings = RL.Util.merge({
+        settings = RL.Util.mergeDefaults({
             range: 5,
             passes: 2,
             emissionThreshold: 100,

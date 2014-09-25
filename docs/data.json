@@ -3183,7 +3183,7 @@
             "line": 68,
             "description": "Merges settings with default values.",
             "itemtype": "method",
-            "name": "merge",
+            "name": "mergeDefaults",
             "static": 1,
             "params": [
                 {

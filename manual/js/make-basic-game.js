@@ -29,7 +29,7 @@ var makeBasicGame = function(settings){
         rendererHeight: 14
     };
 
-    var s = RL.Util.merge(defaultSettings, settings);
+    var s = RL.Util.mergeDefaults(defaultSettings, settings);
 
     // create the game instance
     var game = new RL.Game();
