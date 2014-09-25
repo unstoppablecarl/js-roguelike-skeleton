@@ -119,16 +119,74 @@
 (function(root) {
     &#x27;use strict&#x27;;
 
+    var DIRECTIONS_TO_OFFSETS = {
+        up:           {x:  0, y: -1},
+        up_right:     {x:  1, y: -1},
+        right:        {x:  1, y:  0},
+        down_right:   {x:  1, y:  1},
+        down:         {x:  0, y:  1},
+        down_left:    {x: -1, y:  1},
+        left:         {x: -1, y:  0},
+        up_left:      {x: -1, y: -1}
+    };
+
+    var DIRECTIONS = Object.keys(DIRECTIONS_TO_OFFSETS);
+
     /**
     * Utility functions
     * @class Util
-    * @constructor
     * @static
     */
     var Util = {
+
+
+        /**
+         * Maps directions to coord offsets
+         * ( keys of Util.DIRECTIONS_TO_OFFSETS)
+         * @property DIRECTIONS
+         * @type Array
+         * @static
+         * @final
+         * @example
+         *     &#x60;
+         *      [
+         *          &#x27;up&#x27;,
+         *          &#x27;up_right&#x27;,
+         *          &#x27;right&#x27;,
+         *          &#x27;down_right&#x27;,
+         *          &#x27;down&#x27;,
+         *          &#x27;down_left&#x27;,
+         *          &#x27;left&#x27;,
+         *          &#x27;up_left&#x27;,
+         *      ]
+         *     &#x60;
+         */
+        DIRECTIONS: DIRECTIONS,
+
+        /**
+         * Maps direction names to coord offsets.
+         * @property DIRECTIONS_TO_OFFSETS
+         * @type Object
+         * @static
+         * @final
+         * @example
+         *     &#x60;{
+         *        up:           {x:  0, y: -1},
+         *        up_right:     {x:  1, y: -1},
+         *        right:        {x:  1, y:  0},
+         *        down_right:   {x:  1, y:  1},
+         *        down:         {x:  0, y:  1},
+         *        down_left:    {x: -1, y:  1},
+         *        left:         {x: -1, y:  0},
+         *        up_left:      {x: -1, y: -1}
+         *     }&#x60;
+         */
+        DIRECTIONS_TO_OFFSETS: DIRECTIONS_TO_OFFSETS,
+
         /**
         * Merges settings with default values.
         * @method merge
+        * @static
         * @param {Object} defaults - Default values to merge with.
         * @param {Object} settings - Settings to merge with default values.
         */
@@ -142,7 +200,21 @@
                 }
             }
             return out;
-        }
+        },
+
+        /**
+        * Gets the adjacent coords of a given x, y, direction.
+        * @method getAdjacentTileCoordsFromDirection
+        * @static
+        * @param {String} direction - valid directions: [&#x60;up&#x60;, &#x60;down&#x60;, &#x60;left&#x60;, &#x60;right&#x60;, &#x60;up_left&#x60;, &#x60;up_right&#x60;, &#x60;down_left&#x60;, &#x60;down_right&#x60;];.
+        * @return {Object} &#x60;{x: 0, y: 0}&#x60;
+        */
+        getOffsetCoordsFromDirection: function(direction){
+            return {
+                x: this.DIRECTIONS_TO_OFFSETS[direction].x,
+                y: this.DIRECTIONS_TO_OFFSETS[direction].y
+            };
+        },
     };
 
     root.RL.Util = Util;

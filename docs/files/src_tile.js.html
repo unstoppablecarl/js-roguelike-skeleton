@@ -229,7 +229,9 @@
         bump: function(entity){
             if(!this.passable){
                 this.game.console.log(&#x27;You cannot move through this &lt;strong&gt;&#x27; + this.name + &#x27;&lt;/strong&gt; no matter how hard you try.&#x27;);
+                return false;
             }
+            return true;
         },
 
         /**
@@ -301,7 +303,9 @@
                     this.blocksLos = false;
                     this.char = &quot;&#x27;&quot;;
                     this.game.console.log(&#x27;You open the &lt;strong&gt;&#x27; + this.name + &#x27;&lt;/strong&gt;.&#x27;);
+                    return true;
                 }
+                return false;
             }
         }
     };

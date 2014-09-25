@@ -255,7 +255,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/entity.js",
-            "line": 173,
+            "line": 202,
             "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222',\n           pushable: false\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -529,7 +529,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/tile.js",
-            "line": 130,
+            "line": 132,
             "description": "Describes different types of tiles. Used by the Tile constructor 'type' param.\n\n    Tile.Types = {\n        floor: {\n           name: 'Floor',\n           char: '.',\n           color: '#333',\n           bgColor: '#111',\n           passable: true,\n           blocksLos: false\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -542,9 +542,8 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/util.js",
-            "line": 4,
+            "line": 17,
             "description": "Utility functions",
-            "is_constructor": 1,
             "static": 1
         }
     },
@@ -1258,7 +1257,31 @@
         {
             "file": "src/entity.js",
             "line": 120,
-            "description": "Checks if this entity can move to the specified map tile",
+            "description": "Checks if an entity can move through a map tile.\nConvenience method for this.game.canMoveThrough()",
+            "itemtype": "method",
+            "name": "canMoveThrough",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The tile map x coord to check if this entity can move to.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The tile map y coord to check if this entity can move to.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
+            "class": "Entity"
+        },
+        {
+            "file": "src/entity.js",
+            "line": 132,
+            "description": "Checks if an entity can move through and into a map tile and that tile is un-occupied.\nConvenience method for this.game.entityCanMoveTo()",
             "itemtype": "method",
             "name": "canMoveTo",
             "params": [
@@ -1281,8 +1304,8 @@
         },
         {
             "file": "src/entity.js",
-            "line": 131,
-            "description": "Changes the position of this entity on the map.\nthis.canMoveTo() should always be checked before calling this.moveTo",
+            "line": 144,
+            "description": "Changes the position of this entity on the map.\nConvenience method for this.game.entityMoveTo()\nthis.canMoveTo() and/or this.canMoveThrough() should always be checked before calling this.moveTo()",
             "itemtype": "method",
             "name": "moveTo",
             "params": [
@@ -1301,7 +1324,31 @@
         },
         {
             "file": "src/entity.js",
-            "line": 142,
+            "line": 156,
+            "description": "Checks if a map tile can be seen through.\nConvenience method for this.game.entityCanSeeThrough()",
+            "itemtype": "method",
+            "name": "canSeeThrough",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The x map tile coord to check.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The y map tile coord to check.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
+            "class": "Entity"
+        },
+        {
+            "file": "src/entity.js",
+            "line": 168,
             "description": "Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.",
             "itemtype": "method",
             "name": "bump",
@@ -1368,7 +1415,7 @@
             "params": [
                 {
                     "name": "fieldRange",
-                    "description": "- Field Range of view 90, 180, or 360.",
+                    "description": "- Field Range of view valid values: `90`, `180`, or `360`.",
                     "type": "Number"
                 }
             ],
@@ -1377,7 +1424,7 @@
         {
             "file": "src/fov-rot.js",
             "line": 65,
-            "description": "Converts a string direction to an rot",
+            "description": "Converts a string direction to an rot direction",
             "itemtype": "method",
             "name": "directionStringToArray",
             "params": [
@@ -1395,8 +1442,8 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 89,
-            "description": "Calculates the fovROT data relative to given coords;",
+            "line": 76,
+            "description": "Calculates the fovROT data relative to given coords.",
             "itemtype": "method",
             "name": "update",
             "params": [
@@ -1436,7 +1483,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 137,
+            "line": 124,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
@@ -1460,7 +1507,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 148,
+            "line": 135,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "entityCanSeeThrough",
@@ -1479,7 +1526,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 161,
+            "line": 148,
             "description": "Sets the visibility of a checked map tile",
             "itemtype": "method",
             "name": "setMapTileVisible",
@@ -1509,7 +1556,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 173,
+            "line": 160,
             "description": "Sets the size of the map to mange fovROT within.",
             "itemtype": "method",
             "name": "setSize",
@@ -1644,7 +1691,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 138,
+            "line": 140,
             "description": "Handles tile mouse click events.",
             "itemtype": "method",
             "name": "onClick",
@@ -1664,7 +1711,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 159,
+            "line": 161,
             "description": "Handles tile mouse hover events",
             "itemtype": "method",
             "name": "onHover",
@@ -1684,8 +1731,37 @@
         },
         {
             "file": "src/game.js",
-            "line": 178,
-            "description": "Checks if an entity can move through and into a map tile.\nThis is where code for special cases like flying, swimming and ghosts moving through walls should be placed.",
+            "line": 180,
+            "description": "Checks if an entity can move through a map tile.\nThis does NOT check for entities on the tile blocking movement.\nThis is where code for special cases changing an entity's ability to pass through a tile should be placed.\nThings like flying, swimming and ghosts moving through walls.",
+            "itemtype": "method",
+            "name": "entityCanMoveThrough",
+            "params": [
+                {
+                    "name": "entity",
+                    "description": "- The entity to check.",
+                    "type": "Entity"
+                },
+                {
+                    "name": "x",
+                    "description": "- The x map tile coord to check.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The y map tile coord to check.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
+            "class": "Game"
+        },
+        {
+            "file": "src/game.js",
+            "line": 200,
+            "description": "Checks if an entity can move through and into a map tile and that tile is un-occupied.",
             "itemtype": "method",
             "name": "entityCanMoveTo",
             "params": [
@@ -1713,7 +1789,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 203,
+            "line": 219,
             "description": "Changes the position of an entity on the map.\nUpdates entity position in this.entityManager and calls tile.onEntityEnter\nthis.entityCanMoveTo() should always be checked before calling this.entityMoveTo",
             "itemtype": "method",
             "name": "entityMoveTo",
@@ -1738,7 +1814,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 220,
+            "line": 236,
             "description": "Checks if a map tile can be seen through.\nThis is where code for special cases like smoke, fog, x-ray vision should go.",
             "itemtype": "method",
             "name": "entityCanSeeThrough",
@@ -2432,21 +2508,15 @@
         {
             "file": "src/player.js",
             "line": 109,
-            "description": "Called when user key is pressed with action of key pressed as an arg.",
-            "itemtype": "method",
-            "name": "update",
-            "params": [
-                {
-                    "name": "action",
-                    "description": "- action bound to key pressed by user",
-                    "type": "String"
-                }
-            ],
+            "description": "Determines if the player has been killed.",
+            "itemtype": "property",
+            "name": "dead",
+            "type": "bool",
             "class": "Player"
         },
         {
             "file": "src/player.js",
-            "line": 142,
+            "line": 117,
             "description": "Updates this.fov",
             "itemtype": "method",
             "name": "updateFov",
@@ -2454,23 +2524,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 155,
-            "description": "Move action.",
-            "itemtype": "method",
-            "name": "move",
-            "class": "Player"
-        },
-        {
-            "file": "src/player.js",
-            "line": 181,
-            "description": "Wait action.",
-            "itemtype": "method",
-            "name": "wait",
-            "class": "Player"
-        },
-        {
-            "file": "src/player.js",
-            "line": 189,
+            "line": 130,
             "description": "Checks if this entity can move to the specified map tile",
             "itemtype": "method",
             "name": "canMoveTo",
@@ -2494,7 +2548,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 200,
+            "line": 141,
             "description": "Changes the position of this entity on the map.\nthis.canMoveTo() should always be checked before calling this.moveTo",
             "itemtype": "method",
             "name": "moveTo",
@@ -2510,6 +2564,57 @@
                     "type": "Number"
                 }
             ],
+            "class": "Player"
+        },
+        {
+            "file": "src/player.js",
+            "line": 152,
+            "description": "Called when user key is pressed with action of key pressed as an arg.",
+            "itemtype": "method",
+            "name": "update",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "- action bound to key pressed by user",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "true if action was taken.",
+                "type": "Bool"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/player.js",
+            "line": 179,
+            "description": "Move action.",
+            "itemtype": "method",
+            "name": "move",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- Map tile cood to move to.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Map tile cood to move to.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "true if action was taken.",
+                "type": "Bool"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/player.js",
+            "line": 207,
+            "description": "Wait action.",
+            "itemtype": "method",
+            "name": "wait",
             "class": "Player"
         },
         {
@@ -3022,7 +3127,7 @@
         },
         {
             "file": "src/tile.js",
-            "line": 117,
+            "line": 119,
             "description": "Handles entity entering a new tile.\nCalled after chaning the entities position",
             "itemtype": "method",
             "name": "onEntityEnterTile",
@@ -3047,10 +3152,39 @@
         },
         {
             "file": "src/util.js",
-            "line": 11,
+            "line": 25,
+            "description": "Maps directions to coord offsets\n( keys of Util.DIRECTIONS_TO_OFFSETS)",
+            "itemtype": "property",
+            "name": "DIRECTIONS",
+            "type": "Array",
+            "static": 1,
+            "final": 1,
+            "example": [
+                "\n    `\n     [\n         'up',\n         'up_right',\n         'right',\n         'down_right',\n         'down',\n         'down_left',\n         'left',\n         'up_left',\n     ]\n    `"
+            ],
+            "class": "Util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 48,
+            "description": "Maps direction names to coord offsets.",
+            "itemtype": "property",
+            "name": "DIRECTIONS_TO_OFFSETS",
+            "type": "Object",
+            "static": 1,
+            "final": 1,
+            "example": [
+                "\n    `{\n       up:           {x:  0, y: -1},\n       up_right:     {x:  1, y: -1},\n       right:        {x:  1, y:  0},\n       down_right:   {x:  1, y:  1},\n       down:         {x:  0, y:  1},\n       down_left:    {x: -1, y:  1},\n       left:         {x: -1, y:  0},\n       up_left:      {x: -1, y: -1}\n    }`"
+            ],
+            "class": "Util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 68,
             "description": "Merges settings with default values.",
             "itemtype": "method",
             "name": "merge",
+            "static": 1,
             "params": [
                 {
                     "name": "defaults",
@@ -3063,6 +3197,26 @@
                     "type": "Object"
                 }
             ],
+            "class": "Util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 87,
+            "description": "Gets the adjacent coords of a given x, y, direction.",
+            "itemtype": "method",
+            "name": "getAdjacentTileCoordsFromDirection",
+            "static": 1,
+            "params": [
+                {
+                    "name": "direction",
+                    "description": "- valid directions: [`up`, `down`, `left`, `right`, `up_left`, `up_right`, `down_left`, `down_right`];.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "`{x: 0, y: 0}`",
+                "type": "Object"
+            },
             "class": "Util"
         }
     ],

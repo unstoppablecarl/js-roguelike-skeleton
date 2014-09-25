@@ -123,9 +123,11 @@
         * @param {String} action - Action triggered by user input.
         */
         onKeyAction: function(action) {
-            this.player.update(action);
-            this.entityManager.update();
-            this.player.updateFov();
+            if(this.player.update(action)){
+                this.entityManager.update();
+                this.player.updateFov();
+            }
+
             this.lighting.update();
             this.renderer.setCenter(this.player.x, this.player.y);
             this.renderer.draw();
@@ -176,8 +178,27 @@
         },
 
         /**
-        * Checks if an entity can move through and into a map tile.
-        * This is where code for special cases like flying, swimming and ghosts moving through walls should be placed.
+        * Checks if an entity can move through a map tile.
+        * This does NOT check for entities on the tile blocking movement.
+        * This is where code for special cases changing an entity's ability to pass through a tile should be placed.
+        * Things like flying, swimming and ghosts moving through walls.
+        * @method entityCanMoveThrough
+        * @param {Entity} entity - The entity to check.
+        * @param {Number} x - The x map tile coord to check.
+        * @param {Number} y - The y map tile coord to check.
+        * @return {Bool}
+        */
+        entityCanMoveThrough: function(entity, x, y){
+            var tile = this.map.get(x, y);
+            // if tile blocks movement
+            if(!tile || !tile.passable){
+                return false;
+            }
+            return true;
+        },
+
+        /**
+        * Checks if an entity can move through and into a map tile and that tile is un-occupied.
         * @method entityCanMoveTo
         * @param {Entity} entity - The entity to check.
         * @param {Number} x - The x map tile coord to check.
@@ -185,18 +206,13 @@
         * @return {Bool}
         */
         entityCanMoveTo: function(entity, x, y){
-            var tile = this.map.get(x, y);
-
-            // if tile blocks movement
-            if(!tile || !tile.passable){
+            if(!this.entityCanMoveThrough(entity, x, y)){
                 return false;
             }
-
-            // if already occupied
+            // check if occupied by entity
             if(this.entityManager.get(x, y)){
                 return false;
             }
-
             return true;
         },
 
@@ -228,7 +244,8 @@
         entityCanSeeThrough: function(entity, x, y){
             var tile = this.map.get(x, y);
             return tile && !tile.blocksLos;
-        }
+        },
+
     };
 
     root.RL.Game = Game;

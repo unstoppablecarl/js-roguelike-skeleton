@@ -331,6 +331,13 @@ Handles functionality triggered by keyboard and mouse Input</p>
                             </li>
                         
                             <li class="index-item property">
+                                <a href="#property_dead">dead</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
                                 <a href="#property_fov">fov</a>
 
                                 
@@ -452,7 +459,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l189"><code>src&#x2F;player.js:189</code></a>
+        <a href="../files/src_player.js.html#l130"><code>src&#x2F;player.js:130</code></a>
         
         </p>
 
@@ -535,9 +542,29 @@ Handles functionality triggered by keyboard and mouse Input</p>
     <h3 class="name"><code>move</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
     
 
     
@@ -563,7 +590,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l155"><code>src&#x2F;player.js:155</code></a>
+        <a href="../files/src_player.js.html#l179"><code>src&#x2F;player.js:179</code></a>
         
         </p>
 
@@ -579,7 +606,65 @@ Handles functionality triggered by keyboard and mouse Input</p>
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
 
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Map tile cood to move to.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Map tile cood to move to.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                    <p>true if action was taken.</p>
+
+                
+            </div>
+        </div>
     
 
     
@@ -634,7 +719,7 @@ Handles functionality triggered by keyboard and mouse Input</p>
             
         
         
-        <a href="../files/src_player.js.html#l200"><code>src&#x2F;player.js:200</code></a>
+        <a href="../files/src_player.js.html#l141"><code>src&#x2F;player.js:141</code></a>
         
         </p>
 
@@ -720,6 +805,10 @@ this.canMoveTo() should always be checked before calling this.moveTo</p>
     
 
     
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
+    
 
     
 
@@ -744,7 +833,7 @@ this.canMoveTo() should always be checked before calling this.moveTo</p>
             
         
         
-        <a href="../files/src_player.js.html#l109"><code>src&#x2F;player.js:109</code></a>
+        <a href="../files/src_player.js.html#l152"><code>src&#x2F;player.js:152</code></a>
         
         </p>
 
@@ -788,6 +877,20 @@ this.canMoveTo() should always be checked before calling this.moveTo</p>
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                    <p>true if action was taken.</p>
+
+                
+            </div>
+        </div>
+    
 
     
 </div>
@@ -825,7 +928,7 @@ this.canMoveTo() should always be checked before calling this.moveTo</p>
             
         
         
-        <a href="../files/src_player.js.html#l142"><code>src&#x2F;player.js:142</code></a>
+        <a href="../files/src_player.js.html#l117"><code>src&#x2F;player.js:117</code></a>
         
         </p>
 
@@ -880,7 +983,7 @@ this.canMoveTo() should always be checked before calling this.moveTo</p>
             
         
         
-        <a href="../files/src_player.js.html#l181"><code>src&#x2F;player.js:181</code></a>
+        <a href="../files/src_player.js.html#l207"><code>src&#x2F;player.js:207</code></a>
         
         </p>
 
@@ -1035,6 +1138,51 @@ this.canMoveTo() should always be checked before calling this.moveTo</p>
 
     <div class="description">
         <p>The color of the character displayed when rendering this player.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_dead" class="property item">
+    <h3 class="name"><code>dead</code></h3>
+    <span class="type">Bool</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_player.js.html#l109"><code>src&#x2F;player.js:109</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Determines if the player has been killed.</p>
 
     </div>
 

@@ -118,7 +118,20 @@
         },
 
         /**
-        * Checks if this entity can move to the specified map tile
+        * Checks if an entity can move through a map tile.
+        * Convenience method for this.game.canMoveThrough()
+        * @method canMoveThrough
+        * @param {Number} x - The tile map x coord to check if this entity can move to.
+        * @param {Number} y - The tile map y coord to check if this entity can move to.
+        * @return {Bool}
+        */
+        canMoveThrough: function(x, y){
+            return this.game.entityCanMoveTo(this, x, y);
+        },
+
+        /**
+        * Checks if an entity can move through and into a map tile and that tile is un-occupied.
+        * Convenience method for this.game.entityCanMoveTo()
         * @method canMoveTo
         * @param {Number} x - The tile map x coord to check if this entity can move to.
         * @param {Number} y - The tile map y coord to check if this entity can move to.
@@ -130,13 +143,26 @@
 
         /**
         * Changes the position of this entity on the map.
-        * this.canMoveTo() should always be checked before calling this.moveTo
+        * Convenience method for this.game.entityMoveTo()
+        * this.canMoveTo() and/or this.canMoveThrough() should always be checked before calling this.moveTo()
         * @method moveTo
         * @param {Number} x - The tile map x coord to move to.
         * @param {Number} y - The tile map y coord to move to.
         */
         moveTo: function(x, y) {
             return this.game.entityMoveTo(this, x, y);
+        },
+
+        /**
+        * Checks if a map tile can be seen through.
+        * Convenience method for this.game.entityCanSeeThrough()
+        * @method canSeeThrough
+        * @param {Number} x - The x map tile coord to check.
+        * @param {Number} y - The y map tile coord to check.
+        * @return {Bool}
+        */
+        canSeeThrough: function(x, y){
+            return this.game.entityCanSeeThrough(this, x, y);
         },
 
         /**
@@ -154,6 +180,7 @@
                     targetX = this.x + directionX,
                     targetY = this.y + directionY;
 
+                // check if can be pushed into destination
                 var targetPushEnt = this.game.entityManager.get(targetX, targetY);
                 if(!targetPushEnt){
                     var targetPushTile = this.game.map.get(targetX, targetY);
@@ -164,9 +191,11 @@
                         this.moveTo(targetX, targetY);
                         // move player into previously occupied tile
                         entity.moveTo(prevX, prevY);
+                        return true;
                     }
                 }
             }
+            return false;
         }
     };
 

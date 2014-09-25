@@ -171,7 +171,7 @@
         /**
         * Validates a fieldRange value.
         * @method validateFieldRange
-        * @param {Number} fieldRange - Field Range of view 90, 180, or 360.
+        * @param {Number} fieldRange - Field Range of view valid values: &#x60;90&#x60;, &#x60;180&#x60;, or &#x60;360&#x60;.
         */
         validateFieldRange: function(fieldRange){
             var validRanges = [90, 180, 360];
@@ -181,31 +181,18 @@
         },
 
         /**
-        * Converts a string direction to an rot
+        * Converts a string direction to an rot direction
         * @method directionStringToArray
         * @param {String} direction - Direction of fov (used as default) (not used for fieldRange 360) valid directions: [&#x27;up&#x27;, &#x27;down&#x27;, &#x27;left&#x27;, &#x27;right&#x27;, &#x27;up_left&#x27;, &#x27;up_right&#x27;, &#x27;down_left&#x27;, &#x27;down_right&#x27;].
         * @return {Array} [x, y]
         */
         directionStringToArray: function(direction){
-            var validDirections = [&#x27;up&#x27;, &#x27;down&#x27;, &#x27;left&#x27;, &#x27;right&#x27;, &#x27;up_left&#x27;, &#x27;up_right&#x27;, &#x27;down_left&#x27;, &#x27;down_right&#x27;];
-            if(validDirections.indexOf(direction) === -1){
-                throw new Error(&#x27;direction must be one of: &#x27; + validDirections.join(&#x27;,&#x27;));
-            }
-            var dirs = {
-                up:           [ 0, -1],
-                up_right:     [ 1, -1],
-                right:        [ 1,  0],
-                down_right:   [ 1,  1],
-                down:         [ 0,  1],
-                down_left:    [-1,  1],
-                left:         [-1,  0],
-                up_left:      [-1, -1]
-            };
-            return dirs[direction];
+            var coord = RL.Util.getOffsetCoordsFromDirection(direction);
+            return [coord.x, coord.y];
         },
 
         /**
-        * Calculates the fovROT data relative to given coords;
+        * Calculates the fovROT data relative to given coords.
         * @method update
         * @param {Number} x - The map coordinate position to calculate FovROT from on the x axis.
         * @param {Number} y - The map coordinate position to calculate FovROT from on the y axis.

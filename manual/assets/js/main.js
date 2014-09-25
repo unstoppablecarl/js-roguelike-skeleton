@@ -1,4 +1,3 @@
-
 $('[data-toggle="collapse"]').each(function(){
     var $btn = $(this),
         target = $btn.data('target'),
@@ -21,6 +20,5 @@ $('[data-toggle="collapse"]').each(function(){
     } else {
         hide();
     }
-
 });
 

@@ -222,6 +222,13 @@ Listens for player input to trigger and resolve new turns.</p>
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
+                                <a href="#method_entityCanMoveThrough">entityCanMoveThrough</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_entityCanMoveTo">entityCanMoveTo</a>
 
                                 
@@ -357,6 +364,164 @@ Listens for player input to trigger and resolve new turns.</p>
                 <h2 class="off-left">Methods</h2>
 
                 
+                    <div id="method_entityCanMoveThrough" class="method item">
+    <h3 class="name"><code>entityCanMoveThrough</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>entity</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_game.js.html#l180"><code>src&#x2F;game.js:180</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks if an entity can move through a map tile.
+This does NOT check for entities on the tile blocking movement.
+This is where code for special cases changing an entity&#39;s ability to pass through a tile should be placed.
+Things like flying, swimming and ghosts moving through walls.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">entity</code>
+                        <span class="type"><a href="../classes/Entity.html" class="crosslink">Entity</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The entity to check.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The x map tile coord to check.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The y map tile coord to check.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_entityCanMoveTo" class="method item">
     <h3 class="name"><code>entityCanMoveTo</code></h3>
 
@@ -415,7 +580,7 @@ Listens for player input to trigger and resolve new turns.</p>
             
         
         
-        <a href="../files/src_game.js.html#l178"><code>src&#x2F;game.js:178</code></a>
+        <a href="../files/src_game.js.html#l200"><code>src&#x2F;game.js:200</code></a>
         
         </p>
 
@@ -426,8 +591,7 @@ Listens for player input to trigger and resolve new turns.</p>
     </div>
 
     <div class="description">
-        <p>Checks if an entity can move through and into a map tile.
-This is where code for special cases like flying, swimming and ghosts moving through walls should be placed.</p>
+        <p>Checks if an entity can move through and into a map tile and that tile is un-occupied.</p>
 
     </div>
 
@@ -565,7 +729,7 @@ This is where code for special cases like flying, swimming and ghosts moving thr
             
         
         
-        <a href="../files/src_game.js.html#l220"><code>src&#x2F;game.js:220</code></a>
+        <a href="../files/src_game.js.html#l236"><code>src&#x2F;game.js:236</code></a>
         
         </p>
 
@@ -699,7 +863,7 @@ This is where code for special cases like smoke, fog, x-ray vision should go.</p
             
         
         
-        <a href="../files/src_game.js.html#l203"><code>src&#x2F;game.js:203</code></a>
+        <a href="../files/src_game.js.html#l219"><code>src&#x2F;game.js:219</code></a>
         
         </p>
 
@@ -834,7 +998,7 @@ this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
             
         
         
-        <a href="../files/src_game.js.html#l138"><code>src&#x2F;game.js:138</code></a>
+        <a href="../files/src_game.js.html#l140"><code>src&#x2F;game.js:140</code></a>
         
         </p>
 
@@ -949,7 +1113,7 @@ this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
             
         
         
-        <a href="../files/src_game.js.html#l159"><code>src&#x2F;game.js:159</code></a>
+        <a href="../files/src_game.js.html#l161"><code>src&#x2F;game.js:161</code></a>
         
         </p>
 

@@ -53,7 +53,7 @@
         /**
         * Validates a fieldRange value.
         * @method validateFieldRange
-        * @param {Number} fieldRange - Field Range of view 90, 180, or 360.
+        * @param {Number} fieldRange - Field Range of view valid values: `90`, `180`, or `360`.
         */
         validateFieldRange: function(fieldRange){
             var validRanges = [90, 180, 360];
@@ -63,31 +63,18 @@
         },
 
         /**
-        * Converts a string direction to an rot
+        * Converts a string direction to an rot direction
         * @method directionStringToArray
         * @param {String} direction - Direction of fov (used as default) (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'].
         * @return {Array} [x, y]
         */
         directionStringToArray: function(direction){
-            var validDirections = ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'];
-            if(validDirections.indexOf(direction) === -1){
-                throw new Error('direction must be one of: ' + validDirections.join(','));
-            }
-            var dirs = {
-                up:           [ 0, -1],
-                up_right:     [ 1, -1],
-                right:        [ 1,  0],
-                down_right:   [ 1,  1],
-                down:         [ 0,  1],
-                down_left:    [-1,  1],
-                left:         [-1,  0],
-                up_left:      [-1, -1]
-            };
-            return dirs[direction];
+            var coord = RL.Util.getOffsetCoordsFromDirection(direction);
+            return [coord.x, coord.y];
         },
 
         /**
-        * Calculates the fovROT data relative to given coords;
+        * Calculates the fovROT data relative to given coords.
         * @method update
         * @param {Number} x - The map coordinate position to calculate FovROT from on the x axis.
         * @param {Number} y - The map coordinate position to calculate FovROT from on the y axis.

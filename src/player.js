@@ -107,37 +107,12 @@
         fovMaxViewDistance: 10,
 
         /**
-        * Called when user key is pressed with action of key pressed as an arg.
-        * @method update
-        * @param {String} action - action bound to key pressed by user
+        * Determines if the player has been killed.
+        * @property dead
+        * @type bool
         */
-        update: function(action) {
-            if (!action) {
-                return;
-            }
+        dead: false,
 
-            var moveX = 0,
-                moveY = 0;
-
-            if (action === 'up') {
-                moveY = -1;
-            } else if (action === 'down') {
-                moveY = 1;
-            } else if (action === 'left') {
-                moveX = -1;
-            } else if (action === 'right') {
-                moveX = 1;
-            }
-
-            if (moveX !== 0 || moveY !== 0) {
-                this.move(moveX, moveY);
-            }
-
-            if(action === 'wait'){
-                this.wait();
-            }
-
-        },
 
         /**
         * Updates this.fov
@@ -150,40 +125,6 @@
                 direction = this.fovDirection,
                 maxViewDistance = this.fovMaxViewDistance;
             this.fov.update(x, y, fieldRange, direction, maxViewDistance, this);
-        },
-
-        /**
-        * Move action.
-        * @method move
-        */
-        move: function(x, y){
-            var targetX = this.x + x,
-                targetY = this.y + y,
-                // targeted tile (attempting to move into)
-                targetTile = this.game.map.get(targetX, targetY),
-                // entity occupying target tile (if any)
-                targetTileEnt = this.game.entityManager.get(targetX, targetY);
-
-            // if there is an entity in the target tile
-            if (targetTileEnt) {
-                this.game.console.log('Excuse me <strong>Mr.' + targetTileEnt.name + '</strong>, you appear to be in the way.');
-                targetTileEnt.bump(this);
-            }
-            // if passable move player to target tile
-            else if (targetTile.passable) {
-                this.moveTo(targetX, targetY);
-            }
-            else {
-                targetTile.bump(this);
-            }
-        },
-
-        /**
-        * Wait action.
-        * @method wait
-        */
-        wait: function(){
-            this.game.console.log('You wait for a moment.');
         },
 
         /**
@@ -207,6 +148,71 @@
         moveTo: function(x, y) {
             return this.game.entityMoveTo(this, x, y);
         },
+
+        /**
+        * Called when user key is pressed with action of key pressed as an arg.
+        * @method update
+        * @param {String} action - action bound to key pressed by user
+        * @return {Bool} true if action was taken.
+        */
+        update: function(action) {
+            if (!action) {
+                return false;
+            }
+
+            var actionIsDirection = RL.Util.DIRECTIONS.indexOf(action) !== -1;
+            if(actionIsDirection){
+                var offsetCoord = RL.Util.getOffsetCoordsFromDirection(action),
+                    moveToX = this.x + offsetCoord.x,
+                    moveToY = this.y + offsetCoord.y;
+                return this.move(moveToX, moveToY);
+            }
+
+            if(action === 'wait'){
+                this.wait();
+                return true;
+            }
+
+            return false;
+        },
+
+        /**
+        * Move action.
+        * @method move
+        * @param {Number} x - Map tile cood to move to.
+        * @param {Number} y - Map tile cood to move to.
+        * @return {Bool} true if action was taken.
+        */
+        move: function(x, y){
+            if(this.canMoveTo(x, y)){
+                this.moveTo(x, y);
+                return true;
+            } else {
+                // entity occupying target tile (if any)
+                var targetTileEnt = this.game.entityManager.get(x, y);
+                // if already occupied
+                if(targetTileEnt){
+                    this.game.console.log('Excuse me <strong>Mr.' + targetTileEnt.name + '</strong>, you appear to be in the way.');
+                    return targetTileEnt.bump(this);
+                } else {
+                    // targeted tile (attempting to move into)
+                    var targetTile = this.game.map.get(x, y);
+                    console.log('targetTile', targetTile);
+                    return targetTile.bump(this);
+                }
+            }
+            return false;
+        },
+
+        /**
+        * Wait action.
+        * @method wait
+        */
+        wait: function(){
+            this.game.console.log('You wait for a moment.');
+        },
+
+
     };
 
     root.RL.Player = Player;
