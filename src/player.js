@@ -113,7 +113,6 @@
         */
         dead: false,
 
-
         /**
         * Updates this.fov
         * @method updateFov
@@ -197,7 +196,6 @@
                 } else {
                     // targeted tile (attempting to move into)
                     var targetTile = this.game.map.get(x, y);
-                    console.log('targetTile', targetTile);
                     return targetTile.bump(this);
                 }
             }
@@ -211,7 +209,6 @@
         wait: function(){
             this.game.console.log('You wait for a moment.');
         },
-
 
     };
 
