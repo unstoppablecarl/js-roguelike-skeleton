@@ -114,7 +114,6 @@
             var keyCode = event.keyCode;
             var action = this.getActionFromKeyCode(keyCode);
             // if no action bound to this keycode resolve the keydown event normally
-            console.log('action', action);
             if (action === false) {
                 return true;
             }
@@ -122,6 +121,7 @@
             this.onKeyAction(action);
 
             // cancel default browser keypress behavior
+            event.preventDefault();
             return false;
         },
 
