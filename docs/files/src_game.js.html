@@ -296,6 +296,26 @@
         },
 
         /**
+         * Gets all objects at tile position
+         * @method getObjectsOnTile
+         * @param  {Number} x
+         * @param  {Number} y
+         * @return {Array}
+         */
+        getObjectsAtPostion: function(x, y){
+            var result = [];
+
+            var entity = this.entityManager.get(x, y);
+            if(entity){
+                result.push(entity);
+            }
+
+            // add items or any other objects that can be placed at a tile coord position
+
+            return result;
+        },
+
+        /**
         * Checks if an entity can move through a map tile.
         * This does NOT check for entities on the tile blocking movement.
         * This is where code for special cases changing an entity&#x27;s ability to pass through a tile should be placed.

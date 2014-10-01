@@ -1409,6 +1409,13 @@
         {
             "file": "src/fov-rot.js",
             "line": 53,
+            "description": "All visible map tiles",
+            "type": "{Array}",
+            "class": "FovROT"
+        },
+        {
+            "file": "src/fov-rot.js",
+            "line": 59,
             "description": "Validates a fieldRange value.",
             "itemtype": "method",
             "name": "validateFieldRange",
@@ -1423,7 +1430,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 65,
+            "line": 71,
             "description": "Converts a string direction to an rot direction",
             "itemtype": "method",
             "name": "directionStringToArray",
@@ -1442,7 +1449,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 76,
+            "line": 82,
             "description": "Calculates the fovROT data relative to given coords.",
             "itemtype": "method",
             "name": "update",
@@ -1483,7 +1490,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 124,
+            "line": 130,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
@@ -1507,7 +1514,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 135,
+            "line": 141,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "entityCanSeeThrough",
@@ -1526,7 +1533,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 148,
+            "line": 154,
             "description": "Sets the visibility of a checked map tile",
             "itemtype": "method",
             "name": "setMapTileVisible",
@@ -1556,7 +1563,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 160,
+            "line": 170,
             "description": "Sets the size of the map to mange fovROT within.",
             "itemtype": "method",
             "name": "setSize",
@@ -1732,6 +1739,30 @@
         {
             "file": "src/game.js",
             "line": 180,
+            "description": "Gets all objects at tile position",
+            "itemtype": "method",
+            "name": "getObjectsOnTile",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "Game"
+        },
+        {
+            "file": "src/game.js",
+            "line": 200,
             "description": "Checks if an entity can move through a map tile.\nThis does NOT check for entities on the tile blocking movement.\nThis is where code for special cases changing an entity's ability to pass through a tile should be placed.\nThings like flying, swimming and ghosts moving through walls.",
             "itemtype": "method",
             "name": "entityCanMoveThrough",
@@ -1760,7 +1791,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 200,
+            "line": 220,
             "description": "Checks if an entity can move through and into a map tile and that tile is un-occupied.",
             "itemtype": "method",
             "name": "entityCanMoveTo",
@@ -1789,7 +1820,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 219,
+            "line": 239,
             "description": "Changes the position of an entity on the map.\nUpdates entity position in this.entityManager and calls tile.onEntityEnter\nthis.entityCanMoveTo() should always be checked before calling this.entityMoveTo",
             "itemtype": "method",
             "name": "entityMoveTo",
@@ -1814,7 +1845,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 236,
+            "line": 256,
             "description": "Checks if a map tile can be seen through.\nThis is where code for special cases like smoke, fog, x-ray vision should go.",
             "itemtype": "method",
             "name": "entityCanSeeThrough",
@@ -3220,5 +3251,10 @@
             "class": "Util"
         }
     ],
-    "warnings": []
+    "warnings": [
+        {
+            "message": "Missing item type\nAll visible map tiles",
+            "line": " src/fov-rot.js:53"
+        }
+    ]
 }

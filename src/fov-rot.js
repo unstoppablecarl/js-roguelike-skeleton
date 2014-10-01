@@ -51,6 +51,12 @@
         maxViewDistance: 10,
 
         /**
+         * All visible map tiles
+         * @type {Array}
+         */
+        visibleTiles: null, // []
+
+        /**
         * Validates a fieldRange value.
         * @method validateFieldRange
         * @param {Number} fieldRange - Field Range of view valid values: `90`, `180`, or `360`.
@@ -100,7 +106,7 @@
             if(maxViewDistance === void 0){
                 maxViewDistance = this.maxViewDistance;
             }
-
+            this.visibleTiles = [];
             this.validateFieldRange(fieldRange);
 
             this.fovMap.reset();
@@ -155,6 +161,10 @@
         */
         setMapTileVisible: function(x, y, range, visibility){
             this.fovMap.set(x, y, visibility);
+            var tile = this.game.map.get(x, y);
+            if(tile){
+                this.visibleTiles.push(tile);
+            }
         },
 
         /**
