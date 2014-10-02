@@ -128,6 +128,15 @@
             },
             "fors": {},
             "namespaces": {}
+        },
+        "src/valid-targets-finder.js": {
+            "name": "src/valid-targets-finder.js",
+            "modules": {},
+            "classes": {
+                "ValidTargetsFinder": 1
+            },
+            "fors": {},
+            "namespaces": {}
         }
     },
     "modules": {},
@@ -545,6 +554,67 @@
             "line": 17,
             "description": "Utility functions",
             "static": 1
+        },
+        "ValidTargetsFinder": {
+            "name": "ValidTargetsFinder",
+            "shortname": "ValidTargetsFinder",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/valid-targets-finder.js",
+            "line": 4,
+            "description": "Gets a list of valid targets for an action.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "game",
+                    "description": "",
+                    "type": "Game"
+                },
+                {
+                    "name": "entity",
+                    "description": "",
+                    "type": "Entity"
+                },
+                {
+                    "name": "settings",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "[settings.limitToFov",
+                    "description": "= true] - If true only targets within this.entity's fov will be valid.",
+                    "type": "Bool"
+                },
+                {
+                    "name": "[settings.range",
+                    "description": "= 1] - Max distance in tiles target can be from entity.",
+                    "type": "Number"
+                },
+                {
+                    "name": "[settings.validTypes",
+                    "description": "= []] - Array of valid target object types. Checked using `target instanceof type`.",
+                    "type": "Array"
+                },
+                {
+                    "name": "[settings.includeTiles",
+                    "description": "= false] - If true tile objects are can be valid targets.",
+                    "type": "Bool"
+                },
+                {
+                    "name": "[settings.includeSelf",
+                    "description": "= false] - If true entity may target themself.",
+                    "type": "Bool"
+                },
+                {
+                    "name": "[settings.filter",
+                    "description": "= false] - * Function to filter objects when checking if they are valid. `function(obj){ return true }` . Targets must still be a valid type.",
+                    "type": "Bool"
+                }
+            ]
         }
     },
     "classitems": [
@@ -1409,13 +1479,13 @@
         {
             "file": "src/fov-rot.js",
             "line": 53,
-            "description": "All visible map tiles",
+            "description": "All visible map tiles\nArray of objects: {x: null, y: null, tile: null, range: null}",
             "type": "{Array}",
             "class": "FovROT"
         },
         {
             "file": "src/fov-rot.js",
-            "line": 59,
+            "line": 60,
             "description": "Validates a fieldRange value.",
             "itemtype": "method",
             "name": "validateFieldRange",
@@ -1430,7 +1500,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 71,
+            "line": 72,
             "description": "Converts a string direction to an rot direction",
             "itemtype": "method",
             "name": "directionStringToArray",
@@ -1449,7 +1519,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 82,
+            "line": 83,
             "description": "Calculates the fovROT data relative to given coords.",
             "itemtype": "method",
             "name": "update",
@@ -1490,7 +1560,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 130,
+            "line": 132,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
@@ -1514,7 +1584,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 141,
+            "line": 143,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "entityCanSeeThrough",
@@ -1533,7 +1603,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 154,
+            "line": 156,
             "description": "Sets the visibility of a checked map tile",
             "itemtype": "method",
             "name": "setMapTileVisible",
@@ -1563,7 +1633,7 @@
         },
         {
             "file": "src/fov-rot.js",
-            "line": 170,
+            "line": 179,
             "description": "Sets the size of the map to mange fovROT within.",
             "itemtype": "method",
             "name": "setSize",
@@ -3249,12 +3319,149 @@
                 "type": "Object"
             },
             "class": "Util"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 35,
+            "description": "Game instance this obj is attached to.",
+            "itemtype": "property",
+            "name": "game",
+            "type": "Game",
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 42,
+            "description": "Entity to check valid targets from.\n(Uses Entity#x, Entity#y, Entity#fov)",
+            "itemtype": "property",
+            "name": "entity",
+            "type": "{Entity}",
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 50,
+            "description": "If true to be valid a target must be in entity fov.",
+            "itemtype": "property",
+            "name": "limitToFov",
+            "type": "{Boolean}",
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 57,
+            "description": "Max distance in tiles target can be from entity.",
+            "itemtype": "property",
+            "name": "range",
+            "type": "{Number}",
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 64,
+            "description": "Array of valid target object types. Checked using `target instanceof type`.",
+            "itemtype": "property",
+            "name": "validTypes",
+            "type": "{Array}",
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 71,
+            "description": "If true tile objects are can be valid targets.",
+            "itemtype": "property",
+            "name": "includeTiles",
+            "type": "{Boolean}",
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 78,
+            "description": "If true entity may target themself.",
+            "itemtype": "property",
+            "name": "includeSelf",
+            "type": "{Boolean}",
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 85,
+            "description": "Function to filter objects when checking if they are valid. `function(obj){ return true }` . Targets must still be a valid type.",
+            "itemtype": "property",
+            "name": "filter",
+            "type": "{Function}",
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 92,
+            "description": "Gets all valid targets for this action from position of this.entity",
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 109,
+            "description": "Get tile coords a valid target may be on. Only checking range and entity fov, not objects on the tile.",
+            "itemtype": "method",
+            "name": "getValidTargetTiles",
+            "return": {
+                "description": "of Tile objects",
+                "type": "Array"
+            },
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 133,
+            "description": "Get valid target objects on a tile coord.",
+            "itemtype": "method",
+            "name": "getValidTargetsAtPosition",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- Map tile coord to get valid target objects from.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Map tile coord to get valid target objects from.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "mixed objects",
+                "type": "Array"
+            },
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 145,
+            "description": "Checks if an object is a valid target for this action.",
+            "itemtype": "method",
+            "name": "checkValidTarget",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "- target to be checked",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "true if valid",
+                "type": "Bool"
+            },
+            "class": "ValidTargetsFinder"
         }
     ],
     "warnings": [
         {
-            "message": "Missing item type\nAll visible map tiles",
+            "message": "Missing item type\nAll visible map tiles\nArray of objects: {x: null, y: null, tile: null, range: null}",
             "line": " src/fov-rot.js:53"
+        },
+        {
+            "message": "Missing item type\nGets all valid targets for this action from position of this.entity",
+            "line": " src/valid-targets-finder.js:92"
         }
     ]
 }

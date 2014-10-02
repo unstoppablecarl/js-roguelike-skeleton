@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Tile</title>
+    <title>ValidTargetsFinder</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -114,7 +114,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Tile Class</h1>
+                        <h1>ValidTargetsFinder Class</h1>
 <div class="box meta">
     
 
@@ -122,7 +122,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_tile.js.html#l4"><code>src&#x2F;tile.js:4</code></a>
+            Defined in: <a href="../files/src_valid-targets-finder.js.html#l4"><code>src&#x2F;valid-targets-finder.js:4</code></a>
         </div>
     
 
@@ -134,15 +134,15 @@
 
 
 <div class="box intro">
-    <p>Represents a tile in the game map.</p>
+    <p>Gets a list of valid targets for an action.</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Tile" class="method item">
-    <h3 class="name"><code>Tile</code></h3>
+        <div id="method_ValidTargetsFinder" class="method item">
+    <h3 class="name"><code>ValidTargetsFinder</code></h3>
 
     
         <div class="args">
@@ -156,19 +156,49 @@
             
                 <li class="arg">
                     
-                        <code>type</code>
+                        <code>entity</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>x</code>
+                        <code class="optional">[settings]</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>y</code>
+                        <code>[settings.limitToFov</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>[settings.range</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>[settings.validTypes</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>[settings.includeTiles</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>[settings.includeSelf</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>[settings.filter</code>
                     
                 </li>
             
@@ -201,7 +231,7 @@
             
         
         
-        <a href="../files/src_tile.js.html#l4"><code>src&#x2F;tile.js:4</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l4"><code>src&#x2F;valid-targets-finder.js:4</code></a>
         
         </p>
 
@@ -224,15 +254,59 @@
                 <li class="param">
                     
                         <code class="param-name">game</code>
+                        <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">entity</code>
+                        <span class="type"><a href="../classes/Entity.html" class="crosslink">Entity</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[settings]</code>
                         <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
-<li>Game instance this obj is attached to.</li>
-</ul>
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">[settings.limitToFov</code>
+                        <span class="type">Bool</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>= true] - If true only targets within this.entity&#39;s fov will be valid.</p>
 
                     </div>
 
@@ -241,34 +315,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">type</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Type of tile. When created this object is merged with the value of Tile.Types[type].</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
+                        <code class="param-name">[settings.range</code>
                         <span class="type">Number</span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
-<li>The map tile coordinate position of this tile on the x axis.</li>
-</ul>
+                        <p>= 1] - Max distance in tiles target can be from entity.</p>
 
                     </div>
 
@@ -277,16 +331,62 @@
             
                 <li class="param">
                     
-                        <code class="param-name">y</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">[settings.validTypes</code>
+                        <span class="type">Array</span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
-<li>The map tile coordinate position of this tile on the y axis.</li>
-</ul>
+                        <p>= []] - Array of valid target object types. Checked using <code>target instanceof type</code>.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">[settings.includeTiles</code>
+                        <span class="type">Bool</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>= false] - If true tile objects are can be valid targets.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">[settings.includeSelf</code>
+                        <span class="type">Bool</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>= false] - If true entity may target themself.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">[settings.filter</code>
+                        <span class="type">Bool</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>= false] - * Function to filter objects when checking if they are valid. <code>function(obj){ return true }</code> . Targets must still be a valid type.</p>
 
                     </div>
 
@@ -330,14 +430,21 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_bump">bump</a>
+                                <a href="#method_checkValidTarget">checkValidTarget</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_onEntityEnterTile">onEntityEnterTile</a>
+                                <a href="#method_getValidTargetsAtPosition">getValidTargetsAtPosition</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getValidTargetTiles">getValidTargetTiles</a>
 
                                 
                                 
@@ -354,28 +461,14 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_bgColor">bgColor</a>
+                                <a href="#property_entity">entity</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_char">char</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_color">color</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_explored">explored</a>
+                                <a href="#property_filter">filter</a>
 
                                 
                                 
@@ -389,35 +482,35 @@
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_passable">passable</a>
+                                <a href="#property_includeSelf">includeSelf</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_passable">passable</a>
+                                <a href="#property_includeTiles">includeTiles</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_type">type</a>
+                                <a href="#property_limitToFov">limitToFov</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_x">x</a>
+                                <a href="#property_range">range</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_y">y</a>
+                                <a href="#property_validTypes">validTypes</a>
 
                                 
                                 
@@ -437,8 +530,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_bump" class="method item">
-    <h3 class="name"><code>bump</code></h3>
+                    <div id="method_checkValidTarget" class="method item">
+    <h3 class="name"><code>checkValidTarget</code></h3>
 
     
         <div class="args">
@@ -446,7 +539,7 @@
             
                 <li class="arg">
                     
-                        <code>entity</code>
+                        <code>target</code>
                     
                 </li>
             
@@ -454,6 +547,10 @@
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
     
 
     
@@ -479,7 +576,7 @@
             
         
         
-        <a href="../files/src_tile.js.html#l106"><code>src&#x2F;tile.js:106</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l145"><code>src&#x2F;valid-targets-finder.js:145</code></a>
         
         </p>
 
@@ -490,7 +587,7 @@
     </div>
 
     <div class="description">
-        <p>Handles the behavior of a player or other entity attempting to move into this tile. Only used if this.passable = false.</p>
+        <p>Checks if an object is a valid target for this action.</p>
 
     </div>
 
@@ -502,7 +599,7 @@
             
                 <li class="param">
                     
-                        <code class="param-name">entity</code>
+                        <code class="param-name">target</code>
                         <span class="type">Object</span>
                     
 
@@ -510,7 +607,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>The player or entity attemplting to move into this tile.</li>
+<li>target to be checked</li>
 </ul>
 
                     </div>
@@ -523,23 +620,31 @@
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                    <p>true if valid</p>
+
+                
+            </div>
+        </div>
+    
 
     
 </div>
 
                 
-                    <div id="method_onEntityEnterTile" class="method item">
-    <h3 class="name"><code>onEntityEnterTile</code></h3>
+                    <div id="method_getValidTargetsAtPosition" class="method item">
+    <h3 class="name"><code>getValidTargetsAtPosition</code></h3>
 
     
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>entity</code>
-                    
-                </li>
             
                 <li class="arg">
                     
@@ -558,6 +663,10 @@
     
 
     
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
+    
 
     
 
@@ -582,7 +691,7 @@
             
         
         
-        <a href="../files/src_tile.js.html#l119"><code>src&#x2F;tile.js:119</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l133"><code>src&#x2F;valid-targets-finder.js:133</code></a>
         
         </p>
 
@@ -593,8 +702,7 @@
     </div>
 
     <div class="description">
-        <p>Handles entity entering a new tile.
-Called after chaning the entities position</p>
+        <p>Get valid target objects on a tile coord.</p>
 
     </div>
 
@@ -606,24 +714,6 @@ Called after chaning the entities position</p>
             
                 <li class="param">
                     
-                        <code class="param-name">entity</code>
-                        <span class="type"><a href="../classes/Entity.html" class="crosslink">Entity</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The entity entering the tile</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
                         <code class="param-name">x</code>
                         <span class="type">Number</span>
                     
@@ -632,7 +722,7 @@ Called after chaning the entities position</p>
 
                     <div class="param-description">
                         <ul>
-<li>Map tile coord.</li>
+<li>Map tile coord to get valid target objects from.</li>
 </ul>
 
                     </div>
@@ -650,7 +740,7 @@ Called after chaning the entities position</p>
 
                     <div class="param-description">
                         <ul>
-<li>Map tile coord.</li>
+<li>Map tile coord to get valid target objects from.</li>
 </ul>
 
                     </div>
@@ -662,6 +752,93 @@ Called after chaning the entities position</p>
         </div>
     
 
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Array</span>:
+                    
+                    <p>mixed objects</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getValidTargetTiles" class="method item">
+    <h3 class="name"><code>getValidTargetTiles</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets-finder.js.html#l109"><code>src&#x2F;valid-targets-finder.js:109</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Get tile coords a valid target may be on. Only checking range and entity fov, not objects on the tile.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Array</span>:
+                    
+                    <p>of Tile objects</p>
+
+                
+            </div>
+        </div>
     
 
     
@@ -676,9 +853,9 @@ Called after chaning the entities position</p>
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_bgColor" class="property item">
-    <h3 class="name"><code>bgColor</code></h3>
-    <span class="type">String | Bool</span>
+                    <div id="property_entity" class="property item">
+    <h3 class="name"><code>entity</code></h3>
+    <span class="type"><a href="../classes/Entity.html" class="crosslink">Entity</a></span>
 
     
 
@@ -699,7 +876,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l99"><code>src&#x2F;tile.js:99</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l42"><code>src&#x2F;valid-targets-finder.js:42</code></a>
         
         </p>
 
@@ -709,7 +886,8 @@ Called after chaning the entities position</p>
     </div>
 
     <div class="description">
-        <p>The background color the character displayed when rendering this tile. Not rendered if false.</p>
+        <p>Entity to check valid targets from.
+(Uses Entity#x, Entity#y, Entity#fov)</p>
 
     </div>
 
@@ -721,9 +899,9 @@ Called after chaning the entities position</p>
 </div>
 
                 
-                    <div id="property_char" class="property item">
-    <h3 class="name"><code>char</code></h3>
-    <span class="type">String</span>
+                    <div id="property_filter" class="property item">
+    <h3 class="name"><code>filter</code></h3>
+    <span class="type">Function</span>
 
     
 
@@ -744,7 +922,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l85"><code>src&#x2F;tile.js:85</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l85"><code>src&#x2F;valid-targets-finder.js:85</code></a>
         
         </p>
 
@@ -754,97 +932,7 @@ Called after chaning the entities position</p>
     </div>
 
     <div class="description">
-        <p>The character displayed when rendering this tile.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_color" class="property item">
-    <h3 class="name"><code>color</code></h3>
-    <span class="type">String | Bool</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_tile.js.html#l92"><code>src&#x2F;tile.js:92</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The color of the character displayed when rendering this tile. Not rendered if false.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_explored" class="property item">
-    <h3 class="name"><code>explored</code></h3>
-    <span class="type">Bool</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_tile.js.html#l50"><code>src&#x2F;tile.js:50</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>If this tile has been explored by the player.</p>
+        <p>Function to filter objects when checking if they are valid. <code>function(obj){ return true }</code> . Targets must still be a valid type.</p>
 
     </div>
 
@@ -879,7 +967,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l34"><code>src&#x2F;tile.js:34</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l35"><code>src&#x2F;valid-targets-finder.js:35</code></a>
         
         </p>
 
@@ -901,9 +989,9 @@ Called after chaning the entities position</p>
 </div>
 
                 
-                    <div id="property_passable" class="property item">
-    <h3 class="name"><code>passable</code></h3>
-    <span class="type">Bool</span>
+                    <div id="property_includeSelf" class="property item">
+    <h3 class="name"><code>includeSelf</code></h3>
+    <span class="type">Boolean</span>
 
     
 
@@ -924,7 +1012,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l57"><code>src&#x2F;tile.js:57</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l78"><code>src&#x2F;valid-targets-finder.js:78</code></a>
         
         </p>
 
@@ -934,7 +1022,7 @@ Called after chaning the entities position</p>
     </div>
 
     <div class="description">
-        <p>If entities can move through this tile.</p>
+        <p>If true entity may target themself.</p>
 
     </div>
 
@@ -946,9 +1034,9 @@ Called after chaning the entities position</p>
 </div>
 
                 
-                    <div id="property_passable" class="property item">
-    <h3 class="name"><code>passable</code></h3>
-    <span class="type">Bool</span>
+                    <div id="property_includeTiles" class="property item">
+    <h3 class="name"><code>includeTiles</code></h3>
+    <span class="type">Boolean</span>
 
     
 
@@ -969,7 +1057,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l64"><code>src&#x2F;tile.js:64</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l71"><code>src&#x2F;valid-targets-finder.js:71</code></a>
         
         </p>
 
@@ -979,7 +1067,7 @@ Called after chaning the entities position</p>
     </div>
 
     <div class="description">
-        <p>If this tile blocks line of sight.</p>
+        <p>If true tile objects are can be valid targets.</p>
 
     </div>
 
@@ -991,9 +1079,9 @@ Called after chaning the entities position</p>
 </div>
 
                 
-                    <div id="property_type" class="property item">
-    <h3 class="name"><code>type</code></h3>
-    <span class="type">Object</span>
+                    <div id="property_limitToFov" class="property item">
+    <h3 class="name"><code>limitToFov</code></h3>
+    <span class="type">Boolean</span>
 
     
 
@@ -1014,7 +1102,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l42"><code>src&#x2F;tile.js:42</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l50"><code>src&#x2F;valid-targets-finder.js:50</code></a>
         
         </p>
 
@@ -1024,8 +1112,7 @@ Called after chaning the entities position</p>
     </div>
 
     <div class="description">
-        <p>The type of entity this is.
-When created this object is merged with the value of Tile.Types[type].</p>
+        <p>If true to be valid a target must be in entity fov.</p>
 
     </div>
 
@@ -1037,8 +1124,8 @@ When created this object is merged with the value of Tile.Types[type].</p>
 </div>
 
                 
-                    <div id="property_x" class="property item">
-    <h3 class="name"><code>x</code></h3>
+                    <div id="property_range" class="property item">
+    <h3 class="name"><code>range</code></h3>
     <span class="type">Number</span>
 
     
@@ -1060,7 +1147,7 @@ When created this object is merged with the value of Tile.Types[type].</p>
             
         
         
-        <a href="../files/src_tile.js.html#l71"><code>src&#x2F;tile.js:71</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l57"><code>src&#x2F;valid-targets-finder.js:57</code></a>
         
         </p>
 
@@ -1070,7 +1157,7 @@ When created this object is merged with the value of Tile.Types[type].</p>
     </div>
 
     <div class="description">
-        <p>The tile map coordinate position on the x axis.</p>
+        <p>Max distance in tiles target can be from entity.</p>
 
     </div>
 
@@ -1082,9 +1169,9 @@ When created this object is merged with the value of Tile.Types[type].</p>
 </div>
 
                 
-                    <div id="property_y" class="property item">
-    <h3 class="name"><code>y</code></h3>
-    <span class="type">Number</span>
+                    <div id="property_validTypes" class="property item">
+    <h3 class="name"><code>validTypes</code></h3>
+    <span class="type">Array</span>
 
     
 
@@ -1105,7 +1192,7 @@ When created this object is merged with the value of Tile.Types[type].</p>
             
         
         
-        <a href="../files/src_tile.js.html#l78"><code>src&#x2F;tile.js:78</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l64"><code>src&#x2F;valid-targets-finder.js:64</code></a>
         
         </p>
 
@@ -1115,7 +1202,7 @@ When created this object is merged with the value of Tile.Types[type].</p>
     </div>
 
     <div class="description">
-        <p>The tile map coordinate position on the y axis.</p>
+        <p>Array of valid target object types. Checked using <code>target instanceof type</code>.</p>
 
     </div>
 
