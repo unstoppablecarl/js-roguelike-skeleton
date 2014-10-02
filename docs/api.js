@@ -17,6 +17,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "Tile",
         "Tile.Types",
         "Util",
+        "ValidTargets",
         "ValidTargetsFinder"
     ],
     "modules": [],

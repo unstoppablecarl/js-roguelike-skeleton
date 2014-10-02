@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Console</title>
+    <title>ValidTargets</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -116,7 +116,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Console Class</h1>
+                        <h1>ValidTargets Class</h1>
 <div class="box meta">
     
 
@@ -124,7 +124,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_console.js.html#l4"><code>src&#x2F;console.js:4</code></a>
+            Defined in: <a href="../files/src_valid-targets.js.html#l4"><code>src&#x2F;valid-targets.js:4</code></a>
         </div>
     
 
@@ -136,17 +136,15 @@
 
 
 <div class="box intro">
-    <p>Manages the display and history of console messages to the user.
-&quot;The troll hits you dealing 10 damage.&quot;
-&quot;You die.&quot;</p>
+    <p>Manages a list of valid targets and which is currently selected.</p>
 
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Console" class="method item">
-    <h3 class="name"><code>Console</code></h3>
+        <div id="method_ValidTargets" class="method item">
+    <h3 class="name"><code>ValidTargets</code></h3>
 
     
         <div class="args">
@@ -154,19 +152,7 @@
             
                 <li class="arg">
                     
-                        <code>game</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[messageHistoryCount=5]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[elClassName=&#x27;console&#x27;]</code>
+                        <code>[targets</code>
                     
                 </li>
             
@@ -199,7 +185,7 @@
             
         
         
-        <a href="../files/src_console.js.html#l4"><code>src&#x2F;console.js:4</code></a>
+        <a href="../files/src_valid-targets.js.html#l4"><code>src&#x2F;valid-targets.js:4</code></a>
         
         </p>
 
@@ -221,54 +207,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">game</code>
-                        <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
+                        <code class="param-name">[targets</code>
+                        <span class="type">Array</span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
-<li>Game instance this obj is attached to.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[messageHistoryCount=5]</code>
-                        <span class="type">Number</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Number of messages to display at once.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[elClassName=&#x27;console&#x27;]</code>
-                        <span class="type">String</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Css class name to assign to the console element.</li>
-</ul>
+                        <p>= []]</p>
 
                     </div>
 
@@ -295,8 +241,6 @@
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
         
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
-        
         
         
     </ul>
@@ -312,7 +256,28 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_log">log</a>
+                                <a href="#method_getCurrent">getCurrent</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_next">next</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_prev">prev</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setCurrent">setCurrent</a>
 
                                 
                                 
@@ -322,35 +287,6 @@
                 </div>
             
 
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties">
-                        
-                            <li class="index-item property">
-                                <a href="#property_el">el</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_game">game</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_messageHistoryCount">messageHistoryCount</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
             
 
             
@@ -363,8 +299,221 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_log" class="method item">
-    <h3 class="name"><code>log</code></h3>
+                    <div id="method_getCurrent" class="method item">
+    <h3 class="name"><code>getCurrent</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets.js.html#l47"><code>src&#x2F;valid-targets.js:47</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the currently selected target.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_next" class="method item">
+    <h3 class="name"><code>next</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets.js.html#l60"><code>src&#x2F;valid-targets.js:60</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the object after the currently selected object to be the selected object.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_prev" class="method item">
+    <h3 class="name"><code>prev</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets.js.html#l81"><code>src&#x2F;valid-targets.js:81</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the object before the currently selected object to be the selected object.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_setCurrent" class="method item">
+    <h3 class="name"><code>setCurrent</code></h3>
 
     
         <div class="args">
@@ -372,7 +521,7 @@
             
                 <li class="arg">
                     
-                        <code>-</code>
+                        <code>target</code>
                     
                 </li>
             
@@ -405,7 +554,7 @@
             
         
         
-        <a href="../files/src_console.js.html#l46"><code>src&#x2F;console.js:46</code></a>
+        <a href="../files/src_valid-targets.js.html#l30"><code>src&#x2F;valid-targets.js:30</code></a>
         
         </p>
 
@@ -416,7 +565,7 @@
     </div>
 
     <div class="description">
-        <p>Adds a message to the console.</p>
+        <p>Sets the currently selected target.</p>
 
     </div>
 
@@ -428,15 +577,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">-</code>
-                        <span class="type">String</span>
+                        <code class="param-name">target</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Message to be added.</p>
-
+                         
                     </div>
 
                     
@@ -455,148 +603,6 @@
             </div>
         
 
-        
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Properties</h2>
-
-                
-                    <div id="property_el" class="property item">
-    <h3 class="name"><code>el</code></h3>
-    <span class="type">HTMLElement</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_console.js.html#l31"><code>src&#x2F;console.js:31</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Element containing console messages.
-Must be manually added to the DOM</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_game" class="property item">
-    <h3 class="name"><code>game</code></h3>
-    <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_console.js.html#l24"><code>src&#x2F;console.js:24</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Game instance this obj is attached to.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_messageHistoryCount" class="property item">
-    <h3 class="name"><code>messageHistoryCount</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_console.js.html#l39"><code>src&#x2F;console.js:39</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Number of messages to display at once.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
         
 
         

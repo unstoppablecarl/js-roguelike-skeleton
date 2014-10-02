@@ -137,6 +137,15 @@
             },
             "fors": {},
             "namespaces": {}
+        },
+        "src/valid-targets.js": {
+            "name": "src/valid-targets.js",
+            "modules": {},
+            "classes": {
+                "ValidTargets": 1
+            },
+            "fors": {},
+            "namespaces": {}
         }
     },
     "modules": {},
@@ -613,6 +622,26 @@
                     "name": "[settings.filter",
                     "description": "= false] - * Function to filter objects when checking if they are valid. `function(obj){ return true }` . Targets must still be a valid type.",
                     "type": "Bool"
+                }
+            ]
+        },
+        "ValidTargets": {
+            "name": "ValidTargets",
+            "shortname": "ValidTargets",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/valid-targets.js",
+            "line": 4,
+            "description": "Manages a list of valid targets and which is currently selected.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "[targets",
+                    "description": "= []]",
+                    "type": "Array"
                 }
             ]
         }
@@ -1768,7 +1797,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 140,
+            "line": 154,
             "description": "Handles tile mouse click events.",
             "itemtype": "method",
             "name": "onClick",
@@ -1788,7 +1817,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 161,
+            "line": 175,
             "description": "Handles tile mouse hover events",
             "itemtype": "method",
             "name": "onHover",
@@ -1808,7 +1837,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 180,
+            "line": 194,
             "description": "Gets all objects at tile position",
             "itemtype": "method",
             "name": "getObjectsOnTile",
@@ -1832,7 +1861,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 200,
+            "line": 214,
             "description": "Checks if an entity can move through a map tile.\nThis does NOT check for entities on the tile blocking movement.\nThis is where code for special cases changing an entity's ability to pass through a tile should be placed.\nThings like flying, swimming and ghosts moving through walls.",
             "itemtype": "method",
             "name": "entityCanMoveThrough",
@@ -1861,7 +1890,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 220,
+            "line": 234,
             "description": "Checks if an entity can move through and into a map tile and that tile is un-occupied.",
             "itemtype": "method",
             "name": "entityCanMoveTo",
@@ -1890,7 +1919,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 239,
+            "line": 253,
             "description": "Changes the position of an entity on the map.\nUpdates entity position in this.entityManager and calls tile.onEntityEnter\nthis.entityCanMoveTo() should always be checked before calling this.entityMoveTo",
             "itemtype": "method",
             "name": "entityMoveTo",
@@ -1915,7 +1944,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 256,
+            "line": 270,
             "description": "Checks if a map tile can be seen through.\nThis is where code for special cases like smoke, fog, x-ray vision should go.",
             "itemtype": "method",
             "name": "entityCanSeeThrough",
@@ -2892,6 +2921,47 @@
         {
             "file": "src/renderer.js",
             "line": 160,
+            "description": "ValidTargets object listing players current valid targets",
+            "itemtype": "property",
+            "name": "validTargets",
+            "type": "{ValidTargets}",
+            "class": "Renderer"
+        },
+        {
+            "file": "src/renderer.js",
+            "line": 167,
+            "itemtype": "property",
+            "name": "validTargetBorderColor",
+            "type": "{String}",
+            "class": "Renderer"
+        },
+        {
+            "file": "src/renderer.js",
+            "line": 173,
+            "itemtype": "property",
+            "name": "validTargetSelectedBorderColor",
+            "type": "{String}",
+            "class": "Renderer"
+        },
+        {
+            "file": "src/renderer.js",
+            "line": 179,
+            "itemtype": "property",
+            "name": "validTargetBorderWidth",
+            "type": "{Number}",
+            "class": "Renderer"
+        },
+        {
+            "file": "src/renderer.js",
+            "line": 185,
+            "itemtype": "property",
+            "name": "validTargetSelectedBorderWidth",
+            "type": "{Number}",
+            "class": "Renderer"
+        },
+        {
+            "file": "src/renderer.js",
+            "line": 191,
             "description": "Resizes canvas elements to match the tileSize and map view with/height. Also adjusts behavior to accomodate high pixel density screens.",
             "itemtype": "method",
             "name": "resize",
@@ -2899,7 +2969,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 201,
+            "line": 232,
             "description": "Converts mouse pixel coords to map tile coords. Mouse pixel coords must be relative to the current window.",
             "itemtype": "method",
             "name": "mouseToTileCoords",
@@ -2923,7 +2993,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 215,
+            "line": 246,
             "description": "Converts map view pixel coords to map tile coords. Map view pixel coords are relative to the top left of the canvas element.",
             "itemtype": "method",
             "name": "pixelToTileCoords",
@@ -2947,7 +3017,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 229,
+            "line": 260,
             "description": "Sets the center map tile of the view.",
             "itemtype": "method",
             "name": "setCenter",
@@ -2967,7 +3037,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 241,
+            "line": 272,
             "description": "Draws map and entity tiles. All parameters will fall back to this.game.<param> if not provided.",
             "itemtype": "method",
             "name": "draw",
@@ -3007,7 +3077,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 267,
+            "line": 299,
             "description": "Draws map tiles",
             "itemtype": "method",
             "name": "drawMap",
@@ -3039,7 +3109,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 335,
+            "line": 367,
             "description": "Draws entity tiles",
             "itemtype": "method",
             "name": "drawEntities",
@@ -3071,7 +3141,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 388,
+            "line": 447,
             "description": "Draws a single tile to the map view.",
             "itemtype": "method",
             "name": "drawTile",
@@ -3321,6 +3391,45 @@
             "class": "Util"
         },
         {
+            "file": "src/util.js",
+            "line": 101,
+            "description": "Gets the distance in tiles from point A to point B.",
+            "itemtype": "method",
+            "name": "getTileDistance",
+            "params": [
+                {
+                    "name": "x1",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "y1",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "x2",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "y2",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "[diagonalMovement",
+                    "description": "= false]if true, calculate the distance taking into account diagonal movement.",
+                    "type": "Bool"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Util"
+        },
+        {
             "file": "src/valid-targets-finder.js",
             "line": 35,
             "description": "Game instance this obj is attached to.",
@@ -3452,6 +3561,73 @@
                 "type": "Bool"
             },
             "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 17,
+            "description": "Array of target objects.",
+            "type": "{Object}",
+            "class": "ValidTargets"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 23,
+            "description": "Currently Selected Object.",
+            "access": "private",
+            "tagname": "",
+            "type": "{Object}",
+            "class": "ValidTargets"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 30,
+            "description": "Sets the currently selected target.",
+            "itemtype": "method",
+            "name": "setCurrent",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "ValidTargets"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 47,
+            "description": "Gets the currently selected target.",
+            "itemtype": "method",
+            "name": "getCurrent",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ValidTargets"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 60,
+            "description": "Sets the object after the currently selected object to be the selected object.",
+            "itemtype": "method",
+            "name": "next",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ValidTargets"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 81,
+            "description": "Sets the object before the currently selected object to be the selected object.",
+            "itemtype": "method",
+            "name": "prev",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ValidTargets"
         }
     ],
     "warnings": [
@@ -3462,6 +3638,14 @@
         {
             "message": "Missing item type\nGets all valid targets for this action from position of this.entity",
             "line": " src/valid-targets-finder.js:92"
+        },
+        {
+            "message": "Missing item type\nArray of target objects.",
+            "line": " src/valid-targets.js:17"
+        },
+        {
+            "message": "Missing item type\nCurrently Selected Object.",
+            "line": " src/valid-targets.js:23"
         }
     ]
 }
