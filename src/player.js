@@ -15,13 +15,13 @@
 
         // modify fov to set tiles as explored
         this.fov.setMapTileVisible = function(x, y, range, visibility){
+            RL.FovROT.prototype.setMapTileVisible.call(this, x, y, range, visibility);
             if(visibility){
                 var tile = this.game.map.get(x, y);
                 if(tile){
                     tile.explored = true;
                 }
             }
-            this.fovMap.set(x, y, visibility);
         };
     };
 
