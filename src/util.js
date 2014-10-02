@@ -97,6 +97,26 @@
                 y: this.DIRECTIONS_TO_OFFSETS[direction].y
             };
         },
+
+        /**
+         * Gets the distance in tiles from point A to point B.
+         * @method getTileDistance
+         * @param {Number} x1
+         * @param {Number} y1
+         * @param {Number} x2
+         * @param {Number} y2
+         * @param {Bool} [diagonalMovement = false]if true, calculate the distance taking into account diagonal movement.
+         * @return {Number}
+         */
+        getTileDistance: function(x1, y1, x2, y2, diagonalMovement){
+            if(!diagonalMovement){
+                return Math.max(Math.abs(x2 - x1), Math.abs(y2 - y1));
+            } else {
+                return Math.abs(x2 - x1) + Math.abs(y2 - y1);
+
+            }
+
+        }
     };
 
     root.RL.Util = Util;
