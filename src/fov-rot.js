@@ -52,6 +52,7 @@
 
         /**
          * All visible map tiles
+         * Array of objects: {x: null, y: null, tile: null, range: null}
          * @type {Array}
          */
         visibleTiles: null, // []
@@ -106,9 +107,10 @@
             if(maxViewDistance === void 0){
                 maxViewDistance = this.maxViewDistance;
             }
-            this.visibleTiles = [];
+
             this.validateFieldRange(fieldRange);
 
+            this.visibleTiles = [];
             this.fovMap.reset();
             var entityCanSeeThrough = this.getEntityCanSeeThroughCallback(entity);
             var fov = new ROT.FOV.RecursiveShadowcasting(entityCanSeeThrough);
@@ -161,9 +163,16 @@
         */
         setMapTileVisible: function(x, y, range, visibility){
             this.fovMap.set(x, y, visibility);
-            var tile = this.game.map.get(x, y);
-            if(tile){
-                this.visibleTiles.push(tile);
+            if(visibility){
+                var tile = this.game.map.get(x, y);
+                if(tile){
+                    this.visibleTiles.push({
+                        x: x,
+                        y: y,
+                        tile: tile,
+                        range: range
+                    });
+                }
             }
         },
 
