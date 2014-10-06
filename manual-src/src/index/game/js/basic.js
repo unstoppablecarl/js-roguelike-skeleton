@@ -66,10 +66,6 @@ game.renderer.resize(10, 14);
 var mapContainerEl = document.getElementById('example-map-container');
 var consoleContainerEl = document.getElementById('example-console-container');
 
-// empty existing elements
-mapContainerEl.innerHTML = '';
-consoleContainerEl.innerHTML = '';
-
 // append elements created by the game to the DOM
 mapContainerEl.appendChild(game.renderer.canvas);
 consoleContainerEl.appendChild(game.console.el);
