@@ -417,30 +417,32 @@
             }
         },
 
+        /**
+         * Draw targetd tiles
+         * @method drawTargeted
+         * @param {CanvasRenderingContext2D}  [ctx=this.bufferCtx] - The canvas context to draw to.
+         */
         drawTargeted: function(ctx){
+            ctx = ctx || this.bufferCtx;
+            var validTargets = this.game.player.validTargets,
+                selected = validTargets.getCurrent();
 
-            // console.log('this.targets.targets', this.targets.targets);
-            if(this.validTargets){
-                var selected = this.validTargets.getCurrent();
-
-                for(var i = this.validTargets.targets.length - 1; i >= 0; i--){
-                    var target = this.validTargets.targets[i];
-                    var x = target.x;
-                    var y = target.y;
-
-                    var borderColor = this.validTargetBorderColor;
-                    var borderWidth = this.validTargetBorderWidth;
-                    if(target === selected){
-                        borderColor = this.validTargetSelectedBorderColor;
-                        borderWidth = this.validTargetSelectedBorderWidth;
-                    }
-                    var tileData = {
-                        char: false,
-                        borderColor: borderColor,
-                        borderWidth: borderWidth,
-                    };
-                    this.drawTile(x, y, tileData, ctx);
+            for(var i = validTargets.targets.length - 1; i >= 0; i--){
+                var target = validTargets.targets[i],
+                    x = target.x,
+                    y = target.y,
+                    borderColor = this.validTargetBorderColor,
+                    borderWidth = this.validTargetBorderWidth;
+                if(target === selected){
+                    borderColor = this.validTargetSelectedBorderColor;
+                    borderWidth = this.validTargetSelectedBorderWidth;
                 }
+                var tileData = {
+                    char: false,
+                    borderColor: borderColor,
+                    borderWidth: borderWidth,
+                };
+                this.drawTile(x, y, tileData, ctx);
             }
         },
 

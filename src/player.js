@@ -13,6 +13,8 @@
         this.game = game;
         this.fov = new RL.FovROT(game);
 
+        this.validTargets = new RL.ValidTargets();
+
         // modify fov to set tiles as explored
         this.fov.setMapTileVisible = function(x, y, range, visibility){
             RL.FovROT.prototype.setMapTileVisible.call(this, x, y, range, visibility);
@@ -112,6 +114,12 @@
         * @type bool
         */
         dead: false,
+
+        /**
+         * @property validTargets
+         * @type {ValidTargets}
+         */
+        validTargets: null,
 
         /**
         * Updates this.fov
