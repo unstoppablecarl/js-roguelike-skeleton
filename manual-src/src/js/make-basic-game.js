@@ -2,6 +2,7 @@ var makeBasicGame = function(settings){
 
     var defaultSettings = {
         mapContainerEl: document.getElementById('example-container'),
+        consoleContainerEl: document.getElementById('example-console-container'),
         mapData: [
             // 10x6
             '##########',
@@ -50,5 +51,8 @@ var makeBasicGame = function(settings){
     // append elements created by the game to the DOM
     s.mapContainerEl.appendChild(game.renderer.canvas);
 
+    if(s.consoleContainerEl){
+        s.consoleContainerEl.appendChild(game.console.el);
+    }
     return game;
 };
