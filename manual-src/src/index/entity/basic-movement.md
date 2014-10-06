@@ -26,7 +26,6 @@ lib_scripts:
  - ../../../src/console.js
  - ../../../src/fov-rot.js
  - ../../../src/lighting-rot.js
- - ../../../src/valid-targets.js
  - ../../../src/game.js
 
 scripts:

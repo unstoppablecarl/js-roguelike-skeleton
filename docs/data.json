@@ -2546,7 +2546,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 33,
+            "line": 31,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -2555,7 +2555,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 40,
+            "line": 38,
             "description": "FovRot instance representing this entity's vision.",
             "itemtype": "property",
             "name": "fov",
@@ -2564,7 +2564,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 47,
+            "line": 45,
             "description": "Name used when referencing describing this player.\nUsed in console messages.",
             "itemtype": "property",
             "name": "name",
@@ -2573,7 +2573,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 55,
+            "line": 53,
             "description": "The map tile coordinate position of the player on the x axis.",
             "itemtype": "property",
             "name": "x",
@@ -2582,7 +2582,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 62,
+            "line": 60,
             "description": "The map tile coordinate position of the player on the y axis.",
             "itemtype": "property",
             "name": "y",
@@ -2591,7 +2591,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 69,
+            "line": 67,
             "description": "The character displayed when rendering this player.",
             "itemtype": "property",
             "name": "char",
@@ -2600,7 +2600,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 76,
+            "line": 74,
             "description": "The color of the character displayed when rendering this player.",
             "itemtype": "property",
             "name": "color",
@@ -2609,7 +2609,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 83,
+            "line": 81,
             "description": "The background color the character displayed when rendering this player.",
             "itemtype": "property",
             "name": "bgColor",
@@ -2618,7 +2618,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 90,
+            "line": 88,
             "description": "Field Range of this.fov (90, 180, or 360)",
             "itemtype": "property",
             "name": "fovFieldRange",
@@ -2627,7 +2627,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 97,
+            "line": 95,
             "description": "Direction of fov (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'].",
             "itemtype": "property",
             "name": "fovDirection",
@@ -2636,7 +2636,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 104,
+            "line": 102,
             "description": "Max visible distance in tiles",
             "itemtype": "property",
             "name": "fovMaxViewDistance",
@@ -2645,7 +2645,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 111,
+            "line": 109,
             "description": "Determines if the player has been killed.",
             "itemtype": "property",
             "name": "dead",
@@ -2654,15 +2654,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 118,
-            "itemtype": "property",
-            "name": "validTargets",
-            "type": "{ValidTargets}",
-            "class": "Player"
-        },
-        {
-            "file": "src/player.js",
-            "line": 124,
+            "line": 116,
             "description": "Updates this.fov",
             "itemtype": "method",
             "name": "updateFov",
@@ -2670,7 +2662,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 137,
+            "line": 129,
             "description": "Checks if this entity can move to the specified map tile",
             "itemtype": "method",
             "name": "canMoveTo",
@@ -2694,7 +2686,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 148,
+            "line": 140,
             "description": "Changes the position of this entity on the map.\nthis.canMoveTo() should always be checked before calling this.moveTo",
             "itemtype": "method",
             "name": "moveTo",
@@ -2714,7 +2706,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 159,
+            "line": 151,
             "description": "Called when user key is pressed with action of key pressed as an arg.",
             "itemtype": "method",
             "name": "update",
@@ -2733,7 +2725,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 182,
+            "line": 174,
             "description": "Move action.",
             "itemtype": "method",
             "name": "move",
@@ -2757,7 +2749,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 209,
+            "line": 201,
             "description": "Wait action.",
             "itemtype": "method",
             "name": "wait",
@@ -2937,47 +2929,19 @@
         {
             "file": "src/renderer.js",
             "line": 160,
-            "description": "ValidTargets object listing players current valid targets",
-            "itemtype": "property",
-            "name": "validTargets",
-            "type": "{ValidTargets}",
+            "description": "Placeholder to add extra draw functionality.\nSame params as this.draw\nfunction(ctx, map, entityManager, player, fov, lighting)",
+            "params": [
+                {
+                    "name": "drawExtra",
+                    "description": ""
+                }
+            ],
+            "type": "{Function}",
             "class": "Renderer"
         },
         {
             "file": "src/renderer.js",
-            "line": 167,
-            "itemtype": "property",
-            "name": "validTargetBorderColor",
-            "type": "{String}",
-            "class": "Renderer"
-        },
-        {
-            "file": "src/renderer.js",
-            "line": 173,
-            "itemtype": "property",
-            "name": "validTargetSelectedBorderColor",
-            "type": "{String}",
-            "class": "Renderer"
-        },
-        {
-            "file": "src/renderer.js",
-            "line": 179,
-            "itemtype": "property",
-            "name": "validTargetBorderWidth",
-            "type": "{Number}",
-            "class": "Renderer"
-        },
-        {
-            "file": "src/renderer.js",
-            "line": 185,
-            "itemtype": "property",
-            "name": "validTargetSelectedBorderWidth",
-            "type": "{Number}",
-            "class": "Renderer"
-        },
-        {
-            "file": "src/renderer.js",
-            "line": 191,
+            "line": 169,
             "description": "Resizes canvas elements to match the tileSize and map view with/height. Also adjusts behavior to accomodate high pixel density screens.",
             "itemtype": "method",
             "name": "resize",
@@ -2985,7 +2949,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 232,
+            "line": 210,
             "description": "Converts mouse pixel coords to map tile coords. Mouse pixel coords must be relative to the current window.",
             "itemtype": "method",
             "name": "mouseToTileCoords",
@@ -3009,7 +2973,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 246,
+            "line": 224,
             "description": "Converts map view pixel coords to map tile coords. Map view pixel coords are relative to the top left of the canvas element.",
             "itemtype": "method",
             "name": "pixelToTileCoords",
@@ -3033,7 +2997,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 260,
+            "line": 238,
             "description": "Sets the center map tile of the view.",
             "itemtype": "method",
             "name": "setCenter",
@@ -3053,7 +3017,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 272,
+            "line": 250,
             "description": "Draws map and entity tiles. All parameters will fall back to this.game.<param> if not provided.",
             "itemtype": "method",
             "name": "draw",
@@ -3093,7 +3057,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 299,
+            "line": 280,
             "description": "Draws map tiles",
             "itemtype": "method",
             "name": "drawMap",
@@ -3125,7 +3089,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 367,
+            "line": 348,
             "description": "Draws entity tiles",
             "itemtype": "method",
             "name": "drawEntities",
@@ -3157,24 +3121,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 420,
-            "description": "Draw targetd tiles",
-            "itemtype": "method",
-            "name": "drawTargeted",
-            "params": [
-                {
-                    "name": "ctx",
-                    "description": "- The canvas context to draw to.",
-                    "type": "CanvasRenderingContext2D",
-                    "optional": true,
-                    "optdefault": "this.bufferCtx"
-                }
-            ],
-            "class": "Renderer"
-        },
-        {
-            "file": "src/renderer.js",
-            "line": 449,
+            "line": 401,
             "description": "Draws a single tile to the map view.",
             "itemtype": "method",
             "name": "drawTile",
@@ -3704,6 +3651,10 @@
         }
     ],
     "warnings": [
+        {
+            "message": "Missing item type\nPlaceholder to add extra draw functionality.\nSame params as this.draw\nfunction(ctx, map, entityManager, player, fov, lighting)",
+            "line": " src/renderer.js:160"
+        },
         {
             "message": "Missing item type\nArray of target objects.",
             "line": " src/valid-targets.js:17"

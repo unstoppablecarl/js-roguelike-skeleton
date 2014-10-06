@@ -4,10 +4,11 @@
     // get original function
     var defaultOnKeyAction = RL.Game.prototype.onKeyAction;
 
+
     // override default code
     RL.Game.prototype.onKeyAction = function(action) {
         if(action === 'inspect'){
-            var target = this.player.validTargets.getCurrent();
+            var target = this.validTargets.getCurrent();
             if(target){
                 var entity = target.value;
                 this.console.log('Type:  ' + entity.name);
@@ -20,19 +21,48 @@
         }
 
         if(action === 'prev_target'){
-            this.player.validTargets.prev();
+            this.validTargets.prev();
             this.renderer.draw();
             return;
         }
 
         if(action === 'next_target'){
-            this.player.validTargets.next();
+            this.validTargets.next();
             this.renderer.draw();
             return;
         }
 
         // call original code
         defaultOnKeyAction.call(this, action);
+    };
+
+    var validTargetBorderColor = 'rgba(0, 200, 0, 0.5)',
+        validTargetSelectedBorderColor = 'rgba(0, 200, 0, 0.85)',
+        validTargetBorderWidth = 1,
+        validTargetSelectedBorderWidth = 2;
+
+    RL.Renderer.prototype.drawExtra = function(ctx, map, entityManager, player, fov, lighting){
+        ctx = ctx || this.bufferCtx;
+        var validTargets = this.game.validTargets,
+            selected = validTargets.getCurrent();
+
+        for(var i = validTargets.targets.length - 1; i >= 0; i--){
+            var target = validTargets.targets[i],
+                x = target.x,
+                y = target.y,
+                borderColor = validTargetBorderColor,
+                borderWidth = validTargetBorderWidth;
+            if(target === selected){
+                borderColor = validTargetSelectedBorderColor;
+                borderWidth = validTargetSelectedBorderWidth;
+            }
+            var tileData = {
+                char: false,
+                borderColor: borderColor,
+                borderWidth: borderWidth,
+            };
+            this.drawTile(x, y, tileData, ctx);
+        }
     };
 
     var mapData = [
@@ -80,10 +110,13 @@
     excudedZombie.excludeFromTargeting = true;
     game.entityManager.add(7, 4, excudedZombie);
 
+    // add valid targets object to game
+    game.validTargets = new RL.ValidTargets();
+
     game.start();
 
     // set player valid targets
-    game.player.validTargets.targets = validTargetsFinder.getValidTargets();
+    game.validTargets.targets = validTargetsFinder.getValidTargets();
     game.renderer.draw();
 
 }());

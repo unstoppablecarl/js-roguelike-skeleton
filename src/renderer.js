@@ -158,35 +158,13 @@
         hoveredTileY: null,
 
         /**
-         * ValidTargets object listing players current valid targets
-         * @property validTargets
-         * @type {ValidTargets}
+         * Placeholder to add extra draw functionality.
+         * Same params as this.draw
+         * function(ctx, map, entityManager, player, fov, lighting)
+         * @param drawExtra
+         * @type {Function}
          */
-        validTargets: null,
-
-        /**
-         * @property validTargetBorderColor
-         * @type {String}
-         */
-        validTargetBorderColor: 'rgba(0, 200, 0, 0.5)',
-
-        /**
-         * @property validTargetSelectedBorderColor
-         * @type {String}
-         */
-        validTargetSelectedBorderColor: 'rgba(0, 200, 0, 0.85)',
-
-        /**
-         * @property validTargetBorderWidth
-         * @type {Number}
-         */
-        validTargetBorderWidth: 1,
-
-        /**
-         * @property validTargetSelectedBorderWidth
-         * @type {Number}
-         */
-        validTargetSelectedBorderWidth: 2,
+        drawExtra: false,
 
         /**
         * Resizes canvas elements to match the tileSize and map view with/height. Also adjusts behavior to accomodate high pixel density screens.
@@ -291,7 +269,10 @@
             if(entityManager || player){
                 this.drawEntities(ctx, entityManager, player, fov);
             }
-            this.drawTargeted();
+            if(this.drawExtra){
+                this.drawExtra(ctx, map, entityManager, player, fov, lighting);
+            }
+
             // draw from buffer canvas to canvas in DOM only once all buffer draws are complete
             this.ctx.drawImage(this.buffer, 0, 0, this.canvas.width, this.canvas.height);
         },
@@ -414,35 +395,6 @@
                     };
                     this.drawTile(tileX, tileY, tileData, ctx);
                 }
-            }
-        },
-
-        /**
-         * Draw targetd tiles
-         * @method drawTargeted
-         * @param {CanvasRenderingContext2D}  [ctx=this.bufferCtx] - The canvas context to draw to.
-         */
-        drawTargeted: function(ctx){
-            ctx = ctx || this.bufferCtx;
-            var validTargets = this.game.player.validTargets,
-                selected = validTargets.getCurrent();
-
-            for(var i = validTargets.targets.length - 1; i >= 0; i--){
-                var target = validTargets.targets[i],
-                    x = target.x,
-                    y = target.y,
-                    borderColor = this.validTargetBorderColor,
-                    borderWidth = this.validTargetBorderWidth;
-                if(target === selected){
-                    borderColor = this.validTargetSelectedBorderColor;
-                    borderWidth = this.validTargetSelectedBorderWidth;
-                }
-                var tileData = {
-                    char: false,
-                    borderColor: borderColor,
-                    borderWidth: borderWidth,
-                };
-                this.drawTile(x, y, tileData, ctx);
             }
         },
 
