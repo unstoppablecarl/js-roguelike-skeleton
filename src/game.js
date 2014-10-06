@@ -123,6 +123,20 @@
         * @param {String} action - Action triggered by user input.
         */
         onKeyAction: function(action) {
+            if(action === 'prev_target'){
+                console.log("prev");
+                this.renderer.targets.prev();
+                this.renderer.draw();
+                return;
+            }
+
+            if(action === 'next_target'){
+                console.log("next");
+                this.renderer.targets.next();
+                this.renderer.draw();
+                return;
+            }
+
             if(this.player.update(action)){
                 this.entityManager.update();
                 this.player.updateFov();

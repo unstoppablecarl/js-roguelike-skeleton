@@ -232,9 +232,10 @@
          */
         getTileDistance: function(x1, y1, x2, y2, diagonalMovement){
             if(!diagonalMovement){
-                return Math.max(Math.abs(x2 - x1), Math.abs(y2 - y1));
-            } else {
                 return Math.abs(x2 - x1) + Math.abs(y2 - y1);
+
+            } else {
+                return Math.max(Math.abs(x2 - x1), Math.abs(y2 - y1));
 
             }
 

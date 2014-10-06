@@ -213,6 +213,8 @@
 
         /**
          * Gets all valid targets for this action from position of this.entity
+         * @method getValidTargets
+         * @return {Array}
          */
         getValidTargets: function(){
             var tiles = this.getValidTargetTiles();
@@ -241,13 +243,18 @@
                     var fovTile = fovTiles[i];
                     // if no max range, if there is a max range check it
                     if(!this.range || fovTile.range &lt;= this.range){
-                        tiles.push(fovTile.tile);
+                        tiles.push(fovTile);
                     }
                 }
             } else {
                 var x = this.entity.x,
                     y = this.entity.y;
                 tiles = this.game.map.getWithinSquareRadius(x, y, this.range);
+
+                var _this = this;
+                tiles = tiles.map(function(tile){
+                    return _this.prepareTargetObject(tile);
+                });
             }
             return tiles;
         },
@@ -261,7 +268,36 @@
          */
         getValidTargetsAtPosition: function(x, y){
             var objects = this.game.getObjectsAtPostion(x, y);
-            return objects.filter(this.checkValidTarget.bind(this));
+            var range = RL.Util.getTileDistance(this.entity.x, this.entity.y, x, y, true);
+            var _this = this;
+            var filtered =  objects.filter(function(target){
+                return _this.checkValidTarget(target);
+            });
+
+            return filtered.map(function(target){
+                return _this.prepareTargetObject(target, x, y, range);
+            });
+        },
+
+        /**
+         * Wraps a target object in a container object with x, y, range
+         * @method prepareTargetObject
+         * @param {Object} target
+         * @param {Number} x
+         * @param {Number} y
+         * @param {Number} range
+         * @return {Object}
+         */
+        prepareTargetObject: function(target, x, y, range){
+            x = x || target.x;
+            y = y || target.y;
+            range = range || RL.Util.getTileDistance(this.entity.x, this.entity.y, x, y, true);
+            return {
+                x: x,
+                y: y,
+                range: range,
+                value: target
+            };
         },
 
         /**

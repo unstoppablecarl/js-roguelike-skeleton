@@ -273,8 +273,8 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/entity.js",
-            "line": 202,
-            "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222',\n           pushable: false\n        },\n        // ...\n    }",
+            "line": 172,
+            "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222'\n        },\n        // ...\n    }",
             "static": 1
         },
         "FovROT": {
@@ -1339,15 +1339,6 @@
         {
             "file": "src/entity.js",
             "line": 105,
-            "description": "Determines if this entity can be pushed by the player.",
-            "itemtype": "property",
-            "name": "pushable",
-            "type": "bool",
-            "class": "Entity"
-        },
-        {
-            "file": "src/entity.js",
-            "line": 112,
             "description": "Called after a player action has been resolved. Resolves this entities turn.",
             "itemtype": "method",
             "name": "update",
@@ -1355,7 +1346,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 120,
+            "line": 113,
             "description": "Checks if an entity can move through a map tile.\nConvenience method for this.game.canMoveThrough()",
             "itemtype": "method",
             "name": "canMoveThrough",
@@ -1379,7 +1370,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 132,
+            "line": 125,
             "description": "Checks if an entity can move through and into a map tile and that tile is un-occupied.\nConvenience method for this.game.entityCanMoveTo()",
             "itemtype": "method",
             "name": "canMoveTo",
@@ -1403,7 +1394,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 144,
+            "line": 137,
             "description": "Changes the position of this entity on the map.\nConvenience method for this.game.entityMoveTo()\nthis.canMoveTo() and/or this.canMoveThrough() should always be checked before calling this.moveTo()",
             "itemtype": "method",
             "name": "moveTo",
@@ -1423,7 +1414,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 156,
+            "line": 149,
             "description": "Checks if a map tile can be seen through.\nConvenience method for this.game.entityCanSeeThrough()",
             "itemtype": "method",
             "name": "canSeeThrough",
@@ -1447,7 +1438,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 168,
+            "line": 161,
             "description": "Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.",
             "itemtype": "method",
             "name": "bump",
@@ -1455,9 +1446,13 @@
                 {
                     "name": "entity",
                     "description": "- The player or entity attemplting to move into this entity's tile.",
-                    "type": "Entity"
+                    "type": "Player|Entity"
                 }
             ],
+            "return": {
+                "description": "true if bumping this entity completes the action of the bumping entity.",
+                "type": "Bool"
+            },
             "class": "Entity"
         },
         {
@@ -3505,11 +3500,17 @@
             "file": "src/valid-targets-finder.js",
             "line": 92,
             "description": "Gets all valid targets for this action from position of this.entity",
+            "itemtype": "method",
+            "name": "getValidTargets",
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
             "class": "ValidTargetsFinder"
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 109,
+            "line": 111,
             "description": "Get tile coords a valid target may be on. Only checking range and entity fov, not objects on the tile.",
             "itemtype": "method",
             "name": "getValidTargetTiles",
@@ -3521,7 +3522,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 133,
+            "line": 140,
             "description": "Get valid target objects on a tile coord.",
             "itemtype": "method",
             "name": "getValidTargetsAtPosition",
@@ -3545,7 +3546,41 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 145,
+            "line": 160,
+            "description": "Wraps a target object in a container object with x, y, range",
+            "itemtype": "method",
+            "name": "prepareTargetObject",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "range",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 181,
             "description": "Checks if an object is a valid target for this action.",
             "itemtype": "method",
             "name": "checkValidTarget",
@@ -3634,10 +3669,6 @@
         {
             "message": "Missing item type\nAll visible map tiles\nArray of objects: {x: null, y: null, tile: null, range: null}",
             "line": " src/fov-rot.js:53"
-        },
-        {
-            "message": "Missing item type\nGets all valid targets for this action from position of this.entity",
-            "line": " src/valid-targets-finder.js:92"
         },
         {
             "message": "Missing item type\nArray of target objects.",

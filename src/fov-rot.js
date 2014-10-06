@@ -169,7 +169,7 @@
                     this.visibleTiles.push({
                         x: x,
                         y: y,
-                        tile: tile,
+                        value: tile,
                         range: range
                     });
                 }
