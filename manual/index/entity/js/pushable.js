@@ -55,7 +55,7 @@
 
     var entity = new RL.Entity(game, 'statue');
     // add it to the game
-    game.entityManager.add(4, 4, entity);
+    game.entityManager.add(4, 2, entity);
 
     game.start();
 
