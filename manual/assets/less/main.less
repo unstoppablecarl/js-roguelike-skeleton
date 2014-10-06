@@ -8,6 +8,13 @@
          url('../fonts/DejaVuSansMono.woff') format('woff'),
          url('../fonts/DejaVuSansMono.ttf') format('truetype');
 }
+
+b,
+strong {
+  font-weight: bold;
+  color: #d9d9d9;
+}
+
 .page {
     padding-top: 10px;
 }
@@ -66,22 +73,6 @@ pre[class*="language-"] {
     }
 }
 
-// .ex-controls {
-//     background: #0f0f0f;
-//     border-top: 1px solid #333;
-//     .heading {
-//         color: #fff;
-//         display: inline-block;
-//         font-weight: @btn-font-weight;
-//         text-align: center;
-//         vertical-align: middle;
-//         border: 1px solid transparent;
-
-//         white-space: nowrap;
-//         background: transparent;
-//         .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
-//     }
-// }
 .ex-code-input {
     display: block;
     font-family: 'DejaVuSansMono', monospace;
@@ -91,4 +82,9 @@ pre[class*="language-"] {
 
 .panel-heading .btn {
     margin-top: -5px;
+}
+
+.heading-controls {
+    border-bottom: 1px dotted #353535;
+    padding-bottom: 10px;
 }

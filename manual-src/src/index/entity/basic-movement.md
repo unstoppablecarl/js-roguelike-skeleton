@@ -32,8 +32,14 @@ scripts:
  - ../../js/make-basic-game.js
  - js/basic-movement.js
 
-example_content: Move the player around and watch how the zombie behaves. Move with the W, A, S, D instead of arrow keys to avoid scrolling the window. Use SPACE to skip the players turn. Just for fun a light that follows the zombie has been added.
-
+example_content: Move the player around and watch how the zombie behaves. Just for fun a light that follows the zombie has been added.
+example_controls:
+ -
+    action: Move
+    keys: ARROW_KEYS, W, A, S, D
+ -
+    action: Skip Turn
+    keys: SPACE
 ---
 
 <div id="example-container" class="game-container"></div>

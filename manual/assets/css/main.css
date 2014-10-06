@@ -523,31 +523,31 @@ mark,
   color: #147cc2;
 }
 a.text-primary:hover {
-  color: #0f5e94;
+  color: #147cc2;
 }
 .text-success {
-  color: #3c763d;
+  color: #209222;
 }
 a.text-success:hover {
-  color: #2b542c;
+  color: #209222;
 }
 .text-info {
   color: #31708f;
 }
 a.text-info:hover {
-  color: #245269;
+  color: #31708f;
 }
 .text-warning {
   color: #8a6d3b;
 }
 a.text-warning:hover {
-  color: #66512c;
+  color: #8a6d3b;
 }
 .text-danger {
   color: #a94442;
 }
 a.text-danger:hover {
-  color: #843534;
+  color: #a94442;
 }
 .bg-primary {
   color: #fff;
@@ -1567,8 +1567,8 @@ fieldset[disabled] .btn-primary.active {
 }
 .btn-success {
   color: #ffffff;
-  background-color: #449d44;
-  border-color: #3d8b3d;
+  background-color: #176818;
+  border-color: #125313;
 }
 .btn-success:hover,
 .btn-success:focus,
@@ -1577,8 +1577,8 @@ fieldset[disabled] .btn-primary.active {
 .btn-success.active,
 .open > .dropdown-toggle.btn-success {
   color: #ffffff;
-  background-color: #47b847;
-  border-color: #40a640;
+  background-color: #18851a;
+  border-color: #147016;
 }
 .btn-success:active,
 .btn-success.active,
@@ -1603,12 +1603,12 @@ fieldset[disabled] .btn-success:active,
 .btn-success.disabled.active,
 .btn-success[disabled].active,
 fieldset[disabled] .btn-success.active {
-  background-color: #449d44;
-  border-color: #3d8b3d;
+  background-color: #176818;
+  border-color: #125313;
 }
 .btn-success .badge {
-  color: #449d44;
-  background-color: #3d8b3d;
+  color: #176818;
+  background-color: #125313;
 }
 .btn-info {
   color: #ffffff;
@@ -2114,7 +2114,7 @@ tbody.collapse.in {
   border-color: #d6e9c6;
 }
 .panel-success > .panel-heading {
-  color: #3c763d;
+  color: #209222;
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
@@ -2123,7 +2123,7 @@ tbody.collapse.in {
 }
 .panel-success > .panel-heading .badge {
   color: #dff0d8;
-  background-color: #3c763d;
+  background-color: #209222;
 }
 .panel-success > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #d6e9c6;
@@ -2504,6 +2504,11 @@ tbody.collapse.in {
   src: url('../fonts/DejaVuSansMono.eot');
   src: url('../fonts/DejaVuSansMono.eot?#iefix') format('eot'), url('../fonts/DejaVuSansMono.woff') format('woff'), url('../fonts/DejaVuSansMono.ttf') format('truetype');
 }
+b,
+strong {
+  font-weight: bold;
+  color: #d9d9d9;
+}
 .page {
   padding-top: 10px;
 }
@@ -2569,4 +2574,8 @@ pre[class*="language-"] {
 }
 .panel-heading .btn {
   margin-top: -5px;
+}
+.heading-controls {
+  border-bottom: 1px dotted #353535;
+  padding-bottom: 10px;
 }

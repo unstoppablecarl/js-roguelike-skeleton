@@ -31,8 +31,14 @@ scripts:
  - ../../js/make-basic-game.js
  - js/pushable.js
 
-example_content: Move the player into the statue entity. Move with the W, A, S, D instead of arrow keys to avoid scrolling the window.
-
+example_content: Move the player into the statue entity.
+example_controls:
+ -
+    action: Move
+    keys: ARROW_KEYS, W, A, S, D
+ -
+    action: Skip Turn
+    keys: SPACE
 ---
 
 <div id="example-container" class="game-container"></div>
