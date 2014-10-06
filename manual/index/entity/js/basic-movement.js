@@ -7,7 +7,6 @@
         char: 'z',
         color: 'red',
         bgColor: false,
-        pushable: false,
         currentDirection: 'right',
         light_r: 100,
         light_g: 100,
