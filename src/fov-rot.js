@@ -10,6 +10,7 @@
     var FovROT = function FovROT(game) {
         this.game = game;
         this.fovMap = new RL.Array2d();
+        this.visibleTiles = [];
     };
 
     FovROT.prototype = {
