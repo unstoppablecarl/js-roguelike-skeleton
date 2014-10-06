@@ -103,13 +103,6 @@
         dead: false,
 
         /**
-        * Determines if this entity can be pushed by the player.
-        * @property pushable
-        * @type bool
-        */
-        pushable: false,
-
-        /**
         * Called after a player action has been resolved. Resolves this entities turn.
         * @method update
         */
@@ -168,33 +161,10 @@
         /**
         * Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.
         * @method bump
-        * @param {Entity} entity - The player or entity attemplting to move into this entity's tile.
+        * @param {Player|Entity} entity - The player or entity attemplting to move into this entity's tile.
+        * @return {Bool} true if bumping this entity completes the action of the bumping entity.
         */
         bump: function(entity){
-            // if this entity can be pushed and the pushing entity is the player
-            if(this.pushable && entity === this.game.player){
-                var pusherX = entity.x,
-                    pusherY = entity.y,
-                    directionX = this.x - pusherX,
-                    directionY = this.y - pusherY,
-                    targetX = this.x + directionX,
-                    targetY = this.y + directionY;
-
-                // check if can be pushed into destination
-                var targetPushEnt = this.game.entityManager.get(targetX, targetY);
-                if(!targetPushEnt){
-                    var targetPushTile = this.game.map.get(targetX, targetY);
-                    if(targetPushTile.passable){
-                        var prevX = this.x,
-                            prevY = this.y;
-                        // push target entity into tile
-                        this.moveTo(targetX, targetY);
-                        // move player into previously occupied tile
-                        entity.moveTo(prevX, prevY);
-                        return true;
-                    }
-                }
-            }
             return false;
         }
     };
@@ -207,8 +177,7 @@
     *            name: 'Zombie',
     *            char: 'z',
     *            color: 'red',
-    *            bgColor: '#222',
-    *            pushable: false
+    *            bgColor: '#222'
     *         },
     *         // ...
     *     }
@@ -222,15 +191,7 @@
             char: 'z',
             color: 'red',
             bgColor: false,
-            pushable: false,
         },
-        statue: {
-            name: 'Statue',
-            char: 's',
-            color: '#808080',
-            bgColor: '#222',
-            pushable: true
-        }
     };
 
     root.RL.Entity = Entity;

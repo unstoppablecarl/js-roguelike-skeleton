@@ -4,7 +4,7 @@ var game = new RL.Game();
 var mapData = [
     "#####################",
     "#.........#.........#",
-    "#....Z.S..#....##...#",
+    "#....Z....#....##...#",
     "#.........+....##...#",
     "#.........#.........#",
     "#.#..#..#.#.........#",
@@ -22,8 +22,7 @@ var mapCharToType = {
 };
 
 var entityCharToType = {
-    'Z': 'zombie',
-    'S': 'statue'
+    'Z': 'zombie'
 };
 
 var keyBindings = {

@@ -1,0 +1,38 @@
+---
+title: Pushable
+template: page-method.dust
+nav_sort: 1
+nav_groups: primary
+
+related_methods:
+ - Entity
+
+vendor_scripts:
+ - ../../assets/js/rot.js
+
+lib_scripts:
+ - ../../../src/rl.js
+ - ../../../src/util.js
+ - ../../../src/array-2d.js
+ - ../../../src/map.js
+ - ../../../src/entity.js
+ - ../../../src/entity-manager.js
+ - ../../../src/input.js
+ - ../../../src/mouse.js
+ - ../../../src/player.js
+ - ../../../src/renderer.js
+ - ../../../src/tile.js
+ - ../../../src/console.js
+ - ../../../src/fov-rot.js
+ - ../../../src/lighting-rot.js
+ - ../../../src/game.js
+
+scripts:
+ - ../../js/make-basic-game.js
+ - js/pushable.js
+
+example_content: Move the player into the statue entity. Move with the W, A, S, D instead of arrow keys to avoid scrolling the window.
+
+---
+
+<div id="example-container" class="game-container"></div>
