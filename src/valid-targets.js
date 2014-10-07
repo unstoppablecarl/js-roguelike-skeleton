@@ -16,14 +16,14 @@
 
         /**
          * Array of target objects.
-         * @type {Object}
+         * @type {Array}
          */
         targets: null,
 
         /**
          * Currently Selected Object.
-         * @private
          * @type {Object}
+         * @readOnly
          */
         current: null,
 

@@ -127,15 +127,15 @@
      * Gets a list of valid targets for an action.
      * @class ValidTargetsFinder
      * @constructor
-     * @param {Game} game
-     * @param {Entity} entity
-     * @param {Object} [settings]
-     * @param {Bool} [settings.limitToFov = true] - If true only targets within this.entity&#x27;s fov will be valid.
-     * @param {Number} [settings.range = 1] - Max distance in tiles target can be from entity.
-     * @param {Array} [settings.validTypes = []] - Array of valid target object types. Checked using &#x60;target instanceof type&#x60;.
-     * @param {Bool} [settings.includeTiles = false] - If true tile objects are can be valid targets.
-     * @param {Bool} [settings.includeSelf = false] - If true entity may target themself.
-     * @param {Bool} [settings.filter = false] - * Function to filter objects when checking if they are valid. &#x60;function(obj){ return true }&#x60; . Targets must still be a valid type.
+     * @param {Game}        game
+     * @param {Entity}      entity
+     * @param {Object}      [settings]
+     * @param {Bool}        [settings.limitToFov=true]      - If true only targets within this.entity&#x27;s fov will be valid.
+     * @param {Number}      [settings.range=1]              - Max distance in tiles target can be from entity.
+     * @param {Array}       [settings.validTypes=Array]     - Array of valid target object types. Checked using &#x60;target instanceof type&#x60;.
+     * @param {Bool}        [settings.includeTiles=false]   - If true tile objects are can be valid targets.
+     * @param {Bool}        [settings.includeSelf=false]    - If true entity may target themself.
+     * @param {Function}    [settings.filter=false]         - Function to filter objects when checking if they are valid. &#x60;function(obj){ return true }&#x60; . Targets must still be a valid type.
      */
     var ValidTargetsFinder = function(game, entity, settings){
         this.game = game;
@@ -143,12 +143,12 @@
 
         settings = settings || {};
 
-        this.limitToFov = settings.limitToFov || this.limitToFov;
-        this.range = settings.range || this.range;
-        this.validTypes = settings.validTypes || [];
-        this.includeTiles = settings.includeTiles || this.includeTiles;
-        this.includeSelf = settings.includeSelf || this.includeSelf;
-        this.filter = settings.filter || this.filter;
+        this.limitToFov =   settings.limitToFov     || this.limitToFov;
+        this.range =        settings.range          || this.range;
+        this.validTypes =   settings.validTypes     || [];
+        this.includeTiles = settings.includeTiles   || this.includeTiles;
+        this.includeSelf =  settings.includeSelf    || this.includeSelf;
+        this.filter =       settings.filter         || this.filter;
     };
 
     ValidTargetsFinder.prototype = {
@@ -157,7 +157,7 @@
         /**
         * Game instance this obj is attached to.
         * @property game
-        * @type Game
+        * @type {Game}
         */
         game: null,
 
@@ -188,7 +188,7 @@
          * @property validTypes
          * @type {Array}
          */
-        validTypes: null, //[]
+        validTypes: null,
 
         /**
          * If true tile objects are can be valid targets.
@@ -205,7 +205,8 @@
         includeSelf: false,
 
         /**
-         * Function to filter objects when checking if they are valid. &#x60;function(obj){ return true }&#x60; . Targets must still be a valid type.
+         * Function to filter objects when checking if they are valid. &#x60;function(obj){ return true }&#x60; .
+         * Targets must still be an instance of this.validTypes.
          * @property filter
          * @type {Function}
          */
@@ -283,10 +284,22 @@
          * Wraps a target object in a container object with x, y, range
          * @method prepareTargetObject
          * @param {Object} target
-         * @param {Number} x
-         * @param {Number} y
-         * @param {Number} range
-         * @return {Object}
+         * @param {Number} [x=target.x]
+         * @param {Number} [y=target.y]
+         * @param {Number} [range] range from this.entity to x,y
+         * @return {Object} result result object
+         *  &#x60;
+         *  return {
+         *      x: x, // target x tile coord
+         *      y: y, // target y tile coord
+         *      range: range, // distance to target
+         *      value: target // target object
+         *  };
+         *  &#x60;
+         * @return {Object} result.x target x tile coord
+         * @return {Object} result.y target y tile coord
+         * @return {Object} result.range distance to target
+         * @return {Object} result.value target object
          */
         prepareTargetObject: function(target, x, y, range){
             x = x || target.x;

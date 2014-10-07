@@ -591,37 +591,51 @@
                     "name": "settings",
                     "description": "",
                     "type": "Object",
-                    "optional": true
-                },
-                {
-                    "name": "[settings.limitToFov",
-                    "description": "= true] - If true only targets within this.entity's fov will be valid.",
-                    "type": "Bool"
-                },
-                {
-                    "name": "[settings.range",
-                    "description": "= 1] - Max distance in tiles target can be from entity.",
-                    "type": "Number"
-                },
-                {
-                    "name": "[settings.validTypes",
-                    "description": "= []] - Array of valid target object types. Checked using `target instanceof type`.",
-                    "type": "Array"
-                },
-                {
-                    "name": "[settings.includeTiles",
-                    "description": "= false] - If true tile objects are can be valid targets.",
-                    "type": "Bool"
-                },
-                {
-                    "name": "[settings.includeSelf",
-                    "description": "= false] - If true entity may target themself.",
-                    "type": "Bool"
-                },
-                {
-                    "name": "[settings.filter",
-                    "description": "= false] - * Function to filter objects when checking if they are valid. `function(obj){ return true }` . Targets must still be a valid type.",
-                    "type": "Bool"
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "limitToFov",
+                            "description": "- If true only targets within this.entity's fov will be valid.",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "true"
+                        },
+                        {
+                            "name": "range",
+                            "description": "- Max distance in tiles target can be from entity.",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "1"
+                        },
+                        {
+                            "name": "validTypes",
+                            "description": "- Array of valid target object types. Checked using `target instanceof type`.",
+                            "type": "Array",
+                            "optional": true,
+                            "optdefault": "[]"
+                        },
+                        {
+                            "name": "includeTiles",
+                            "description": "- If true tile objects are can be valid targets.",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "includeSelf",
+                            "description": "- If true entity may target themself.",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "filter",
+                            "description": "- Function to filter objects when checking if they are valid. `function(obj){ return true }` . Targets must still be a valid type.",
+                            "type": "Function",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
                 }
             ]
         },
@@ -3417,7 +3431,7 @@
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
-            "type": "Game",
+            "type": "{Game}",
             "class": "ValidTargetsFinder"
         },
         {
@@ -3477,7 +3491,7 @@
         {
             "file": "src/valid-targets-finder.js",
             "line": 85,
-            "description": "Function to filter objects when checking if they are valid. `function(obj){ return true }` . Targets must still be a valid type.",
+            "description": "Function to filter objects when checking if they are valid. `function(obj){ return true }` .\nTargets must still be an instance of this.validTypes.",
             "itemtype": "property",
             "name": "filter",
             "type": "{Function}",
@@ -3485,7 +3499,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 92,
+            "line": 93,
             "description": "Gets all valid targets for this action from position of this.entity",
             "itemtype": "method",
             "name": "getValidTargets",
@@ -3497,7 +3511,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 111,
+            "line": 112,
             "description": "Get tile coords a valid target may be on. Only checking range and entity fov, not objects on the tile.",
             "itemtype": "method",
             "name": "getValidTargetTiles",
@@ -3509,7 +3523,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 140,
+            "line": 141,
             "description": "Get valid target objects on a tile coord.",
             "itemtype": "method",
             "name": "getValidTargetsAtPosition",
@@ -3533,7 +3547,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 160,
+            "line": 161,
             "description": "Wraps a target object in a container object with x, y, range",
             "itemtype": "method",
             "name": "prepareTargetObject",
@@ -3546,28 +3560,33 @@
                 {
                     "name": "x",
                     "description": "",
-                    "type": "Number"
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "target.x"
                 },
                 {
                     "name": "y",
                     "description": "",
-                    "type": "Number"
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "target.y"
                 },
                 {
                     "name": "range",
-                    "description": "",
-                    "type": "Number"
+                    "description": "range from this.entity to x,y",
+                    "type": "Number",
+                    "optional": true
                 }
             ],
             "return": {
-                "description": "",
+                "description": "result.value target object",
                 "type": "Object"
             },
             "class": "ValidTargetsFinder"
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 181,
+            "line": 194,
             "description": "Checks if an object is a valid target for this action.",
             "itemtype": "method",
             "name": "checkValidTarget",
@@ -3588,16 +3607,15 @@
             "file": "src/valid-targets.js",
             "line": 17,
             "description": "Array of target objects.",
-            "type": "{Object}",
+            "type": "{Array}",
             "class": "ValidTargets"
         },
         {
             "file": "src/valid-targets.js",
             "line": 23,
             "description": "Currently Selected Object.",
-            "access": "private",
-            "tagname": "",
             "type": "{Object}",
+            "readonly": "",
             "class": "ValidTargets"
         },
         {

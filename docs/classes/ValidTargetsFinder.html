@@ -168,42 +168,6 @@
                     
                 </li>
             
-                <li class="arg">
-                    
-                        <code>[settings.limitToFov</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>[settings.range</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>[settings.validTypes</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>[settings.includeTiles</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>[settings.includeSelf</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>[settings.filter</code>
-                    
-                </li>
-            
             </ul><span class="paren">)</span>
         </div>
     
@@ -297,101 +261,111 @@
                     </div>
 
                     
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">[settings.limitToFov</code>
-                        <span class="type">Bool</span>
-                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[limitToFov=true]</code>
+                                    <span class="type">Bool</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    
+                                <div class="param-description">
+                                    <ul>
+<li>If true only targets within this.entity&#39;s fov will be valid.</li>
+</ul>
 
-                    <div class="param-description">
-                        <p>= true] - If true only targets within this.entity&#39;s fov will be valid.</p>
+                                </div>
 
-                    </div>
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[range=1]</code>
+                                    <span class="type">Number</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">[settings.range</code>
-                        <span class="type">Number</span>
-                    
+                                <div class="param-description">
+                                    <ul>
+<li>Max distance in tiles target can be from entity.</li>
+</ul>
 
-                    
+                                </div>
 
-                    <div class="param-description">
-                        <p>= 1] - Max distance in tiles target can be from entity.</p>
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[validTypes=[]]</code>
+                                    <span class="type">Array</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    </div>
+                                <div class="param-description">
+                                    <ul>
+<li>Array of valid target object types. Checked using <code>target instanceof type</code>.</li>
+</ul>
 
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">[settings.validTypes</code>
-                        <span class="type">Array</span>
-                    
+                                </div>
 
-                    
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[includeTiles=false]</code>
+                                    <span class="type">Bool</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    <div class="param-description">
-                        <p>= []] - Array of valid target object types. Checked using <code>target instanceof type</code>.</p>
+                                <div class="param-description">
+                                    <ul>
+<li>If true tile objects are can be valid targets.</li>
+</ul>
 
-                    </div>
+                                </div>
 
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">[settings.includeTiles</code>
-                        <span class="type">Bool</span>
-                    
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[includeSelf=false]</code>
+                                    <span class="type">Bool</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    
+                                <div class="param-description">
+                                    <ul>
+<li>If true entity may target themself.</li>
+</ul>
 
-                    <div class="param-description">
-                        <p>= false] - If true tile objects are can be valid targets.</p>
+                                </div>
 
-                    </div>
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[filter=false]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">[settings.includeSelf</code>
-                        <span class="type">Bool</span>
-                    
+                                <div class="param-description">
+                                    <ul>
+<li>Function to filter objects when checking if they are valid. <code>function(obj){ return true }</code> . Targets must still be a valid type.</li>
+</ul>
 
-                    
+                                </div>
 
-                    <div class="param-description">
-                        <p>= false] - If true entity may target themself.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">[settings.filter</code>
-                        <span class="type">Bool</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>= false] - * Function to filter objects when checking if they are valid. <code>function(obj){ return true }</code> . Targets must still be a valid type.</p>
-
-                    </div>
-
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -592,7 +566,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l181"><code>src&#x2F;valid-targets-finder.js:181</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l194"><code>src&#x2F;valid-targets-finder.js:194</code></a>
         
         </p>
 
@@ -691,7 +665,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l92"><code>src&#x2F;valid-targets-finder.js:92</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l93"><code>src&#x2F;valid-targets-finder.js:93</code></a>
         
         </p>
 
@@ -778,7 +752,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l140"><code>src&#x2F;valid-targets-finder.js:140</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l141"><code>src&#x2F;valid-targets-finder.js:141</code></a>
         
         </p>
 
@@ -895,7 +869,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l111"><code>src&#x2F;valid-targets-finder.js:111</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l112"><code>src&#x2F;valid-targets-finder.js:112</code></a>
         
         </p>
 
@@ -947,19 +921,19 @@
             
                 <li class="arg">
                     
-                        <code>x</code>
+                        <code class="optional">[x=target.x]</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>y</code>
+                        <code class="optional">[y=target.y]</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>range</code>
+                        <code class="optional">[range]</code>
                     
                 </li>
             
@@ -996,7 +970,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l160"><code>src&#x2F;valid-targets-finder.js:160</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l161"><code>src&#x2F;valid-targets-finder.js:161</code></a>
         
         </p>
 
@@ -1034,8 +1008,9 @@
             
                 <li class="param">
                     
-                        <code class="param-name">x</code>
+                        <code class="param-name optional">[x=target.x]</code>
                         <span class="type">Number</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
@@ -1049,8 +1024,9 @@
             
                 <li class="param">
                     
-                        <code class="param-name">y</code>
+                        <code class="param-name optional">[y=target.y]</code>
                         <span class="type">Number</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
@@ -1064,14 +1040,16 @@
             
                 <li class="param">
                     
-                        <code class="param-name">range</code>
+                        <code class="param-name optional">[range]</code>
                         <span class="type">Number</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                         
+                        <p>range from this.entity to x,y</p>
+
                     </div>
 
                     
@@ -1090,6 +1068,8 @@
                     
                         <span class="type">Object</span>:
                     
+                    <p>result.value target object</p>
+
                 
             </div>
         </div>
@@ -1186,7 +1166,8 @@
     </div>
 
     <div class="description">
-        <p>Function to filter objects when checking if they are valid. <code>function(obj){ return true }</code> . Targets must still be a valid type.</p>
+        <p>Function to filter objects when checking if they are valid. <code>function(obj){ return true }</code> .
+Targets must still be an instance of this.validTypes.</p>
 
     </div>
 
