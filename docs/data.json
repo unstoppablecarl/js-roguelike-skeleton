@@ -639,9 +639,11 @@
             "is_constructor": 1,
             "params": [
                 {
-                    "name": "[targets",
-                    "description": "= []]",
-                    "type": "Array"
+                    "name": "targets",
+                    "description": "",
+                    "type": "Array",
+                    "optional": true,
+                    "optdefault": "[]"
                 }
             ]
         }

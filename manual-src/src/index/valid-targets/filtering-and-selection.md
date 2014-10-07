@@ -1,5 +1,5 @@
 ---
-title: Targets
+title: Filtering and Selection
 template: page-method.dust
 nav_sort: 1
 nav_groups: primary
@@ -33,7 +33,7 @@ lib_scripts:
 
 scripts:
  - ../../js/make-basic-game.js
- - js/targets.js
+ - js/filtering-and-selection.js
 
 example_content: Change Targets and Press the Space key to get target info. Note that one of the zombies is not a valid target (see code).
 example_controls:

@@ -1,5 +1,13 @@
 module.exports = function() {
 
+var util = require('util');
+var inspect = function(obj){
+    console.log(util.inspect(obj, {
+        depth: null,
+        showHidden: true,
+        colors: true
+    }));
+};
         // Force task into async mode and grab a handle to the "done" function.
         var done = this.async();
 
@@ -20,6 +28,8 @@ module.exports = function() {
             primary:{
                 sortBy: 'nav_sort',
                 filterProperty: 'nav_groups',
+                // mergeMatchingFilesAndDirs: false,
+                // includeDirs: true
             }
         });
 
@@ -99,9 +109,19 @@ module.exports = function() {
             // used in parameters (e.g. param="{name}"
             var current = dust.helpers.tap(params.current, chunk, ctx),
                 target = dust.helpers.tap(params.target, chunk, ctx);
+
+            // console.log('chunk', chunk);
+            // console.log('ctx', ctx);
+            // // console.log('bodies', bodies);
+
+            // console.log('current', current);
+            // console.log('target', target);
             // normalize and remove starting slash
             current = path.normalize(current).slice(0);
             target = path.normalize(target).slice(0);
+
+            // console.log('current', current);
+            // console.log('target', target);
 
             current = path.dirname(current);
             var out = path.relative(current, target);
@@ -115,6 +135,10 @@ module.exports = function() {
             .use(markDownTask)
             .use(yuiDataTask)
             .use(navTask)
+            .use(function(files, methalsmith, done){
+                // inspect(methalsmith.metadata().navs);
+                done();
+            })
             .use(templatesTask)
             .use(assetsTask)
             .use(lessTask)
