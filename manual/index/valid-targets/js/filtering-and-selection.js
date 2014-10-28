@@ -36,32 +36,34 @@
         defaultOnKeyAction.call(this, action);
     };
 
-    var validTargetBorderColor = 'rgba(0, 200, 0, 0.5)',
-        validTargetSelectedBorderColor = 'rgba(0, 200, 0, 0.85)',
-        validTargetBorderWidth = 1,
-        validTargetSelectedBorderWidth = 2;
+    RL.RendererLayer.Types.targets = {
 
-    RL.Renderer.prototype.drawExtra = function(ctx, map, entityManager, player, fov, lighting){
-        ctx = ctx || this.bufferCtx;
-        var validTargets = this.game.validTargets,
-            selected = validTargets.getCurrent();
+        // draw properties for maintainability
+        borderColor: 'rgba(0, 200, 0, 0.5)',
+        selectedBorderColor: 'rgba(0, 200, 0, 0.85)',
+        borderWidth: 1,
+        selectedBorderWidth: 2,
 
-        for(var i = validTargets.targets.length - 1; i >= 0; i--){
-            var target = validTargets.targets[i],
-                x = target.x,
-                y = target.y,
-                borderColor = validTargetBorderColor,
-                borderWidth = validTargetBorderWidth;
-            if(target === selected){
-                borderColor = validTargetSelectedBorderColor;
-                borderWidth = validTargetSelectedBorderWidth;
+        getTileData: function(x, y, prevTileData){
+            var targets = this.game.validTargets;
+            var current = targets.getCurrent();
+            var isCurrent = current && current.x === x && current.y === y;
+
+            if(isCurrent){
+                return {
+                    borderColor: this.selectedBorderColor,
+                    borderWidth: this.selectedBorderWidth,
+                };
+            } else {
+                var targetsAtTile = targets.map.get(x, y);
+                if(targetsAtTile.length){
+                    return {
+                        borderColor: this.borderColor,
+                        borderWidth: this.borderWidth,
+                    };
+                }
             }
-            var tileData = {
-                char: false,
-                borderColor: borderColor,
-                borderWidth: borderWidth,
-            };
-            this.drawTile(x, y, tileData, ctx);
+            return tileData;
         }
     };
 
@@ -92,7 +94,7 @@
     };
     var game = makeBasicGame(settings);
 
-    game.entityManager.loadEntitiesFromArrayString(mapData, entityCharToType);
+    game.entityManager.loadFromArrayString(mapData, entityCharToType);
 
     var validTargetsFinder = new RL.ValidTargetsFinder(game, game.player, {
         range: 10,
@@ -111,12 +113,19 @@
     game.entityManager.add(7, 4, excudedZombie);
 
     // add valid targets object to game
-    game.validTargets = new RL.ValidTargets();
+    game.validTargets = new RL.ValidTargets(game);
 
-    game.start();
+    game.renderer.layers = [
+        new RL.RendererLayer(game, 'map',       {draw: false,   mergeWithPrevLayer: false}),
+        new RL.RendererLayer(game, 'entity',    {draw: false,   mergeWithPrevLayer: true}),
+        new RL.RendererLayer(game, 'targets',    {draw: true,   mergeWithPrevLayer: true}),
+    ];
 
     // set player valid targets
-    game.validTargets.targets = validTargetsFinder.getValidTargets();
+    game.validTargets.setTargets(validTargetsFinder.getValidTargets());
+
+
+    game.start();
     game.renderer.draw();
 
 }());

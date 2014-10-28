@@ -128,7 +128,7 @@
             var fov = new ROT.FOV.RecursiveShadowcasting(entityCanSeeThrough);
 
             var setMapTileVisible = this.setMapTileVisible.bind(this);
-            console.log('x');
+
             if(fieldRange === 360){
                 fov.compute(x, y, maxViewDistance, setMapTileVisible);
             }

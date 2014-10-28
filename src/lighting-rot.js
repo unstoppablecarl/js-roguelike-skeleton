@@ -107,6 +107,7 @@
         * @param {String} [tileData.char] - The character to be rendered.
         * @param {String} [tileData.color] - The color of character to be rendered.
         * @param {String} [tileData.bgColor] - The background color of the tile to be rendered.
+        * @return {Object} tileData
         */
         shadeTile: function(x, y, tileData){
             var light = this.ambientLight;
@@ -133,17 +134,15 @@
             if(tileData.color){
                 var color = ROT.Color.fromString(tileData.color);
                 color = overlay(light, color);
-
                 tileData.color = ROT.Color.toRGB(color);
             }
 
             if(tileData.bgColor){
                 var bgColor = ROT.Color.fromString(tileData.bgColor);
                 bgColor = overlay(light, bgColor);
-
                 tileData.bgColor = ROT.Color.toRGB(bgColor);
             }
-
+            return tileData;
         },
 
         /**

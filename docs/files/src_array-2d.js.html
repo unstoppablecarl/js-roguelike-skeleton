@@ -63,9 +63,17 @@
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
+                <li><a href="../classes/MultiObjectManager.html">MultiObjectManager</a></li>
+            
+                <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
                 <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Renderer.html">Renderer</a></li>
+            
+                <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
+            
+                <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
             
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
@@ -162,7 +170,7 @@
         data: null,
 
         /**
-        * Resets the 2d array, clearing all data and initializing with this.width and this.height.
+        * Resets the 2d array, clearing all data and initializing with &#x60;this.width&#x60; and &#x60;this.height&#x60;.
         * @method reset
         * @param {Number} width - The new width.
         * @param {Number} height - The new height.
@@ -193,8 +201,8 @@
         /**
         * Sets a value at given coords.
         * @method set
-        * @param {Number} x - Position on the x axis of the value being set.
-        * @param {Number} y - Position on the y axis of the value being set.
+        * @param {Number} x - Map tile x coord of the value being set.
+        * @param {Number} y - Map tile y coord of the value being set.
         * @param {Mixed} value - The value being set at given coords.
         */
         set: function(x, y, value) {
@@ -207,8 +215,8 @@
         /**
         * Gets a value from given coords.
         * @method get
-        * @param {Number} x - Position on the x axis of the value being retrieved.
-        * @param {Number} y - Position on the y axis of the value being retrieved.
+        * @param {Number} x - Map tile x coord of the value being retrieved.
+        * @param {Number} y - Map tile y coord of the value being retrieved.
         * @return {Mixed}
         */
         get: function(x, y) {
@@ -221,8 +229,8 @@
         /**
         * Removes a value from given coords.
         * @method remove
-        * @param {Number} x - Position on the x axis of the value being removed.
-        * @param {Number} y - Position on the y axis of the value being removed.
+        * @param {Number} x - Map tile x coord of the value being removed.
+        * @param {Number} y - Map tile y coord of the value being removed.
         */
         remove: function(x, y) {
             this.set(x, y, void 0);
@@ -231,15 +239,20 @@
         /**
         * Retrieves an array of values of adjacent coords.
         * @method getAdjacent
-        * @param {Number} x - Position on the x axis of the coord to get adjacent values of.
-        * @param {Number} y - Position on the x axis of the coord to get adjacent values of.
-        * @param {Bool} withCoords - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
-        * @param {Function} filter - A function to filter the values returned (function(value, x, y){ return true;})
+        * @param {Number} x - Map tile x coord to get adjacent values of.
+        * @param {Number} y - Map tile y coord to get adjacent values of.
+        * @param {Object} [settings] -
+        * @param {Bool} [settings.withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
+        * @param {Bool} [settings.withDiagonals=true] - If true diagonals will be included.
+        * @param {Function} [settings.filter=false] - A function to filter the values returned (function(value, x, y){ return true;})
         * @return {Array} An array of adjacent coord values.
         */
-        getAdjacent: function(x, y, withCoords, filter) {
-            filter = filter || false;
-            withCoords = withCoords || false;
+        getAdjacent: function(x, y, settings) {
+            settings = settings || {};
+            var filter          = settings.filter           !== void 0 ? settings.filter        : false,
+                withCoords      = settings.withCoords       !== void 0 ? settings.withCoords    : false,
+                withDiagonals   = settings.withDiagonals    !== void 0 ? settings.withDiagonals : true;
+
             var _this = this,
                 out = [],
                 ax, ay;
@@ -279,25 +292,27 @@
             ay = y;
             add(ax, ay);
 
-            // top left
-            ax = x - 1;
-            ay = y - 1;
-            add(ax, ay);
+            if(withDiagonals){
+                // top left
+                ax = x - 1;
+                ay = y - 1;
+                add(ax, ay);
 
-            // top right
-            ax = x + 1;
-            ay = y - 1;
-            add(ax, ay);
+                // top right
+                ax = x + 1;
+                ay = y - 1;
+                add(ax, ay);
 
-            // bottom left
-            ax = x - 1;
-            ay = y + 1;
-            add(ax, ay);
+                // bottom left
+                ax = x - 1;
+                ay = y + 1;
+                add(ax, ay);
 
-            // bottom right
-            ax = x + 1;
-            ay = y + 1;
-            add(ax, ay);
+                // bottom right
+                ax = x + 1;
+                ay = y + 1;
+                add(ax, ay);
+            }
 
             return out;
         },
@@ -305,17 +320,23 @@
         /**
         * Retrieves an array of values of coords within a given radius.
         * @method getWithinSquareRadius
-        * @param {Number} x - Position on the x axis of the coord at the center of the radius.
-        * @param {Number} y - Position on the x axis of the coord at the center of the radius.
-        * @param {Number} radius - Radius of the area to retrieve tiles from.
-        * @param {Function} [filter=undefined] - A function to filter the values returned (function(value, x, y){ return true;})
-        * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
-        * @param {Bool} [includeTarget=false] - If true the value of the coordinates given will be included in the returned array.
+        * @param {Number} x - Map tile x coord at the center of the radius.
+        * @param {Number} y - Map tile x coord at the center of the radius.
+        * @param {Object} [settings] -
+        * @param {Number} [settings.radius=1] - Radius of the area to retrieve tiles from.
+        * @param {Function} [settings.filter=false] - A function to filter the values returned (function(value, x, y){ return true;})
+        * @param {Bool} [settings.withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
+        * @param {Bool} [settings.includeTarget=false] - If true the value of the coordinates given will be included in the returned array.
         * @return {Array} An array of coord values within a square radius of the given coords.
         */
-        getWithinSquareRadius: function(x, y, radius, filter, withCoords, includeTarget) {
-            withCoords = withCoords || false;
-            includeTarget = includeTarget || false;
+        getWithinSquareRadius: function(x, y, settings) {
+            settings = settings || {};
+
+            var radius          = settings.radius           || 1,
+                filter          = settings.filter           || false,
+                withCoords      = settings.withCoords       || false,
+                includeTarget   = settings.includeTarget    || false;
+
             var tileX = x,
                 tileY = y;
             var minX = tileX - radius,
@@ -331,11 +352,11 @@
             if (minY &lt; 0) {
                 minY = 0;
             }
-            if (maxX &gt; this.width) {
-                maxX = this.width;
+            if (maxX &gt; this.width - 1) {
+                maxX = this.width - 1;
             }
-            if (maxY &gt; this.height) {
-                maxY = this.height;
+            if (maxY &gt; this.height - 1) {
+                maxY = this.height - 1;
             }
             for (x = minX; x &lt;= maxX; x++) {
                 for (y = minY; y &lt;= maxY; y++) {
@@ -363,10 +384,10 @@
         /**
         * Retrieves an array of values of coords along a line starting at point 0 and crossing point 1 until it hits the edge of the 2d array or a coord value returning true when passed to the condtion function.
         * @method getLineThrough
-        * @param {Number} x0 - Position on the x axis of the coord 0.
-        * @param {Number} y0 - Position on the y axis of the coord 0.
-        * @param {Number} x1 - Position on the x axis of the coord 1.
-        * @param {Number} y1 - Position on the y axis of the coord 1.
+        * @param {Number} x0 - Map tile x coord of start.
+        * @param {Number} y0 - Map tile y coord of start.
+        * @param {Number} x1 - Map tile x coord of crossing.
+        * @param {Number} y1 - Map tile y coord of crossing.
         * @param {Function} [condition=false] - A function to determine when to end the line. A coord value returning true when passed to the function will end the line. (function(value, x, y){ return true;})
         * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
         * @return {Array} An array of coord values.
@@ -419,15 +440,20 @@
         * Retrieves an array of the nearest coord values meeting checked requirements. If multiple coord values were matched at the same nearest distance, the returned array will contain multiple matched coord values.
         * Used for projecting path of ranged attacks, pushed entities, ect.
         * @method getNearest
-        * @param {Number} tileX - Position on the x axis of the coord at the center of the radius.
-        * @param {Number} tileY - Position on the y axis of the coord at the center of the radius.
-        * @param {Number} maxRadius - Maxium search radius from given coord.
-        * @param {Function} [check] - A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;}) If no check function is provided any tile with a truthy value will be matched.
-        * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
+        * @param {Number} tileX - Map tile x coord of the center of the radius.
+        * @param {Number} tileY - Map tile x coord of the center of the radius.
+        * @param {Object} [settings] -
+        * @param {Number} [settings.maxRadius=1] - Maxium search radius from given coord.
+        * @param {Function} [settings.filter=false] - A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;}) If no check function is provided any tile with a truthy value will be matched.
+        * @param {Bool} [settings.withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
         * @return {Array} An array of coord values within a square radius of the given coords.
         */
-        getNearest: function(startX, startY, maxRadius, check, withCoords) {
-            withCoords = withCoords || false;
+        getNearest: function(startX, startY, settings) {
+            settings = settings || {};
+
+            var maxRadius   = settings.maxRadius    || 1,
+                filter      = settings.filter       || false,
+                withCoords  = settings.withCoords    || false;
 
             var currentDistance = 1,
                 results = [],
@@ -435,8 +461,7 @@
 
             var checkVal = function(val, x, y) {
                 var result;
-
-                if ((check &amp;&amp; check(val, x, y)) || (!check &amp;&amp; val)) {
+                if ((filter &amp;&amp; filter(val, x, y)) || (!filter &amp;&amp; val)) {
                     if (withCoords) {
                         results.push({
                             x: x,
@@ -479,7 +504,6 @@
                             val = this.get(x, y);
                             checkVal(val, x, y);
                         }
-
                     }
 
                     if (minX &gt;= 0) {
@@ -497,7 +521,6 @@
                         val = this.get(x, y);
                         checkVal(val, x, y);
                     }
-
                 }
                 if (results.length) {
                     return results;
@@ -511,17 +534,17 @@
         /**
         * Retrieves an array of the filtered values.
         * @method filter
-        * @param {Function} check - A function to determine if a value is to be included in results (returns true). (function(value, x, y){ return true;})
+        * @param {Function} filter - A function to determine if a value is to be included in results (returns true). (function(value, x, y){ return true;})
         * @param {Bool} [withCoords=false] - If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])
-        * @return {Array} An array of coord values matched by the check function.
+        * @return {Array} An array of coord values matched by the filter function.
         */
-        filter: function(check, withCoords){
+        filter: function(filter, withCoords){
             withCoords = withCoords || false;
             var output = [];
             for (var x = 0; x &lt; this.width; x++) {
-                for (var y = 0; y &lt; this.width; y++) {
+                for (var y = 0; y &lt; this.height; y++) {
                     var val = this.get(x, y);
-                    if(check(val, x, y)){
+                    if(filter(val, x, y)){
                         if (withCoords) {
                             output.push({
                                 x: x,
@@ -571,7 +594,6 @@
                     } else {
                         func(val, x, y);
                     }
-
                 }
             }
         }

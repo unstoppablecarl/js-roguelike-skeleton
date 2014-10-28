@@ -23,6 +23,10 @@
                 }
             }
         };
+
+        if(this.init){
+            this.init();
+        }
     };
 
     Player.prototype = {
@@ -204,6 +208,10 @@
         */
         wait: function(){
             this.game.console.log('You wait for a moment.');
+        },
+
+        getTileDrawData: function(){
+            return RL.Util.getTileDrawData(this);
         },
 
     };

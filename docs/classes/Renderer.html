@@ -63,9 +63,17 @@
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
+                <li><a href="../classes/MultiObjectManager.html">MultiObjectManager</a></li>
+            
+                <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
                 <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Renderer.html">Renderer</a></li>
+            
+                <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
+            
+                <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
             
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
@@ -340,21 +348,21 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_drawEntities">drawEntities</a>
+                                <a href="#method_drawBufferToCanvas">drawBufferToCanvas</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_drawMap">drawMap</a>
+                                <a href="#method_drawTileToCanvas">drawTileToCanvas</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_drawTile">drawTile</a>
+                                <a href="#method_fillBg">fillBg</a>
 
                                 
                                 
@@ -549,41 +557,7 @@
     <h3 class="name"><code>draw</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code class="optional">[map]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[entityManager]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[player]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[fov]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[lighting]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -611,7 +585,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l250"><code>src&#x2F;renderer.js:250</code></a>
+        <a href="../files/src_renderer.js.html#l217"><code>src&#x2F;renderer.js:217</code></a>
         
         </p>
 
@@ -627,109 +601,6 @@
     </div>
 
     
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[map]</code>
-                        <span class="type"><a href="../classes/Map.html" class="crosslink">Map</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Map object to draw.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[entityManager]</code>
-                        <span class="type"><a href="../classes/EntityManager.html" class="crosslink">EntityManager</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>EntityManager object to draw entities from.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[player]</code>
-                        <span class="type"><a href="../classes/Player.html" class="crosslink">Player</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Player object to draw.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[fov]</code>
-                        <span class="type">Fov</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Fov object to check visibility of tiles.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[lighting]</code>
-                        <span class="type"><a href="../classes/Lighting.html" class="crosslink">Lighting</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Lighting object to shade map tiles with.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
 
     
 
@@ -737,39 +608,11 @@
 </div>
 
                 
-                    <div id="method_drawEntities" class="method item">
-    <h3 class="name"><code>drawEntities</code></h3>
+                    <div id="method_drawBufferToCanvas" class="method item">
+    <h3 class="name"><code>drawBufferToCanvas</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>ctx</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>entityManager</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[player]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[fov]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -797,7 +640,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l348"><code>src&#x2F;renderer.js:348</code></a>
+        <a href="../files/src_renderer.js.html#l425"><code>src&#x2F;renderer.js:425</code></a>
         
         </p>
 
@@ -808,92 +651,10 @@
     </div>
 
     <div class="description">
-        <p>Draws entity tiles</p>
+        <p>Copies pixel data from the buffer canvas to the game canvas.</p>
 
     </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">ctx</code>
-                        <span class="type">CanvasRenderingContext2D</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Canvas context to draw to.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">entityManager</code>
-                        <span class="type"><a href="../classes/EntityManager.html" class="crosslink">EntityManager</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>EntityManager object to draw entities from.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[player]</code>
-                        <span class="type"><a href="../classes/Player.html" class="crosslink">Player</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Player object to draw.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[fov]</code>
-                        <span class="type">FOV</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Fov object to check visibility of tiles.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -902,173 +663,8 @@
 </div>
 
                 
-                    <div id="method_drawMap" class="method item">
-    <h3 class="name"><code>drawMap</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>ctx</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>map</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[fov]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[lighting]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_renderer.js.html#l280"><code>src&#x2F;renderer.js:280</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Draws map tiles</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">ctx</code>
-                        <span class="type">CanvasRenderingContext2D</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Canvas context to draw to</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">map</code>
-                        <span class="type"><a href="../classes/Map.html" class="crosslink">Map</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Map object to draw.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[fov]</code>
-                        <span class="type">Fov</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Fov object to check visibility of tiles.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[lighting]</code>
-                        <span class="type"><a href="../classes/Lighting.html" class="crosslink">Lighting</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Lighting object to shade map tiles with.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_drawTile" class="method item">
-    <h3 class="name"><code>drawTile</code></h3>
+                    <div id="method_drawTileToCanvas" class="method item">
+    <h3 class="name"><code>drawTileToCanvas</code></h3>
 
     
         <div class="args">
@@ -1127,7 +723,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l401"><code>src&#x2F;renderer.js:401</code></a>
+        <a href="../files/src_renderer.js.html#l259"><code>src&#x2F;renderer.js:259</code></a>
         
         </p>
 
@@ -1253,6 +849,40 @@
                                 
                             </li>
                             
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[borderColor]</code>
+                                    <span class="type">Object</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>The border color of the tile.</li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[borderWidth=1]</code>
+                                    <span class="type">Object</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>The border width of the tile.</li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
                         </ul>
                     
                 </li>
@@ -1271,6 +901,117 @@
 <li>The canvas context to draw to.</li>
 </ul>
 
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_fillBg" class="method item">
+    <h3 class="name"><code>fillBg</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[color=this.bgColor]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[ctx=this.bufferCtx]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_renderer.js.html#l408"><code>src&#x2F;renderer.js:408</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fills the canvas with a given color.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[color=this.bgColor]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[ctx=this.bufferCtx]</code>
+                        <span class="type">CanvasRenderingContext2D</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
                     </div>
 
                     
@@ -1338,7 +1079,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l210"><code>src&#x2F;renderer.js:210</code></a>
+        <a href="../files/src_renderer.js.html#l368"><code>src&#x2F;renderer.js:368</code></a>
         
         </p>
 
@@ -1471,7 +1212,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l224"><code>src&#x2F;renderer.js:224</code></a>
+        <a href="../files/src_renderer.js.html#l382"><code>src&#x2F;renderer.js:382</code></a>
         
         </p>
 
@@ -1584,7 +1325,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l169"><code>src&#x2F;renderer.js:169</code></a>
+        <a href="../files/src_renderer.js.html#l176"><code>src&#x2F;renderer.js:176</code></a>
         
         </p>
 
@@ -1655,7 +1396,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l238"><code>src&#x2F;renderer.js:238</code></a>
+        <a href="../files/src_renderer.js.html#l396"><code>src&#x2F;renderer.js:396</code></a>
         
         </p>
 
@@ -1753,7 +1494,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l62"><code>src&#x2F;renderer.js:62</code></a>
+        <a href="../files/src_renderer.js.html#l69"><code>src&#x2F;renderer.js:69</code></a>
         
         </p>
 
@@ -1798,7 +1539,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l48"><code>src&#x2F;renderer.js:48</code></a>
+        <a href="../files/src_renderer.js.html#l55"><code>src&#x2F;renderer.js:55</code></a>
         
         </p>
 
@@ -1843,7 +1584,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l55"><code>src&#x2F;renderer.js:55</code></a>
+        <a href="../files/src_renderer.js.html#l62"><code>src&#x2F;renderer.js:62</code></a>
         
         </p>
 
@@ -1888,7 +1629,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l34"><code>src&#x2F;renderer.js:34</code></a>
+        <a href="../files/src_renderer.js.html#l41"><code>src&#x2F;renderer.js:41</code></a>
         
         </p>
 
@@ -1933,7 +1674,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l41"><code>src&#x2F;renderer.js:41</code></a>
+        <a href="../files/src_renderer.js.html#l48"><code>src&#x2F;renderer.js:48</code></a>
         
         </p>
 
@@ -1978,7 +1719,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l97"><code>src&#x2F;renderer.js:97</code></a>
+        <a href="../files/src_renderer.js.html#l104"><code>src&#x2F;renderer.js:104</code></a>
         
         </p>
 
@@ -2023,7 +1764,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l90"><code>src&#x2F;renderer.js:90</code></a>
+        <a href="../files/src_renderer.js.html#l97"><code>src&#x2F;renderer.js:97</code></a>
         
         </p>
 
@@ -2068,7 +1809,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l27"><code>src&#x2F;renderer.js:27</code></a>
+        <a href="../files/src_renderer.js.html#l28"><code>src&#x2F;renderer.js:28</code></a>
         
         </p>
 
@@ -2113,7 +1854,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l111"><code>src&#x2F;renderer.js:111</code></a>
+        <a href="../files/src_renderer.js.html#l118"><code>src&#x2F;renderer.js:118</code></a>
         
         </p>
 
@@ -2158,7 +1899,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l69"><code>src&#x2F;renderer.js:69</code></a>
+        <a href="../files/src_renderer.js.html#l76"><code>src&#x2F;renderer.js:76</code></a>
         
         </p>
 
@@ -2203,7 +1944,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l146"><code>src&#x2F;renderer.js:146</code></a>
+        <a href="../files/src_renderer.js.html#l153"><code>src&#x2F;renderer.js:153</code></a>
         
         </p>
 
@@ -2248,7 +1989,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l153"><code>src&#x2F;renderer.js:153</code></a>
+        <a href="../files/src_renderer.js.html#l160"><code>src&#x2F;renderer.js:160</code></a>
         
         </p>
 
@@ -2293,7 +2034,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l76"><code>src&#x2F;renderer.js:76</code></a>
+        <a href="../files/src_renderer.js.html#l83"><code>src&#x2F;renderer.js:83</code></a>
         
         </p>
 
@@ -2338,7 +2079,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l118"><code>src&#x2F;renderer.js:118</code></a>
+        <a href="../files/src_renderer.js.html#l125"><code>src&#x2F;renderer.js:125</code></a>
         
         </p>
 
@@ -2383,7 +2124,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l125"><code>src&#x2F;renderer.js:125</code></a>
+        <a href="../files/src_renderer.js.html#l132"><code>src&#x2F;renderer.js:132</code></a>
         
         </p>
 
@@ -2428,7 +2169,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l132"><code>src&#x2F;renderer.js:132</code></a>
+        <a href="../files/src_renderer.js.html#l139"><code>src&#x2F;renderer.js:139</code></a>
         
         </p>
 
@@ -2473,7 +2214,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l139"><code>src&#x2F;renderer.js:139</code></a>
+        <a href="../files/src_renderer.js.html#l146"><code>src&#x2F;renderer.js:146</code></a>
         
         </p>
 
@@ -2518,7 +2259,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l83"><code>src&#x2F;renderer.js:83</code></a>
+        <a href="../files/src_renderer.js.html#l90"><code>src&#x2F;renderer.js:90</code></a>
         
         </p>
 
@@ -2563,7 +2304,7 @@
             
         
         
-        <a href="../files/src_renderer.js.html#l104"><code>src&#x2F;renderer.js:104</code></a>
+        <a href="../files/src_renderer.js.html#l111"><code>src&#x2F;renderer.js:111</code></a>
         
         </p>
 

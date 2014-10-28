@@ -25,4 +25,4 @@ array2d.set(5, 4, {
 });
 
 // draw to show changes
-renderer.draw(array2d);
+renderer.draw();

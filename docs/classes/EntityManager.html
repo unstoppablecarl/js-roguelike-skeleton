@@ -63,9 +63,17 @@
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
+                <li><a href="../classes/MultiObjectManager.html">MultiObjectManager</a></li>
+            
+                <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
                 <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Renderer.html">Renderer</a></li>
+            
+                <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
+            
+                <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
             
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
@@ -430,7 +438,7 @@ Handles adding, removing, moving entities within the game.</p>
             
                 <li class="arg">
                     
-                        <code>ent</code>
+                        <code>entity</code>
                     
                 </li>
             
@@ -478,7 +486,7 @@ Handles adding, removing, moving entities within the game.</p>
     </div>
 
     <div class="description">
-        <p>Adds an entity to the manager.</p>
+        <p>Adds an entity to the manager at given map tile coord.</p>
 
     </div>
 
@@ -526,7 +534,7 @@ Handles adding, removing, moving entities within the game.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">ent</code>
+                        <code class="param-name">entity</code>
                         <span class="type"><a href="../classes/Entity.html" class="crosslink">Entity</a> | String</span>
                     
 
@@ -751,7 +759,7 @@ Handles adding, removing, moving entities within the game.</p>
             
         
         
-        <a href="../files/src_entity-manager.js.html#l134"><code>src&#x2F;entity-manager.js:134</code></a>
+        <a href="../files/src_entity-manager.js.html#l135"><code>src&#x2F;entity-manager.js:135</code></a>
         
         </p>
 
@@ -1049,7 +1057,7 @@ Handles adding, removing, moving entities within the game.</p>
     </div>
 
     <div class="description">
-        <p>Removes an entity to the manager.</p>
+        <p>Removes an entity from the manager.</p>
 
     </div>
 
@@ -1119,7 +1127,7 @@ Handles adding, removing, moving entities within the game.</p>
             
         
         
-        <a href="../files/src_entity-manager.js.html#l115"><code>src&#x2F;entity-manager.js:115</code></a>
+        <a href="../files/src_entity-manager.js.html#l116"><code>src&#x2F;entity-manager.js:116</code></a>
         
         </p>
 
@@ -1190,7 +1198,7 @@ Handles adding, removing, moving entities within the game.</p>
             
         
         
-        <a href="../files/src_entity-manager.js.html#l124"><code>src&#x2F;entity-manager.js:124</code></a>
+        <a href="../files/src_entity-manager.js.html#l125"><code>src&#x2F;entity-manager.js:125</code></a>
         
         </p>
 
@@ -1300,7 +1308,8 @@ Handles adding, removing, moving entities within the game.</p>
     </div>
 
     <div class="description">
-        <p>Calls the entity.update() method on all entities. Removes dead entities. Typically called after a player has resolved their actions.</p>
+        <p>Calls the entity.update() method on all entities. Removes dead entities.
+Typically called after a player has resolved their actions.</p>
 
     </div>
 

@@ -63,9 +63,17 @@
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
+                <li><a href="../classes/MultiObjectManager.html">MultiObjectManager</a></li>
+            
+                <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
                 <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Renderer.html">Renderer</a></li>
+            
+                <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
+            
+                <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
             
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
@@ -152,7 +160,19 @@
             
                 <li class="arg">
                     
+                        <code>game</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
                         <code class="optional">[targets=[]]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>settings</code>
                     
                 </li>
             
@@ -207,6 +227,24 @@
             
                 <li class="param">
                     
+                        <code class="param-name">game</code>
+                        <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Game instance this obj is attached to.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
                         <code class="param-name optional">[targets=[]]</code>
                         <span class="type">Array</span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
@@ -215,9 +253,97 @@
                     
 
                     <div class="param-description">
+                        <p>An Array of valid target objects to select from (intended to be in the format <code>validTargetsFinder.getValidTargets()</code> returns).</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">settings</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
                          
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[typeSortPriority=this.typeSortPriority]</code>
+                                    <span class="type">Array</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>Array of types in order of their sort priority.</li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[mapWidth=game.map.width]</code>
+                                    <span class="type">Bool</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>Width of <code>this.map</code>.</li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[mapHeight=game.map.height]</code>
+                                    <span class="type">Bool</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>Height of <code>this.map</code>.</li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[skipSort=false]</code>
+                                    <span class="type">Bool</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>If true initial sort is skipped.</li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -241,6 +367,8 @@
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
         
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+        
         
         
     </ul>
@@ -257,6 +385,20 @@
                         
                             <li class="index-item method">
                                 <a href="#method_getCurrent">getCurrent</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getTargetByValue">getTargetByValue</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getTypeSortPriority">getTypeSortPriority</a>
 
                                 
                                 
@@ -283,10 +425,60 @@
                                 
                             </li>
                         
+                            <li class="index-item method">
+                                <a href="#method_setTargets">setTargets</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_sort">sort</a>
+
+                                
+                                
+                            </li>
+                        
                     </ul>
                 </div>
             
 
+            
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                                <a href="#property_current">current</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_map">map</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_targets">targets</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_typeSortPriority">typeSortPriority</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
             
 
             
@@ -303,7 +495,17 @@
     <h3 class="name"><code>getCurrent</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[autoset=true]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -335,7 +537,7 @@
             
         
         
-        <a href="../files/src_valid-targets.js.html#l47"><code>src&#x2F;valid-targets.js:47</code></a>
+        <a href="../files/src_valid-targets.js.html#l96"><code>src&#x2F;valid-targets.js:96</code></a>
         
         </p>
 
@@ -346,10 +548,37 @@
     </div>
 
     <div class="description">
-        <p>Gets the currently selected target.</p>
+        <p>Gets the currently selected target object.</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[autoset=true]</code>
+                        <span class="type">Bool</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>If no target is set to current autoset the first.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -360,6 +589,214 @@
                 
                     
                         <span class="type">Object</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getTargetByValue" class="method item">
+    <h3 class="name"><code>getTargetByValue</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets.js.html#l191"><code>src&#x2F;valid-targets.js:191</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Finds a target object by its value.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">value</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getTypeSortPriority" class="method item">
+    <h3 class="name"><code>getTypeSortPriority</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>obj</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets.js.html#l153"><code>src&#x2F;valid-targets.js:153</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the sort priority of an object based on its type using &#39;this.typeSortPriority&#39;.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">obj</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
                     
                 
             </div>
@@ -406,7 +843,7 @@
             
         
         
-        <a href="../files/src_valid-targets.js.html#l60"><code>src&#x2F;valid-targets.js:60</code></a>
+        <a href="../files/src_valid-targets.js.html#l112"><code>src&#x2F;valid-targets.js:112</code></a>
         
         </p>
 
@@ -432,6 +869,8 @@
                     
                         <span class="type">Object</span>:
                     
+                    <p>The new currently selected object.</p>
+
                 
             </div>
         </div>
@@ -477,7 +916,7 @@
             
         
         
-        <a href="../files/src_valid-targets.js.html#l81"><code>src&#x2F;valid-targets.js:81</code></a>
+        <a href="../files/src_valid-targets.js.html#l132"><code>src&#x2F;valid-targets.js:132</code></a>
         
         </p>
 
@@ -503,6 +942,8 @@
                     
                         <span class="type">Object</span>:
                     
+                    <p>The new currently selected object.</p>
+
                 
             </div>
         </div>
@@ -522,6 +963,112 @@
                 <li class="arg">
                     
                         <code>target</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets.js.html#l81"><code>src&#x2F;valid-targets.js:81</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the currently selected target object.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">target</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                    <p>If target was found in <code>this.targets</code>. (only set if found).</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_setTargets" class="method item">
+    <h3 class="name"><code>setTargets</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>targets</code>
                     
                 </li>
             
@@ -554,7 +1101,7 @@
             
         
         
-        <a href="../files/src_valid-targets.js.html#l30"><code>src&#x2F;valid-targets.js:30</code></a>
+        <a href="../files/src_valid-targets.js.html#l66"><code>src&#x2F;valid-targets.js:66</code></a>
         
         </p>
 
@@ -565,7 +1112,7 @@
     </div>
 
     <div class="description">
-        <p>Sets the currently selected target.</p>
+        <p>Sets the targets, replacing currently set ones.</p>
 
     </div>
 
@@ -577,8 +1124,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name">target</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">targets</code>
+                        <span class="type">Array</span>
                     
 
                     
@@ -600,9 +1147,266 @@
 </div>
 
                 
+                    <div id="method_sort" class="method item">
+    <h3 class="name"><code>sort</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets.js.html#l167"><code>src&#x2F;valid-targets.js:167</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sorts <code>this.targets</code> by <code>this.typeSortPriority</code> then by range.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
             </div>
         
 
+        
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_current" class="property item">
+    <h3 class="name"><code>current</code></h3>
+    <span class="type">Object</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets.js.html#l51"><code>src&#x2F;valid-targets.js:51</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Currently Selected Object.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_map" class="property item">
+    <h3 class="name"><code>map</code></h3>
+    <span class="type"><a href="../classes/MultiObjectManager.html" class="crosslink">MultiObjectManager</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets.js.html#l43"><code>src&#x2F;valid-targets.js:43</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Map of target positions.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_targets" class="property item">
+    <h3 class="name"><code>targets</code></h3>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets.js.html#l35"><code>src&#x2F;valid-targets.js:35</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Array of target objects.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_typeSortPriority" class="property item">
+    <h3 class="name"><code>typeSortPriority</code></h3>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets.js.html#l59"><code>src&#x2F;valid-targets.js:59</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Array of types in order of their sort priority.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         

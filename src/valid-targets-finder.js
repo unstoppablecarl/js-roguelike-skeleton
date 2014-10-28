@@ -2,7 +2,7 @@
     'use strict';
 
     /**
-     * Gets a list of valid targets for an action.
+     * Gets a list of valid targets filtered by provided criteria.
      * @class ValidTargetsFinder
      * @constructor
      * @param {Game}        game
@@ -21,12 +21,13 @@
 
         settings = settings || {};
 
-        this.limitToFov =   settings.limitToFov     || this.limitToFov;
-        this.range =        settings.range          || this.range;
-        this.validTypes =   settings.validTypes     || [];
-        this.includeTiles = settings.includeTiles   || this.includeTiles;
-        this.includeSelf =  settings.includeSelf    || this.includeSelf;
-        this.filter =       settings.filter         || this.filter;
+        this.limitToFov                 = settings.limitToFov                   || this.limitToFov;
+        this.limitToNonDiagonalAdjacent = settings.limitToNonDiagonalAdjacent   || this.limitToNonDiagonalAdjacent;
+        this.range                      = settings.range                        || this.range;
+        this.validTypes                 = settings.validTypes                   || [];
+        this.includeTiles               = settings.includeTiles                 || this.includeTiles;
+        this.includeSelf                = settings.includeSelf                  || this.includeSelf;
+        this.filter                     = settings.filter                       || this.filter;
     };
 
     ValidTargetsFinder.prototype = {
@@ -48,14 +49,16 @@
         entity: null,
 
         /**
-         * If true to be valid a target must be in entity fov.
+         * If true, to be valid a target must be in `this.entity` fov.
          * @property limitToFov
          * @type {Boolean}
          */
-        limitToFov: true,
+        limitToFov: false,
+
+        limitToNonDiagonalAdjacent: false,
 
         /**
-         * Max distance in tiles target can be from entity.
+         * Max distance in tiles target can be from `this.entity`.
          * @property range
          * @type {Number}
          */
@@ -63,6 +66,7 @@
 
         /**
          * Array of valid target object types. Checked using `target instanceof type`.
+         * If set to an empty array or a value evaluating to false, all types are considered valid.
          * @property validTypes
          * @type {Array}
          */
@@ -128,8 +132,12 @@
             } else {
                 var x = this.entity.x,
                     y = this.entity.y;
-                tiles = this.game.map.getWithinSquareRadius(x, y, this.range);
-
+                if(this.limitToNonDiagonalAdjacent){
+                    tiles = this.game.map.getAdjacent(x, y, {withDiagonals: false});
+                }
+                else{
+                    tiles = this.game.map.getWithinSquareRadius(x, y, {radius: this.range});
+                }
                 var _this = this;
                 tiles = tiles.map(function(tile){
                     return _this.prepareTargetObject(tile);
@@ -147,7 +155,7 @@
          */
         getValidTargetsAtPosition: function(x, y){
             var objects = this.game.getObjectsAtPostion(x, y);
-            var range = RL.Util.getTileDistance(this.entity.x, this.entity.y, x, y, true);
+            var range = RL.Util.getDistance(this.entity.x, this.entity.y, x, y);
             var _this = this;
             var filtered =  objects.filter(function(target){
                 return _this.checkValidTarget(target);
@@ -182,7 +190,7 @@
         prepareTargetObject: function(target, x, y, range){
             x = x || target.x;
             y = y || target.y;
-            range = range || RL.Util.getTileDistance(this.entity.x, this.entity.y, x, y, true);
+            range = range || RL.Util.getDistance(this.entity.x, this.entity.y, x, y);
             return {
                 x: x,
                 y: y,
@@ -192,25 +200,46 @@
         },
 
         /**
+         * Checks if a target object is an instance of a type in `this.validTypes`.
+         * @method checkValidType
+         * @param {Object} target - The target to be checked.
+         * @return {Bool} `true` if valid.
+         */
+        checkValidType: function(target){
+            // skip valid type check if value evaluating to false or empty array.
+            if(!this.validTypes || !this.validTypes.length){
+                return true;
+            }
+
+            for(var i = this.validTypes.length - 1; i >= 0; i--){
+                var type = this.validTypes[i];
+                if(target instanceof type){
+                    return true;
+                }
+            }
+
+            // no valid type match found
+            return false;
+        },
+
+        /**
          * Checks if an object is a valid target for this action.
          * @method checkValidTarget
-         * @param {Object} target - target to be checked
-         * @return {Bool} true if valid
+         * @param {Object} target - The target to be checked.
+         * @return {Bool} `true` if valid.
          */
         checkValidTarget: function(target){
             if(!this.includeSelf && target === this.entity){
                 return false;
             }
-            for(var i = this.validTypes.length - 1; i >= 0; i--){
-                var type = this.validTypes[i];
-                if(target instanceof type){
-                    // if no filter, or filter and result is true
-                    if(!this.filter || this.filter(target)){
-                        return true;
-                    }
-                }
+            if(!this.checkValidType(target)){
+                return false;
             }
-            return false;
+            if(this.filter && !this.filter(target)){
+                return false;
+            }
+
+            return true;
         },
     };
 

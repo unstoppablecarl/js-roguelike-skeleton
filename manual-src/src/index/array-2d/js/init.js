@@ -33,10 +33,28 @@ var array2dFromMapData = function(mapData){
 };
 
 var rendererFromArray2d = function(array2d){
+    RL.RendererLayer.Types.basic_map = {
+        mergeWithPrevLayer: false,
+        draw: true,
+        getTileData: function(x, y, prevTileData){
+            var tile = array2d.get(x, y);
+            if(!tile){
+                return false;
+            }
+            return tile;
+        }
+    };
+
+
     var renderer = new RL.Renderer();
     // make the tiles big
     renderer.tileSize = 20;
     // set the view width and height (in this case we want to see the whole map so it is the same as the map width)
     renderer.resize(array2d.width, array2d.height);
+
+    renderer.layers = [
+        new RL.RendererLayer(null, 'basic_map')
+    ];
+
     return renderer;
 };

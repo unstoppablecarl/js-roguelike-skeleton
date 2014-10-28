@@ -63,9 +63,17 @@
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
+                <li><a href="../classes/MultiObjectManager.html">MultiObjectManager</a></li>
+            
+                <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
                 <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Renderer.html">Renderer</a></li>
+            
+                <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
+            
+                <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
             
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
@@ -136,12 +144,7 @@
         this.game = game;
         this.type = type;
         var typeData = Entity.Types[type];
-        if(!typeData){
-            throw new Error(&#x27;EntityType &quot;&#x27; + type + &#x27;&quot; not found.&#x27;);
-        }
-        for(var key in typeData){
-            this[key] = typeData[key];
-        }
+        RL.Util.merge(this, typeData);
 
         if(this.initialize){
             this.initialize();
@@ -288,7 +291,11 @@
         */
         bump: function(entity){
             return false;
-        }
+        },
+
+        getTileDrawData: function(){
+            return RL.Util.getTileDrawData(this);
+        },
     };
 
     /**

@@ -14,12 +14,7 @@
         this.game = game;
         this.type = type;
         var typeData = Entity.Types[type];
-        if(!typeData){
-            throw new Error('EntityType "' + type + '" not found.');
-        }
-        for(var key in typeData){
-            this[key] = typeData[key];
-        }
+        RL.Util.merge(this, typeData);
 
         if(this.initialize){
             this.initialize();
@@ -166,7 +161,11 @@
         */
         bump: function(entity){
             return false;
-        }
+        },
+
+        getTileDrawData: function(){
+            return RL.Util.getTileDrawData(this);
+        },
     };
 
     /**

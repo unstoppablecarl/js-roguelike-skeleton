@@ -12,4 +12,4 @@ var containerEl = document.getElementById('example-container');
 // clear contents and append elements created by the game to the DOM
 containerEl.innerHTML = '';
 containerEl.appendChild(renderer.canvas);
-renderer.draw(array2d);
+renderer.draw();

@@ -92,11 +92,39 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/multi-object-manager.js": {
+            "name": "src/multi-object-manager.js",
+            "modules": {},
+            "classes": {
+                "MultiObjectManager": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/object-manager.js": {
+            "name": "src/object-manager.js",
+            "modules": {},
+            "classes": {
+                "ObjectManager": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/player.js": {
             "name": "src/player.js",
             "modules": {},
             "classes": {
                 "Player": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/renderer-layer.js": {
+            "name": "src/renderer-layer.js",
+            "modules": {},
+            "classes": {
+                "RendererLayer": 1,
+                "RendererLayer.Types": 1
             },
             "fors": {},
             "namespaces": {}
@@ -273,7 +301,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/entity.js",
-            "line": 172,
+            "line": 171,
             "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222'\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -446,6 +474,80 @@
                 }
             ]
         },
+        "MultiObjectManager": {
+            "name": "MultiObjectManager",
+            "shortname": "MultiObjectManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/multi-object-manager.js",
+            "line": 4,
+            "description": "Manages a list of object and their tile positions.\nMultiple objects can be at a given tile map coord.\nHandles adding, removing, moving objects within the game.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "game",
+                    "description": "- Game instance this `MultiObjectManager` is attached to.",
+                    "type": "Game"
+                },
+                {
+                    "name": "ObjectConstructor",
+                    "description": "- Object constructor used to create new objects with `this.add()`.",
+                    "type": "Object"
+                },
+                {
+                    "name": "width",
+                    "description": "- Width of current map in tiles.",
+                    "type": "Number",
+                    "optional": true
+                },
+                {
+                    "name": "height",
+                    "description": "- Height of current map in tiles.",
+                    "type": "Number",
+                    "optional": true
+                }
+            ]
+        },
+        "ObjectManager": {
+            "name": "ObjectManager",
+            "shortname": "ObjectManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/object-manager.js",
+            "line": 4,
+            "description": "Manages a list of all objects and their tile positions.\nHandles adding, removing, moving objects within the game.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "game",
+                    "description": "- Game instance this `ObjectManager` is attached to.",
+                    "type": "Game"
+                },
+                {
+                    "name": "ObjectConstructor",
+                    "description": "- Object constructor used to create new objects with `this.add()`.",
+                    "type": "Object"
+                },
+                {
+                    "name": "width",
+                    "description": "- Width of current map in tiles.",
+                    "type": "Number",
+                    "optional": true
+                },
+                {
+                    "name": "height",
+                    "description": "- Height of current map in tiles.",
+                    "type": "Number",
+                    "optional": true
+                }
+            ]
+        },
         "Player": {
             "name": "Player",
             "shortname": "Player",
@@ -465,6 +567,44 @@
                     "type": "Game"
                 }
             ]
+        },
+        "RendererLayer": {
+            "name": "RendererLayer",
+            "shortname": "RendererLayer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/renderer-layer.js",
+            "line": 29,
+            "description": "Represents a map tile layer to be rendered.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "game",
+                    "description": "- Game instance this obj is attached to.",
+                    "type": "Game"
+                },
+                {
+                    "name": "type",
+                    "description": "- Type of `RendererLayer`. When created this object is merged with the value of `RendererLayer.Types[type]`.",
+                    "type": "String"
+                }
+            ]
+        },
+        "RendererLayer.Types": {
+            "name": "RendererLayer.Types",
+            "shortname": "RendererLayer.Types",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/renderer-layer.js",
+            "line": 153,
+            "description": "Describes different types of `RendererLayer`. Used by the `RendererLayer` constructor `type` param.\n\n    RendererLayer.Types = {\n\n        // ...\n    }",
+            "static": 1
         },
         "Renderer": {
             "name": "Renderer",
@@ -547,7 +687,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/tile.js",
-            "line": 132,
+            "line": 134,
             "description": "Describes different types of tiles. Used by the Tile constructor 'type' param.\n\n    Tile.Types = {\n        floor: {\n           name: 'Floor',\n           char: '.',\n           color: '#333',\n           bgColor: '#111',\n           passable: true,\n           blocksLos: false\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -560,7 +700,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/util.js",
-            "line": 17,
+            "line": 45,
             "description": "Utility functions",
             "static": 1
         },
@@ -574,7 +714,7 @@
             "extension_for": [],
             "file": "src/valid-targets-finder.js",
             "line": 4,
-            "description": "Gets a list of valid targets for an action.",
+            "description": "Gets a list of valid targets filtered by provided criteria.",
             "is_constructor": 1,
             "params": [
                 {
@@ -653,11 +793,51 @@
             "is_constructor": 1,
             "params": [
                 {
+                    "name": "game",
+                    "description": "- Game instance this obj is attached to.",
+                    "type": "Game"
+                },
+                {
                     "name": "targets",
-                    "description": "",
+                    "description": "An Array of valid target objects to select from (intended to be in the format `validTargetsFinder.getValidTargets()` returns).",
                     "type": "Array",
                     "optional": true,
                     "optdefault": "[]"
+                },
+                {
+                    "name": "settings",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "typeSortPriority",
+                            "description": "- Array of types in order of their sort priority.",
+                            "type": "Array",
+                            "optional": true,
+                            "optdefault": "this.typeSortPriority"
+                        },
+                        {
+                            "name": "mapWidth",
+                            "description": "- Width of `this.map`.",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "game.map.width"
+                        },
+                        {
+                            "name": "mapHeight",
+                            "description": "- Height of `this.map`.",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "game.map.height"
+                        },
+                        {
+                            "name": "skipSort",
+                            "description": "- If true initial sort is skipped.",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
                 }
             ]
         }
@@ -693,7 +873,7 @@
         {
             "file": "src/array-2d.js",
             "line": 42,
-            "description": "Resets the 2d array, clearing all data and initializing with this.width and this.height.",
+            "description": "Resets the 2d array, clearing all data and initializing with `this.width` and `this.height`.",
             "itemtype": "method",
             "name": "reset",
             "params": [
@@ -739,12 +919,12 @@
             "params": [
                 {
                     "name": "x",
-                    "description": "- Position on the x axis of the value being set.",
+                    "description": "- Map tile x coord of the value being set.",
                     "type": "Number"
                 },
                 {
                     "name": "y",
-                    "description": "- Position on the y axis of the value being set.",
+                    "description": "- Map tile y coord of the value being set.",
                     "type": "Number"
                 },
                 {
@@ -764,12 +944,12 @@
             "params": [
                 {
                     "name": "x",
-                    "description": "- Position on the x axis of the value being retrieved.",
+                    "description": "- Map tile x coord of the value being retrieved.",
                     "type": "Number"
                 },
                 {
                     "name": "y",
-                    "description": "- Position on the y axis of the value being retrieved.",
+                    "description": "- Map tile y coord of the value being retrieved.",
                     "type": "Number"
                 }
             ],
@@ -788,12 +968,12 @@
             "params": [
                 {
                     "name": "x",
-                    "description": "- Position on the x axis of the value being removed.",
+                    "description": "- Map tile x coord of the value being removed.",
                     "type": "Number"
                 },
                 {
                     "name": "y",
-                    "description": "- Position on the y axis of the value being removed.",
+                    "description": "- Map tile y coord of the value being removed.",
                     "type": "Number"
                 }
             ],
@@ -808,23 +988,42 @@
             "params": [
                 {
                     "name": "x",
-                    "description": "- Position on the x axis of the coord to get adjacent values of.",
+                    "description": "- Map tile x coord to get adjacent values of.",
                     "type": "Number"
                 },
                 {
                     "name": "y",
-                    "description": "- Position on the x axis of the coord to get adjacent values of.",
+                    "description": "- Map tile y coord to get adjacent values of.",
                     "type": "Number"
                 },
                 {
-                    "name": "withCoords",
-                    "description": "- If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])",
-                    "type": "Bool"
-                },
-                {
-                    "name": "filter",
-                    "description": "- A function to filter the values returned (function(value, x, y){ return true;})",
-                    "type": "Function"
+                    "name": "settings",
+                    "description": "-",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "withCoords",
+                            "description": "- If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "withDiagonals",
+                            "description": "- If true diagonals will be included.",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "true"
+                        },
+                        {
+                            "name": "filter",
+                            "description": "- A function to filter the values returned (function(value, x, y){ return true;})",
+                            "type": "Function",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
                 }
             ],
             "return": {
@@ -835,46 +1034,56 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 183,
+            "line": 190,
             "description": "Retrieves an array of values of coords within a given radius.",
             "itemtype": "method",
             "name": "getWithinSquareRadius",
             "params": [
                 {
                     "name": "x",
-                    "description": "- Position on the x axis of the coord at the center of the radius.",
+                    "description": "- Map tile x coord at the center of the radius.",
                     "type": "Number"
                 },
                 {
                     "name": "y",
-                    "description": "- Position on the x axis of the coord at the center of the radius.",
+                    "description": "- Map tile x coord at the center of the radius.",
                     "type": "Number"
                 },
                 {
-                    "name": "radius",
-                    "description": "- Radius of the area to retrieve tiles from.",
-                    "type": "Number"
-                },
-                {
-                    "name": "filter",
-                    "description": "- A function to filter the values returned (function(value, x, y){ return true;})",
-                    "type": "Function",
+                    "name": "settings",
+                    "description": "-",
+                    "type": "Object",
                     "optional": true,
-                    "optdefault": "undefined"
-                },
-                {
-                    "name": "withCoords",
-                    "description": "- If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])",
-                    "type": "Bool",
-                    "optional": true,
-                    "optdefault": "false"
-                },
-                {
-                    "name": "includeTarget",
-                    "description": "- If true the value of the coordinates given will be included in the returned array.",
-                    "type": "Bool",
-                    "optional": true,
-                    "optdefault": "false"
+                    "props": [
+                        {
+                            "name": "radius",
+                            "description": "- Radius of the area to retrieve tiles from.",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "1"
+                        },
+                        {
+                            "name": "filter",
+                            "description": "- A function to filter the values returned (function(value, x, y){ return true;})",
+                            "type": "Function",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "withCoords",
+                            "description": "- If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "includeTarget",
+                            "description": "- If true the value of the coordinates given will be included in the returned array.",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
                 }
             ],
             "return": {
@@ -885,29 +1094,29 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 241,
+            "line": 254,
             "description": "Retrieves an array of values of coords along a line starting at point 0 and crossing point 1 until it hits the edge of the 2d array or a coord value returning true when passed to the condtion function.",
             "itemtype": "method",
             "name": "getLineThrough",
             "params": [
                 {
                     "name": "x0",
-                    "description": "- Position on the x axis of the coord 0.",
+                    "description": "- Map tile x coord of start.",
                     "type": "Number"
                 },
                 {
                     "name": "y0",
-                    "description": "- Position on the y axis of the coord 0.",
+                    "description": "- Map tile y coord of start.",
                     "type": "Number"
                 },
                 {
                     "name": "x1",
-                    "description": "- Position on the x axis of the coord 1.",
+                    "description": "- Map tile x coord of crossing.",
                     "type": "Number"
                 },
                 {
                     "name": "y1",
-                    "description": "- Position on the y axis of the coord 1.",
+                    "description": "- Map tile y coord of crossing.",
                     "type": "Number"
                 },
                 {
@@ -933,38 +1142,49 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 296,
+            "line": 309,
             "description": "Retrieves an array of the nearest coord values meeting checked requirements. If multiple coord values were matched at the same nearest distance, the returned array will contain multiple matched coord values.\nUsed for projecting path of ranged attacks, pushed entities, ect.",
             "itemtype": "method",
             "name": "getNearest",
             "params": [
                 {
                     "name": "tileX",
-                    "description": "- Position on the x axis of the coord at the center of the radius.",
+                    "description": "- Map tile x coord of the center of the radius.",
                     "type": "Number"
                 },
                 {
                     "name": "tileY",
-                    "description": "- Position on the y axis of the coord at the center of the radius.",
+                    "description": "- Map tile x coord of the center of the radius.",
                     "type": "Number"
                 },
                 {
-                    "name": "maxRadius",
-                    "description": "- Maxium search radius from given coord.",
-                    "type": "Number"
-                },
-                {
-                    "name": "check",
-                    "description": "- A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;}) If no check function is provided any tile with a truthy value will be matched.",
-                    "type": "Function",
-                    "optional": true
-                },
-                {
-                    "name": "withCoords",
-                    "description": "- If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])",
-                    "type": "Bool",
+                    "name": "settings",
+                    "description": "-",
+                    "type": "Object",
                     "optional": true,
-                    "optdefault": "false"
+                    "props": [
+                        {
+                            "name": "maxRadius",
+                            "description": "- Maxium search radius from given coord.",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "1"
+                        },
+                        {
+                            "name": "filter",
+                            "description": "- A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;}) If no check function is provided any tile with a truthy value will be matched.",
+                            "type": "Function",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "withCoords",
+                            "description": "- If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
                 }
             ],
             "return": {
@@ -975,13 +1195,13 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 389,
+            "line": 404,
             "description": "Retrieves an array of the filtered values.",
             "itemtype": "method",
             "name": "filter",
             "params": [
                 {
-                    "name": "check",
+                    "name": "filter",
                     "description": "- A function to determine if a value is to be included in results (returns true). (function(value, x, y){ return true;})",
                     "type": "Function"
                 },
@@ -994,14 +1214,14 @@
                 }
             ],
             "return": {
-                "description": "An array of coord values matched by the check function.",
+                "description": "An array of coord values matched by the filter function.",
                 "type": "Array"
             },
             "class": "Array2d"
         },
         {
             "file": "src/array-2d.js",
-            "line": 418,
+            "line": 433,
             "description": "Creates a copy of this Array2d. Shallow copies values.",
             "itemtype": "method",
             "name": "copy",
@@ -1013,7 +1233,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 436,
+            "line": 451,
             "description": "Loops over each coord value.",
             "itemtype": "method",
             "name": "each",
@@ -1131,7 +1351,7 @@
         {
             "file": "src/entity-manager.js",
             "line": 54,
-            "description": "Adds an entity to the manager.",
+            "description": "Adds an entity to the manager at given map tile coord.",
             "itemtype": "method",
             "name": "add",
             "params": [
@@ -1146,7 +1366,7 @@
                     "type": "Number"
                 },
                 {
-                    "name": "ent",
+                    "name": "entity",
                     "description": "- The Entity being set at given coords. If ent is a string a new Entity will be created using the string as the Entity Type (see Entity.Types[type]).",
                     "type": "Entity|String"
                 }
@@ -1160,7 +1380,7 @@
         {
             "file": "src/entity-manager.js",
             "line": 74,
-            "description": "Removes an entity to the manager.",
+            "description": "Removes an entity from the manager.",
             "itemtype": "method",
             "name": "remove",
             "params": [
@@ -1200,14 +1420,14 @@
         {
             "file": "src/entity-manager.js",
             "line": 99,
-            "description": "Calls the entity.update() method on all entities. Removes dead entities. Typically called after a player has resolved their actions.",
+            "description": "Calls the entity.update() method on all entities. Removes dead entities.\nTypically called after a player has resolved their actions.",
             "itemtype": "method",
             "name": "update",
             "class": "EntityManager"
         },
         {
             "file": "src/entity-manager.js",
-            "line": 115,
+            "line": 116,
             "description": "Resets this entityManager.",
             "itemtype": "method",
             "name": "reset",
@@ -1215,7 +1435,7 @@
         },
         {
             "file": "src/entity-manager.js",
-            "line": 124,
+            "line": 125,
             "description": "Sets the size of the map to manage entities within.",
             "itemtype": "method",
             "name": "setSize",
@@ -1235,7 +1455,7 @@
         },
         {
             "file": "src/entity-manager.js",
-            "line": 134,
+            "line": 135,
             "description": "Loads Entity data from an array of strings.",
             "itemtype": "method",
             "name": "loadEntitiesFromArrayString",
@@ -1265,7 +1485,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 32,
+            "line": 27,
             "description": "Game instance this object is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -1274,7 +1494,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 39,
+            "line": 34,
             "description": "The type of entity this is.\nWhen created this object is merged with the value of Entity.Types[type].",
             "itemtype": "property",
             "name": "type",
@@ -1283,7 +1503,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 47,
+            "line": 42,
             "description": "Called when the entity is first created. Intended to be assigned by Entity.Types.",
             "itemtype": "method",
             "name": "initialize",
@@ -1291,7 +1511,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 55,
+            "line": 50,
             "description": "Name used when referencing or describing this entity.\nUsed in console messages.",
             "itemtype": "property",
             "name": "name",
@@ -1300,7 +1520,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 63,
+            "line": 58,
             "description": "The x map tile coord of this entity.",
             "itemtype": "property",
             "name": "x",
@@ -1309,7 +1529,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 70,
+            "line": 65,
             "description": "The y map tile coord of this entity.",
             "itemtype": "property",
             "name": "y",
@@ -1318,7 +1538,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 77,
+            "line": 72,
             "description": "The character displayed when rendering this entity.",
             "itemtype": "property",
             "name": "char",
@@ -1327,7 +1547,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 84,
+            "line": 79,
             "description": "The color of the character displayed when rendering this entity. Not rendered if false.",
             "itemtype": "property",
             "name": "color",
@@ -1336,7 +1556,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 91,
+            "line": 86,
             "description": "The background color the character displayed when rendering this entity. Not rendered if false.",
             "itemtype": "property",
             "name": "bgColor",
@@ -1345,7 +1565,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 98,
+            "line": 93,
             "description": "Determines if this entity has been killed and needs to be removed.",
             "itemtype": "property",
             "name": "dead",
@@ -1354,7 +1574,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 105,
+            "line": 100,
             "description": "Called after a player action has been resolved. Resolves this entities turn.",
             "itemtype": "method",
             "name": "update",
@@ -1362,7 +1582,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 113,
+            "line": 108,
             "description": "Checks if an entity can move through a map tile.\nConvenience method for this.game.canMoveThrough()",
             "itemtype": "method",
             "name": "canMoveThrough",
@@ -1386,7 +1606,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 125,
+            "line": 120,
             "description": "Checks if an entity can move through and into a map tile and that tile is un-occupied.\nConvenience method for this.game.entityCanMoveTo()",
             "itemtype": "method",
             "name": "canMoveTo",
@@ -1410,7 +1630,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 137,
+            "line": 132,
             "description": "Changes the position of this entity on the map.\nConvenience method for this.game.entityMoveTo()\nthis.canMoveTo() and/or this.canMoveThrough() should always be checked before calling this.moveTo()",
             "itemtype": "method",
             "name": "moveTo",
@@ -1430,7 +1650,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 149,
+            "line": 144,
             "description": "Checks if a map tile can be seen through.\nConvenience method for this.game.entityCanSeeThrough()",
             "itemtype": "method",
             "name": "canSeeThrough",
@@ -1454,7 +1674,7 @@
         },
         {
             "file": "src/entity.js",
-            "line": 161,
+            "line": 156,
             "description": "Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.",
             "itemtype": "method",
             "name": "bump",
@@ -1779,6 +1999,24 @@
         {
             "file": "src/game.js",
             "line": 94,
+            "description": "If true input actions are ignored.",
+            "itemtype": "property",
+            "name": "gameOver",
+            "type": "{Bool}",
+            "class": "Game"
+        },
+        {
+            "file": "src/game.js",
+            "line": 101,
+            "description": "If true the map will be drawn even if `this.player.update(action)` returns false.\n`this.queueDraw` is set to false after every update.",
+            "itemtype": "property",
+            "name": "queueDraw",
+            "type": "{Boolean}",
+            "class": "Game"
+        },
+        {
+            "file": "src/game.js",
+            "line": 109,
             "description": "Sets the size of the map resizing this.map and this.entityManager.",
             "itemtype": "method",
             "name": "setMapSize",
@@ -1798,7 +2036,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 107,
+            "line": 122,
             "description": "Starts the game.",
             "itemtype": "method",
             "name": "start",
@@ -1806,7 +2044,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 120,
+            "line": 135,
             "description": "Handles user input actions.",
             "itemtype": "method",
             "name": "onKeyAction",
@@ -1821,7 +2059,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 140,
+            "line": 159,
             "description": "Handles tile mouse click events.",
             "itemtype": "method",
             "name": "onClick",
@@ -1841,7 +2079,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 161,
+            "line": 180,
             "description": "Handles tile mouse hover events",
             "itemtype": "method",
             "name": "onHover",
@@ -1861,7 +2099,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 180,
+            "line": 199,
             "description": "Gets all objects at tile position",
             "itemtype": "method",
             "name": "getObjectsOnTile",
@@ -1885,7 +2123,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 200,
+            "line": 219,
             "description": "Checks if an entity can move through a map tile.\nThis does NOT check for entities on the tile blocking movement.\nThis is where code for special cases changing an entity's ability to pass through a tile should be placed.\nThings like flying, swimming and ghosts moving through walls.",
             "itemtype": "method",
             "name": "entityCanMoveThrough",
@@ -1914,7 +2152,7 @@
         },
         {
             "file": "src/game.js",
-            "line": 220,
+            "line": 239,
             "description": "Checks if an entity can move through and into a map tile and that tile is un-occupied.",
             "itemtype": "method",
             "name": "entityCanMoveTo",
@@ -1943,8 +2181,8 @@
         },
         {
             "file": "src/game.js",
-            "line": 239,
-            "description": "Changes the position of an entity on the map.\nUpdates entity position in this.entityManager and calls tile.onEntityEnter\nthis.entityCanMoveTo() should always be checked before calling this.entityMoveTo",
+            "line": 258,
+            "description": "Changes the position of an entity on the map.\nUpdates entity position in this.entityManager and calls tile.onEntityEnter.\n`this.entityCanMoveTo()` should always be checked first.",
             "itemtype": "method",
             "name": "entityMoveTo",
             "params": [
@@ -1968,8 +2206,8 @@
         },
         {
             "file": "src/game.js",
-            "line": 256,
-            "description": "Checks if a map tile can be seen through.\nThis is where code for special cases like smoke, fog, x-ray vision should go.",
+            "line": 275,
+            "description": "Checks if a map tile can be seen through.\nThis is where code for special cases like smoke, fog, x-ray vision can be implemented by checking the entity param.",
             "itemtype": "method",
             "name": "entityCanSeeThrough",
             "params": [
@@ -2241,11 +2479,15 @@
                     ]
                 }
             ],
+            "return": {
+                "description": "tileData",
+                "type": "Object"
+            },
             "class": "Lighting"
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 149,
+            "line": 148,
             "description": "Retrieves the visibility of the tile at given coords",
             "itemtype": "method",
             "name": "get",
@@ -2265,7 +2507,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 159,
+            "line": 158,
             "description": "Set a light position and color",
             "itemtype": "method",
             "name": "set",
@@ -2300,14 +2542,14 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 172,
+            "line": 171,
             "itemtype": "method",
             "name": "remove",
             "class": "Lighting"
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 179,
+            "line": 178,
             "description": "Returns the reflectivity value of a tile",
             "itemtype": "method",
             "name": "getTileReflectivity",
@@ -2315,7 +2557,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 201,
+            "line": 200,
             "description": "Checks if a tile blocks line of sight",
             "itemtype": "method",
             "name": "checkVisible",
@@ -2323,7 +2565,7 @@
         },
         {
             "file": "src/lighting-rot.js",
-            "line": 210,
+            "line": 209,
             "description": "Sets the size of the map to mange Lighting within.",
             "itemtype": "method",
             "name": "setSize",
@@ -2561,8 +2803,534 @@
             "class": "Mouse"
         },
         {
-            "file": "src/player.js",
+            "file": "src/multi-object-manager.js",
             "line": 31,
+            "description": "Game instance this obj is attached to.",
+            "itemtype": "property",
+            "name": "game",
+            "type": "Game",
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 38,
+            "description": "Array containing all objects.",
+            "itemtype": "property",
+            "name": "objects",
+            "type": "Array",
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 45,
+            "description": "Array2d containing all objects by their current map tile coord",
+            "itemtype": "property",
+            "name": "map",
+            "type": "Array2d",
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 52,
+            "description": "Retrieves all objects at given map tile coord.",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The tile map x coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The tile map y coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "filter",
+                    "description": "- A function to filter the array of objects returned `function(object){  return true }`.",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 67,
+            "description": "Retrieves the first object in array at given map tile coord.",
+            "itemtype": "method",
+            "name": "getFirst",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The tile map x coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The tile map y coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "filter",
+                    "description": "- A function to filter the object returned at this map tile coord `function(object){  return true }`. The first object in the array the filter matches is returned.",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 92,
+            "description": "Retrieves the last object in array at given map tile coord.",
+            "itemtype": "method",
+            "name": "getLast",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The tile map x coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The tile map y coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "filter",
+                    "description": "- A function to filter the object returned at this map tile coord `function(object){  return true }`. The last object in the array the filter matches is returned.",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 116,
+            "description": "Adds an object to the manager at given map tile coord. Multiple objects can be added to the same coord.",
+            "itemtype": "method",
+            "name": "add",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- Map tile coord x.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Map tile coord y.",
+                    "type": "Number"
+                },
+                {
+                    "name": "obj",
+                    "description": "- The Object being set at given coords. If `obj` is a string a new Object will be created using `this.makeNewObjectFromType(obj)`.",
+                    "type": "Object|String"
+                }
+            ],
+            "return": {
+                "description": "The added object.",
+                "type": "Object"
+            },
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 137,
+            "description": "Removes an entity from the manager.",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "- The objity to be removed.",
+                    "type": "Obj"
+                }
+            ],
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 150,
+            "description": "Changes the position of an entity already added to this entityManager.",
+            "itemtype": "method",
+            "name": "move",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The new map tile coordinate position of the entity on the x axis.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The new map tile coordinate position of the entity on the y axis.",
+                    "type": "Number"
+                },
+                {
+                    "name": "object",
+                    "description": "- The objectity to be removed.",
+                    "type": "Obj"
+                }
+            ],
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 164,
+            "description": "Resets this entityManager.",
+            "itemtype": "method",
+            "name": "reset",
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 177,
+            "description": "Sets the size of the map to manage objects within.",
+            "itemtype": "method",
+            "name": "setSize",
+            "params": [
+                {
+                    "name": "width",
+                    "description": "- Width of current map in tiles.",
+                    "type": "Number"
+                },
+                {
+                    "name": "height",
+                    "description": "- Height of current map in tiles.",
+                    "type": "Number"
+                }
+            ],
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 193,
+            "description": "Same as `this.map.getAdjacent`, but merges all results into on flat array.",
+            "itemtype": "method",
+            "name": "getAdjacent",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "settings",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 215,
+            "description": "Loads Obj data from an array of strings.",
+            "itemtype": "method",
+            "name": "loadEntitiesFromArrayString",
+            "params": [
+                {
+                    "name": "mapData",
+                    "description": "- The array of strings to load.",
+                    "type": "Array"
+                },
+                {
+                    "name": "charToType",
+                    "description": "- An object mapping string characters to Obj types (see Obj.Types[type]). Characters in mapData not in charToType are ignored.",
+                    "type": "Object"
+                },
+                {
+                    "name": "defaultType",
+                    "description": "- If set, all characters in `mapData` not found in `charToType` will be replaced by an object with `defaultType`.",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "example": [
+                "\n\n           // 'P' will be ignored and a floor tile will be placed at that position\n           var mapData = [\n               '####',\n               '#..#',\n               '#.Z#',\n               '####',\n           ],\n           charToType = {\n               'Z': 'zombie'\n           };\n\n           entityManager.loadTilesFromArrayString(mapData, charToType);\n"
+            ],
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 260,
+            "description": "Creates a new object instance.",
+            "itemtype": "method",
+            "name": "makeNewObjectFromType",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "- The type to make the object",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/multi-object-manager.js",
+            "line": 270,
+            "description": "Calls the `object.update()` method on all objects. Removes `object.dead == true` objects.\nTypically called after a player has resolved their actions.\nNot all object managers need to upade the objects they manage.",
+            "params": [
+                {
+                    "name": "excludeObject",
+                    "description": "- excludeObject will be skipped if found in `this.objects`.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "itemtype": "method",
+            "name": "update",
+            "class": "MultiObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 24,
+            "description": "Game instance this obj is attached to.",
+            "itemtype": "property",
+            "name": "game",
+            "type": "{Game}",
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 31,
+            "description": "Array containing all objects.",
+            "itemtype": "property",
+            "name": "objects",
+            "type": "{Array}",
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 38,
+            "description": "Array2d containing all objects by their current map tile coord",
+            "itemtype": "property",
+            "name": "map",
+            "type": "{Array2d}",
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 45,
+            "description": "Retrieves an entity by map tile coords.",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The tile map coord x.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The tile map coord y.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object|false"
+            },
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 56,
+            "description": "Adds an object to the manager at given map tile coord.\nIf an object is already at this map tile coord it is removed from the manager completely.",
+            "itemtype": "method",
+            "name": "add",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The tile map coord x.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The tile map coord y.",
+                    "type": "Number"
+                },
+                {
+                    "name": "obj",
+                    "description": "- The Object being set at given coords. If obj is a string a new Object will be created using `this.makeNewObjectFromType(obj)`.",
+                    "type": "Object|String"
+                }
+            ],
+            "return": {
+                "description": "The added object.",
+                "type": "Object"
+            },
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 81,
+            "description": "Removes an object from the manager.",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "- The objectity to be removed.",
+                    "type": "Object"
+                }
+            ],
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 92,
+            "description": "Changes the position of an object already added to this objectManager.",
+            "itemtype": "method",
+            "name": "move",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- The destination tile map coord x.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- The destination tile map coord y.",
+                    "type": "Number"
+                },
+                {
+                    "name": "object",
+                    "description": "- The objectity to be removed.",
+                    "type": "Obj"
+                }
+            ],
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 110,
+            "description": "Resets this entityManager.",
+            "itemtype": "method",
+            "name": "reset",
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 119,
+            "description": "Sets the size of the map to manage objects within.",
+            "itemtype": "method",
+            "name": "setSize",
+            "params": [
+                {
+                    "name": "width",
+                    "description": "- Width of current map in tiles.",
+                    "type": "Number"
+                },
+                {
+                    "name": "height",
+                    "description": "- Height of current map in tiles.",
+                    "type": "Number"
+                }
+            ],
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 129,
+            "description": "Loads object data from an array of strings.",
+            "itemtype": "method",
+            "name": "loadEntitiesFromArrayString",
+            "params": [
+                {
+                    "name": "mapData",
+                    "description": "- The array of strings to load.",
+                    "type": "Array"
+                },
+                {
+                    "name": "charToType",
+                    "description": "- An object mapping string characters to Object types see `this.makeNewObjectFromType()`. Characters in mapData not in charToType are ignored.",
+                    "type": "Object"
+                },
+                {
+                    "name": "defaultType",
+                    "description": "- If set, all characters in `mapData` not found in `charToType` will be replaced by an object with `defaultType`.",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "replaceCurrentObjects",
+                    "description": "- If true current objects at positons of objects being added will be removed. Otherwise new objects at occupied positions will not be added.",
+                    "type": "Bool",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n\n           // 'P' will be ignored and a floor tile will be placed at that position\n           var mapData = [\n               '####',\n               '#..#',\n               '#.Z#',\n               '####',\n           ],\n           charToType = {\n               'Z': 'zombie'\n           };\n\n           entityManager.loadTilesFromArrayString(mapData, charToType);\n"
+            ],
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 183,
+            "description": "Creates a new object instance of given type.",
+            "itemtype": "method",
+            "name": "makeNewObjectFromType",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "- The type to make the object",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/object-manager.js",
+            "line": 193,
+            "description": "Calls the `object.update()` method on all objects. Removes `object.dead == true` objects.\nTypically called after a player has resolved their actions.\nNot all object managers need to upade the objects they manage.",
+            "params": [
+                {
+                    "name": "excludeObject",
+                    "description": "- excludeObject will be skipped if found in `this.objects`.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "itemtype": "method",
+            "name": "update",
+            "class": "ObjectManager"
+        },
+        {
+            "file": "src/player.js",
+            "line": 35,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -2571,7 +3339,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 38,
+            "line": 42,
             "description": "FovRot instance representing this entity's vision.",
             "itemtype": "property",
             "name": "fov",
@@ -2580,7 +3348,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 45,
+            "line": 49,
             "description": "Name used when referencing describing this player.\nUsed in console messages.",
             "itemtype": "property",
             "name": "name",
@@ -2589,7 +3357,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 53,
+            "line": 57,
             "description": "The map tile coordinate position of the player on the x axis.",
             "itemtype": "property",
             "name": "x",
@@ -2598,7 +3366,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 60,
+            "line": 64,
             "description": "The map tile coordinate position of the player on the y axis.",
             "itemtype": "property",
             "name": "y",
@@ -2607,7 +3375,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 67,
+            "line": 71,
             "description": "The character displayed when rendering this player.",
             "itemtype": "property",
             "name": "char",
@@ -2616,7 +3384,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 74,
+            "line": 78,
             "description": "The color of the character displayed when rendering this player.",
             "itemtype": "property",
             "name": "color",
@@ -2625,7 +3393,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 81,
+            "line": 85,
             "description": "The background color the character displayed when rendering this player.",
             "itemtype": "property",
             "name": "bgColor",
@@ -2634,7 +3402,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 88,
+            "line": 92,
             "description": "Field Range of this.fov (90, 180, or 360)",
             "itemtype": "property",
             "name": "fovFieldRange",
@@ -2643,7 +3411,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 95,
+            "line": 99,
             "description": "Direction of fov (not used for fieldRange 360) valid directions: ['up', 'down', 'left', 'right', 'up_left', 'up_right', 'down_left', 'down_right'].",
             "itemtype": "property",
             "name": "fovDirection",
@@ -2652,7 +3420,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 102,
+            "line": 106,
             "description": "Max visible distance in tiles",
             "itemtype": "property",
             "name": "fovMaxViewDistance",
@@ -2661,7 +3429,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 109,
+            "line": 113,
             "description": "Determines if the player has been killed.",
             "itemtype": "property",
             "name": "dead",
@@ -2670,7 +3438,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 116,
+            "line": 120,
             "description": "Updates this.fov",
             "itemtype": "method",
             "name": "updateFov",
@@ -2678,7 +3446,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 129,
+            "line": 133,
             "description": "Checks if this entity can move to the specified map tile",
             "itemtype": "method",
             "name": "canMoveTo",
@@ -2702,7 +3470,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 140,
+            "line": 144,
             "description": "Changes the position of this entity on the map.\nthis.canMoveTo() should always be checked before calling this.moveTo",
             "itemtype": "method",
             "name": "moveTo",
@@ -2722,7 +3490,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 151,
+            "line": 155,
             "description": "Called when user key is pressed with action of key pressed as an arg.",
             "itemtype": "method",
             "name": "update",
@@ -2741,7 +3509,7 @@
         },
         {
             "file": "src/player.js",
-            "line": 174,
+            "line": 178,
             "description": "Move action.",
             "itemtype": "method",
             "name": "move",
@@ -2765,15 +3533,162 @@
         },
         {
             "file": "src/player.js",
-            "line": 201,
+            "line": 205,
             "description": "Wait action.",
             "itemtype": "method",
             "name": "wait",
             "class": "Player"
         },
         {
+            "file": "src/renderer-layer.js",
+            "line": 1,
+            "description": "// return true if should draw\n checkTile(x, y)\n getTileData(x, y)\n prepareTileData(obj, x, y)\n\n\nlayers\n\n\n explored (continue if not explored)\n loop\n      entities\n          tile filters (lighting, hovered)\n      items\n          tile filters (lighting, hovered)\n     fov (shadow)",
+            "class": "RendererLayer"
+        },
+        {
+            "file": "src/renderer-layer.js",
+            "line": 52,
+            "description": "Game instance this obj is attached to.",
+            "itemtype": "property",
+            "name": "game",
+            "type": "Game",
+            "class": "RendererLayer"
+        },
+        {
+            "file": "src/renderer-layer.js",
+            "line": 59,
+            "description": "The type of `RendererLayer` this is.\nWhen created this object is merged with the value of `RendererLayer.Types[type]`. See constructor.",
+            "itemtype": "property",
+            "name": "type",
+            "type": "{String}",
+            "class": "RendererLayer"
+        },
+        {
+            "file": "src/renderer-layer.js",
+            "line": 67,
+            "description": "If true, `this.getTileData()` will merge the `tileData` it would otherwise return with the `prevTileData` param (if provided).\nobjects are  from this layer should be merged with layers below before drawing.",
+            "itemtype": "property",
+            "name": "mergeWithPrevLayer",
+            "type": "{Boolean}",
+            "class": "RendererLayer"
+        },
+        {
+            "file": "src/renderer-layer.js",
+            "line": 75,
+            "description": "If true, when `this.getTileData(x, y)` returns a value that evaluates to false, all tile layers above this one are not drawn by the `Renderer` for this map tile coord.",
+            "itemtype": "property",
+            "name": "cancelTileDrawWhenNotFound",
+            "type": "{Boolean}",
+            "class": "RendererLayer"
+        },
+        {
+            "file": "src/renderer-layer.js",
+            "line": 82,
+            "description": "If true, `tileData` is drawn to the canvas after processing this layer.",
+            "type": "{Boolean}",
+            "class": "RendererLayer"
+        },
+        {
+            "file": "src/renderer-layer.js",
+            "line": 88,
+            "description": "Before draw function. Ignored if `this.draw = false`.",
+            "type": "{Function} `function(x, y, tileData, ctx){}`",
+            "class": "RendererLayer"
+        },
+        {
+            "file": "src/renderer-layer.js",
+            "line": 94,
+            "description": "After draw function. Ignored if `this.draw = false`.",
+            "type": "{Function} `function(x, y, tileData, ctx){}`",
+            "class": "RendererLayer"
+        },
+        {
+            "file": "src/renderer-layer.js",
+            "line": 100,
+            "description": "Get layer's `tileData` for a given map tile coord.",
+            "itemtype": "method",
+            "name": "getModifiedTileData",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- Map tile x coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Map tile y coord.",
+                    "type": "Object"
+                },
+                {
+                    "name": "prevTileData",
+                    "description": "- `tileData` object for the given map tile coord from previous layer.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "false if nothing to render",
+                "type": "Object|Bool"
+            },
+            "class": "RendererLayer"
+        },
+        {
+            "file": "src/renderer-layer.js",
+            "line": 112,
+            "description": "Get layer's `tileData` for a given map tile coord.\nOptionally modifying the `prevTileData` object param if `this.mergeWithPrevLayer = true`.",
+            "itemtype": "method",
+            "name": "getModifiedTileData",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- Map tile x coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Map tile y coord.",
+                    "type": "Object"
+                },
+                {
+                    "name": "prevTileData",
+                    "description": "- `tileData` object for the given map tile coord from previous layer.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "false if nothing to render",
+                "type": "Object|Bool"
+            },
+            "class": "RendererLayer"
+        },
+        {
+            "file": "src/renderer-layer.js",
+            "line": 129,
+            "description": "Merges 2 `tileData` objects.\nUsed to Merges layers of the same tile before drawing them.",
+            "itemtype": "method",
+            "name": "mergeTileData",
+            "params": [
+                {
+                    "name": "tileData1",
+                    "description": "- `tileData` to merge to.",
+                    "type": "Object"
+                },
+                {
+                    "name": "tileData2",
+                    "description": "- `tileData` to merge from, properties with values on tileData2 replace matching properties on tileData1",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "A new `tileData` object with merged values.",
+                "type": "Object"
+            },
+            "class": "RendererLayer"
+        },
+        {
             "file": "src/renderer.js",
-            "line": 27,
+            "line": 28,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -2782,7 +3697,14 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 34,
+            "line": 35,
+            "description": "Tile data layers to draw",
+            "type": "{Array}",
+            "class": "Renderer"
+        },
+        {
+            "file": "src/renderer.js",
+            "line": 41,
             "description": "Canvas element this renderer draws to.",
             "itemtype": "property",
             "name": "canvas",
@@ -2791,7 +3713,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 41,
+            "line": 48,
             "description": "Drawing context of this.canvas",
             "itemtype": "property",
             "name": "ctx",
@@ -2800,7 +3722,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 48,
+            "line": 55,
             "description": "Canvas element this renderer draws to as a buffer for this.canvas.",
             "itemtype": "property",
             "name": "buffer",
@@ -2809,7 +3731,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 55,
+            "line": 62,
             "description": "Drawing context of this.buffer",
             "itemtype": "property",
             "name": "bufferCtx",
@@ -2818,7 +3740,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 62,
+            "line": 69,
             "description": "Background color of map view.",
             "itemtype": "property",
             "name": "bgColor",
@@ -2827,7 +3749,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 69,
+            "line": 76,
             "description": "Color overlayed when mouse is over a tile.",
             "itemtype": "property",
             "name": "hoverColor",
@@ -2836,7 +3758,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 76,
+            "line": 83,
             "description": "Alpha value applied to non-visible tiles",
             "itemtype": "property",
             "name": "nonVisibleTileAlpha",
@@ -2845,7 +3767,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 83,
+            "line": 90,
             "description": "Size of each tile is drawn.",
             "itemtype": "property",
             "name": "tileSize",
@@ -2854,7 +3776,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 90,
+            "line": 97,
             "description": "Font used to render tile characters.",
             "itemtype": "property",
             "name": "font",
@@ -2863,7 +3785,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 97,
+            "line": 104,
             "description": "Device pixel ratio for high dpi screens.",
             "itemtype": "property",
             "name": "devicePixelRatio",
@@ -2872,7 +3794,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 104,
+            "line": 111,
             "description": "Map view width in tiles.",
             "itemtype": "property",
             "name": "width",
@@ -2881,7 +3803,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 111,
+            "line": 118,
             "description": "Map view height in tiles.",
             "itemtype": "property",
             "name": "height",
@@ -2890,7 +3812,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 118,
+            "line": 125,
             "description": "The x distance in tiles from center to upper left corner of map view.",
             "itemtype": "property",
             "name": "offsetX",
@@ -2899,7 +3821,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 125,
+            "line": 132,
             "description": "The y distance in tiles from center to upper left corner of map view.",
             "itemtype": "property",
             "name": "offsetY",
@@ -2908,7 +3830,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 132,
+            "line": 139,
             "description": "The map tile x coord of the tile drawn in the upper left corner of the map view.",
             "itemtype": "property",
             "name": "originX",
@@ -2917,7 +3839,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 139,
+            "line": 146,
             "description": "The map tile y coord of the tile drawn in the upper left corner of the map view.",
             "itemtype": "property",
             "name": "originY",
@@ -2926,7 +3848,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 146,
+            "line": 153,
             "description": "The map tile x coord of the tile currently being hovered by the mouse.",
             "itemtype": "property",
             "name": "hoveredTileX",
@@ -2935,7 +3857,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 153,
+            "line": 160,
             "description": "The map tile y coord of the tile currently being hovered by the mouse.",
             "itemtype": "property",
             "name": "hoveredTileY",
@@ -2944,7 +3866,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 160,
+            "line": 167,
             "description": "Placeholder to add extra draw functionality.\nSame params as this.draw\nfunction(ctx, map, entityManager, player, fov, lighting)",
             "params": [
                 {
@@ -2957,7 +3879,7 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 169,
+            "line": 176,
             "description": "Resizes canvas elements to match the tileSize and map view with/height. Also adjusts behavior to accomodate high pixel density screens.",
             "itemtype": "method",
             "name": "resize",
@@ -2965,182 +3887,18 @@
         },
         {
             "file": "src/renderer.js",
-            "line": 210,
-            "description": "Converts mouse pixel coords to map tile coords. Mouse pixel coords must be relative to the current window.",
-            "itemtype": "method",
-            "name": "mouseToTileCoords",
-            "params": [
-                {
-                    "name": "x",
-                    "description": "- Mouse pixel x coord.",
-                    "type": "Number"
-                },
-                {
-                    "name": "y",
-                    "description": "- Mouse pixel y coord.",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "{x: 0, y: 0}",
-                "type": "Object|False"
-            },
-            "class": "Renderer"
-        },
-        {
-            "file": "src/renderer.js",
-            "line": 224,
-            "description": "Converts map view pixel coords to map tile coords. Map view pixel coords are relative to the top left of the canvas element.",
-            "itemtype": "method",
-            "name": "pixelToTileCoords",
-            "params": [
-                {
-                    "name": "x",
-                    "description": "- Map view pixel x coord.",
-                    "type": "Number"
-                },
-                {
-                    "name": "y",
-                    "description": "- Map view pixel y coord.",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "{x: 0, y: 0}",
-                "type": "Object|False"
-            },
-            "class": "Renderer"
-        },
-        {
-            "file": "src/renderer.js",
-            "line": 238,
-            "description": "Sets the center map tile of the view.",
-            "itemtype": "method",
-            "name": "setCenter",
-            "params": [
-                {
-                    "name": "centerX",
-                    "description": "- Center map tile x coord.",
-                    "type": "Number"
-                },
-                {
-                    "name": "centerY",
-                    "description": "- Center map tile y coord.",
-                    "type": "Number"
-                }
-            ],
-            "class": "Renderer"
-        },
-        {
-            "file": "src/renderer.js",
-            "line": 250,
+            "line": 217,
             "description": "Draws map and entity tiles. All parameters will fall back to this.game.<param> if not provided.",
             "itemtype": "method",
             "name": "draw",
-            "params": [
-                {
-                    "name": "map",
-                    "description": "- Map object to draw.",
-                    "type": "Map",
-                    "optional": true
-                },
-                {
-                    "name": "entityManager",
-                    "description": "- EntityManager object to draw entities from.",
-                    "type": "EntityManager",
-                    "optional": true
-                },
-                {
-                    "name": "player",
-                    "description": "- Player object to draw.",
-                    "type": "Player",
-                    "optional": true
-                },
-                {
-                    "name": "fov",
-                    "description": "- Fov object to check visibility of tiles.",
-                    "type": "Fov",
-                    "optional": true
-                },
-                {
-                    "name": "lighting",
-                    "description": "- Lighting object to shade map tiles with.",
-                    "type": "Lighting",
-                    "optional": true
-                }
-            ],
             "class": "Renderer"
         },
         {
             "file": "src/renderer.js",
-            "line": 280,
-            "description": "Draws map tiles",
-            "itemtype": "method",
-            "name": "drawMap",
-            "params": [
-                {
-                    "name": "ctx",
-                    "description": "- Canvas context to draw to",
-                    "type": "CanvasRenderingContext2D"
-                },
-                {
-                    "name": "map",
-                    "description": "- Map object to draw.",
-                    "type": "Map"
-                },
-                {
-                    "name": "fov",
-                    "description": "- Fov object to check visibility of tiles.",
-                    "type": "Fov",
-                    "optional": true
-                },
-                {
-                    "name": "lighting",
-                    "description": "- Lighting object to shade map tiles with.",
-                    "type": "Lighting",
-                    "optional": true
-                }
-            ],
-            "class": "Renderer"
-        },
-        {
-            "file": "src/renderer.js",
-            "line": 348,
-            "description": "Draws entity tiles",
-            "itemtype": "method",
-            "name": "drawEntities",
-            "params": [
-                {
-                    "name": "ctx",
-                    "description": "- Canvas context to draw to.",
-                    "type": "CanvasRenderingContext2D"
-                },
-                {
-                    "name": "entityManager",
-                    "description": "- EntityManager object to draw entities from.",
-                    "type": "EntityManager"
-                },
-                {
-                    "name": "player",
-                    "description": "- Player object to draw.",
-                    "type": "Player",
-                    "optional": true
-                },
-                {
-                    "name": "fov",
-                    "description": "- Fov object to check visibility of tiles.",
-                    "type": "FOV",
-                    "optional": true
-                }
-            ],
-            "class": "Renderer"
-        },
-        {
-            "file": "src/renderer.js",
-            "line": 401,
+            "line": 259,
             "description": "Draws a single tile to the map view.",
             "itemtype": "method",
-            "name": "drawTile",
+            "name": "drawTileToCanvas",
             "params": [
                 {
                     "name": "x",
@@ -3174,6 +3932,19 @@
                             "description": "- The background color of the tile.",
                             "type": "Object",
                             "optional": true
+                        },
+                        {
+                            "name": "borderColor",
+                            "description": "- The border color of the tile.",
+                            "type": "Object",
+                            "optional": true
+                        },
+                        {
+                            "name": "borderWidth",
+                            "description": "- The border width of the tile.",
+                            "type": "Object",
+                            "optional": true,
+                            "optdefault": "1"
                         }
                     ]
                 },
@@ -3188,98 +3959,207 @@
             "class": "Renderer"
         },
         {
+            "file": "src/renderer.js",
+            "line": 368,
+            "description": "Converts mouse pixel coords to map tile coords. Mouse pixel coords must be relative to the current window.",
+            "itemtype": "method",
+            "name": "mouseToTileCoords",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- Mouse pixel x coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Mouse pixel y coord.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "{x: 0, y: 0}",
+                "type": "Object|False"
+            },
+            "class": "Renderer"
+        },
+        {
+            "file": "src/renderer.js",
+            "line": 382,
+            "description": "Converts map view pixel coords to map tile coords. Map view pixel coords are relative to the top left of the canvas element.",
+            "itemtype": "method",
+            "name": "pixelToTileCoords",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "- Map view pixel x coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "- Map view pixel y coord.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "{x: 0, y: 0}",
+                "type": "Object|False"
+            },
+            "class": "Renderer"
+        },
+        {
+            "file": "src/renderer.js",
+            "line": 396,
+            "description": "Sets the center map tile of the view.",
+            "itemtype": "method",
+            "name": "setCenter",
+            "params": [
+                {
+                    "name": "centerX",
+                    "description": "- Center map tile x coord.",
+                    "type": "Number"
+                },
+                {
+                    "name": "centerY",
+                    "description": "- Center map tile y coord.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Renderer"
+        },
+        {
+            "file": "src/renderer.js",
+            "line": 408,
+            "description": "Fills the canvas with a given color.",
+            "itemtype": "method",
+            "name": "fillBg",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "this.bgColor"
+                },
+                {
+                    "name": "ctx",
+                    "description": "",
+                    "type": "CanvasRenderingContext2D",
+                    "optional": true,
+                    "optdefault": "this.bufferCtx"
+                }
+            ],
+            "class": "Renderer"
+        },
+        {
+            "file": "src/renderer.js",
+            "line": 425,
+            "description": "Copies pixel data from the buffer canvas to the game canvas.",
+            "itemtype": "method",
+            "name": "drawBufferToCanvas",
+            "class": "Renderer"
+        },
+        {
             "file": "src/tile.js",
-            "line": 34,
+            "line": 26,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
-            "type": "Game",
+            "type": "{Game}",
             "class": "Tile"
         },
         {
             "file": "src/tile.js",
-            "line": 42,
-            "description": "The type of entity this is.\nWhen created this object is merged with the value of Tile.Types[type].",
+            "line": 33,
+            "description": "The type of entity this is.\nWhen created this object is merged with the value of `Tile.Types[type]`. See constructor.",
             "itemtype": "property",
             "name": "type",
-            "type": "Object",
+            "type": "{String}",
             "class": "Tile"
         },
         {
             "file": "src/tile.js",
-            "line": 50,
+            "line": 41,
+            "description": "Display name for this tile.",
+            "itemtype": "property",
+            "name": "name",
+            "type": "{String}",
+            "class": "Tile"
+        },
+        {
+            "file": "src/tile.js",
+            "line": 48,
             "description": "If this tile has been explored by the player.",
             "itemtype": "property",
             "name": "explored",
-            "type": "Bool",
+            "type": "{Bool}",
             "class": "Tile"
         },
         {
             "file": "src/tile.js",
-            "line": 57,
+            "line": 55,
             "description": "If entities can move through this tile.",
             "itemtype": "property",
             "name": "passable",
-            "type": "Bool",
+            "type": "{Bool}",
             "class": "Tile"
         },
         {
             "file": "src/tile.js",
-            "line": 64,
+            "line": 62,
             "description": "If this tile blocks line of sight.",
             "itemtype": "property",
             "name": "passable",
-            "type": "Bool",
+            "type": "{Bool}",
             "class": "Tile"
         },
         {
             "file": "src/tile.js",
-            "line": 71,
-            "description": "The tile map coordinate position on the x axis.",
+            "line": 69,
+            "description": "The tile map tile x coord.",
             "itemtype": "property",
             "name": "x",
-            "type": "Number",
+            "type": "{Number}",
             "class": "Tile"
         },
         {
             "file": "src/tile.js",
-            "line": 78,
-            "description": "The tile map coordinate position on the y axis.",
+            "line": 76,
+            "description": "The tile map tile y coord.",
             "itemtype": "property",
             "name": "y",
-            "type": "Number",
+            "type": "{Number}",
             "class": "Tile"
         },
         {
             "file": "src/tile.js",
-            "line": 85,
+            "line": 83,
             "description": "The character displayed when rendering this tile.",
             "itemtype": "property",
             "name": "char",
-            "type": "String",
+            "type": "{String}",
             "class": "Tile"
         },
         {
             "file": "src/tile.js",
-            "line": 92,
-            "description": "The color of the character displayed when rendering this tile. Not rendered if false.",
+            "line": 90,
+            "description": "The color of the character displayed when rendering this tile. Not rendered if evaluates to false.",
             "itemtype": "property",
             "name": "color",
-            "type": "String|bool",
+            "type": "{String|bool}",
             "class": "Tile"
         },
         {
             "file": "src/tile.js",
-            "line": 99,
-            "description": "The background color the character displayed when rendering this tile. Not rendered if false.",
+            "line": 97,
+            "description": "The background color the character displayed when rendering this tile. Not rendered if evaluates to false.",
             "itemtype": "property",
             "name": "bgColor",
-            "type": "String|bool",
+            "type": "{String|bool}",
             "class": "Tile"
         },
         {
             "file": "src/tile.js",
-            "line": 106,
+            "line": 104,
             "description": "Handles the behavior of a player or other entity attempting to move into this tile. Only used if this.passable = false.",
             "itemtype": "method",
             "name": "bump",
@@ -3294,7 +4174,7 @@
         },
         {
             "file": "src/tile.js",
-            "line": 119,
+            "line": 117,
             "description": "Handles entity entering a new tile.\nCalled after chaning the entities position",
             "itemtype": "method",
             "name": "onEntityEnterTile",
@@ -3319,7 +4199,7 @@
         },
         {
             "file": "src/util.js",
-            "line": 25,
+            "line": 53,
             "description": "Maps directions to coord offsets\n( keys of Util.DIRECTIONS_TO_OFFSETS)",
             "itemtype": "property",
             "name": "DIRECTIONS",
@@ -3333,7 +4213,7 @@
         },
         {
             "file": "src/util.js",
-            "line": 48,
+            "line": 76,
             "description": "Maps direction names to coord offsets.",
             "itemtype": "property",
             "name": "DIRECTIONS_TO_OFFSETS",
@@ -3347,7 +4227,7 @@
         },
         {
             "file": "src/util.js",
-            "line": 68,
+            "line": 98,
             "description": "Merges settings with default values.",
             "itemtype": "method",
             "name": "mergeDefaults",
@@ -3364,11 +4244,40 @@
                     "type": "Object"
                 }
             ],
+            "return": {
+                "description": "A new object with settings replacing defaults.",
+                "type": "Object"
+            },
             "class": "Util"
         },
         {
             "file": "src/util.js",
-            "line": 87,
+            "line": 118,
+            "description": "Copies properties from `source` object to `destination` object.",
+            "itemtype": "method",
+            "name": "merge",
+            "static": 1,
+            "params": [
+                {
+                    "name": "destination",
+                    "description": "- The object to copy properties to.",
+                    "type": "Object"
+                },
+                {
+                    "name": "source",
+                    "description": "- The object to copy properties from.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "destination object",
+                "type": "Object"
+            },
+            "class": "Util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 133,
             "description": "Gets the adjacent coords of a given x, y, direction.",
             "itemtype": "method",
             "name": "getAdjacentTileCoordsFromDirection",
@@ -3388,10 +4297,10 @@
         },
         {
             "file": "src/util.js",
-            "line": 101,
-            "description": "Gets the distance in tiles from point A to point B.",
+            "line": 147,
+            "description": "Gets the distance in tile moves from point 1 to point 2.",
             "itemtype": "method",
-            "name": "getTileDistance",
+            "name": "getTileMoveDistance",
             "params": [
                 {
                     "name": "x1",
@@ -3426,8 +4335,42 @@
             "class": "Util"
         },
         {
+            "file": "src/util.js",
+            "line": 165,
+            "description": "Gets the distance from point 1 to point 2.",
+            "itemtype": "method",
+            "name": "getDistance",
+            "params": [
+                {
+                    "name": "x1",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "y1",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "x2",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "y2",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Util"
+        },
+        {
             "file": "src/valid-targets-finder.js",
-            "line": 35,
+            "line": 36,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -3436,7 +4379,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 42,
+            "line": 43,
             "description": "Entity to check valid targets from.\n(Uses Entity#x, Entity#y, Entity#fov)",
             "itemtype": "property",
             "name": "entity",
@@ -3445,8 +4388,8 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 50,
-            "description": "If true to be valid a target must be in entity fov.",
+            "line": 51,
+            "description": "If true, to be valid a target must be in `this.entity` fov.",
             "itemtype": "property",
             "name": "limitToFov",
             "type": "{Boolean}",
@@ -3454,8 +4397,8 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 57,
-            "description": "Max distance in tiles target can be from entity.",
+            "line": 60,
+            "description": "Max distance in tiles target can be from `this.entity`.",
             "itemtype": "property",
             "name": "range",
             "type": "{Number}",
@@ -3463,8 +4406,8 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 64,
-            "description": "Array of valid target object types. Checked using `target instanceof type`.",
+            "line": 67,
+            "description": "Array of valid target object types. Checked using `target instanceof type`.\nIf set to an empty array or a value evaluating to false, all types are considered valid.",
             "itemtype": "property",
             "name": "validTypes",
             "type": "{Array}",
@@ -3472,7 +4415,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 71,
+            "line": 75,
             "description": "If true tile objects are can be valid targets.",
             "itemtype": "property",
             "name": "includeTiles",
@@ -3481,7 +4424,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 78,
+            "line": 82,
             "description": "If true entity may target themself.",
             "itemtype": "property",
             "name": "includeSelf",
@@ -3490,7 +4433,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 85,
+            "line": 89,
             "description": "Function to filter objects when checking if they are valid. `function(obj){ return true }` .\nTargets must still be an instance of this.validTypes.",
             "itemtype": "property",
             "name": "filter",
@@ -3499,7 +4442,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 93,
+            "line": 97,
             "description": "Gets all valid targets for this action from position of this.entity",
             "itemtype": "method",
             "name": "getValidTargets",
@@ -3511,7 +4454,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 112,
+            "line": 116,
             "description": "Get tile coords a valid target may be on. Only checking range and entity fov, not objects on the tile.",
             "itemtype": "method",
             "name": "getValidTargetTiles",
@@ -3523,7 +4466,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 141,
+            "line": 149,
             "description": "Get valid target objects on a tile coord.",
             "itemtype": "method",
             "name": "getValidTargetsAtPosition",
@@ -3547,7 +4490,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 161,
+            "line": 169,
             "description": "Wraps a target object in a container object with x, y, range",
             "itemtype": "method",
             "name": "prepareTargetObject",
@@ -3586,42 +4529,99 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 194,
+            "line": 202,
+            "description": "Checks if a target object is an instance of a type in `this.validTypes`.",
+            "itemtype": "method",
+            "name": "checkValidType",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "- The target to be checked.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "`true` if valid.",
+                "type": "Bool"
+            },
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 225,
             "description": "Checks if an object is a valid target for this action.",
             "itemtype": "method",
             "name": "checkValidTarget",
             "params": [
                 {
                     "name": "target",
-                    "description": "- target to be checked",
+                    "description": "- The target to be checked.",
                     "type": "Object"
                 }
             ],
             "return": {
-                "description": "true if valid",
+                "description": "`true` if valid.",
                 "type": "Bool"
             },
             "class": "ValidTargetsFinder"
         },
         {
             "file": "src/valid-targets.js",
-            "line": 17,
+            "line": 35,
             "description": "Array of target objects.",
             "type": "{Array}",
+            "itemtype": "property",
+            "name": "targets",
+            "readonly": "",
             "class": "ValidTargets"
         },
         {
             "file": "src/valid-targets.js",
-            "line": 23,
+            "line": 43,
+            "description": "Map of target positions.",
+            "type": "{MultiObjectManager}",
+            "itemtype": "property",
+            "name": "map",
+            "class": "ValidTargets"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 51,
             "description": "Currently Selected Object.",
+            "itemtype": "property",
+            "name": "current",
             "type": "{Object}",
             "readonly": "",
             "class": "ValidTargets"
         },
         {
             "file": "src/valid-targets.js",
-            "line": 30,
-            "description": "Sets the currently selected target.",
+            "line": 59,
+            "description": "Array of types in order of their sort priority.",
+            "type": "{Array}",
+            "itemtype": "property",
+            "name": "typeSortPriority",
+            "class": "ValidTargets"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 66,
+            "description": "Sets the targets, replacing currently set ones.",
+            "itemtype": "method",
+            "name": "setTargets",
+            "params": [
+                {
+                    "name": "targets",
+                    "description": "",
+                    "type": "Array"
+                }
+            ],
+            "class": "ValidTargets"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 81,
+            "description": "Sets the currently selected target object.",
             "itemtype": "method",
             "name": "setCurrent",
             "params": [
@@ -3631,14 +4631,27 @@
                     "type": "Object"
                 }
             ],
+            "return": {
+                "description": "If target was found in `this.targets`. (only set if found).",
+                "type": "Bool"
+            },
             "class": "ValidTargets"
         },
         {
             "file": "src/valid-targets.js",
-            "line": 47,
-            "description": "Gets the currently selected target.",
+            "line": 96,
+            "description": "Gets the currently selected target object.",
             "itemtype": "method",
             "name": "getCurrent",
+            "params": [
+                {
+                    "name": "autoset",
+                    "description": "- If no target is set to current autoset the first.",
+                    "type": "Bool",
+                    "optional": true,
+                    "optdefault": "true"
+                }
+            ],
             "return": {
                 "description": "",
                 "type": "Object"
@@ -3647,22 +4660,72 @@
         },
         {
             "file": "src/valid-targets.js",
-            "line": 60,
+            "line": 112,
             "description": "Sets the object after the currently selected object to be the selected object.",
             "itemtype": "method",
             "name": "next",
             "return": {
-                "description": "",
+                "description": "The new currently selected object.",
                 "type": "Object"
             },
             "class": "ValidTargets"
         },
         {
             "file": "src/valid-targets.js",
-            "line": 81,
+            "line": 132,
             "description": "Sets the object before the currently selected object to be the selected object.",
             "itemtype": "method",
             "name": "prev",
+            "return": {
+                "description": "The new currently selected object.",
+                "type": "Object"
+            },
+            "class": "ValidTargets"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 153,
+            "description": "Gets the sort priority of an object based on its type using 'this.typeSortPriority'.",
+            "itemtype": "method",
+            "name": "getTypeSortPriority",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "ValidTargets"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 167,
+            "description": "Sorts `this.targets` by `this.typeSortPriority` then by range.",
+            "itemtype": "method",
+            "name": "sort",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "ValidTargets"
+        },
+        {
+            "file": "src/valid-targets.js",
+            "line": 191,
+            "description": "Finds a target object by its value.",
+            "itemtype": "method",
+            "name": "getTargetByValue",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
             "return": {
                 "description": "",
                 "type": "Object"
@@ -3672,16 +4735,28 @@
     ],
     "warnings": [
         {
+            "message": "Missing item type\n// return true if should draw\n checkTile(x, y)\n getTileData(x, y)\n prepareTileData(obj, x, y)\n\n\nlayers\n\n\n explored (continue if not explored)\n loop\n      entities\n          tile filters (lighting, hovered)\n      items\n          tile filters (lighting, hovered)\n     fov (shadow)",
+            "line": " src/renderer-layer.js:1"
+        },
+        {
+            "message": "Missing item type\nIf true, `tileData` is drawn to the canvas after processing this layer.",
+            "line": " src/renderer-layer.js:82"
+        },
+        {
+            "message": "Missing item type\nBefore draw function. Ignored if `this.draw = false`.",
+            "line": " src/renderer-layer.js:88"
+        },
+        {
+            "message": "Missing item type\nAfter draw function. Ignored if `this.draw = false`.",
+            "line": " src/renderer-layer.js:94"
+        },
+        {
+            "message": "Missing item type\nTile data layers to draw",
+            "line": " src/renderer.js:35"
+        },
+        {
             "message": "Missing item type\nPlaceholder to add extra draw functionality.\nSame params as this.draw\nfunction(ctx, map, entityManager, player, fov, lighting)",
-            "line": " src/renderer.js:160"
-        },
-        {
-            "message": "Missing item type\nArray of target objects.",
-            "line": " src/valid-targets.js:17"
-        },
-        {
-            "message": "Missing item type\nCurrently Selected Object.",
-            "line": " src/valid-targets.js:23"
+            "line": " src/renderer.js:167"
         }
     ]
 }

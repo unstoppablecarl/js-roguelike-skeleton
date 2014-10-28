@@ -17,15 +17,7 @@
         this.type = type;
 
         var typeData = Tile.Types[type];
-        if(!typeData){
-            throw new Error('TileType "' + type + '" not found.');
-        }
-        for(var key in typeData){
-            this[key] = typeData[key];
-        }
-
-        // make sure "this" is always this Tile instance when calling bump
-        this.bump = this.bump.bind(this);
+        RL.Util.merge(this, typeData);
     };
 
     Tile.prototype = {
@@ -33,75 +25,81 @@
 
         /**
         * Game instance this obj is attached to.
-        *
         * @property game
-        * @type Game
+        * @type {Game}
         */
         game: null,
 
         /**
         * The type of entity this is.
-        * When created this object is merged with the value of Tile.Types[type].
+        * When created this object is merged with the value of `Tile.Types[type]`. See constructor.
         * @property type
-        * @type Object
+        * @type {String}
         */
         type: null,
 
         /**
+        * Display name for this tile.
+        * @property name
+        * @type {String}
+        */
+        name: null,
+
+        /**
         * If this tile has been explored by the player.
         * @property explored
-        * @type Bool
+        * @type {Bool}
         */
         explored: false,
 
         /**
         * If entities can move through this tile.
         * @property passable
-        * @type Bool
+        * @type {Bool}
         */
         passable: false,
 
         /**
         * If this tile blocks line of sight.
         * @property passable
-        * @type Bool
+        * @type {Bool}
         */
         blocksLos: false,
 
         /**
-        * The tile map coordinate position on the x axis.
+        * The tile map tile x coord.
         * @property x
-        * @type Number
+        * @type {Number}
         */
         x: null,
 
         /**
-        * The tile map coordinate position on the y axis.
+        * The tile map tile y coord.
         * @property y
-        * @type Number
+        * @type {Number}
         */
         y: null,
 
         /**
         * The character displayed when rendering this tile.
         * @property char
-        * @type String
+        * @type {String}
         */
         char: null,
 
         /**
-        * The color of the character displayed when rendering this tile. Not rendered if false.
+        * The color of the character displayed when rendering this tile. Not rendered if evaluates to false.
         * @property color
-        * @type String|bool
+        * @type {String|bool}
         */
         color: null,
 
         /**
-        * The background color the character displayed when rendering this tile. Not rendered if false.
+        * The background color the character displayed when rendering this tile. Not rendered if evaluates to false.
         * @property bgColor
-        * @type String|bool
+        * @type {String|bool}
         */
-        bgColor: false,
+        bgColor: null,
 
         /**
         * Handles the behavior of a player or other entity attempting to move into this tile. Only used if this.passable = false.
@@ -126,7 +124,11 @@
         */
         onEntityEnter: function(entity){
             // add behavior here
-        }
+        },
+
+        getTileDrawData: function(){
+            return RL.Util.getTileDrawData(this);
+        },
     };
 
     /**

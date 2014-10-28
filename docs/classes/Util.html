@@ -63,9 +63,17 @@
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
+                <li><a href="../classes/MultiObjectManager.html">MultiObjectManager</a></li>
+            
+                <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
                 <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Renderer.html">Renderer</a></li>
+            
+                <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
+            
+                <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
             
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
@@ -124,7 +132,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_util.js.html#l17"><code>src&#x2F;util.js:17</code></a>
+            Defined in: <a href="../files/src_util.js.html#l45"><code>src&#x2F;util.js:45</code></a>
         </div>
     
 
@@ -176,8 +184,24 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getTileDistance">getTileDistance</a>
+                                <a href="#method_getDistance">getDistance</a>
 
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getTileMoveDistance">getTileMoveDistance</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_merge">merge</a>
+
+                                
+                                    <span class="flag static">static</span>
                                 
                                 
                             </li>
@@ -281,7 +305,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l87"><code>src&#x2F;util.js:87</code></a>
+        <a href="../files/src_util.js.html#l133"><code>src&#x2F;util.js:133</code></a>
         
         </p>
 
@@ -344,8 +368,175 @@
 </div>
 
                 
-                    <div id="method_getTileDistance" class="method item">
-    <h3 class="name"><code>getTileDistance</code></h3>
+                    <div id="method_getDistance" class="method item">
+    <h3 class="name"><code>getDistance</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x2</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y2</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util.js.html#l165"><code>src&#x2F;util.js:165</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the distance from point 1 to point 2.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x1</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y1</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x2</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y2</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Number</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getTileMoveDistance" class="method item">
+    <h3 class="name"><code>getTileMoveDistance</code></h3>
 
     
         <div class="args">
@@ -414,7 +605,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l101"><code>src&#x2F;util.js:101</code></a>
+        <a href="../files/src_util.js.html#l147"><code>src&#x2F;util.js:147</code></a>
         
         </p>
 
@@ -425,7 +616,7 @@
     </div>
 
     <div class="description">
-        <p>Gets the distance in tiles from point A to point B.</p>
+        <p>Gets the distance in tile moves from point 1 to point 2.</p>
 
     </div>
 
@@ -533,8 +724,8 @@
 </div>
 
                 
-                    <div id="method_mergeDefaults" class="method item">
-    <h3 class="name"><code>mergeDefaults</code></h3>
+                    <div id="method_merge" class="method item">
+    <h3 class="name"><code>merge</code></h3>
 
     
         <div class="args">
@@ -542,13 +733,13 @@
             
                 <li class="arg">
                     
-                        <code>defaults</code>
+                        <code>destination</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>settings</code>
+                        <code>source</code>
                     
                 </li>
             
@@ -556,6 +747,10 @@
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
     
 
     
@@ -583,7 +778,142 @@
             
         
         
-        <a href="../files/src_util.js.html#l68"><code>src&#x2F;util.js:68</code></a>
+        <a href="../files/src_util.js.html#l118"><code>src&#x2F;util.js:118</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Copies properties from <code>source</code> object to <code>destination</code> object.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">destination</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The object to copy properties to.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">source</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The object to copy properties from.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>destination object</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_mergeDefaults" class="method item">
+    <h3 class="name"><code>mergeDefaults</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>defaults</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>settings</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util.js.html#l98"><code>src&#x2F;util.js:98</code></a>
         
         </p>
 
@@ -645,6 +975,20 @@
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>A new object with settings replacing defaults.</p>
+
+                
+            </div>
+        </div>
+    
 
     
 </div>
@@ -685,7 +1029,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l25"><code>src&#x2F;util.js:25</code></a>
+        <a href="../files/src_util.js.html#l53"><code>src&#x2F;util.js:53</code></a>
         
         </p>
 
@@ -755,7 +1099,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l48"><code>src&#x2F;util.js:48</code></a>
+        <a href="../files/src_util.js.html#l76"><code>src&#x2F;util.js:76</code></a>
         
         </p>
 

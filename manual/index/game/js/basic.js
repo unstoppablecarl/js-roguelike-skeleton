@@ -33,7 +33,7 @@ var keyBindings = {
 };
 
 game.map.loadTilesFromArrayString(mapData, mapCharToType, 'floor');
-game.entityManager.loadEntitiesFromArrayString(mapData, entityCharToType);
+game.entityManager.loadFromArrayString(mapData, entityCharToType);
 
 // add some lights
 game.lighting.set(3, 7, 255, 0, 0);
@@ -69,6 +69,13 @@ var consoleContainerEl = document.getElementById('example-console-container');
 // append elements created by the game to the DOM
 mapContainerEl.appendChild(game.renderer.canvas);
 consoleContainerEl.appendChild(game.console.el);
+
+game.renderer.layers = [
+    new RL.RendererLayer(game, 'map',       {draw: false,   mergeWithPrevLayer: false}),
+    new RL.RendererLayer(game, 'entity',    {draw: false,   mergeWithPrevLayer: true}),
+    new RL.RendererLayer(game, 'lighting',  {draw: true,    mergeWithPrevLayer: false}),
+    new RL.RendererLayer(game, 'fov',       {draw: true,    mergeWithPrevLayer: false}),
+];
 
 game.console.log('The game starts.');
 // start the game

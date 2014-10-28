@@ -22,4 +22,4 @@ for (var i = 0; i < tiles.length; i++) {
 }
 
 // draw to show changes
-renderer.draw(array2d);
+renderer.draw();

@@ -23,12 +23,15 @@ lib_scripts:
  - ../../../src/mouse.js
  - ../../../src/player.js
  - ../../../src/renderer.js
+ - ../../../src/renderer-layer.js
  - ../../../src/tile.js
  - ../../../src/console.js
  - ../../../src/fov-rot.js
  - ../../../src/lighting-rot.js
  - ../../../src/valid-targets.js
  - ../../../src/valid-targets-finder.js
+ - ../../../src/object-manager.js
+ - ../../../src/multi-object-manager.js
  - ../../../src/game.js
 
 scripts:

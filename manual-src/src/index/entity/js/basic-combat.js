@@ -36,7 +36,7 @@
     };
     var game = makeBasicGame(settings);
 
-    game.entityManager.loadEntitiesFromArrayString(mapData, entityCharToType);
+    game.entityManager.loadFromArrayString(mapData, entityCharToType);
 
     game.start();
 

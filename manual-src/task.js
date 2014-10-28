@@ -24,6 +24,8 @@ var inspect = function(obj){
         var nav = require('metalsmith-navigation');
         var assets = require('metalsmith-assets');
 
+        var drafts = require('metalsmith-drafts');
+
         var navTask = nav({
             primary:{
                 sortBy: 'nav_sort',
@@ -132,6 +134,7 @@ var inspect = function(obj){
             .clean(true)
             .destination('../manual')
             .metadata(meta)
+            .use(drafts())
             .use(markDownTask)
             .use(yuiDataTask)
             .use(navTask)

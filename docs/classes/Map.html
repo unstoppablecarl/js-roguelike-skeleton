@@ -63,9 +63,17 @@
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
+                <li><a href="../classes/MultiObjectManager.html">MultiObjectManager</a></li>
+            
+                <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
                 <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Renderer.html">Renderer</a></li>
+            
+                <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
+            
+                <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
             
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
@@ -715,7 +723,7 @@
             
         
         
-        <a href="../files/src_array-2d.js.html#l418"><code>src&#x2F;array-2d.js:418</code></a>
+        <a href="../files/src_array-2d.js.html#l433"><code>src&#x2F;array-2d.js:433</code></a>
         
         </p>
 
@@ -799,7 +807,7 @@
             
         
         
-        <a href="../files/src_array-2d.js.html#l436"><code>src&#x2F;array-2d.js:436</code></a>
+        <a href="../files/src_array-2d.js.html#l451"><code>src&#x2F;array-2d.js:451</code></a>
         
         </p>
 
@@ -888,7 +896,7 @@
             
                 <li class="arg">
                     
-                        <code>check</code>
+                        <code>filter</code>
                     
                 </li>
             
@@ -928,7 +936,7 @@
             
         
         
-        <a href="../files/src_array-2d.js.html#l389"><code>src&#x2F;array-2d.js:389</code></a>
+        <a href="../files/src_array-2d.js.html#l404"><code>src&#x2F;array-2d.js:404</code></a>
         
         </p>
 
@@ -951,7 +959,7 @@
             
                 <li class="param">
                     
-                        <code class="param-name">check</code>
+                        <code class="param-name">filter</code>
                         <span class="type">Function</span>
                     
 
@@ -999,7 +1007,7 @@
                     
                         <span class="type">Array</span>:
                     
-                    <p>An array of coord values matched by the check function.</p>
+                    <p>An array of coord values matched by the filter function.</p>
 
                 
             </div>
@@ -1090,7 +1098,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Position on the x axis of the value being retrieved.</li>
+<li>Map tile x coord of the value being retrieved.</li>
 </ul>
 
                     </div>
@@ -1108,7 +1116,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Position on the y axis of the value being retrieved.</li>
+<li>Map tile y coord of the value being retrieved.</li>
 </ul>
 
                     </div>
@@ -1159,13 +1167,7 @@
             
                 <li class="arg">
                     
-                        <code>withCoords</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>filter</code>
+                        <code class="optional">[settings]</code>
                     
                 </li>
             
@@ -1230,7 +1232,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Position on the x axis of the coord to get adjacent values of.</li>
+<li>Map tile x coord to get adjacent values of.</li>
 </ul>
 
                     </div>
@@ -1248,7 +1250,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Position on the x axis of the coord to get adjacent values of.</li>
+<li>Map tile y coord to get adjacent values of.</li>
 </ul>
 
                     </div>
@@ -1258,37 +1260,73 @@
             
                 <li class="param">
                     
-                        <code class="param-name">withCoords</code>
-                        <span class="type">Bool</span>
+                        <code class="param-name optional">[settings]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
+                        <p>-</p>
+
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[withCoords=false]</code>
+                                    <span class="type">Bool</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
 <li>If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])</li>
 </ul>
 
-                    </div>
+                                </div>
 
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">filter</code>
-                        <span class="type">Function</span>
-                    
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[withDiagonals=true]</code>
+                                    <span class="type">Bool</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    
+                                <div class="param-description">
+                                    <ul>
+<li>If true diagonals will be included.</li>
+</ul>
 
-                    <div class="param-description">
-                        <ul>
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[filter=false]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
 <li>A function to filter the values returned (function(value, x, y){ return true;})</li>
 </ul>
 
-                    </div>
+                                </div>
 
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -1389,7 +1427,7 @@
             
         
         
-        <a href="../files/src_array-2d.js.html#l241"><code>src&#x2F;array-2d.js:241</code></a>
+        <a href="../files/src_array-2d.js.html#l254"><code>src&#x2F;array-2d.js:254</code></a>
         
         </p>
 
@@ -1420,7 +1458,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Position on the x axis of the coord 0.</li>
+<li>Map tile x coord of start.</li>
 </ul>
 
                     </div>
@@ -1438,7 +1476,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Position on the y axis of the coord 0.</li>
+<li>Map tile y coord of start.</li>
 </ul>
 
                     </div>
@@ -1456,7 +1494,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Position on the x axis of the coord 1.</li>
+<li>Map tile x coord of crossing.</li>
 </ul>
 
                     </div>
@@ -1474,7 +1512,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>Position on the y axis of the coord 1.</li>
+<li>Map tile y coord of crossing.</li>
 </ul>
 
                     </div>
@@ -1565,19 +1603,7 @@
             
                 <li class="arg">
                     
-                        <code>maxRadius</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[check]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[withCoords=false]</code>
+                        <code class="optional">[settings]</code>
                     
                 </li>
             
@@ -1611,7 +1637,7 @@
             
         
         
-        <a href="../files/src_array-2d.js.html#l296"><code>src&#x2F;array-2d.js:296</code></a>
+        <a href="../files/src_array-2d.js.html#l309"><code>src&#x2F;array-2d.js:309</code></a>
         
         </p>
 
@@ -1643,7 +1669,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
 
                     <div class="param-description">
                         <ul>
-<li>Position on the x axis of the coord at the center of the radius.</li>
+<li>Map tile x coord of the center of the radius.</li>
 </ul>
 
                     </div>
@@ -1661,7 +1687,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
 
                     <div class="param-description">
                         <ul>
-<li>Position on the y axis of the coord at the center of the radius.</li>
+<li>Map tile x coord of the center of the radius.</li>
 </ul>
 
                     </div>
@@ -1671,57 +1697,73 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">maxRadius</code>
-                        <span class="type">Number</span>
+                        <code class="param-name optional">[settings]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
+                        <p>-</p>
+
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[maxRadius=1]</code>
+                                    <span class="type">Number</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
 <li>Maxium search radius from given coord.</li>
 </ul>
 
-                    </div>
+                                </div>
 
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[check]</code>
-                        <span class="type">Function</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[filter=false]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    
-
-                    <div class="param-description">
-                        <ul>
+                                <div class="param-description">
+                                    <ul>
 <li>A function to determine when the desired coord value is matched. A coord value returning true when passed to the function would be added to the list of results. (function(value, x, y){ return true;}) If no check function is provided any tile with a truthy value will be matched.</li>
 </ul>
 
-                    </div>
+                                </div>
 
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[withCoords=false]</code>
-                        <span class="type">Bool</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[withCoords=false]</code>
+                                    <span class="type">Bool</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    
-
-                    <div class="param-description">
-                        <ul>
+                                <div class="param-description">
+                                    <ul>
 <li>If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])</li>
 </ul>
 
-                    </div>
+                                </div>
 
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -1770,25 +1812,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             
                 <li class="arg">
                     
-                        <code>radius</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[filter=undefined]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[withCoords=false]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[includeTarget=false]</code>
+                        <code class="optional">[settings]</code>
                     
                 </li>
             
@@ -1822,7 +1846,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             
         
         
-        <a href="../files/src_array-2d.js.html#l183"><code>src&#x2F;array-2d.js:183</code></a>
+        <a href="../files/src_array-2d.js.html#l190"><code>src&#x2F;array-2d.js:190</code></a>
         
         </p>
 
@@ -1853,7 +1877,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
 
                     <div class="param-description">
                         <ul>
-<li>Position on the x axis of the coord at the center of the radius.</li>
+<li>Map tile x coord at the center of the radius.</li>
 </ul>
 
                     </div>
@@ -1871,7 +1895,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
 
                     <div class="param-description">
                         <ul>
-<li>Position on the x axis of the coord at the center of the radius.</li>
+<li>Map tile x coord at the center of the radius.</li>
 </ul>
 
                     </div>
@@ -1881,76 +1905,90 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">radius</code>
-                        <span class="type">Number</span>
+                        <code class="param-name optional">[settings]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <ul>
+                        <p>-</p>
+
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[radius=1]</code>
+                                    <span class="type">Number</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
 <li>Radius of the area to retrieve tiles from.</li>
 </ul>
 
-                    </div>
+                                </div>
 
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[filter=undefined]</code>
-                        <span class="type">Function</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[filter=false]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    
-
-                    <div class="param-description">
-                        <ul>
+                                <div class="param-description">
+                                    <ul>
 <li>A function to filter the values returned (function(value, x, y){ return true;})</li>
 </ul>
 
-                    </div>
+                                </div>
 
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[withCoords=false]</code>
-                        <span class="type">Bool</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[withCoords=false]</code>
+                                    <span class="type">Bool</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    
-
-                    <div class="param-description">
-                        <ul>
+                                <div class="param-description">
+                                    <ul>
 <li>If true the returned array will include the coords of each value ([{x: 0, y: 0, value: 1}, ...])</li>
 </ul>
 
-                    </div>
+                                </div>
 
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[includeTarget=false]</code>
-                        <span class="type">Bool</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[includeTarget=false]</code>
+                                    <span class="type">Bool</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
 
-                    
-
-                    <div class="param-description">
-                        <ul>
+                                <div class="param-description">
+                                    <ul>
 <li>If true the value of the coordinates given will be included in the returned array.</li>
 </ul>
 
-                    </div>
+                                </div>
 
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -2217,7 +2255,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
 
                     <div class="param-description">
                         <ul>
-<li>Position on the x axis of the value being removed.</li>
+<li>Map tile x coord of the value being removed.</li>
 </ul>
 
                     </div>
@@ -2235,7 +2273,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
 
                     <div class="param-description">
                         <ul>
-<li>Position on the y axis of the value being removed.</li>
+<li>Map tile y coord of the value being removed.</li>
 </ul>
 
                     </div>
@@ -2309,7 +2347,7 @@ Used for projecting path of ranged attacks, pushed entities, ect.</p>
     </div>
 
     <div class="description">
-        <p>Resets the 2d array, clearing all data and initializing with this.width and this.height.</p>
+        <p>Resets the 2d array, clearing all data and initializing with <code>this.width</code> and <code>this.height</code>.</p>
 
     </div>
 

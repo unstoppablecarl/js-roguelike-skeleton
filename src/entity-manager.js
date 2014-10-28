@@ -52,27 +52,27 @@
         },
 
         /**
-        * Adds an entity to the manager.
+        * Adds an entity to the manager at given map tile coord.
         * @method add
         * @param {Number} x - The map tile coordinate position of the entity on the x axis.
         * @param {Number} y - The map tile coordinate position of the entity on the y axis.
-        * @param {Entity|String} ent - The Entity being set at given coords. If ent is a string a new Entity will be created using the string as the Entity Type (see Entity.Types[type]).
+        * @param {Entity|String} entity - The Entity being set at given coords. If ent is a string a new Entity will be created using the string as the Entity Type (see Entity.Types[type]).
         * @return {Entity} The added entity
         */
-        add: function(x, y, ent) {
-            if(typeof ent === 'string'){
-                ent = new RL.Entity(this.game, ent);
+        add: function(x, y, entity) {
+            if(typeof entity === 'string'){
+                entity = new RL.Entity(this.game, entity);
             }
-            ent.game = this.game;
-            ent.x = x;
-            ent.y = y;
-            this.entities.push(ent);
-            this.entityMap.set(x, y, ent);
-            return ent;
+            entity.game = this.game;
+            entity.x = x;
+            entity.y = y;
+            this.entities.push(entity);
+            this.entityMap.set(x, y, entity);
+            return entity;
         },
 
         /**
-        * Removes an entity to the manager.
+        * Removes an entity from the manager.
         * @method remove
         * @param {Entity} ent - The entity to be removed.
         */
@@ -97,7 +97,8 @@
         },
 
         /**
-        * Calls the entity.update() method on all entities. Removes dead entities. Typically called after a player has resolved their actions.
+        * Calls the entity.update() method on all entities. Removes dead entities.
+        * Typically called after a player has resolved their actions.
         * @method update
         */
         update: function() {

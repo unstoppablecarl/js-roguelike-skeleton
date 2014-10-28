@@ -43,9 +43,7 @@ var makeBasicGame = function(settings){
     game.input.addBindings(s.keyBindings);
 
     // set player starting position
-    game.player.x = s.playerStartX;
-    game.player.y = s.playerStartY;
-
+    game.entityManager.add(s.playerStartX, s.playerStartY, game.player);
     game.renderer.resize(s.rendererWidth, s.rendererHeight);
 
     // append elements created by the game to the DOM
@@ -54,5 +52,11 @@ var makeBasicGame = function(settings){
     if(s.consoleContainerEl){
         s.consoleContainerEl.appendChild(game.console.el);
     }
+
+    game.renderer.layers = [
+        new RL.RendererLayer(game, 'map',       {draw: false,   mergeWithPrevLayer: false}),
+        new RL.RendererLayer(game, 'entity',    {draw: true,   mergeWithPrevLayer: true}),
+    ];
+
     return game;
 };

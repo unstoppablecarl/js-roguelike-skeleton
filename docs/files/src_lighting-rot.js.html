@@ -63,9 +63,17 @@
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
+                <li><a href="../classes/MultiObjectManager.html">MultiObjectManager</a></li>
+            
+                <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
                 <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Renderer.html">Renderer</a></li>
+            
+                <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
+            
+                <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
             
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
@@ -229,6 +237,7 @@
         * @param {String} [tileData.char] - The character to be rendered.
         * @param {String} [tileData.color] - The color of character to be rendered.
         * @param {String} [tileData.bgColor] - The background color of the tile to be rendered.
+        * @return {Object} tileData
         */
         shadeTile: function(x, y, tileData){
             var light = this.ambientLight;
@@ -255,17 +264,15 @@
             if(tileData.color){
                 var color = ROT.Color.fromString(tileData.color);
                 color = overlay(light, color);
-
                 tileData.color = ROT.Color.toRGB(color);
             }
 
             if(tileData.bgColor){
                 var bgColor = ROT.Color.fromString(tileData.bgColor);
                 bgColor = overlay(light, bgColor);
-
                 tileData.bgColor = ROT.Color.toRGB(bgColor);
             }
-
+            return tileData;
         },
 
         /**

@@ -63,9 +63,17 @@
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
+                <li><a href="../classes/MultiObjectManager.html">MultiObjectManager</a></li>
+            
+                <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
                 <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Renderer.html">Renderer</a></li>
+            
+                <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
+            
+                <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
             
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
@@ -320,6 +328,13 @@ Listens for player input to trigger and resolve new turns.</p>
                             </li>
                         
                             <li class="index-item property">
+                                <a href="#property_gameOver">gameOver</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
                                 <a href="#property_input">input</a>
 
                                 
@@ -349,6 +364,13 @@ Listens for player input to trigger and resolve new turns.</p>
                         
                             <li class="index-item property">
                                 <a href="#property_player">player</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_queueDraw">queueDraw</a>
 
                                 
                                 
@@ -433,7 +455,7 @@ Listens for player input to trigger and resolve new turns.</p>
             
         
         
-        <a href="../files/src_game.js.html#l200"><code>src&#x2F;game.js:200</code></a>
+        <a href="../files/src_game.js.html#l219"><code>src&#x2F;game.js:219</code></a>
         
         </p>
 
@@ -591,7 +613,7 @@ Things like flying, swimming and ghosts moving through walls.</p>
             
         
         
-        <a href="../files/src_game.js.html#l220"><code>src&#x2F;game.js:220</code></a>
+        <a href="../files/src_game.js.html#l239"><code>src&#x2F;game.js:239</code></a>
         
         </p>
 
@@ -740,7 +762,7 @@ Things like flying, swimming and ghosts moving through walls.</p>
             
         
         
-        <a href="../files/src_game.js.html#l256"><code>src&#x2F;game.js:256</code></a>
+        <a href="../files/src_game.js.html#l275"><code>src&#x2F;game.js:275</code></a>
         
         </p>
 
@@ -752,7 +774,7 @@ Things like flying, swimming and ghosts moving through walls.</p>
 
     <div class="description">
         <p>Checks if a map tile can be seen through.
-This is where code for special cases like smoke, fog, x-ray vision should go.</p>
+This is where code for special cases like smoke, fog, x-ray vision can be implemented by checking the entity param.</p>
 
     </div>
 
@@ -874,7 +896,7 @@ This is where code for special cases like smoke, fog, x-ray vision should go.</p
             
         
         
-        <a href="../files/src_game.js.html#l239"><code>src&#x2F;game.js:239</code></a>
+        <a href="../files/src_game.js.html#l258"><code>src&#x2F;game.js:258</code></a>
         
         </p>
 
@@ -886,8 +908,8 @@ This is where code for special cases like smoke, fog, x-ray vision should go.</p
 
     <div class="description">
         <p>Changes the position of an entity on the map.
-Updates entity position in this.entityManager and calls tile.onEntityEnter
-this.entityCanMoveTo() should always be checked before calling this.entityMoveTo</p>
+Updates entity position in this.entityManager and calls tile.onEntityEnter.
+<code>this.entityCanMoveTo()</code> should always be checked first.</p>
 
     </div>
 
@@ -1013,7 +1035,7 @@ this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
             
         
         
-        <a href="../files/src_game.js.html#l180"><code>src&#x2F;game.js:180</code></a>
+        <a href="../files/src_game.js.html#l199"><code>src&#x2F;game.js:199</code></a>
         
         </p>
 
@@ -1134,7 +1156,7 @@ this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
             
         
         
-        <a href="../files/src_game.js.html#l140"><code>src&#x2F;game.js:140</code></a>
+        <a href="../files/src_game.js.html#l159"><code>src&#x2F;game.js:159</code></a>
         
         </p>
 
@@ -1249,7 +1271,7 @@ this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
             
         
         
-        <a href="../files/src_game.js.html#l161"><code>src&#x2F;game.js:161</code></a>
+        <a href="../files/src_game.js.html#l180"><code>src&#x2F;game.js:180</code></a>
         
         </p>
 
@@ -1358,7 +1380,7 @@ this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
             
         
         
-        <a href="../files/src_game.js.html#l120"><code>src&#x2F;game.js:120</code></a>
+        <a href="../files/src_game.js.html#l135"><code>src&#x2F;game.js:135</code></a>
         
         </p>
 
@@ -1455,7 +1477,7 @@ this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
             
         
         
-        <a href="../files/src_game.js.html#l94"><code>src&#x2F;game.js:94</code></a>
+        <a href="../files/src_game.js.html#l109"><code>src&#x2F;game.js:109</code></a>
         
         </p>
 
@@ -1554,7 +1576,7 @@ this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
             
         
         
-        <a href="../files/src_game.js.html#l107"><code>src&#x2F;game.js:107</code></a>
+        <a href="../files/src_game.js.html#l122"><code>src&#x2F;game.js:122</code></a>
         
         </p>
 
@@ -1664,6 +1686,51 @@ this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
 
     <div class="description">
         <p>The current entityManager.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_gameOver" class="property item">
+    <h3 class="name"><code>gameOver</code></h3>
+    <span class="type">Bool</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_game.js.html#l94"><code>src&#x2F;game.js:94</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true input actions are ignored.</p>
 
     </div>
 
@@ -1889,6 +1956,52 @@ this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
 
     <div class="description">
         <p>The current player.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_queueDraw" class="property item">
+    <h3 class="name"><code>queueDraw</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_game.js.html#l101"><code>src&#x2F;game.js:101</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true the map will be drawn even if <code>this.player.update(action)</code> returns false.
+<code>this.queueDraw</code> is set to false after every update.</p>
 
     </div>
 

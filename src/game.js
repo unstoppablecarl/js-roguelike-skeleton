@@ -12,7 +12,7 @@
 
         // un-populated instance of Array2d
         this.map = new RL.Map(this);
-        this.entityManager = new RL.EntityManager(this);
+        this.entityManager = new RL.ObjectManager(this, RL.Entity);
         this.renderer = new RL.Renderer(this);
         this.console = new RL.Console(this);
         this.lighting = new RL.LightingROT(this);
@@ -20,7 +20,7 @@
         // player purposefully not added to entity manager (matter of preference)
         this.player = new RL.Player(this);
 
-        // make sure "this" is this instance of Input not document when this.onKeyAction is called
+        // make sure "this" is this instance of Game when this.onKeyAction is called
         this.onKeyAction = this.onKeyAction.bind(this);
         this.onClick = this.onClick.bind(this);
         this.onHover = this.onHover.bind(this);
@@ -92,6 +92,21 @@
         mouse: null,
 
         /**
+        * If true input actions are ignored.
+        * @property gameOver
+        * @type {Bool}
+        */
+        gameOver: false,
+
+        /**
+         * If true the map will be drawn even if `this.player.update(action)` returns false.
+         * `this.queueDraw` is set to false after every update.
+         * @property queueDraw
+         * @type {Boolean}
+         */
+        queueDraw: false,
+
+        /**
         * Sets the size of the map resizing this.map and this.entityManager.
         * @method setMapSize
         * @param {Number} width - Width in tilse to set map and entityManager to.
@@ -110,7 +125,7 @@
         */
         start: function() {
             // set player position (player is not added to the enitity manager)
-            this.entityManager.move(this.player.x, this.player.y, this.player);
+            this.entityManager.add(this.player.x, this.player.y, this.player);
             this.player.updateFov();
             this.lighting.update();
             this.renderer.setCenter(this.player.x, this.player.y);
@@ -123,18 +138,22 @@
         * @param {String} action - Action triggered by user input.
         */
         onKeyAction: function(action) {
-            if(this.player.update(action)){
-                this.entityManager.update();
-                this.player.updateFov();
+            if(!this.gameOver){
+                var result = this.player.update(action);
+                if(result){
 
-                this.lighting.update();
-                this.renderer.setCenter(this.player.x, this.player.y);
-                this.renderer.draw();
+                    this.entityManager.update(this.player);
+                    this.player.updateFov();
 
-                if(this.player.dead){
-                    console.log('game over');
+                    this.lighting.update();
+                    this.renderer.setCenter(this.player.x, this.player.y);
+                    this.renderer.draw();
+
+                } else if(this.queueDraw){
+                    this.renderer.draw();
                 }
             }
+            this.queueDraw = false;
         },
 
         /**
@@ -238,8 +257,8 @@
 
         /**
         * Changes the position of an entity on the map.
-        * Updates entity position in this.entityManager and calls tile.onEntityEnter
-        * this.entityCanMoveTo() should always be checked before calling this.entityMoveTo
+        * Updates entity position in this.entityManager and calls tile.onEntityEnter.
+        * `this.entityCanMoveTo()` should always be checked first.
         * @method entityMoveTo
         * @param {Entity} entity - The entity to move.
         * @param {Number} x - The tile map x coord to move to.
@@ -255,7 +274,7 @@
 
         /**
         * Checks if a map tile can be seen through.
-        * This is where code for special cases like smoke, fog, x-ray vision should go.
+        * This is where code for special cases like smoke, fog, x-ray vision can be implemented by checking the entity param.
         * @method entityCanSeeThrough
         * @param {Number} x - The x map tile coord to check.
         * @param {Number} y - The y map tile coord to check.
