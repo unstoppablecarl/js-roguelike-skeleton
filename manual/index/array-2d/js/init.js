@@ -52,8 +52,6 @@ var rendererFromArray2d = function(array2d){
     // set the view width and height (in this case we want to see the whole map so it is the same as the map width)
     renderer.resize(array2d.width, array2d.height);
 
-
-
     renderer.layers = [
         new RL.RendererLayer(null, 'basic_map')
     ];

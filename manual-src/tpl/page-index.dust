@@ -52,6 +52,9 @@
 
                     <h2><a href="../docs/index.html">API Docs</a></h2>
                     <p>Generated from source comments.</p>
+
+                    <h2><a href="https://github.com/unstoppablecarl/escape-from-ecma-labs">Escape from Ecma Labs</a></h2>
+                    <p>Example game made using js-roguelike-skeleton</p>
                 </div>
             </div>
         </div>

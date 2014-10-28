@@ -53,10 +53,8 @@ var makeBasicGame = function(settings){
         s.consoleContainerEl.appendChild(game.console.el);
     }
 
-
     game.renderer.layers = [
         new RL.RendererLayer(game, 'map',       {draw: false,   mergeWithPrevLayer: false}),
-
         new RL.RendererLayer(game, 'entity',    {draw: true,   mergeWithPrevLayer: true}),
     ];
 

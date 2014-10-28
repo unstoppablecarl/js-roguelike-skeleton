@@ -577,7 +577,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/renderer-layer.js",
-            "line": 29,
+            "line": 4,
             "description": "Represents a map tile layer to be rendered.",
             "is_constructor": 1,
             "params": [
@@ -602,7 +602,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/renderer-layer.js",
-            "line": 153,
+            "line": 128,
             "description": "Describes different types of `RendererLayer`. Used by the `RendererLayer` constructor `type` param.\n\n    RendererLayer.Types = {\n\n        // ...\n    }",
             "static": 1
         },
@@ -3541,13 +3541,7 @@
         },
         {
             "file": "src/renderer-layer.js",
-            "line": 1,
-            "description": "// return true if should draw\n checkTile(x, y)\n getTileData(x, y)\n prepareTileData(obj, x, y)\n\n\nlayers\n\n\n explored (continue if not explored)\n loop\n      entities\n          tile filters (lighting, hovered)\n      items\n          tile filters (lighting, hovered)\n     fov (shadow)",
-            "class": "RendererLayer"
-        },
-        {
-            "file": "src/renderer-layer.js",
-            "line": 52,
+            "line": 27,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -3556,7 +3550,7 @@
         },
         {
             "file": "src/renderer-layer.js",
-            "line": 59,
+            "line": 34,
             "description": "The type of `RendererLayer` this is.\nWhen created this object is merged with the value of `RendererLayer.Types[type]`. See constructor.",
             "itemtype": "property",
             "name": "type",
@@ -3565,7 +3559,7 @@
         },
         {
             "file": "src/renderer-layer.js",
-            "line": 67,
+            "line": 42,
             "description": "If true, `this.getTileData()` will merge the `tileData` it would otherwise return with the `prevTileData` param (if provided).\nobjects are  from this layer should be merged with layers below before drawing.",
             "itemtype": "property",
             "name": "mergeWithPrevLayer",
@@ -3574,7 +3568,7 @@
         },
         {
             "file": "src/renderer-layer.js",
-            "line": 75,
+            "line": 50,
             "description": "If true, when `this.getTileData(x, y)` returns a value that evaluates to false, all tile layers above this one are not drawn by the `Renderer` for this map tile coord.",
             "itemtype": "property",
             "name": "cancelTileDrawWhenNotFound",
@@ -3583,28 +3577,28 @@
         },
         {
             "file": "src/renderer-layer.js",
-            "line": 82,
+            "line": 57,
             "description": "If true, `tileData` is drawn to the canvas after processing this layer.",
             "type": "{Boolean}",
             "class": "RendererLayer"
         },
         {
             "file": "src/renderer-layer.js",
-            "line": 88,
+            "line": 63,
             "description": "Before draw function. Ignored if `this.draw = false`.",
             "type": "{Function} `function(x, y, tileData, ctx){}`",
             "class": "RendererLayer"
         },
         {
             "file": "src/renderer-layer.js",
-            "line": 94,
+            "line": 69,
             "description": "After draw function. Ignored if `this.draw = false`.",
             "type": "{Function} `function(x, y, tileData, ctx){}`",
             "class": "RendererLayer"
         },
         {
             "file": "src/renderer-layer.js",
-            "line": 100,
+            "line": 75,
             "description": "Get layer's `tileData` for a given map tile coord.",
             "itemtype": "method",
             "name": "getModifiedTileData",
@@ -3634,7 +3628,7 @@
         },
         {
             "file": "src/renderer-layer.js",
-            "line": 112,
+            "line": 87,
             "description": "Get layer's `tileData` for a given map tile coord.\nOptionally modifying the `prevTileData` object param if `this.mergeWithPrevLayer = true`.",
             "itemtype": "method",
             "name": "getModifiedTileData",
@@ -3664,7 +3658,7 @@
         },
         {
             "file": "src/renderer-layer.js",
-            "line": 129,
+            "line": 104,
             "description": "Merges 2 `tileData` objects.\nUsed to Merges layers of the same tile before drawing them.",
             "itemtype": "method",
             "name": "mergeTileData",
@@ -4735,20 +4729,16 @@
     ],
     "warnings": [
         {
-            "message": "Missing item type\n// return true if should draw\n checkTile(x, y)\n getTileData(x, y)\n prepareTileData(obj, x, y)\n\n\nlayers\n\n\n explored (continue if not explored)\n loop\n      entities\n          tile filters (lighting, hovered)\n      items\n          tile filters (lighting, hovered)\n     fov (shadow)",
-            "line": " src/renderer-layer.js:1"
-        },
-        {
             "message": "Missing item type\nIf true, `tileData` is drawn to the canvas after processing this layer.",
-            "line": " src/renderer-layer.js:82"
+            "line": " src/renderer-layer.js:57"
         },
         {
             "message": "Missing item type\nBefore draw function. Ignored if `this.draw = false`.",
-            "line": " src/renderer-layer.js:88"
+            "line": " src/renderer-layer.js:63"
         },
         {
             "message": "Missing item type\nAfter draw function. Ignored if `this.draw = false`.",
-            "line": " src/renderer-layer.js:94"
+            "line": " src/renderer-layer.js:69"
         },
         {
             "message": "Missing item type\nTile data layers to draw",
