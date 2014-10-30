@@ -271,8 +271,6 @@
         */
         drawTileToCanvas: function(x, y, tileData, ctx) {
             ctx = ctx || this.bufferCtx;
-            x = tileData.x || x;
-            y = tileData.y || y;
 
             var originalX = x,
                 originalY = y;
@@ -430,7 +428,6 @@
             // draw from buffer canvas to canvas in DOM only once all buffer draws are complete
             this.ctx.drawImage(this.buffer, 0, 0, this.canvas.width, this.canvas.height);
         },
-
     };
 
     root.RL.Renderer = Renderer;
