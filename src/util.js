@@ -115,23 +115,28 @@
         },
 
         /**
-        * Copies properties from `source` object to `destination` object.
+        * Copy all of the properties in the source objects over to the destination object, and return the destination object.
+        * It's in-order, so the last source will override properties of the same name in previous arguments.
         * @method merge
         * @static
         * @param {Object} destination - The object to copy properties to.
-        * @param {Object} source - The object to copy properties from.
-        * @return {Object} destination object
+        * @param {Object} source* - The object to copy properties from.
+        * @return {Object} The `destination` object.
         */
-        merge: function(destination, source){
-            for(var key in source){
-                destination[key] = source[key];
+        merge: function(destination){
+            var sources = Array.prototype.slice.call(arguments, 1);
+            for (var i = 0; i < sources.length; i++) {
+                var source = sources[i];
+                for(var key in source){
+                    destination[key] = source[key];
+                }
             }
             return destination;
         },
 
         /**
-        * Gets the adjacent coords of a given x, y, direction.
-        * @method getAdjacentTileCoordsFromDirection
+        * Gets the offset coords of a given direction.
+        * @method getOffsetCoordsFromDirection
         * @static
         * @param {String} direction - valid directions: [`up`, `down`, `left`, `right`, `up_left`, `up_right`, `down_left`, `down_right`];.
         * @return {Object} `{x: 0, y: 0}`
