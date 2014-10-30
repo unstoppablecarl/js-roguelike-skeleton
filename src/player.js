@@ -161,7 +161,7 @@
         */
         update: function(action) {
             // if the action is a direction
-            if(RL.Util.DIRECTIONS.indexOf(action) !== -1){
+            if(RL.Util.DIRECTIONS_4.indexOf(action) !== -1){
                 var offsetCoord = RL.Util.getOffsetCoordsFromDirection(action),
                     moveToX = this.x + offsetCoord.x,
                     moveToY = this.y + offsetCoord.y;

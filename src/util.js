@@ -12,13 +12,14 @@
         up_left:      {x: -1, y: -1}
     };
 
-    var DIRECTIONS = [
+    var DIRECTIONS_4 = [
         'up',
         'down',
         'left',
         'right'
     ];
-    var DIRECTIONS_WITH_DIAGONALS = [
+
+    var DIRECTIONS_8 = [
         'up',
         'up_right',
         'right',
@@ -90,7 +91,7 @@
          *        down_left:    {x: -1, y:  1},
          *        left:         {x: -1, y:  0},
          *        up_left:      {x: -1, y: -1}
-         *     }`
+         *     }
          */
         DIRECTIONS_TO_OFFSETS: DIRECTIONS_TO_OFFSETS,
 
@@ -155,7 +156,7 @@
          * @param {Number} y1
          * @param {Number} x2
          * @param {Number} y2
-         * @param {Bool} [diagonalMovement = false]if true, calculate the distance taking into account diagonal movement.
+         * @param {Bool} [diagonalMovement=false]if true, calculate the distance taking into account diagonal movement.
          * @return {Number}
          */
         getTileMoveDistance: function(x1, y1, x2, y2, diagonalMovement){
