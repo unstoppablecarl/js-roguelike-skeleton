@@ -5,10 +5,10 @@
     * Represents lighting in the game map. requires ROT.js
     * Manages position of lights.
     * Calculates illumination of map tiles.
-    * @class Lighting
+    * @class LightingROT
     * @constructor
     * @param {Game} game - Game instance this obj is attached to.
-    * @param {Object} [settings]- Lighting settings object.
+    * @param {Object} [settings] - LightingROT settings object.
     * @param {Number} [settings.range] - Maximum range for the most powerful light source.
     * @param {Number} [settings.passes] - Number of computation passes (1: no reflectivity used, 2: reflectivity used)
     * @param {Number} [settings.emissionThreshold] - Minimal amount of light at a cell to be re-emited (only for passes>1).
@@ -103,11 +103,8 @@
         * @method shadeTile
         * @param {Number} x - The x map coordinate to shade.
         * @param {Number} y - The y map coordinate to shade.
-        * @param {Object} tileData - The tileData object to shade.
-        * @param {String} [tileData.char] - The character to be rendered.
-        * @param {String} [tileData.color] - The color of character to be rendered.
-        * @param {String} [tileData.bgColor] - The background color of the tile to be rendered.
-        * @return {Object} tileData
+        * @param {TileData} tileData - The `TileData` object to shade.
+        * @return {TileData}
         */
         shadeTile: function(x, y, tileData){
             var light = this.ambientLight;

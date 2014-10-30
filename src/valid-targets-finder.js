@@ -55,6 +55,11 @@
          */
         limitToFov: false,
 
+        /**
+         * Limit results to non-diagonal adjacent tiles
+         * @propery limitToNonDiagonalAdjacent
+         * @type {Boolean}
+         */
         limitToNonDiagonalAdjacent: false,
 
         /**

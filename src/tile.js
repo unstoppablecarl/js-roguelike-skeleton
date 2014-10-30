@@ -62,7 +62,7 @@
 
         /**
         * If this tile blocks line of sight.
-        * @property passable
+        * @property blocksLos
         * @type {Bool}
         */
         blocksLos: false,
@@ -118,7 +118,7 @@
         /**
         * Handles entity entering a new tile.
         * Called after chaning the entities position
-        * @method onEntityEnterTile
+        * @method onEntityEnter
         * @param {Entity} entity - The entity entering the tile
         * @param {Number} x - Map tile coord.
         * @param {Number} y - Map tile coord.

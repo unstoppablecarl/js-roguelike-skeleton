@@ -33,6 +33,13 @@
         constructor: ValidTargets,
 
         /**
+        * Game instance this obj is attached to.
+        * @property game
+        * @type {Game}
+        */
+        game: null,
+
+        /**
          * Array of target objects.
          * @type {Array}
          * @property targets

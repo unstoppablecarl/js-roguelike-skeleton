@@ -56,42 +56,45 @@
 
         /**
          * If true, `tileData` is drawn to the canvas after processing this layer.
+         * @property draw
          * @type {Boolean}
          */
         draw: false,
 
         /**
          * Before draw function. Ignored if `this.draw = false`.
+         * @property beforeDraw
          * @type {Function} `function(x, y, tileData, ctx){}`
          */
         beforeDraw: false,
 
         /**
          * After draw function. Ignored if `this.draw = false`.
+         * @property afterDraw
          * @type {Function} `function(x, y, tileData, ctx){}`
          */
         afterDraw: false,
 
         /**
          * Get layer's `tileData` for a given map tile coord.
-         * @method getModifiedTileData
+         * @method getTileData
          * @param {Number} x - Map tile x coord.
          * @param {Object} y - Map tile y coord.
          * @param {Object} [prevTileData] - `tileData` object for the given map tile coord from previous layer.
-         * @return {Object|Bool} false if nothing to render
+         * @return {TileData|Bool} false if nothing to render
          */
         getTileData: function(x, y, prevTileData){
             return false;
         },
 
         /**
-         * Get layer's `tileData` for a given map tile coord.
+         * Get layer's `TileData` for a given map tile coord.
          * Optionally modifying the `prevTileData` object param if `this.mergeWithPrevLayer = true`.
          * @method getModifiedTileData
          * @param {Number} x - Map tile x coord.
          * @param {Object} y - Map tile y coord.
          * @param {Object} [prevTileData] - `tileData` object for the given map tile coord from previous layer.
-         * @return {Object|Bool} false if nothing to render
+         * @return {TileData|Bool} false if nothing to render
          */
         getModifiedTileData: function(x, y, prevTileData){
             var tileData = this.getTileData(x, y, prevTileData);
@@ -105,9 +108,9 @@
          * Merges 2 `tileData` objects.
          * Used to Merges layers of the same tile before drawing them.
          * @method mergeTileData
-         * @param {Object} tileData1 - `tileData` to merge to.
-         * @param {Object} tileData2 - `tileData` to merge from, properties with values on tileData2 replace matching properties on tileData1
-         * @return {Object} A new `tileData` object with merged values.
+         * @param {TileData} tileData1 - `tileData` to merge to.
+         * @param {TileData} tileData2 - `tileData` to merge from, properties with values on tileData2 replace matching properties on tileData1
+         * @return {TileData} A new `tileData` object with merged values.
          */
         mergeTileData: function(tileData1, tileData2){
             var result = {},

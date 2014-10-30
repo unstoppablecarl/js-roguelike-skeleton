@@ -198,7 +198,7 @@
 
         /**
          * Gets all objects at tile position
-         * @method getObjectsOnTile
+         * @method getObjectsAtPostion
          * @param  {Number} x
          * @param  {Number} y
          * @return {Array}
