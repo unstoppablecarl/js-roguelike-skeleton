@@ -29,58 +29,59 @@
         'up_left'
     ];
 
-    var TILE_DRAW_DATA_KEYS = [
-        'x',
-        'y',
-        'char',
-        'color',
-        'bgColor',
-        'borderColor',
-        'borderWidth',
-        'fontSize',
-        'charStrokeColor',
-        'charStrokeWidth'
-    ];
-
     /**
-    * Utility functions
+    * Utility functions.
     * @class Util
     * @static
     */
     var Util = {
 
-
         /**
-         * Maps directions to coord offsets
-         * ( keys of Util.DIRECTIONS_TO_OFFSETS)
-         * @property DIRECTIONS
-         * @type Array
+         * List of 4 directions as strings.
+         * Used to match property keys of `Util.DIRECTIONS_TO_OFFSETS`.
+         * @property DIRECTIONS_4
+         * @type {Array}
          * @static
          * @final
          * @example
-         *     `
-         *      [
-         *          'up',
-         *          'up_right',
-         *          'right',
-         *          'down_right',
-         *          'down',
-         *          'down_left',
-         *          'left',
-         *          'up_left',
-         *      ]
-         *     `
+         *     [
+         *         'up',
+         *         'right',
+         *         'down',
+         *         'left',
+         *     ]
          */
-        DIRECTIONS: DIRECTIONS,
+        DIRECTIONS_4: DIRECTIONS_4,
+
+        /**
+         * List of 8 directions as strings.
+         * Used to match property keys of `Util.DIRECTIONS_TO_OFFSETS`.
+         * @property DIRECTIONS_8
+         * @type {Array}
+         * @static
+         * @final
+         * @example
+         *     [
+         *         'up',
+         *         'up_right',
+         *         'right',
+         *         'down_right',
+         *         'down',
+         *         'down_left',
+         *         'left',
+         *         'up_left',
+         *     ]
+         */
+        DIRECTIONS_8: DIRECTIONS_8,
 
         /**
          * Maps direction names to coord offsets.
          * @property DIRECTIONS_TO_OFFSETS
-         * @type Object
+         * @type {Object}
          * @static
          * @final
          * @example
-         *     `{
+         *     {
          *        up:           {x:  0, y: -1},
          *        up_right:     {x:  1, y: -1},
          *        right:        {x:  1, y:  0},
@@ -92,8 +93,6 @@
          *     }`
          */
         DIRECTIONS_TO_OFFSETS: DIRECTIONS_TO_OFFSETS,
-
-        TILE_DRAW_DATA_KEYS: TILE_DRAW_DATA_KEYS,
 
         /**
         * Merges settings with default values.
@@ -176,16 +175,6 @@
             var dy = y2 - y1;
             return Math.sqrt(dx*dx + dy*dy);
         },
-        getTileDrawData: function(obj, keys){
-            keys = keys || this.TILE_DRAW_DATA_KEYS;
-            var result = {};
-
-            for(var i = keys.length - 1; i >= 0; i--){
-                var key = keys[i];
-                result[key] = obj[key];
-            }
-            return result;
-        }
     };
 
     root.RL.Util = Util;

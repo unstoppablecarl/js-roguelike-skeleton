@@ -7,6 +7,7 @@
     * Occupies a single game map tile.
     * @class Entity
     * @constructor
+    * @uses TileDraw
     * @param {Game} game - Game instance this obj is attached to.
     * @param {String} type - Type of entity. When created this object is merged with the value of Entity.Types[type].
     */
@@ -162,11 +163,9 @@
         bump: function(entity){
             return false;
         },
-
-        getTileDrawData: function(){
-            return RL.Util.getTileDrawData(this);
-        },
     };
+
+    RL.Util.merge(Entity.prototype, RL.Mixins.TileDraw);
 
     /**
     * Describes different types of entities. Used by the Entity constructor 'type' param.
