@@ -112,16 +112,7 @@
         }
     };
 
-    /*
-        Object inheritance is on the list of non-beginner
-        techniques to be avoided. An exception is made here
-        to avoid copying all Array2d methods
-    */
-    for(var key in RL.Array2d.prototype){
-        if(Map.prototype[key] === void 0){
-            Map.prototype[key] = RL.Array2d.prototype[key];
-        }
-    }
+    Map.prototype = RL.Util.merge({}, RL.Array2d.prototype, Map.prototype);
 
     root.RL.Map = Map;
 
