@@ -15,10 +15,10 @@ vendor_scripts:
 lib_scripts:
  - ../../../src/rl.js
  - ../../../src/util.js
+ - ../../../src/mixins.js
  - ../../../src/array-2d.js
  - ../../../src/map.js
  - ../../../src/entity.js
- - ../../../src/entity-manager.js
  - ../../../src/input.js
  - ../../../src/mouse.js
  - ../../../src/player.js

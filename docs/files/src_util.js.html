@@ -49,17 +49,17 @@
             
                 <li><a href="../classes/Entity.Types.html">Entity.Types</a></li>
             
-                <li><a href="../classes/EntityManager.html">EntityManager</a></li>
-            
                 <li><a href="../classes/FovROT.html">FovROT</a></li>
             
                 <li><a href="../classes/Game.html">Game</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
-                <li><a href="../classes/Lighting.html">Lighting</a></li>
+                <li><a href="../classes/LightingROT.html">LightingROT</a></li>
             
                 <li><a href="../classes/Map.html">Map</a></li>
+            
+                <li><a href="../classes/Mixins.html">Mixins</a></li>
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
@@ -78,6 +78,10 @@
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
                 <li><a href="../classes/Tile.Types.html">Tile.Types</a></li>
+            
+                <li><a href="../classes/TileDraw.html">TileDraw</a></li>
+            
+                <li><a href="../classes/TileDrawData.html">TileDrawData</a></li>
             
                 <li><a href="../classes/Util.html">Util</a></li>
             
@@ -142,13 +146,14 @@
         up_left:      {x: -1, y: -1}
     };
 
-    var DIRECTIONS = [
+    var DIRECTIONS_4 = [
         &#x27;up&#x27;,
         &#x27;down&#x27;,
         &#x27;left&#x27;,
         &#x27;right&#x27;
     ];
-    var DIRECTIONS_WITH_DIAGONALS = [
+
+    var DIRECTIONS_8 = [
         &#x27;up&#x27;,
         &#x27;up_right&#x27;,
         &#x27;right&#x27;,
@@ -159,58 +164,59 @@
         &#x27;up_left&#x27;
     ];
 
-    var TILE_DRAW_DATA_KEYS = [
-        &#x27;x&#x27;,
-        &#x27;y&#x27;,
-        &#x27;char&#x27;,
-        &#x27;color&#x27;,
-        &#x27;bgColor&#x27;,
-        &#x27;borderColor&#x27;,
-        &#x27;borderWidth&#x27;,
-        &#x27;fontSize&#x27;,
-        &#x27;charStrokeColor&#x27;,
-        &#x27;charStrokeWidth&#x27;
-    ];
-
     /**
-    * Utility functions
+    * Utility functions.
     * @class Util
     * @static
     */
     var Util = {
 
-
         /**
-         * Maps directions to coord offsets
-         * ( keys of Util.DIRECTIONS_TO_OFFSETS)
-         * @property DIRECTIONS
-         * @type Array
+         * List of 4 directions as strings.
+         * Used to match property keys of &#x60;Util.DIRECTIONS_TO_OFFSETS&#x60;.
+         * @property DIRECTIONS_4
+         * @type {Array}
          * @static
          * @final
          * @example
-         *     &#x60;
-         *      [
-         *          &#x27;up&#x27;,
-         *          &#x27;up_right&#x27;,
-         *          &#x27;right&#x27;,
-         *          &#x27;down_right&#x27;,
-         *          &#x27;down&#x27;,
-         *          &#x27;down_left&#x27;,
-         *          &#x27;left&#x27;,
-         *          &#x27;up_left&#x27;,
-         *      ]
-         *     &#x60;
+         *     [
+         *         &#x27;up&#x27;,
+         *         &#x27;right&#x27;,
+         *         &#x27;down&#x27;,
+         *         &#x27;left&#x27;,
+         *     ]
          */
-        DIRECTIONS: DIRECTIONS,
+        DIRECTIONS_4: DIRECTIONS_4,
+
+        /**
+         * List of 8 directions as strings.
+         * Used to match property keys of &#x60;Util.DIRECTIONS_TO_OFFSETS&#x60;.
+         * @property DIRECTIONS_8
+         * @type {Array}
+         * @static
+         * @final
+         * @example
+         *     [
+         *         &#x27;up&#x27;,
+         *         &#x27;up_right&#x27;,
+         *         &#x27;right&#x27;,
+         *         &#x27;down_right&#x27;,
+         *         &#x27;down&#x27;,
+         *         &#x27;down_left&#x27;,
+         *         &#x27;left&#x27;,
+         *         &#x27;up_left&#x27;,
+         *     ]
+         */
+        DIRECTIONS_8: DIRECTIONS_8,
 
         /**
          * Maps direction names to coord offsets.
          * @property DIRECTIONS_TO_OFFSETS
-         * @type Object
+         * @type {Object}
          * @static
          * @final
          * @example
-         *     &#x60;{
+         *     {
          *        up:           {x:  0, y: -1},
          *        up_right:     {x:  1, y: -1},
          *        right:        {x:  1, y:  0},
@@ -219,11 +225,9 @@
          *        down_left:    {x: -1, y:  1},
          *        left:         {x: -1, y:  0},
          *        up_left:      {x: -1, y: -1}
-         *     }&#x60;
+         *     }
          */
         DIRECTIONS_TO_OFFSETS: DIRECTIONS_TO_OFFSETS,
-
-        TILE_DRAW_DATA_KEYS: TILE_DRAW_DATA_KEYS,
 
         /**
         * Merges settings with default values.
@@ -246,23 +250,28 @@
         },
 
         /**
-        * Copies properties from &#x60;source&#x60; object to &#x60;destination&#x60; object.
+        * Copy all of the properties in the source objects over to the destination object, and return the destination object.
+        * It&#x27;s in-order, so the last source will override properties of the same name in previous arguments.
         * @method merge
         * @static
         * @param {Object} destination - The object to copy properties to.
-        * @param {Object} source - The object to copy properties from.
-        * @return {Object} destination object
+        * @param {Object} source* - The object to copy properties from.
+        * @return {Object} The &#x60;destination&#x60; object.
         */
-        merge: function(destination, source){
-            for(var key in source){
-                destination[key] = source[key];
+        merge: function(destination){
+            var sources = Array.prototype.slice.call(arguments, 1);
+            for (var i = 0; i &lt; sources.length; i++) {
+                var source = sources[i];
+                for(var key in source){
+                    destination[key] = source[key];
+                }
             }
             return destination;
         },
 
         /**
-        * Gets the adjacent coords of a given x, y, direction.
-        * @method getAdjacentTileCoordsFromDirection
+        * Gets the offset coords of a given direction.
+        * @method getOffsetCoordsFromDirection
         * @static
         * @param {String} direction - valid directions: [&#x60;up&#x60;, &#x60;down&#x60;, &#x60;left&#x60;, &#x60;right&#x60;, &#x60;up_left&#x60;, &#x60;up_right&#x60;, &#x60;down_left&#x60;, &#x60;down_right&#x60;];.
         * @return {Object} &#x60;{x: 0, y: 0}&#x60;
@@ -281,7 +290,7 @@
          * @param {Number} y1
          * @param {Number} x2
          * @param {Number} y2
-         * @param {Bool} [diagonalMovement = false]if true, calculate the distance taking into account diagonal movement.
+         * @param {Bool} [diagonalMovement=false]if true, calculate the distance taking into account diagonal movement.
          * @return {Number}
          */
         getTileMoveDistance: function(x1, y1, x2, y2, diagonalMovement){
@@ -306,16 +315,6 @@
             var dy = y2 - y1;
             return Math.sqrt(dx*dx + dy*dy);
         },
-        getTileDrawData: function(obj, keys){
-            keys = keys || this.TILE_DRAW_DATA_KEYS;
-            var result = {};
-
-            for(var i = keys.length - 1; i &gt;= 0; i--){
-                var key = keys[i];
-                result[key] = obj[key];
-            }
-            return result;
-        }
     };
 
     root.RL.Util = Util;

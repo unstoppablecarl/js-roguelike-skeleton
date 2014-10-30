@@ -49,17 +49,17 @@
             
                 <li><a href="../classes/Entity.Types.html">Entity.Types</a></li>
             
-                <li><a href="../classes/EntityManager.html">EntityManager</a></li>
-            
                 <li><a href="../classes/FovROT.html">FovROT</a></li>
             
                 <li><a href="../classes/Game.html">Game</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
-                <li><a href="../classes/Lighting.html">Lighting</a></li>
+                <li><a href="../classes/LightingROT.html">LightingROT</a></li>
             
                 <li><a href="../classes/Map.html">Map</a></li>
+            
+                <li><a href="../classes/Mixins.html">Mixins</a></li>
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
@@ -78,6 +78,10 @@
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
                 <li><a href="../classes/Tile.Types.html">Tile.Types</a></li>
+            
+                <li><a href="../classes/TileDraw.html">TileDraw</a></li>
+            
+                <li><a href="../classes/TileDrawData.html">TileDrawData</a></li>
             
                 <li><a href="../classes/Util.html">Util</a></li>
             
@@ -299,7 +303,7 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getModifiedTileData">getModifiedTileData</a>
+                                <a href="#method_getTileData">getTileData</a>
 
                                 
                                 
@@ -323,7 +327,28 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
+                                <a href="#property_afterDraw">afterDraw</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_beforeDraw">beforeDraw</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
                                 <a href="#property_cancelTileDrawWhenNotFound">cancelTileDrawWhenNotFound</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_draw">draw</a>
 
                                 
                                 
@@ -395,7 +420,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Object | Bool</span>
+            <span class="type">TileData | Bool</span>
         </span>
     
 
@@ -422,7 +447,166 @@
             
         
         
-        <a href="../files/src_renderer-layer.js.html#l75"><code>src&#x2F;renderer-layer.js:75</code></a>
+        <a href="../files/src_renderer-layer.js.html#l90"><code>src&#x2F;renderer-layer.js:90</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Get layer&#39;s <code>TileData</code> for a given map tile coord.
+Optionally modifying the <code>prevTileData</code> object param if <code>this.mergeWithPrevLayer = true</code>.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Map tile x coord.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Map tile y coord.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[prevTileData]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li><code>tileData</code> object for the given map tile coord from previous layer.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">TileData | Bool</span>:
+                    
+                    <p>false if nothing to render</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getTileData" class="method item">
+    <h3 class="name"><code>getTileData</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[prevTileData]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">TileData | Bool</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_renderer-layer.js.html#l78"><code>src&#x2F;renderer-layer.js:78</code></a>
         
         </p>
 
@@ -509,166 +693,7 @@
             <div class="returns-description">
                 
                     
-                        <span class="type">Object | Bool</span>:
-                    
-                    <p>false if nothing to render</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_getModifiedTileData" class="method item">
-    <h3 class="name"><code>getModifiedTileData</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>y</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[prevTileData]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Object | Bool</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_renderer-layer.js.html#l87"><code>src&#x2F;renderer-layer.js:87</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Get layer&#39;s <code>tileData</code> for a given map tile coord.
-Optionally modifying the <code>prevTileData</code> object param if <code>this.mergeWithPrevLayer = true</code>.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Map tile x coord.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">y</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Map tile y coord.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[prevTileData]</code>
-                        <span class="type">Object</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li><code>tileData</code> object for the given map tile coord from previous layer.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Object | Bool</span>:
+                        <span class="type">TileData | Bool</span>:
                     
                     <p>false if nothing to render</p>
 
@@ -706,7 +731,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
 
     
         <span class="returns-inline">
-            <span class="type">Object</span>
+            <span class="type">TileData</span>
         </span>
     
 
@@ -733,7 +758,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             
         
         
-        <a href="../files/src_renderer-layer.js.html#l104"><code>src&#x2F;renderer-layer.js:104</code></a>
+        <a href="../files/src_renderer-layer.js.html#l107"><code>src&#x2F;renderer-layer.js:107</code></a>
         
         </p>
 
@@ -758,7 +783,7 @@ Used to Merges layers of the same tile before drawing them.</p>
                 <li class="param">
                     
                         <code class="param-name">tileData1</code>
-                        <span class="type">Object</span>
+                        <span class="type">TileData</span>
                     
 
                     
@@ -776,7 +801,7 @@ Used to Merges layers of the same tile before drawing them.</p>
                 <li class="param">
                     
                         <code class="param-name">tileData2</code>
-                        <span class="type">Object</span>
+                        <span class="type">TileData</span>
                     
 
                     
@@ -802,7 +827,7 @@ Used to Merges layers of the same tile before drawing them.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type">Object</span>:
+                        <span class="type">TileData</span>:
                     
                     <p>A new <code>tileData</code> object with merged values.</p>
 
@@ -821,6 +846,96 @@ Used to Merges layers of the same tile before drawing them.</p>
         
             <div id="properties" class="api-class-tabpanel">
                 <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_afterDraw" class="property item">
+    <h3 class="name"><code>afterDraw</code></h3>
+    <span class="type">Function <code>function(x, y, tileData, ctx)</code></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_renderer-layer.js.html#l71"><code>src&#x2F;renderer-layer.js:71</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>After draw function. Ignored if <code>this.draw = false</code>.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_beforeDraw" class="property item">
+    <h3 class="name"><code>beforeDraw</code></h3>
+    <span class="type">Function <code>function(x, y, tileData, ctx)</code></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_renderer-layer.js.html#l64"><code>src&#x2F;renderer-layer.js:64</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Before draw function. Ignored if <code>this.draw = false</code>.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
 
                 
                     <div id="property_cancelTileDrawWhenNotFound" class="property item">
@@ -857,6 +972,51 @@ Used to Merges layers of the same tile before drawing them.</p>
 
     <div class="description">
         <p>If true, when <code>this.getTileData(x, y)</code> returns a value that evaluates to false, all tile layers above this one are not drawn by the <code>Renderer</code> for this map tile coord.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_draw" class="property item">
+    <h3 class="name"><code>draw</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_renderer-layer.js.html#l57"><code>src&#x2F;renderer-layer.js:57</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true, <code>tileData</code> is drawn to the canvas after processing this layer.</p>
 
     </div>
 

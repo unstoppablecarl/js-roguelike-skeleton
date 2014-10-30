@@ -49,17 +49,17 @@
             
                 <li><a href="../classes/Entity.Types.html">Entity.Types</a></li>
             
-                <li><a href="../classes/EntityManager.html">EntityManager</a></li>
-            
                 <li><a href="../classes/FovROT.html">FovROT</a></li>
             
                 <li><a href="../classes/Game.html">Game</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
-                <li><a href="../classes/Lighting.html">Lighting</a></li>
+                <li><a href="../classes/LightingROT.html">LightingROT</a></li>
             
                 <li><a href="../classes/Map.html">Map</a></li>
+            
+                <li><a href="../classes/Mixins.html">Mixins</a></li>
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
@@ -78,6 +78,10 @@
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
                 <li><a href="../classes/Tile.Types.html">Tile.Types</a></li>
+            
+                <li><a href="../classes/TileDraw.html">TileDraw</a></li>
+            
+                <li><a href="../classes/TileDrawData.html">TileDrawData</a></li>
             
                 <li><a href="../classes/Util.html">Util</a></li>
             
@@ -126,6 +130,15 @@
                     <div class="content">
                         <h1>Entity Class</h1>
 <div class="box meta">
+    
+        <div class="uses">
+            Uses
+            <ul class="inline commas">
+                
+                    <li><a href="TileDraw.html">TileDraw</a></li>
+                
+            </ul>
+        </div>
     
 
     
@@ -321,6 +334,13 @@ Occupies a single game map tile.</p>
                                 
                             </li>
                         
+                            <li class="index-item method inherited">
+                                <a href="#method_getTileDrawData">getTileDrawData</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method">
                                 <a href="#method_initialize">initialize</a>
 
@@ -475,7 +495,7 @@ Occupies a single game map tile.</p>
             
         
         
-        <a href="../files/src_entity.js.html#l156"><code>src&#x2F;entity.js:156</code></a>
+        <a href="../files/src_entity.js.html#l157"><code>src&#x2F;entity.js:157</code></a>
         
         </p>
 
@@ -590,7 +610,7 @@ Occupies a single game map tile.</p>
             
         
         
-        <a href="../files/src_entity.js.html#l108"><code>src&#x2F;entity.js:108</code></a>
+        <a href="../files/src_entity.js.html#l109"><code>src&#x2F;entity.js:109</code></a>
         
         </p>
 
@@ -722,7 +742,7 @@ Convenience method for this.game.canMoveThrough()</p>
             
         
         
-        <a href="../files/src_entity.js.html#l120"><code>src&#x2F;entity.js:120</code></a>
+        <a href="../files/src_entity.js.html#l121"><code>src&#x2F;entity.js:121</code></a>
         
         </p>
 
@@ -854,7 +874,7 @@ Convenience method for this.game.entityCanMoveTo()</p>
             
         
         
-        <a href="../files/src_entity.js.html#l144"><code>src&#x2F;entity.js:144</code></a>
+        <a href="../files/src_entity.js.html#l145"><code>src&#x2F;entity.js:145</code></a>
         
         </p>
 
@@ -934,6 +954,74 @@ Convenience method for this.game.entityCanSeeThrough()</p>
 </div>
 
                 
+                    <div id="method_getTileDrawData" class="method item inherited">
+    <h3 class="name"><code>getTileDrawData</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/TileDrawData.html" class="crosslink">TileDrawData</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/TileDraw.html#method_getTileDrawData">TileDraw</a>:
+            
+        
+        
+        <a href="../files/src_mixins.js.html#l20"><code>src&#x2F;mixins.js:20</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns as <code>tileData</code>object used by <code>Renderer</code> objects to draw tiles.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/TileDrawData.html" class="crosslink">TileDrawData</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_initialize" class="method item">
     <h3 class="name"><code>initialize</code></h3>
 
@@ -966,7 +1054,7 @@ Convenience method for this.game.entityCanSeeThrough()</p>
             
         
         
-        <a href="../files/src_entity.js.html#l42"><code>src&#x2F;entity.js:42</code></a>
+        <a href="../files/src_entity.js.html#l43"><code>src&#x2F;entity.js:43</code></a>
         
         </p>
 
@@ -1037,7 +1125,7 @@ Convenience method for this.game.entityCanSeeThrough()</p>
             
         
         
-        <a href="../files/src_entity.js.html#l132"><code>src&#x2F;entity.js:132</code></a>
+        <a href="../files/src_entity.js.html#l133"><code>src&#x2F;entity.js:133</code></a>
         
         </p>
 
@@ -1138,7 +1226,7 @@ this.canMoveTo() and/or this.canMoveThrough() should always be checked before ca
             
         
         
-        <a href="../files/src_entity.js.html#l100"><code>src&#x2F;entity.js:100</code></a>
+        <a href="../files/src_entity.js.html#l101"><code>src&#x2F;entity.js:101</code></a>
         
         </p>
 
@@ -1192,7 +1280,7 @@ this.canMoveTo() and/or this.canMoveThrough() should always be checked before ca
             
         
         
-        <a href="../files/src_entity.js.html#l86"><code>src&#x2F;entity.js:86</code></a>
+        <a href="../files/src_entity.js.html#l87"><code>src&#x2F;entity.js:87</code></a>
         
         </p>
 
@@ -1237,7 +1325,7 @@ this.canMoveTo() and/or this.canMoveThrough() should always be checked before ca
             
         
         
-        <a href="../files/src_entity.js.html#l72"><code>src&#x2F;entity.js:72</code></a>
+        <a href="../files/src_entity.js.html#l73"><code>src&#x2F;entity.js:73</code></a>
         
         </p>
 
@@ -1282,7 +1370,7 @@ this.canMoveTo() and/or this.canMoveThrough() should always be checked before ca
             
         
         
-        <a href="../files/src_entity.js.html#l79"><code>src&#x2F;entity.js:79</code></a>
+        <a href="../files/src_entity.js.html#l80"><code>src&#x2F;entity.js:80</code></a>
         
         </p>
 
@@ -1327,7 +1415,7 @@ this.canMoveTo() and/or this.canMoveThrough() should always be checked before ca
             
         
         
-        <a href="../files/src_entity.js.html#l93"><code>src&#x2F;entity.js:93</code></a>
+        <a href="../files/src_entity.js.html#l94"><code>src&#x2F;entity.js:94</code></a>
         
         </p>
 
@@ -1372,7 +1460,7 @@ this.canMoveTo() and/or this.canMoveThrough() should always be checked before ca
             
         
         
-        <a href="../files/src_entity.js.html#l27"><code>src&#x2F;entity.js:27</code></a>
+        <a href="../files/src_entity.js.html#l28"><code>src&#x2F;entity.js:28</code></a>
         
         </p>
 
@@ -1417,7 +1505,7 @@ this.canMoveTo() and/or this.canMoveThrough() should always be checked before ca
             
         
         
-        <a href="../files/src_entity.js.html#l50"><code>src&#x2F;entity.js:50</code></a>
+        <a href="../files/src_entity.js.html#l51"><code>src&#x2F;entity.js:51</code></a>
         
         </p>
 
@@ -1463,7 +1551,7 @@ Used in console messages.</p>
             
         
         
-        <a href="../files/src_entity.js.html#l34"><code>src&#x2F;entity.js:34</code></a>
+        <a href="../files/src_entity.js.html#l35"><code>src&#x2F;entity.js:35</code></a>
         
         </p>
 
@@ -1509,7 +1597,7 @@ When created this object is merged with the value of Entity.Types[type].</p>
             
         
         
-        <a href="../files/src_entity.js.html#l58"><code>src&#x2F;entity.js:58</code></a>
+        <a href="../files/src_entity.js.html#l59"><code>src&#x2F;entity.js:59</code></a>
         
         </p>
 
@@ -1554,7 +1642,7 @@ When created this object is merged with the value of Entity.Types[type].</p>
             
         
         
-        <a href="../files/src_entity.js.html#l65"><code>src&#x2F;entity.js:65</code></a>
+        <a href="../files/src_entity.js.html#l66"><code>src&#x2F;entity.js:66</code></a>
         
         </p>
 

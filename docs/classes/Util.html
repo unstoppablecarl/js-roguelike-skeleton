@@ -49,17 +49,17 @@
             
                 <li><a href="../classes/Entity.Types.html">Entity.Types</a></li>
             
-                <li><a href="../classes/EntityManager.html">EntityManager</a></li>
-            
                 <li><a href="../classes/FovROT.html">FovROT</a></li>
             
                 <li><a href="../classes/Game.html">Game</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
-                <li><a href="../classes/Lighting.html">Lighting</a></li>
+                <li><a href="../classes/LightingROT.html">LightingROT</a></li>
             
                 <li><a href="../classes/Map.html">Map</a></li>
+            
+                <li><a href="../classes/Mixins.html">Mixins</a></li>
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
@@ -78,6 +78,10 @@
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
                 <li><a href="../classes/Tile.Types.html">Tile.Types</a></li>
+            
+                <li><a href="../classes/TileDraw.html">TileDraw</a></li>
+            
+                <li><a href="../classes/TileDrawData.html">TileDrawData</a></li>
             
                 <li><a href="../classes/Util.html">Util</a></li>
             
@@ -132,7 +136,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_util.js.html#l45"><code>src&#x2F;util.js:45</code></a>
+            Defined in: <a href="../files/src_util.js.html#l33"><code>src&#x2F;util.js:33</code></a>
         </div>
     
 
@@ -144,7 +148,7 @@
 
 
 <div class="box intro">
-    <p>Utility functions</p>
+    <p>Utility functions.</p>
 
 </div>
 
@@ -175,17 +179,17 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_getAdjacentTileCoordsFromDirection">getAdjacentTileCoordsFromDirection</a>
+                                <a href="#method_getDistance">getDistance</a>
 
-                                
-                                    <span class="flag static">static</span>
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getDistance">getDistance</a>
+                                <a href="#method_getOffsetCoordsFromDirection">getOffsetCoordsFromDirection</a>
 
+                                
+                                    <span class="flag static">static</span>
                                 
                                 
                             </li>
@@ -226,7 +230,16 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_DIRECTIONS">DIRECTIONS</a>
+                                <a href="#property_DIRECTIONS_4">DIRECTIONS_4</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_DIRECTIONS_8">DIRECTIONS_8</a>
 
                                 
                                     <span class="flag static">static</span>
@@ -255,117 +268,6 @@
         
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_getAdjacentTileCoordsFromDirection" class="method item">
-    <h3 class="name"><code>getAdjacentTileCoordsFromDirection</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>direction</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Object</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util.js.html#l133"><code>src&#x2F;util.js:133</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Gets the adjacent coords of a given x, y, direction.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">direction</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>valid directions: [<code>up</code>, <code>down</code>, <code>left</code>, <code>right</code>, <code>up_left</code>, <code>up_right</code>, <code>down_left</code>, <code>down_right</code>];.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Object</span>:
-                    
-                    <p><code>{x: 0, y: 0}</code></p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
 
                 
                     <div id="method_getDistance" class="method item">
@@ -432,7 +334,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l165"><code>src&#x2F;util.js:165</code></a>
+        <a href="../files/src_util.js.html#l170"><code>src&#x2F;util.js:170</code></a>
         
         </p>
 
@@ -535,6 +437,117 @@
 </div>
 
                 
+                    <div id="method_getOffsetCoordsFromDirection" class="method item">
+    <h3 class="name"><code>getOffsetCoordsFromDirection</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>direction</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util.js.html#l138"><code>src&#x2F;util.js:138</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the offset coords of a given direction.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">direction</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>valid directions: [<code>up</code>, <code>down</code>, <code>left</code>, <code>right</code>, <code>up_left</code>, <code>up_right</code>, <code>down_left</code>, <code>down_right</code>];.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p><code>{x: 0, y: 0}</code></p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_getTileMoveDistance" class="method item">
     <h3 class="name"><code>getTileMoveDistance</code></h3>
 
@@ -568,7 +581,7 @@
             
                 <li class="arg">
                     
-                        <code>[diagonalMovement</code>
+                        <code class="optional">[diagonalMovement=false]</code>
                     
                 </li>
             
@@ -605,7 +618,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l147"><code>src&#x2F;util.js:147</code></a>
+        <a href="../files/src_util.js.html#l152"><code>src&#x2F;util.js:152</code></a>
         
         </p>
 
@@ -688,14 +701,15 @@
             
                 <li class="param">
                     
-                        <code class="param-name">[diagonalMovement</code>
+                        <code class="param-name optional">[diagonalMovement=false]</code>
                         <span class="type">Bool</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>= false]if true, calculate the distance taking into account diagonal movement.</p>
+                        <p>true, calculate the distance taking into account diagonal movement.</p>
 
                     </div>
 
@@ -789,7 +803,8 @@
     </div>
 
     <div class="description">
-        <p>Copies properties from <code>source</code> object to <code>destination</code> object.</p>
+        <p>Copy all of the properties in the source objects over to the destination object, and return the destination object.
+It&#39;s in-order, so the last source will override properties of the same name in previous arguments.</p>
 
     </div>
 
@@ -824,6 +839,8 @@
                     
 
                     
+                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                    
 
                     <div class="param-description">
                         <ul>
@@ -848,7 +865,7 @@
                     
                         <span class="type">Object</span>:
                     
-                    <p>destination object</p>
+                    <p>The <code>destination</code> object.</p>
 
                 
             </div>
@@ -1002,8 +1019,8 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_DIRECTIONS" class="property item">
-    <h3 class="name"><code>DIRECTIONS</code></h3>
+                    <div id="property_DIRECTIONS_4" class="property item">
+    <h3 class="name"><code>DIRECTIONS_4</code></h3>
     <span class="type">Array</span>
 
     
@@ -1029,7 +1046,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l53"><code>src&#x2F;util.js:53</code></a>
+        <a href="../files/src_util.js.html#l40"><code>src&#x2F;util.js:40</code></a>
         
         </p>
 
@@ -1039,8 +1056,8 @@
     </div>
 
     <div class="description">
-        <p>Maps directions to coord offsets
-( keys of Util.DIRECTIONS_TO_OFFSETS)</p>
+        <p>List of 4 directions as strings.
+Used to match property keys of <code>Util.DIRECTIONS_TO_OFFSETS</code>.</p>
 
     </div>
 
@@ -1051,18 +1068,80 @@
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>`
- [
-     &#39;up&#39;,
-     &#39;up_right&#39;,
-     &#39;right&#39;,
-     &#39;down_right&#39;,
-     &#39;down&#39;,
-     &#39;down_left&#39;,
-     &#39;left&#39;,
-     &#39;up_left&#39;,
- ]
-`</code></pre>
+                <pre class="code prettyprint"><code>[
+    &#39;up&#39;,
+    &#39;right&#39;,
+    &#39;down&#39;,
+    &#39;left&#39;,
+]</code></pre>
+
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="property_DIRECTIONS_8" class="property item">
+    <h3 class="name"><code>DIRECTIONS_8</code></h3>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util.js.html#l57"><code>src&#x2F;util.js:57</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>List of 8 directions as strings.
+Used to match property keys of <code>Util.DIRECTIONS_TO_OFFSETS</code>.</p>
+
+    </div>
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>[
+    &#39;up&#39;,
+    &#39;up_right&#39;,
+    &#39;right&#39;,
+    &#39;down_right&#39;,
+    &#39;down&#39;,
+    &#39;down_left&#39;,
+    &#39;left&#39;,
+    &#39;up_left&#39;,
+]</code></pre>
 
             </div>
         </div>
@@ -1099,7 +1178,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l76"><code>src&#x2F;util.js:76</code></a>
+        <a href="../files/src_util.js.html#l78"><code>src&#x2F;util.js:78</code></a>
         
         </p>
 
@@ -1120,7 +1199,7 @@
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>`{
+                <pre class="code prettyprint"><code>{
    up:           {x:  0, y: -1},
    up_right:     {x:  1, y: -1},
    right:        {x:  1, y:  0},
@@ -1129,7 +1208,7 @@
    down_left:    {x: -1, y:  1},
    left:         {x: -1, y:  0},
    up_left:      {x: -1, y: -1}
-}`</code></pre>
+}</code></pre>
 
             </div>
         </div>

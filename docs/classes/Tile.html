@@ -49,17 +49,17 @@
             
                 <li><a href="../classes/Entity.Types.html">Entity.Types</a></li>
             
-                <li><a href="../classes/EntityManager.html">EntityManager</a></li>
-            
                 <li><a href="../classes/FovROT.html">FovROT</a></li>
             
                 <li><a href="../classes/Game.html">Game</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
-                <li><a href="../classes/Lighting.html">Lighting</a></li>
+                <li><a href="../classes/LightingROT.html">LightingROT</a></li>
             
                 <li><a href="../classes/Map.html">Map</a></li>
+            
+                <li><a href="../classes/Mixins.html">Mixins</a></li>
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
@@ -78,6 +78,10 @@
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
                 <li><a href="../classes/Tile.Types.html">Tile.Types</a></li>
+            
+                <li><a href="../classes/TileDraw.html">TileDraw</a></li>
+            
+                <li><a href="../classes/TileDrawData.html">TileDrawData</a></li>
             
                 <li><a href="../classes/Util.html">Util</a></li>
             
@@ -126,6 +130,15 @@
                     <div class="content">
                         <h1>Tile Class</h1>
 <div class="box meta">
+    
+        <div class="uses">
+            Uses
+            <ul class="inline commas">
+                
+                    <li><a href="TileDraw.html">TileDraw</a></li>
+                
+            </ul>
+        </div>
     
 
     
@@ -346,8 +359,15 @@
                                 
                             </li>
                         
+                            <li class="index-item method inherited">
+                                <a href="#method_getTileDrawData">getTileDrawData</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method">
-                                <a href="#method_onEntityEnterTile">onEntityEnterTile</a>
+                                <a href="#method_onEntityEnter">onEntityEnter</a>
 
                                 
                                 
@@ -365,6 +385,13 @@
                         
                             <li class="index-item property">
                                 <a href="#property_bgColor">bgColor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_blocksLos">blocksLos</a>
 
                                 
                                 
@@ -400,13 +427,6 @@
                         
                             <li class="index-item property">
                                 <a href="#property_name">name</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_passable">passable</a>
 
                                 
                                 
@@ -496,7 +516,7 @@
             
         
         
-        <a href="../files/src_tile.js.html#l104"><code>src&#x2F;tile.js:104</code></a>
+        <a href="../files/src_tile.js.html#l105"><code>src&#x2F;tile.js:105</code></a>
         
         </p>
 
@@ -545,8 +565,76 @@
 </div>
 
                 
-                    <div id="method_onEntityEnterTile" class="method item">
-    <h3 class="name"><code>onEntityEnterTile</code></h3>
+                    <div id="method_getTileDrawData" class="method item inherited">
+    <h3 class="name"><code>getTileDrawData</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/TileDrawData.html" class="crosslink">TileDrawData</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/TileDraw.html#method_getTileDrawData">TileDraw</a>:
+            
+        
+        
+        <a href="../files/src_mixins.js.html#l20"><code>src&#x2F;mixins.js:20</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns as <code>tileData</code>object used by <code>Renderer</code> objects to draw tiles.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/TileDrawData.html" class="crosslink">TileDrawData</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_onEntityEnter" class="method item">
+    <h3 class="name"><code>onEntityEnter</code></h3>
 
     
         <div class="args">
@@ -599,7 +687,7 @@
             
         
         
-        <a href="../files/src_tile.js.html#l117"><code>src&#x2F;tile.js:117</code></a>
+        <a href="../files/src_tile.js.html#l118"><code>src&#x2F;tile.js:118</code></a>
         
         </p>
 
@@ -716,7 +804,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l97"><code>src&#x2F;tile.js:97</code></a>
+        <a href="../files/src_tile.js.html#l98"><code>src&#x2F;tile.js:98</code></a>
         
         </p>
 
@@ -727,6 +815,51 @@ Called after chaning the entities position</p>
 
     <div class="description">
         <p>The background color the character displayed when rendering this tile. Not rendered if evaluates to false.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_blocksLos" class="property item">
+    <h3 class="name"><code>blocksLos</code></h3>
+    <span class="type">Bool</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_tile.js.html#l63"><code>src&#x2F;tile.js:63</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If this tile blocks line of sight.</p>
 
     </div>
 
@@ -761,7 +894,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l83"><code>src&#x2F;tile.js:83</code></a>
+        <a href="../files/src_tile.js.html#l84"><code>src&#x2F;tile.js:84</code></a>
         
         </p>
 
@@ -806,7 +939,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l90"><code>src&#x2F;tile.js:90</code></a>
+        <a href="../files/src_tile.js.html#l91"><code>src&#x2F;tile.js:91</code></a>
         
         </p>
 
@@ -851,7 +984,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l48"><code>src&#x2F;tile.js:48</code></a>
+        <a href="../files/src_tile.js.html#l49"><code>src&#x2F;tile.js:49</code></a>
         
         </p>
 
@@ -896,7 +1029,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l26"><code>src&#x2F;tile.js:26</code></a>
+        <a href="../files/src_tile.js.html#l27"><code>src&#x2F;tile.js:27</code></a>
         
         </p>
 
@@ -941,7 +1074,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l41"><code>src&#x2F;tile.js:41</code></a>
+        <a href="../files/src_tile.js.html#l42"><code>src&#x2F;tile.js:42</code></a>
         
         </p>
 
@@ -986,7 +1119,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l55"><code>src&#x2F;tile.js:55</code></a>
+        <a href="../files/src_tile.js.html#l56"><code>src&#x2F;tile.js:56</code></a>
         
         </p>
 
@@ -997,51 +1130,6 @@ Called after chaning the entities position</p>
 
     <div class="description">
         <p>If entities can move through this tile.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_passable" class="property item">
-    <h3 class="name"><code>passable</code></h3>
-    <span class="type">Bool</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_tile.js.html#l62"><code>src&#x2F;tile.js:62</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>If this tile blocks line of sight.</p>
 
     </div>
 
@@ -1076,7 +1164,7 @@ Called after chaning the entities position</p>
             
         
         
-        <a href="../files/src_tile.js.html#l33"><code>src&#x2F;tile.js:33</code></a>
+        <a href="../files/src_tile.js.html#l34"><code>src&#x2F;tile.js:34</code></a>
         
         </p>
 
@@ -1122,7 +1210,7 @@ When created this object is merged with the value of <code>Tile.Types[type]</cod
             
         
         
-        <a href="../files/src_tile.js.html#l69"><code>src&#x2F;tile.js:69</code></a>
+        <a href="../files/src_tile.js.html#l70"><code>src&#x2F;tile.js:70</code></a>
         
         </p>
 
@@ -1167,7 +1255,7 @@ When created this object is merged with the value of <code>Tile.Types[type]</cod
             
         
         
-        <a href="../files/src_tile.js.html#l76"><code>src&#x2F;tile.js:76</code></a>
+        <a href="../files/src_tile.js.html#l77"><code>src&#x2F;tile.js:77</code></a>
         
         </p>
 

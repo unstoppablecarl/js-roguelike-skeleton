@@ -49,17 +49,17 @@
             
                 <li><a href="../classes/Entity.Types.html">Entity.Types</a></li>
             
-                <li><a href="../classes/EntityManager.html">EntityManager</a></li>
-            
                 <li><a href="../classes/FovROT.html">FovROT</a></li>
             
                 <li><a href="../classes/Game.html">Game</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
-                <li><a href="../classes/Lighting.html">Lighting</a></li>
+                <li><a href="../classes/LightingROT.html">LightingROT</a></li>
             
                 <li><a href="../classes/Map.html">Map</a></li>
+            
+                <li><a href="../classes/Mixins.html">Mixins</a></li>
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
@@ -78,6 +78,10 @@
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
                 <li><a href="../classes/Tile.Types.html">Tile.Types</a></li>
+            
+                <li><a href="../classes/TileDraw.html">TileDraw</a></li>
+            
+                <li><a href="../classes/TileDrawData.html">TileDrawData</a></li>
             
                 <li><a href="../classes/Util.html">Util</a></li>
             
@@ -135,10 +139,10 @@
     * Represents lighting in the game map. requires ROT.js
     * Manages position of lights.
     * Calculates illumination of map tiles.
-    * @class Lighting
+    * @class LightingROT
     * @constructor
     * @param {Game} game - Game instance this obj is attached to.
-    * @param {Object} [settings]- Lighting settings object.
+    * @param {Object} [settings] - LightingROT settings object.
     * @param {Number} [settings.range] - Maximum range for the most powerful light source.
     * @param {Number} [settings.passes] - Number of computation passes (1: no reflectivity used, 2: reflectivity used)
     * @param {Number} [settings.emissionThreshold] - Minimal amount of light at a cell to be re-emited (only for passes&gt;1).
@@ -233,11 +237,8 @@
         * @method shadeTile
         * @param {Number} x - The x map coordinate to shade.
         * @param {Number} y - The y map coordinate to shade.
-        * @param {Object} tileData - The tileData object to shade.
-        * @param {String} [tileData.char] - The character to be rendered.
-        * @param {String} [tileData.color] - The color of character to be rendered.
-        * @param {String} [tileData.bgColor] - The background color of the tile to be rendered.
-        * @return {Object} tileData
+        * @param {TileData} tileData - The &#x60;TileData&#x60; object to shade.
+        * @return {TileData}
         */
         shadeTile: function(x, y, tileData){
             var light = this.ambientLight;

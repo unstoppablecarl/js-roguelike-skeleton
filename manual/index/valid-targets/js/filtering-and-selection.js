@@ -63,7 +63,7 @@
                     };
                 }
             }
-            return tileData;
+            return false;
         }
     };
 

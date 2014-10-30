@@ -9,8 +9,9 @@ related_methods:
 
 lib_scripts:
  - ../../../src/rl.js
- - ../../../src/tile.js
  - ../../../src/util.js
+ - ../../../src/mixins.js
+ - ../../../src/tile.js
 
 scripts:
  - js/defining-types.js

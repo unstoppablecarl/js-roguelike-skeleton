@@ -49,17 +49,17 @@
             
                 <li><a href="../classes/Entity.Types.html">Entity.Types</a></li>
             
-                <li><a href="../classes/EntityManager.html">EntityManager</a></li>
-            
                 <li><a href="../classes/FovROT.html">FovROT</a></li>
             
                 <li><a href="../classes/Game.html">Game</a></li>
             
                 <li><a href="../classes/Input.html">Input</a></li>
             
-                <li><a href="../classes/Lighting.html">Lighting</a></li>
+                <li><a href="../classes/LightingROT.html">LightingROT</a></li>
             
                 <li><a href="../classes/Map.html">Map</a></li>
+            
+                <li><a href="../classes/Mixins.html">Mixins</a></li>
             
                 <li><a href="../classes/Mouse.html">Mouse</a></li>
             
@@ -78,6 +78,10 @@
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
                 <li><a href="../classes/Tile.Types.html">Tile.Types</a></li>
+            
+                <li><a href="../classes/TileDraw.html">TileDraw</a></li>
+            
+                <li><a href="../classes/TileDrawData.html">TileDrawData</a></li>
             
                 <li><a href="../classes/Util.html">Util</a></li>
             
@@ -135,6 +139,7 @@
     * Represents a tile in the game map.
     * @class Tile
     * @constructor
+    * @uses TileDraw
     * @param {Object} game - Game instance this obj is attached to.
     * @param {String} type - Type of tile. When created this object is merged with the value of Tile.Types[type].
     * @param {Number} x - The map tile coordinate position of this tile on the x axis.
@@ -191,7 +196,7 @@
 
         /**
         * If this tile blocks line of sight.
-        * @property passable
+        * @property blocksLos
         * @type {Bool}
         */
         blocksLos: false,
@@ -247,7 +252,7 @@
         /**
         * Handles entity entering a new tile.
         * Called after chaning the entities position
-        * @method onEntityEnterTile
+        * @method onEntityEnter
         * @param {Entity} entity - The entity entering the tile
         * @param {Number} x - Map tile coord.
         * @param {Number} y - Map tile coord.
@@ -256,10 +261,9 @@
             // add behavior here
         },
 
-        getTileDrawData: function(){
-            return RL.Util.getTileDrawData(this);
-        },
     };
+
+    RL.Util.merge(Tile.prototype, RL.Mixins.TileDraw);
 
     /**
     * Describes different types of tiles. Used by the Tile constructor &#x27;type&#x27; param.

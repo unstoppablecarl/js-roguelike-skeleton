@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/mouse.js</title>
+    <title>src/mixins.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -128,7 +128,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/mouse.js</h1>
+                        <h1 class="file-heading">File: src/mixins.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -136,111 +136,47 @@
     &#x27;use strict&#x27;;
 
     /**
-    * Helper for handling user mouse input.
-    * @class Mouse
-    * @constructor
-    * @param {Function} onClick - A function to handle mouse click events. function(x, y){}
-    * @param {Function} onHover - A function to handle mouse hover events. function(x, y){}
-    */
-    var Mouse = function Mouse(onClick, onHover) {
-        this.onClick = onClick;
-        this.onHover = onHover;
-    };
-
-    Mouse.prototype = {
-        constructor: Mouse,
-
+     * Mixins. Collections of properties to be mixed into objects.
+     * Functionality is placed in a mixin so that it can be shared by multiple objects without repeating the same code.
+     * Modifiactions to mixin functionality will be reflected in all objects using this mixin.
+     * If the mixin code was copied and pasted, code changes would need to be made in multiple places.
+     * No flexibility is lost as objects with mixins added to them may still override or extend the mixed in functionality.
+     * @class Mixins
+     * @static
+     */
+    var Mixins = {
         /**
-        * A function to handle tile mouse click events.
-        * @method onClick
-        * @param {Number} x - Mouse x coord relative to window.
-        * @param {Number} y - Mouse y coord relative to window.
-        */
-        onClick: null,
-
-        /**
-        * A function to handle tile mouse hover events
-        * @method onHover
-        * @param {Number} x - Mouse x coord relative to window.
-        * @param {Number} y - Mouse y coord relative to window.
-        */
-        onHover: null,
-
-        /**
-        * The dom element being rendered to and listened to for mouse events.
-        * @property _boundElement
-        * @protected
-        * @type HTMLElement
-        */
-        _boundElement: null,
-
-        /**
-        * Hander for mouse events
-        * @method handleEvent
-        * @param {Event} e - mouse event
-        */
-        handleEvent: function(e){
-            if(e.type === &#x27;mousemove&#x27; &amp;&amp; this.onHover){
-                this.onHover(e.clientX, e.clientY);
-            }
-            else if(e.type === &#x27;mouseenter&#x27; &amp;&amp; this.onHover){
-                this.onHover(e.clientX, e.clientY);
-            }
-            else if(e.type === &#x27;mouseleave&#x27; &amp;&amp; this.onHover){
-                this.onHover(false);
-            }
-            else if(e.type === &#x27;click&#x27; &amp;&amp; this.onClick){
-                this.onClick(e.clientX, e.clientY);
-            }
-        },
-
-        /**
-        * Hander for mouse move events
-        * @method mouseMove
-        * @param {Event} e - mouse event
-        */
-        mouseMove: function(e) {
-            if(this.onHover){
-                var coords = this.game.renderer.mouseToTileCoords(e.clientX, e.clientY);
-                this.onHover(coords);
-            }
-        },
-
-        /**
-        * Binds event listener for mouse events.
-        * @method startListening
-        * @param {HTMLElement} element - The dom element being rendered to.
-        */
-        startListening: function(element){
-            if(this._boundElement){
-                this.stopListening();
-            }
-
-            element.addEventListener(&#x27;mousemove&#x27;, this);
-            element.addEventListener(&#x27;mouseenter&#x27;, this);
-            element.addEventListener(&#x27;mouseleave&#x27;, this);
-            element.addEventListener(&#x27;click&#x27;, this);
-
-            this._boundElement = element;
-        },
-
-        /**
-        * Unbinds event listener for mouse events.
-        * @method stopListening
-        */
-        stopListening: function(){
-            if(!this._boundElement){
-                return false;
-            }
-            var el = this._boundElement;
-            el.removeEventListener(&#x27;mousemove&#x27;, this);
-            el.removeEventListener(&#x27;mouseenter&#x27;, this);
-            el.removeEventListener(&#x27;mouseleave&#x27;, this);
-            el.removeEventListener(&#x27;click&#x27;, this);
+         * Adds the funcitonality required for a &#x60;Renderer&#x60; or &#x60;RendererLayer&#x60; to retrieve &#x60;TileDrawData&#x60; from an object.
+         * @class TileDraw
+         * @static
+         */
+        TileDraw: {
+            /**
+             * Returns as &#x60;tileData&#x60;object used by &#x60;Renderer&#x60; objects to draw tiles.
+             * @method getTileDrawData
+             * @return {TileDrawData}
+             */
+            getTileDrawData: function() {
+                return {
+                    char:               this.char,
+                    color:              this.color,
+                    bgColor:            this.bgColor,
+                    borderColor:        this.borderColor,
+                    borderWidth:        this.borderWidth,
+                    charStrokeColor:    this.charStrokeColor,
+                    charStrokeWidth:    this.charStrokeWidth,
+                    font:               this.font,
+                    fontSize:           this.fontSize,
+                    textAlign:          this.textAlign,
+                    textBaseline:       this.textBaseline,
+                    offsetX:            this.offsetX,
+                    offsetY:            this.offsetY,
+                };
+            },
         }
     };
 
-    root.RL.Mouse = Mouse;
+    root.RL.Mixins = Mixins;
 
 }(this));
 
