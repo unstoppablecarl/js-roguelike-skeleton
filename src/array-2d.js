@@ -62,6 +62,10 @@
             this.width = width;
             this.height = height;
             for (var i = 0; i < this.width; i++) {
+                if(!this.data){
+                    this.data = [];
+                }
+
                 if(this.data[i] === void 0){
                     this.data[i] = [];
                 }
