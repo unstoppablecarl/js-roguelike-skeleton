@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Input</title>
+    <title>PerformableAction</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -136,7 +136,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Input Class</h1>
+                        <h1>PerformableAction Class</h1>
 <div class="box meta">
     
 
@@ -144,7 +144,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_input.js.html#l4"><code>src&#x2F;input.js:4</code></a>
+            Defined in: <a href="../files/src_action.js.html#l4"><code>src&#x2F;action.js:4</code></a>
         </div>
     
 
@@ -156,187 +156,16 @@
 
 
 <div class="box intro">
-    <p>Helper for binding user key input to actions.</p>
+    <p>A performable action implementation.
+Handles the resolution of a source object performing an action on a target object.
+Performable action logic is attached to and primarily related to the source.
+Methods on this object should only be called by the {{#crossLink "PerformableActionInterface"}}</p>
+<p>If any of the functions on this object should always return <code>true</code> or <code>false</code>
+  it can be set to a <code>Boolean</code> value that will be used
+  instead of the value returned by calling the function.</p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Input" class="method item">
-    <h3 class="name"><code>Input</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>onKeyAction</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>bindings</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_input.js.html#l4"><code>src&#x2F;input.js:4</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">onKeyAction</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Function called when a key bound to an action is pressed (function(action){}).</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">bindings</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>An object of key val pairs mapping an action to an array of keys that trigger it. Input.Keys is used to convert input key string names to key codes.</li>
-</ul>
-
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">action1</code>
-                                    <span class="type">Array</span>
-                                
-
-                                <div class="param-description">
-                                    <p>Input keys mapped to action1. [&#39;A&#39;, &#39;B&#39;, ...]</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">action2</code>
-                                    <span class="type">Array</span>
-                                
-
-                                <div class="param-description">
-                                    <p>Input keys mapped to action2. [&#39;X&#39;, &#39;Y&#39;, ...]</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">...</code>
-                                    <span class="type"></span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   //bindings param example:
-   {
-       up: [&#39;UP_ARROW&#39;],
-       down: [&#39;DOWN_ARROW&#39;],
-       left: [&#39;LEFT_ARROW&#39;],
-       right: [&#39;RIGHT_ARROW&#39;],
-   }</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -346,8 +175,6 @@
         
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
-        
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
         
         
         
@@ -364,42 +191,42 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_addBindings">addBindings</a>
+                                <a href="#method_afterPerformActionSuccess">afterPerformActionSuccess</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_bindAction">bindAction</a>
+                                <a href="#method_afterPerformActionSuccess">afterPerformActionSuccess</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getActionFromKeyCode">getActionFromKeyCode</a>
+                                <a href="#method_canPerformAction">canPerformAction</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_handleEvent">handleEvent</a>
+                                <a href="#method_canPerformActionOnTarget">canPerformActionOnTarget</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_startListening">startListening</a>
+                                <a href="#method_getTargetsForAction">getTargetsForAction</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_stopListening">stopListening</a>
+                                <a href="#method_performAction">performAction</a>
 
                                 
                                 
@@ -409,37 +236,6 @@
                 </div>
             
 
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties">
-                        
-                            <li class="index-item property">
-                                <a href="#property_bindings">bindings</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_Keys">Keys</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_onKeyAction">onKeyAction</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
             
 
             
@@ -452,8 +248,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_addBindings" class="method item">
-    <h3 class="name"><code>addBindings</code></h3>
+                    <div id="method_afterPerformActionSuccess" class="method item">
+    <h3 class="name"><code>afterPerformActionSuccess</code></h3>
 
     
         <div class="args">
@@ -461,273 +257,13 @@
             
                 <li class="arg">
                     
-                        <code>bindings</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_input.js.html#l75"><code>src&#x2F;input.js:75</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Loads multiple action key bindings</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">bindings</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>An object of key val pairs mapping an action to an array of keys that trigger it. Input.Keys is used to convert input key string names to key codes.</li>
-</ul>
-
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">action1</code>
-                                    <span class="type">Array</span>
-                                
-
-                                <div class="param-description">
-                                    <p>Input keys mapped to action1. [&#39;A&#39;, &#39;B&#39;, ...]</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">action2</code>
-                                    <span class="type">Array</span>
-                                
-
-                                <div class="param-description">
-                                    <p>Input keys mapped to action2. [&#39;X&#39;, &#39;Y&#39;, ...]</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">...</code>
-                                    <span class="type"></span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>       //bindings param example:
-       {
-           up: [&#39;UP_ARROW&#39;],
-           down: [&#39;DOWN_ARROW&#39;],
-           left: [&#39;LEFT_ARROW&#39;],
-           right: [&#39;RIGHT_ARROW&#39;],
-       }</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_bindAction" class="method item">
-    <h3 class="name"><code>bindAction</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>action</code>
+                        <code>target</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>keyName</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_input.js.html#l50"><code>src&#x2F;input.js:50</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Bind a user action to a key input</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">action</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The action to bind the key to.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">keyName</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>The keyname to bind the action to. @see Input.Keys</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_getActionFromKeyCode" class="method item">
-    <h3 class="name"><code>getActionFromKeyCode</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>keyCode</code>
+                        <code class="optional">[settings]</code>
                     
                 </li>
             
@@ -737,7 +273,7 @@
 
     
         <span class="returns-inline">
-            <span class="type"></span>
+            <span class="type">Array</span>
         </span>
     
 
@@ -764,7 +300,7 @@
             
         
         
-        <a href="../files/src_input.js.html#l61"><code>src&#x2F;input.js:61</code></a>
+        <a href="../files/src_action.js.html#l66"><code>src&#x2F;action.js:66</code></a>
         
         </p>
 
@@ -775,7 +311,7 @@
     </div>
 
     <div class="description">
-        <p>Converts a user input key code to an action bound to that key or false if none is bound.</p>
+        <p>Optional function called after action is resolved successfully.</p>
 
     </div>
 
@@ -787,15 +323,34 @@
             
                 <li class="param">
                     
-                        <code class="param-name">keyCode</code>
-                        <span class="type">String</span>
+                        <code class="param-name">target</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>The key code to retrieve an action bound to.</li>
+<li>The target to perform the action on.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[settings]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Settings for the action.</li>
 </ul>
 
                     </div>
@@ -814,7 +369,9 @@
             <div class="returns-description">
                 
                     
-                    <p>String|bool The action bound to the keyCode or false.</p>
+                        <span class="type">Array</span>:
+                    
+                    <p>Array of valid targets.</p>
 
                 
             </div>
@@ -825,8 +382,8 @@
 </div>
 
                 
-                    <div id="method_handleEvent" class="method item">
-    <h3 class="name"><code>handleEvent</code></h3>
+                    <div id="method_afterPerformActionSuccess" class="method item">
+    <h3 class="name"><code>afterPerformActionSuccess</code></h3>
 
     
         <div class="args">
@@ -834,7 +391,13 @@
             
                 <li class="arg">
                     
-                        <code>event</code>
+                        <code>target</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[settings]</code>
                     
                 </li>
             
@@ -844,7 +407,7 @@
 
     
         <span class="returns-inline">
-            <span class="type"></span>
+            <span class="type">Array</span>
         </span>
     
 
@@ -871,7 +434,7 @@
             
         
         
-        <a href="../files/src_input.js.html#l101"><code>src&#x2F;input.js:101</code></a>
+        <a href="../files/src_action.js.html#l75"><code>src&#x2F;action.js:75</code></a>
         
         </p>
 
@@ -882,9 +445,7 @@
     </div>
 
     <div class="description">
-        <p>Event handler for document.addEventListener(&#39;keydown&#39;, this). Triggered when a key is pressed.
-If an action is bound to the key pressed, false is returned to cancel the default browser behavior of the keypress.
-If an action is not bound to the key pressed, true is returned allowing the default browser behavior of the keypress to function.</p>
+        <p>Optional function called after action is resolved un-successfully.</p>
 
     </div>
 
@@ -896,7 +457,7 @@ If an action is not bound to the key pressed, true is returned allowing the defa
             
                 <li class="param">
                     
-                        <code class="param-name">event</code>
+                        <code class="param-name">target</code>
                         <span class="type">Object</span>
                     
 
@@ -904,7 +465,26 @@ If an action is not bound to the key pressed, true is returned allowing the defa
 
                     <div class="param-description">
                         <ul>
-<li>The onkeydown event.</li>
+<li>The target to perform the action on.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[settings]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Settings for the action.</li>
 </ul>
 
                     </div>
@@ -923,7 +503,9 @@ If an action is not bound to the key pressed, true is returned allowing the defa
             <div class="returns-description">
                 
                     
-                    <p>bool</p>
+                        <span class="type">Array</span>:
+                    
+                    <p>Array of valid targets.</p>
 
                 
             </div>
@@ -934,13 +516,27 @@ If an action is not bound to the key pressed, true is returned allowing the defa
 </div>
 
                 
-                    <div id="method_startListening" class="method item">
-    <h3 class="name"><code>startListening</code></h3>
+                    <div id="method_canPerformAction" class="method item">
+    <h3 class="name"><code>canPerformAction</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>settings</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
     
 
     
@@ -966,7 +562,7 @@ If an action is not bound to the key pressed, true is returned allowing the defa
             
         
         
-        <a href="../files/src_input.js.html#l128"><code>src&#x2F;input.js:128</code></a>
+        <a href="../files/src_action.js.html#l19"><code>src&#x2F;action.js:19</code></a>
         
         </p>
 
@@ -977,25 +573,86 @@ If an action is not bound to the key pressed, true is returned allowing the defa
     </div>
 
     <div class="description">
-        <p>Binds event listener for document keydown event.</p>
+        <p>Checks if the entity with this <code>PerformableAction</code> can currently perform the action.
+Instead of a function <code>this.canPerformAction</code> can be set to a boolean value if the check should always be true or false.</p>
+<p>If this functions should always return <code>true</code> or <code>false</code> it can be set to a <code>Boolean</code> value that will be used
+instead of the value returned by calling the function.</p>
 
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
 
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">settings</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The settings for the action.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                
+            </div>
+        </div>
     
 
     
 </div>
 
                 
-                    <div id="method_stopListening" class="method item">
-    <h3 class="name"><code>stopListening</code></h3>
+                    <div id="method_canPerformActionOnTarget" class="method item">
+    <h3 class="name"><code>canPerformActionOnTarget</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>target</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>settings</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
     
 
     
@@ -1021,7 +678,7 @@ If an action is not bound to the key pressed, true is returned allowing the defa
             
         
         
-        <a href="../files/src_input.js.html#l136"><code>src&#x2F;input.js:136</code></a>
+        <a href="../files/src_action.js.html#l32"><code>src&#x2F;action.js:32</code></a>
         
         </p>
 
@@ -1032,12 +689,313 @@ If an action is not bound to the key pressed, true is returned allowing the defa
     </div>
 
     <div class="description">
-        <p>Unbinds document keydown event listener</p>
+        <p>Checks if the entity with this <code>PerformableAction</code> can currently perform the action on given target.</p>
+<p>If this functions should always return <code>true</code> or <code>false</code> it can be set to a <code>Boolean</code> value that will be used
+instead of the value returned by calling the function.</p>
 
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
 
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">target</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The target to perform the action on.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">settings</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The settings for the action.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getTargetsForAction" class="method item">
+    <h3 class="name"><code>getTargetsForAction</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[settings]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_action.js.html#l58"><code>src&#x2F;action.js:58</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns a list of valid targets to perform this action on.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[settings]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Settings for the action.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Array</span>:
+                    
+                    <p>Array of valid targets.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_performAction" class="method item">
+    <h3 class="name"><code>performAction</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>target</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>settings</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_action.js.html#l45"><code>src&#x2F;action.js:45</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Performs this <code>PerformableAction</code> from source on target using settings.</p>
+<p>If this functions should always return <code>true</code> or <code>false</code> it can be set to a <code>Boolean</code> value that will be used
+instead of the value returned by calling the function.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">target</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The target to perform the action on.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">settings</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The settings for the action.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                
+            </div>
+        </div>
     
 
     
@@ -1047,148 +1005,6 @@ If an action is not bound to the key pressed, true is returned allowing the defa
             </div>
         
 
-        
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Properties</h2>
-
-                
-                    <div id="property_bindings" class="property item">
-    <h3 class="name"><code>bindings</code></h3>
-    <span class="type">Object</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_input.js.html#l36"><code>src&#x2F;input.js:36</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>An object of key val pairs mapping keyCode to action</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_Keys" class="property item">
-    <h3 class="name"><code>Keys</code></h3>
-    <span class="type">Object</span>
-
-    
-
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_input.js.html#l145"><code>src&#x2F;input.js:145</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_onKeyAction" class="property item">
-    <h3 class="name"><code>onKeyAction</code></h3>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_input.js.html#l43"><code>src&#x2F;input.js:43</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Function called when a key bound to an action is pressed (function(action){}).</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
         
 
         

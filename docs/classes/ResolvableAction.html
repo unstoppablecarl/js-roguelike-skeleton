@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Console</title>
+    <title>ResolvableAction</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -136,7 +136,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Console Class</h1>
+                        <h1>ResolvableAction Class</h1>
 <div class="box meta">
     
 
@@ -144,7 +144,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_console.js.html#l4"><code>src&#x2F;console.js:4</code></a>
+            Defined in: <a href="../files/src_action.js.html#l85"><code>src&#x2F;action.js:85</code></a>
         </div>
     
 
@@ -156,155 +156,16 @@
 
 
 <div class="box intro">
-    <p>Manages the display and history of console messages to the user.
-&quot;The troll hits you dealing 10 damage.&quot;
-&quot;You die.&quot;</p>
+    <p>A resolvable action implementation.
+Handles the resolution of a source object performing an action on a target object.
+Resolvable action logic is attached to and primarily related to the target.
+Methods on this object should only be called by the {{#crossLink "ResolvableActionInterface"}}{{/crosslink}}</p>
+<p>If any of the functions on this object should always return <code>true</code> or <code>false</code>
+  it can be set to a <code>Boolean</code> value that will be used
+  instead of the value returned by calling the function.</p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Console" class="method item">
-    <h3 class="name"><code>Console</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>game</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[messageHistoryCount=5]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[elClassName=&#x27;console&#x27;]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_console.js.html#l4"><code>src&#x2F;console.js:4</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">game</code>
-                        <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Game instance this obj is attached to.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[messageHistoryCount=5]</code>
-                        <span class="type">Number</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Number of messages to display at once.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[elClassName=&#x27;console&#x27;]</code>
-                        <span class="type">String</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Css class name to assign to the console element.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -314,8 +175,6 @@
         
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
-        
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
         
         
         
@@ -332,7 +191,14 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_log">log</a>
+                                <a href="#method_canResolveAction">canResolveAction</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_resolveAction">resolveAction</a>
 
                                 
                                 
@@ -342,35 +208,6 @@
                 </div>
             
 
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties">
-                        
-                            <li class="index-item property">
-                                <a href="#property_el">el</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_game">game</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_messageHistoryCount">messageHistoryCount</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
             
 
             
@@ -383,8 +220,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_log" class="method item">
-    <h3 class="name"><code>log</code></h3>
+                    <div id="method_canResolveAction" class="method item">
+    <h3 class="name"><code>canResolveAction</code></h3>
 
     
         <div class="args">
@@ -392,7 +229,19 @@
             
                 <li class="arg">
                     
-                        <code>-</code>
+                        <code>action</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>source</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[settings]</code>
                     
                 </li>
             
@@ -400,6 +249,10 @@
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
     
 
     
@@ -425,7 +278,7 @@
             
         
         
-        <a href="../files/src_console.js.html#l46"><code>src&#x2F;console.js:46</code></a>
+        <a href="../files/src_action.js.html#l100"><code>src&#x2F;action.js:100</code></a>
         
         </p>
 
@@ -436,7 +289,10 @@
     </div>
 
     <div class="description">
-        <p>Adds a message to the console.</p>
+        <p>Checks if the entity with this <code>ResolvableAction</code> can currently resolve the action given source and settings.
+Instead of a function <code>this.canPerformAction</code> can be set to a boolean value if the check should always be true or false.</p>
+<p>If this functions should always return <code>true</code> or <code>false</code> it can be set to a <code>Boolean</code> value that will be used
+instead of the value returned by calling the function.</p>
 
     </div>
 
@@ -448,14 +304,53 @@
             
                 <li class="param">
                     
-                        <code class="param-name">-</code>
+                        <code class="param-name">action</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Message to be added.</p>
+                        <ul>
+<li>The action being performed on this target to resolve.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">source</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The source object performing the action on this target.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[settings]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Settings for the action.</li>
+</ul>
 
                     </div>
 
@@ -467,6 +362,176 @@
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_resolveAction" class="method item">
+    <h3 class="name"><code>resolveAction</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>action</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>source</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[settings]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_action.js.html#l115"><code>src&#x2F;action.js:115</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Resolves an action on target from source with given settings.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">action</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The action being performed on this target to resolve.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">source</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The source object performing the action on this target.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[settings]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Settings for the action.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <p><code>true</code> if the action was successfully resolved.</p>
+
+                
+            </div>
+        </div>
+    
 
     
 </div>
@@ -475,148 +540,6 @@
             </div>
         
 
-        
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Properties</h2>
-
-                
-                    <div id="property_el" class="property item">
-    <h3 class="name"><code>el</code></h3>
-    <span class="type">HTMLElement</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_console.js.html#l31"><code>src&#x2F;console.js:31</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Element containing console messages.
-Must be manually added to the DOM</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_game" class="property item">
-    <h3 class="name"><code>game</code></h3>
-    <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_console.js.html#l24"><code>src&#x2F;console.js:24</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Game instance this obj is attached to.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_messageHistoryCount" class="property item">
-    <h3 class="name"><code>messageHistoryCount</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_console.js.html#l39"><code>src&#x2F;console.js:39</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Number of messages to display at once.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
         
 
         

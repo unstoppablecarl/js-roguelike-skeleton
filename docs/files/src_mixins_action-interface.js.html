@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/mixins/action-interface.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Array2d.html">Array2d</a></li>
+            
+                <li><a href="../classes/Console.html">Console</a></li>
+            
+                <li><a href="../classes/Entity.html">Entity</a></li>
+            
+                <li><a href="../classes/Entity.Types.html">Entity.Types</a></li>
+            
+                <li><a href="../classes/FovROT.html">FovROT</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
+                <li><a href="../classes/LightingROT.html">LightingROT</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
+            
+                <li><a href="../classes/Mixins.html">Mixins</a></li>
+            
+                <li><a href="../classes/Mouse.html">Mouse</a></li>
+            
+                <li><a href="../classes/MultiObjectManager.html">MultiObjectManager</a></li>
+            
+                <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a href="../classes/PerformableAction.html">PerformableAction</a></li>
+            
+                <li><a href="../classes/PerformableActionInterface.html">PerformableActionInterface</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
+            
+                <li><a href="../classes/Renderer.html">Renderer</a></li>
+            
+                <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
+            
+                <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
+            
+                <li><a href="../classes/ResolvableAction.html">ResolvableAction</a></li>
+            
+                <li><a href="../classes/ResolvableActionInterface.html">ResolvableActionInterface</a></li>
+            
+                <li><a href="../classes/Tile.html">Tile</a></li>
+            
+                <li><a href="../classes/Tile.Types.html">Tile.Types</a></li>
+            
+                <li><a href="../classes/TileDraw.html">TileDraw</a></li>
+            
+                <li><a href="../classes/TileDrawData.html">TileDrawData</a></li>
+            
+                <li><a href="../classes/Util.html">Util</a></li>
+            
+                <li><a href="../classes/ValidTargets.html">ValidTargets</a></li>
+            
+                <li><a href="../classes/ValidTargetsFinder.html">ValidTargetsFinder</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/mixins/action-interface.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+(function(root) {
+    &#x27;use strict&#x27;;
+
+    /**
+     * Surface API to handle {{#crossLink &quot;PerformableAction&quot;}}{{/crossLink}} implementations.
+     * This allows a source object and target object to have separate action resolution logic without directly referencing eachother.
+     * See also {{#crossLink &quot;ResolvableActionInterface&quot;}}{{/crossLink}}, {{#crossLink &quot;ResolvableAction&quot;}}{{/crossLink}}
+     * @class PerformableActionInterface
+     * @static
+     */
+    var PerformableActionInterface = {
+
+        /**
+         * Sets a performable action implementation on object.
+         * @method setPerformableAction
+         * @param {String} action - The action name.
+         * @param {PerformableAction} implementation - Object to set as the action implementation.
+         *   or a string to lookup an implementation &#x60;RL.PerformableActions[implementation]&#x60;.
+         */
+        setPerformableAction: function(action, implementation){
+            this.performableActions                     = this.performableActions                        || {};
+            this.performableActions[action]             = this.performableActions[action]                || {};
+            this.performableActions[action].actionName  = this.performableActions[action].actionName     || action;
+
+            implementation = implementation || RL.PerformableAction.Types[action];
+
+            this.performableActions[action] = Object.create(implementation);
+            // merge could be used instead of Object.create but is less desirable
+            // RL.Util.merge(this.performableAction.Types[action], implementation);
+
+            if(this.performableActions[action].initialize){
+                this.performableActions[action].initialize.call(this);
+            }
+        },
+
+        /**
+         * Returns a list of valid targets to perform an action on.
+         * @method getTargetsForAction
+         * @param {String} action - The action to get targets for.
+         * @param {Object} [settings] - Settings for the action.
+         * @return {Array} Array of valid targets.
+         */
+        getTargetsForAction: function(action, settings){
+            var handler = this.performableActions[action];
+            if(!handler){
+                return false;
+            }
+
+            if(!handler.getTargetsForAction){
+                return false;
+            }
+
+            settings = settings || {};
+            if(!settings.skipCanPerformAction &amp;&amp; !this.canPerformAction(action, settings)){
+                return false;
+            }
+
+            return handler.getTargetsForAction.call(this, settings);
+        },
+
+        /**
+         * Checks if source can perform an action with given settings. (source is &#x60;this&#x60;)
+         * Functionality separated to avoid checking multiple targets when source cannot perform action regardless of target.
+         * @method canPerformAction
+         * @param {string} action - The action to check.
+         * @param {Object} [settings] - Settings for the action.
+         * @return {Boolean} &#x60;true&#x60; if the action can be performed.
+         */
+        canPerformAction: function(action, settings){
+            var handler = this.performableActions &amp;&amp; this.performableActions[action];
+            if(!handler){
+                return false;
+            }
+            if(handler.canPerformAction === false){
+                return false;
+            }
+
+            if(!(handler.canPerformAction === true || handler.canPerformAction.call(this, settings))){
+                return false;
+            }
+            return true;
+        },
+
+        /**
+         * Checks if source can perform an action on target with given settings.
+         * @method canPerformActionOnTarget
+         * @param {string} action - The action to check.
+         * @param {Object} target - The target object to check against.
+         * @param {Object} [settings] - Settings for the action.
+         * @param {Object} [settings.skipCanPerformAction] - If true skips checking that &#x60;this.canPerformAction(action, settings) == true&#x60;
+         * @return {Boolean} &#x60;true&#x60; if the action can be performed on target.
+         */
+        canPerformActionOnTarget: function(action, target, settings){
+            var handler = this.performableActions &amp;&amp; this.performableActions[action];
+            if(!handler){
+                return false;
+            }
+            // target cannot resolve any actions
+            if(!target.canResolveAction){
+                return false;
+            }
+
+            settings = settings || {};
+            if(!settings.skipCanPerformAction &amp;&amp; !this.canPerformAction(action, settings)){
+                return false;
+            }
+
+            if(!(handler.canPerformActionOnTarget === true || handler.canPerformActionOnTarget.call(this, target, settings))){
+                return false;
+            }
+            return target.canResolveAction(action, this, settings);
+        },
+
+        /**
+         * Performs an action on target with given settings.
+         * @method performAction
+         * @param {String} action - The action to perform.
+         * @param {Object} target - The target object to perform the action on.
+         * @param {Object} [settings] - Settings for the action.
+         * @param {Object} [settings.skipCanPerformAction] - If true skips checking that &#x60;this.canPerformAction(action, settings) == true&#x60;
+         * @param {Object} [settings.skipCanPerformActionOnTarget] - If true skips checking that &#x60;this.skipCanPerformActionOnTarget(action, target, settings) == true&#x60;
+         * @return {Boolean} &#x60;true&#x60; if the action has been successfully completed.
+         */
+        performAction: function(action, target, settings){
+            var handler = this.performableActions &amp;&amp; this.performableActions[action];
+            if(!handler){
+                return false;
+            }
+
+            settings = settings || {};
+            // the functions are in this order because &#x60;this.canPerformActionOnTarget&#x60; will check &#x60;this.canPerformAction&#x60;
+            // unless flaged to be skipped.
+            if(!settings.skipCanPerformActionOnTarget &amp;&amp; !this.canPerformActionOnTarget(action, target, settings)){
+                return false;
+            } else if(!settings.skipCanPerformAction &amp;&amp; !this.canPerformAction(action, settings)){
+                return false;
+            }
+
+            var result;
+            if(handler.performAction === true){
+                result = {};
+            } else {
+                result = handler.performAction.call(this, target, settings);
+            }
+
+            if(result === false){
+                return false;
+            }
+            settings.result = result;
+            var outcome = target.resolveAction(action, this, settings);
+            if(outcome &amp;&amp; handler.afterPerformActionSuccess){
+                handler.afterPerformActionSuccess.call(this, target, settings);
+            } else if(!outcome &amp;&amp; handler.afterPerformActionFailure){
+                handler.afterPerformActionFailure.call(this, target, settings);
+            }
+            return outcome;
+        },
+    };
+
+    /**
+     * Surface API to handle {{#crossLink &quot;ResolvableAction&quot;}}{{/crossLink}} implementations.
+     * This allows a source object and target object to have separate action resolution logic without directly referencing eachother.
+     * See also {{#crossLink &quot;PerformableActionInterface&quot;}}{{/crossLink}}, {{#crossLink &quot;PerformableAction&quot;}}{{/crossLink}}
+     * @class ResolvableActionInterface
+     * @static
+     */
+    var ResolvableActionInterface = {
+
+        /**
+         * Sets a resolvable action implementation on object.
+         * @method setResolvableAction
+         * @param {String} action - The action name.
+         * @param {ResolvableAction} [implementation] - Object to set as the action implementation.
+         */
+        setResolvableAction: function(action, implementation){
+            this.resolvableActions                      = this.resolvableActions                        || {};
+            this.resolvableActions[action]              = this.resolvableActions[action]                || {};
+            this.resolvableActions[action].actionName   = this.resolvableActions[action].actionName     || action;
+
+            implementation = implementation || RL.ResolvableAction.Types[action];
+            this.resolvableActions[action] = Object.create(implementation);
+            // merge could be used instead of Object.create but is less desirable
+            // RL.Util.merge(this.resolvableAction.Types[action], implementation);
+
+            if(this.resolvableActions[action].initialize){
+                this.resolvableActions[action].initialize.call(this);
+            }
+        },
+
+        /**
+         * Checks if a target can resolve an action with given source and settings. &#x60;this&#x60; is the target.
+         * @method canResolveAction
+         * @param {String} action - The action being performed on this target to resolve.
+         * @param {Object} source - The source object performing the action on this target.
+         * @param {Object} [settings] - Settings for the action.
+         * @return {Boolean} &#x60;true&#x60; if action was successfully resolved
+         */
+        canResolveAction: function(action, source, settings){
+            var handler = this.resolvableActions &amp;&amp; this.resolvableActions[action];
+            if(!handler){
+                return false;
+            }
+            if(handler.canResolveAction === false){
+                return false;
+            }
+            if(handler.canResolveAction === true){
+                return true;
+            }
+            return handler.canResolveAction.call(this, source, settings);
+        },
+
+        /**
+         * Resolves an action on target from source with given settings.
+         * @method performAction
+         * @param {String} action - The action being performed on this target to resolve.
+         * @param {Object} source - The source object performing the action on this target.
+         * @param {Object} [settings] - Settings for the action.
+         * @param {Object} [settings.skipCanResolveAction] - If true skips checking that &#x60;this.skipCanResolveAction(action, source, settings) == true&#x60;
+         * @return {Boolean} &#x60;true&#x60; if the action was successfully resolved.
+         */
+        resolveAction: function(action, source, settings){
+            var handler = this.resolvableActions &amp;&amp; this.resolvableActions[action];
+            if(!handler){
+                return false;
+            }
+            settings = settings || {};
+            if(!settings.skipCanResolveAction &amp;&amp; !this.canResolveAction(action, source, settings)){
+                return false;
+            }
+
+            if(handler.resolveAction === false){
+                return false;
+            }
+            if(handler.resolveAction === true){
+                return true;
+            }
+            return handler.resolveAction.call(this, source, settings);
+        },
+    };
+
+    root.RL.Mixins.PerformableActionInterface = PerformableActionInterface;
+    root.RL.Mixins.ResolvableActionInterface = ResolvableActionInterface;
+
+}(this));
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

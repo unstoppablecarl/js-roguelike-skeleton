@@ -1,6 +1,26 @@
 {
     "project": {},
     "files": {
+        "src/mixins/action-interface.js": {
+            "name": "src/mixins/action-interface.js",
+            "modules": {},
+            "classes": {
+                "PerformableActionInterface": 1,
+                "ResolvableActionInterface": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/action.js": {
+            "name": "src/action.js",
+            "modules": {},
+            "classes": {
+                "PerformableAction": 1,
+                "ResolvableAction": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/array-2d.js": {
             "name": "src/array-2d.js",
             "modules": {},
@@ -180,6 +200,58 @@
     },
     "modules": {},
     "classes": {
+        "PerformableActionInterface": {
+            "name": "PerformableActionInterface",
+            "shortname": "PerformableActionInterface",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/mixins/action-interface.js",
+            "line": 4,
+            "description": "Surface API to handle {{#crossLink \"PerformableAction\"}}{{/crossLink}} implementations.\nThis allows a source object and target object to have separate action resolution logic without directly referencing eachother.\nSee also {{#crossLink \"ResolvableActionInterface\"}}{{/crossLink}}, {{#crossLink \"ResolvableAction\"}}{{/crossLink}}",
+            "static": 1
+        },
+        "ResolvableActionInterface": {
+            "name": "ResolvableActionInterface",
+            "shortname": "ResolvableActionInterface",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/mixins/action-interface.js",
+            "line": 160,
+            "description": "Surface API to handle {{#crossLink \"ResolvableAction\"}}{{/crossLink}} implementations.\nThis allows a source object and target object to have separate action resolution logic without directly referencing eachother.\nSee also {{#crossLink \"PerformableActionInterface\"}}{{/crossLink}}, {{#crossLink \"PerformableAction\"}}{{/crossLink}}",
+            "static": 1
+        },
+        "PerformableAction": {
+            "name": "PerformableAction",
+            "shortname": "PerformableAction",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/action.js",
+            "line": 4,
+            "description": "A performable action implementation.\nHandles the resolution of a source object performing an action on a target object.\nPerformable action logic is attached to and primarily related to the source.\nMethods on this object should only be called by the {{#crossLink \"PerformableActionInterface\"}}\n\nIf any of the functions on this object should always return `true` or `false`\n  it can be set to a `Boolean` value that will be used\n  instead of the value returned by calling the function.",
+            "static": 1
+        },
+        "ResolvableAction": {
+            "name": "ResolvableAction",
+            "shortname": "ResolvableAction",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/action.js",
+            "line": 85,
+            "description": "A resolvable action implementation.\nHandles the resolution of a source object performing an action on a target object.\nResolvable action logic is attached to and primarily related to the target.\nMethods on this object should only be called by the {{#crossLink \"ResolvableActionInterface\"}}{{/crosslink}}\n\nIf any of the functions on this object should always return `true` or `false`\n  it can be set to a `Boolean` value that will be used\n  instead of the value returned by calling the function.",
+            "static": 1
+        },
         "Array2d": {
             "name": "Array2d",
             "shortname": "Array2d",
@@ -276,7 +348,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/entity.js",
-            "line": 170,
+            "line": 172,
             "description": "Describes different types of entities. Used by the Entity constructor 'type' param.\n\n    Entity.Types = {\n        zombie: {\n           name: 'Zombie',\n           char: 'z',\n           color: 'red',\n           bgColor: '#222'\n        },\n        // ...\n    }",
             "static": 1
         },
@@ -450,7 +522,7 @@
                 "Tile"
             ],
             "file": "src/mixins.js",
-            "line": 14,
+            "line": 15,
             "description": "Adds the funcitonality required for a `Renderer` or `RendererLayer` to retrieve `TileDrawData` from an object.",
             "static": 1
         },
@@ -724,7 +796,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/util.js",
-            "line": 33,
+            "line": 44,
             "description": "Utility functions.",
             "static": 1
         },
@@ -868,6 +940,444 @@
     },
     "classitems": [
         {
+            "file": "src/mixins/action-interface.js",
+            "line": 13,
+            "description": "Sets a performable action implementation on object.",
+            "itemtype": "method",
+            "name": "setPerformableAction",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "- The action name.",
+                    "type": "String"
+                },
+                {
+                    "name": "implementation",
+                    "description": "- Object to set as the action implementation.\n  or a string to lookup an implementation `RL.PerformableActions[implementation]`.",
+                    "type": "PerformableAction"
+                }
+            ],
+            "class": "PerformableActionInterface"
+        },
+        {
+            "file": "src/mixins/action-interface.js",
+            "line": 36,
+            "description": "Returns a list of valid targets to perform an action on.",
+            "itemtype": "method",
+            "name": "getTargetsForAction",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "- The action to get targets for.",
+                    "type": "String"
+                },
+                {
+                    "name": "settings",
+                    "description": "- Settings for the action.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Array of valid targets.",
+                "type": "Array"
+            },
+            "class": "PerformableActionInterface"
+        },
+        {
+            "file": "src/mixins/action-interface.js",
+            "line": 61,
+            "description": "Checks if source can perform an action with given settings. (source is `this`)\nFunctionality separated to avoid checking multiple targets when source cannot perform action regardless of target.",
+            "itemtype": "method",
+            "name": "canPerformAction",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "- The action to check.",
+                    "type": "String"
+                },
+                {
+                    "name": "settings",
+                    "description": "- Settings for the action.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "`true` if the action can be performed.",
+                "type": "Boolean"
+            },
+            "class": "PerformableActionInterface"
+        },
+        {
+            "file": "src/mixins/action-interface.js",
+            "line": 84,
+            "description": "Checks if source can perform an action on target with given settings.",
+            "itemtype": "method",
+            "name": "canPerformActionOnTarget",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "- The action to check.",
+                    "type": "String"
+                },
+                {
+                    "name": "target",
+                    "description": "- The target object to check against.",
+                    "type": "Object"
+                },
+                {
+                    "name": "settings",
+                    "description": "- Settings for the action.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "skipCanPerformAction",
+                            "description": "- If true skips checking that `this.canPerformAction(action, settings) == true`",
+                            "type": "Object",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "`true` if the action can be performed on target.",
+                "type": "Boolean"
+            },
+            "class": "PerformableActionInterface"
+        },
+        {
+            "file": "src/mixins/action-interface.js",
+            "line": 114,
+            "description": "Performs an action on target with given settings.",
+            "itemtype": "method",
+            "name": "performAction",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "- The action to perform.",
+                    "type": "String"
+                },
+                {
+                    "name": "target",
+                    "description": "- The target object to perform the action on.",
+                    "type": "Object"
+                },
+                {
+                    "name": "settings",
+                    "description": "- Settings for the action.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "skipCanPerformAction",
+                            "description": "- If true skips checking that `this.canPerformAction(action, settings) == true`",
+                            "type": "Object",
+                            "optional": true
+                        },
+                        {
+                            "name": "skipCanPerformActionOnTarget",
+                            "description": "- If true skips checking that `this.skipCanPerformActionOnTarget(action, target, settings) == true`",
+                            "type": "Object",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "`true` if the action has been successfully completed.",
+                "type": "Boolean"
+            },
+            "class": "PerformableActionInterface"
+        },
+        {
+            "file": "src/mixins/action-interface.js",
+            "line": 169,
+            "description": "Sets a resolvable action implementation on object.",
+            "itemtype": "method",
+            "name": "setResolvableAction",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "- The action name.",
+                    "type": "String"
+                },
+                {
+                    "name": "implementation",
+                    "description": "- Object to set as the action implementation.",
+                    "type": "ResolvableAction",
+                    "optional": true
+                }
+            ],
+            "class": "ResolvableActionInterface"
+        },
+        {
+            "file": "src/mixins/action-interface.js",
+            "line": 190,
+            "description": "Checks if a target can resolve an action with given source and settings. `this` is the target.",
+            "itemtype": "method",
+            "name": "canResolveAction",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "- The action being performed on this target to resolve.",
+                    "type": "String"
+                },
+                {
+                    "name": "source",
+                    "description": "- The source object performing the action on this target.",
+                    "type": "Object"
+                },
+                {
+                    "name": "settings",
+                    "description": "- Settings for the action.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "`true` if action was successfully resolved",
+                "type": "Boolean"
+            },
+            "class": "ResolvableActionInterface"
+        },
+        {
+            "file": "src/mixins/action-interface.js",
+            "line": 212,
+            "description": "Resolves an action on target from source with given settings.",
+            "itemtype": "method",
+            "name": "performAction",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "- The action being performed on this target to resolve.",
+                    "type": "String"
+                },
+                {
+                    "name": "source",
+                    "description": "- The source object performing the action on this target.",
+                    "type": "Object"
+                },
+                {
+                    "name": "settings",
+                    "description": "- Settings for the action.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "skipCanResolveAction",
+                            "description": "- If true skips checking that `this.skipCanResolveAction(action, source, settings) == true`",
+                            "type": "Object",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "`true` if the action was successfully resolved.",
+                "type": "Boolean"
+            },
+            "class": "ResolvableActionInterface"
+        },
+        {
+            "file": "src/action.js",
+            "line": 19,
+            "description": "Checks if the entity with this `PerformableAction` can currently perform the action.\nInstead of a function `this.canPerformAction` can be set to a boolean value if the check should always be true or false.\n\nIf this functions should always return `true` or `false` it can be set to a `Boolean` value that will be used\ninstead of the value returned by calling the function.",
+            "itemtype": "method",
+            "name": "canPerformAction",
+            "params": [
+                {
+                    "name": "settings",
+                    "description": "- The settings for the action.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
+            "class": "PerformableAction"
+        },
+        {
+            "file": "src/action.js",
+            "line": 32,
+            "description": "Checks if the entity with this `PerformableAction` can currently perform the action on given target.\n\nIf this functions should always return `true` or `false` it can be set to a `Boolean` value that will be used\ninstead of the value returned by calling the function.",
+            "itemtype": "method",
+            "name": "canPerformActionOnTarget",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "- The target to perform the action on.",
+                    "type": "Object"
+                },
+                {
+                    "name": "settings",
+                    "description": "- The settings for the action.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
+            "class": "PerformableAction"
+        },
+        {
+            "file": "src/action.js",
+            "line": 45,
+            "description": "Performs this `PerformableAction` from source on target using settings.\n\nIf this functions should always return `true` or `false` it can be set to a `Boolean` value that will be used\ninstead of the value returned by calling the function.",
+            "itemtype": "method",
+            "name": "performAction",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "- The target to perform the action on.",
+                    "type": "Object"
+                },
+                {
+                    "name": "settings",
+                    "description": "- The settings for the action.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
+            "class": "PerformableAction"
+        },
+        {
+            "file": "src/action.js",
+            "line": 58,
+            "description": "Returns a list of valid targets to perform this action on.",
+            "itemtype": "method",
+            "name": "getTargetsForAction",
+            "params": [
+                {
+                    "name": "settings",
+                    "description": "- Settings for the action.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Array of valid targets.",
+                "type": "Array"
+            },
+            "class": "PerformableAction"
+        },
+        {
+            "file": "src/action.js",
+            "line": 66,
+            "description": "Optional function called after action is resolved successfully.",
+            "itemtype": "method",
+            "name": "afterPerformActionSuccess",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "- The target to perform the action on.",
+                    "type": "Object"
+                },
+                {
+                    "name": "settings",
+                    "description": "- Settings for the action.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Array of valid targets.",
+                "type": "Array"
+            },
+            "class": "PerformableAction"
+        },
+        {
+            "file": "src/action.js",
+            "line": 75,
+            "description": "Optional function called after action is resolved un-successfully.",
+            "itemtype": "method",
+            "name": "afterPerformActionSuccess",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "- The target to perform the action on.",
+                    "type": "Object"
+                },
+                {
+                    "name": "settings",
+                    "description": "- Settings for the action.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Array of valid targets.",
+                "type": "Array"
+            },
+            "class": "PerformableAction"
+        },
+        {
+            "file": "src/action.js",
+            "line": 100,
+            "description": "Checks if the entity with this `ResolvableAction` can currently resolve the action given source and settings.\nInstead of a function `this.canPerformAction` can be set to a boolean value if the check should always be true or false.\n\nIf this functions should always return `true` or `false` it can be set to a `Boolean` value that will be used\ninstead of the value returned by calling the function.",
+            "itemtype": "method",
+            "name": "canResolveAction",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "- The action being performed on this target to resolve.",
+                    "type": "String"
+                },
+                {
+                    "name": "source",
+                    "description": "- The source object performing the action on this target.",
+                    "type": "Object"
+                },
+                {
+                    "name": "settings",
+                    "description": "- Settings for the action.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Bool"
+            },
+            "class": "ResolvableAction"
+        },
+        {
+            "file": "src/action.js",
+            "line": 115,
+            "description": "Resolves an action on target from source with given settings.",
+            "itemtype": "method",
+            "name": "resolveAction",
+            "params": [
+                {
+                    "name": "action",
+                    "description": "- The action being performed on this target to resolve.",
+                    "type": "String"
+                },
+                {
+                    "name": "source",
+                    "description": "- The source object performing the action on this target.",
+                    "type": "Object"
+                },
+                {
+                    "name": "settings",
+                    "description": "- Settings for the action.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "`true` if the action was successfully resolved.",
+                "type": "Boolean"
+            },
+            "class": "ResolvableAction"
+        },
+        {
             "file": "src/array-2d.js",
             "line": 21,
             "description": "Width of the 2d Array.",
@@ -936,7 +1446,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 71,
+            "line": 75,
             "description": "Sets a value at given coords.",
             "itemtype": "method",
             "name": "set",
@@ -961,7 +1471,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 85,
+            "line": 89,
             "description": "Gets a value from given coords.",
             "itemtype": "method",
             "name": "get",
@@ -985,7 +1495,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 99,
+            "line": 103,
             "description": "Removes a value from given coords.",
             "itemtype": "method",
             "name": "remove",
@@ -1005,7 +1515,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 109,
+            "line": 113,
             "description": "Retrieves an array of values of adjacent coords.",
             "itemtype": "method",
             "name": "getAdjacent",
@@ -1058,7 +1568,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 190,
+            "line": 194,
             "description": "Retrieves an array of values of coords within a given radius.",
             "itemtype": "method",
             "name": "getWithinSquareRadius",
@@ -1118,7 +1628,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 254,
+            "line": 258,
             "description": "Retrieves an array of values of coords along a line starting at point 0 and crossing point 1 until it hits the edge of the 2d array or a coord value returning true when passed to the condtion function.",
             "itemtype": "method",
             "name": "getLineThrough",
@@ -1166,7 +1676,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 309,
+            "line": 313,
             "description": "Retrieves an array of the nearest coord values meeting checked requirements. If multiple coord values were matched at the same nearest distance, the returned array will contain multiple matched coord values.\nUsed for projecting path of ranged attacks, pushed entities, ect.",
             "itemtype": "method",
             "name": "getNearest",
@@ -1219,7 +1729,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 404,
+            "line": 408,
             "description": "Retrieves an array of the filtered values.",
             "itemtype": "method",
             "name": "filter",
@@ -1245,7 +1755,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 433,
+            "line": 437,
             "description": "Creates a copy of this Array2d. Shallow copies values.",
             "itemtype": "method",
             "name": "copy",
@@ -1257,7 +1767,7 @@
         },
         {
             "file": "src/array-2d.js",
-            "line": 451,
+            "line": 455,
             "description": "Loops over each coord value.",
             "itemtype": "method",
             "name": "each",
@@ -2519,7 +3029,7 @@
         },
         {
             "file": "src/mixins.js",
-            "line": 20,
+            "line": 22,
             "description": "Returns as `tileData`object used by `Renderer` objects to draw tiles.",
             "itemtype": "method",
             "name": "getTileDrawData",
@@ -4156,7 +4666,7 @@
         },
         {
             "file": "src/util.js",
-            "line": 40,
+            "line": 51,
             "description": "List of 4 directions as strings.\nUsed to match property keys of `Util.DIRECTIONS_TO_OFFSETS`.",
             "itemtype": "property",
             "name": "DIRECTIONS_4",
@@ -4170,7 +4680,7 @@
         },
         {
             "file": "src/util.js",
-            "line": 57,
+            "line": 68,
             "description": "List of 8 directions as strings.\nUsed to match property keys of `Util.DIRECTIONS_TO_OFFSETS`.",
             "itemtype": "property",
             "name": "DIRECTIONS_8",
@@ -4184,10 +4694,24 @@
         },
         {
             "file": "src/util.js",
-            "line": 78,
+            "line": 89,
             "description": "Maps direction names to coord offsets.",
             "itemtype": "property",
             "name": "DIRECTIONS_TO_OFFSETS",
+            "type": "{Object}",
+            "static": 1,
+            "final": 1,
+            "example": [
+                "\n    {\n        'up': 'down',\n        'down': 'up',\n        'left': 'right',\n        'right': 'left',\n        'up_right': 'down_left',\n        'down_left': 'up_right',\n        'up_left': 'down_right',\n        'down_right': 'up_left'\n    };"
+            ],
+            "class": "Util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 109,
+            "description": "Maps direction names their opposite direction name.",
+            "itemtype": "property",
+            "name": "DIRECTIONS_OPPOSITES",
             "type": "{Object}",
             "static": 1,
             "final": 1,
@@ -4198,7 +4722,7 @@
         },
         {
             "file": "src/util.js",
-            "line": 98,
+            "line": 129,
             "description": "Merges settings with default values.",
             "itemtype": "method",
             "name": "mergeDefaults",
@@ -4223,7 +4747,7 @@
         },
         {
             "file": "src/util.js",
-            "line": 118,
+            "line": 149,
             "description": "Copy all of the properties in the source objects over to the destination object, and return the destination object.\nIt's in-order, so the last source will override properties of the same name in previous arguments.",
             "itemtype": "method",
             "name": "merge",
@@ -4249,7 +4773,7 @@
         },
         {
             "file": "src/util.js",
-            "line": 138,
+            "line": 169,
             "description": "Gets the offset coords of a given direction.",
             "itemtype": "method",
             "name": "getOffsetCoordsFromDirection",
@@ -4269,7 +4793,7 @@
         },
         {
             "file": "src/util.js",
-            "line": 152,
+            "line": 183,
             "description": "Gets the distance in tile moves from point 1 to point 2.",
             "itemtype": "method",
             "name": "getTileMoveDistance",
@@ -4310,7 +4834,7 @@
         },
         {
             "file": "src/util.js",
-            "line": 170,
+            "line": 201,
             "description": "Gets the distance from point 1 to point 2.",
             "itemtype": "method",
             "name": "getDistance",

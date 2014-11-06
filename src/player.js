@@ -214,6 +214,8 @@
     };
 
     RL.Util.merge(Player.prototype, RL.Mixins.TileDraw);
+    RL.Util.merge(Player.prototype, RL.Mixins.PerformableActionInterface);
+    RL.Util.merge(Player.prototype, RL.Mixins.ResolvableActionInterface);
 
 
     root.RL.Player = Player;

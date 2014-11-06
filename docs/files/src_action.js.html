@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/action.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Array2d.html">Array2d</a></li>
+            
+                <li><a href="../classes/Console.html">Console</a></li>
+            
+                <li><a href="../classes/Entity.html">Entity</a></li>
+            
+                <li><a href="../classes/Entity.Types.html">Entity.Types</a></li>
+            
+                <li><a href="../classes/FovROT.html">FovROT</a></li>
+            
+                <li><a href="../classes/Game.html">Game</a></li>
+            
+                <li><a href="../classes/Input.html">Input</a></li>
+            
+                <li><a href="../classes/LightingROT.html">LightingROT</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
+            
+                <li><a href="../classes/Mixins.html">Mixins</a></li>
+            
+                <li><a href="../classes/Mouse.html">Mouse</a></li>
+            
+                <li><a href="../classes/MultiObjectManager.html">MultiObjectManager</a></li>
+            
+                <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a href="../classes/PerformableAction.html">PerformableAction</a></li>
+            
+                <li><a href="../classes/PerformableActionInterface.html">PerformableActionInterface</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
+            
+                <li><a href="../classes/Renderer.html">Renderer</a></li>
+            
+                <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
+            
+                <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
+            
+                <li><a href="../classes/ResolvableAction.html">ResolvableAction</a></li>
+            
+                <li><a href="../classes/ResolvableActionInterface.html">ResolvableActionInterface</a></li>
+            
+                <li><a href="../classes/Tile.html">Tile</a></li>
+            
+                <li><a href="../classes/Tile.Types.html">Tile.Types</a></li>
+            
+                <li><a href="../classes/TileDraw.html">TileDraw</a></li>
+            
+                <li><a href="../classes/TileDrawData.html">TileDrawData</a></li>
+            
+                <li><a href="../classes/Util.html">Util</a></li>
+            
+                <li><a href="../classes/ValidTargets.html">ValidTargets</a></li>
+            
+                <li><a href="../classes/ValidTargetsFinder.html">ValidTargetsFinder</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/action.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+(function(root) {
+    &#x27;use strict&#x27;;
+
+    /**
+     * A performable action implementation.
+     * Handles the resolution of a source object performing an action on a target object.
+     * Performable action logic is attached to and primarily related to the source.
+     * Methods on this object should only be called by the {{#crossLink &quot;PerformableActionInterface&quot;}}
+     *
+     * If any of the functions on this object should always return &#x60;true&#x60; or &#x60;false&#x60;
+     *   it can be set to a &#x60;Boolean&#x60; value that will be used
+     *   instead of the value returned by calling the function.
+     *
+     * @class PerformableAction
+     * @static
+     */
+    var PerformableAction = {
+
+        /**
+         * Checks if the entity with this &#x60;PerformableAction&#x60; can currently perform the action.
+         * Instead of a function &#x60;this.canPerformAction&#x60; can be set to a boolean value if the check should always be true or false.
+         *
+         * If this functions should always return &#x60;true&#x60; or &#x60;false&#x60; it can be set to a &#x60;Boolean&#x60; value that will be used
+         * instead of the value returned by calling the function.
+         *
+         * @method canPerformAction
+         * @param {Object} settings - The settings for the action.
+         * @return {Bool}
+         */
+        canPerformAction: true,
+
+        /**
+         * Checks if the entity with this &#x60;PerformableAction&#x60; can currently perform the action on given target.
+         *
+         * If this functions should always return &#x60;true&#x60; or &#x60;false&#x60; it can be set to a &#x60;Boolean&#x60; value that will be used
+         * instead of the value returned by calling the function.
+         *
+         * @method canPerformActionOnTarget
+         * @param {Object} target - The target to perform the action on.
+         * @param {Object} settings - The settings for the action.
+         * @return {Bool}
+         */
+        canPerformActionOnTarget: true,
+
+        /**
+         * Performs this &#x60;PerformableAction&#x60; from source on target using settings.
+         *
+         * If this functions should always return &#x60;true&#x60; or &#x60;false&#x60; it can be set to a &#x60;Boolean&#x60; value that will be used
+         * instead of the value returned by calling the function.
+         *
+         * @method performAction
+         * @param {Object} target - The target to perform the action on.
+         * @param {Object} settings - The settings for the action.
+         * @return {Bool}
+         */
+        performAction: true,
+
+        /**
+         * Returns a list of valid targets to perform this action on.
+         * @method getTargetsForAction
+         * @param {Object} [settings] - Settings for the action.
+         * @return {Array} Array of valid targets.
+         */
+        getTargetsForAction: false,
+
+        /**
+         * Optional function called after action is resolved successfully.
+         * @method afterPerformActionSuccess
+         * @param {Object} target - The target to perform the action on.
+         * @param {Object} [settings] - Settings for the action.
+         * @return {Array} Array of valid targets.
+         */
+        afterPerformActionSuccess: null,
+
+        /**
+         * Optional function called after action is resolved un-successfully.
+         * @method afterPerformActionSuccess
+         * @param {Object} target - The target to perform the action on.
+         * @param {Object} [settings] - Settings for the action.
+         * @return {Array} Array of valid targets.
+         */
+        afterPerformActionFailure: null,
+    };
+
+    /**
+     * A resolvable action implementation.
+     * Handles the resolution of a source object performing an action on a target object.
+     * Resolvable action logic is attached to and primarily related to the target.
+     * Methods on this object should only be called by the {{#crossLink &quot;ResolvableActionInterface&quot;}}{{/crosslink}}
+     *
+     * If any of the functions on this object should always return &#x60;true&#x60; or &#x60;false&#x60;
+     *   it can be set to a &#x60;Boolean&#x60; value that will be used
+     *   instead of the value returned by calling the function.
+     *
+     * @class ResolvableAction
+     * @static
+     */
+    var ResolvableAction = {
+
+        /**
+         * Checks if the entity with this &#x60;ResolvableAction&#x60; can currently resolve the action given source and settings.
+         * Instead of a function &#x60;this.canPerformAction&#x60; can be set to a boolean value if the check should always be true or false.
+         *
+         * If this functions should always return &#x60;true&#x60; or &#x60;false&#x60; it can be set to a &#x60;Boolean&#x60; value that will be used
+         * instead of the value returned by calling the function.
+         *
+         * @method canResolveAction
+         * @param {String} action - The action being performed on this target to resolve.
+         * @param {Object} source - The source object performing the action on this target.
+         * @param {Object} [settings] - Settings for the action.
+         * @return {Bool}
+         */
+        canResolveAction: true,
+
+        /**
+         * Resolves an action on target from source with given settings.
+         * @method resolveAction
+         * @param {String} action - The action being performed on this target to resolve.
+         * @param {Object} source - The source object performing the action on this target.
+         * @param {Object} [settings] - Settings for the action.
+         * @return {Boolean} &#x60;true&#x60; if the action was successfully resolved.
+         */
+        resolveAction: true,
+    };
+
+    root.RL.PerformableAction = PerformableAction;
+    root.RL.ResolvableAction = ResolvableAction;
+
+}(this));
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

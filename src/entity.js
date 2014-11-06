@@ -166,6 +166,8 @@
     };
 
     RL.Util.merge(Entity.prototype, RL.Mixins.TileDraw);
+    RL.Util.merge(Entity.prototype, RL.Mixins.PerformableActionInterface);
+    RL.Util.merge(Entity.prototype, RL.Mixins.ResolvableActionInterface);
 
     /**
     * Describes different types of entities. Used by the Entity constructor 'type' param.

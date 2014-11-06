@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>RendererLayer</title>
+    <title>PerformableActionInterface</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -136,7 +136,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>RendererLayer Class</h1>
+                        <h1>PerformableActionInterface Class</h1>
 <div class="box meta">
     
 
@@ -144,7 +144,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_renderer-layer.js.html#l4"><code>src&#x2F;renderer-layer.js:4</code></a>
+            Defined in: <a href="../files/src_mixins_action-interface.js.html#l4"><code>src&#x2F;mixins&#x2F;action-interface.js:4</code></a>
         </div>
     
 
@@ -156,127 +156,12 @@
 
 
 <div class="box intro">
-    <p>Represents a map tile layer to be rendered.</p>
+    <p>Surface API to handle <a href="../classes/PerformableAction.html" class="crosslink">PerformableAction</a> implementations.
+This allows a source object and target object to have separate action resolution logic without directly referencing eachother.
+See also <a href="../classes/ResolvableActionInterface.html" class="crosslink">ResolvableActionInterface</a>, <a href="../classes/ResolvableAction.html" class="crosslink">ResolvableAction</a></p>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_RendererLayer" class="method item">
-    <h3 class="name"><code>RendererLayer</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>game</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>type</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_renderer-layer.js.html#l4"><code>src&#x2F;renderer-layer.js:4</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">game</code>
-                        <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Game instance this obj is attached to.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">type</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Type of <code>RendererLayer</code>. When created this object is merged with the value of <code>RendererLayer.Types[type]</code>.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -286,8 +171,6 @@
         
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
-        
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
         
         
         
@@ -304,21 +187,35 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_getModifiedTileData">getModifiedTileData</a>
+                                <a href="#method_canPerformAction">canPerformAction</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getTileData">getTileData</a>
+                                <a href="#method_canPerformActionOnTarget">canPerformActionOnTarget</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_mergeTileData">mergeTileData</a>
+                                <a href="#method_getTargetsForAction">getTargetsForAction</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_performAction">performAction</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setPerformableAction">setPerformableAction</a>
 
                                 
                                 
@@ -328,63 +225,6 @@
                 </div>
             
 
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties">
-                        
-                            <li class="index-item property">
-                                <a href="#property_afterDraw">afterDraw</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_beforeDraw">beforeDraw</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_cancelTileDrawWhenNotFound">cancelTileDrawWhenNotFound</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_draw">draw</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_game">game</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_mergeWithPrevLayer">mergeWithPrevLayer</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_type">type</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
             
 
             
@@ -397,8 +237,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_getModifiedTileData" class="method item">
-    <h3 class="name"><code>getModifiedTileData</code></h3>
+                    <div id="method_canPerformAction" class="method item">
+    <h3 class="name"><code>canPerformAction</code></h3>
 
     
         <div class="args">
@@ -406,19 +246,13 @@
             
                 <li class="arg">
                     
-                        <code>x</code>
+                        <code>action</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>y</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[prevTileData]</code>
+                        <code class="optional">[settings]</code>
                     
                 </li>
             
@@ -428,7 +262,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">TileData | Bool</span>
+            <span class="type">Boolean</span>
         </span>
     
 
@@ -455,7 +289,7 @@
             
         
         
-        <a href="../files/src_renderer-layer.js.html#l90"><code>src&#x2F;renderer-layer.js:90</code></a>
+        <a href="../files/src_mixins_action-interface.js.html#l61"><code>src&#x2F;mixins&#x2F;action-interface.js:61</code></a>
         
         </p>
 
@@ -466,8 +300,8 @@
     </div>
 
     <div class="description">
-        <p>Get layer&#39;s <code>TileData</code> for a given map tile coord.
-Optionally modifying the <code>prevTileData</code> object param if <code>this.mergeWithPrevLayer = true</code>.</p>
+        <p>Checks if source can perform an action with given settings. (source is <code>this</code>)
+Functionality separated to avoid checking multiple targets when source cannot perform action regardless of target.</p>
 
     </div>
 
@@ -479,15 +313,15 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             
                 <li class="param">
                     
-                        <code class="param-name">x</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">action</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>Map tile x coord.</li>
+<li>The action to check.</li>
 </ul>
 
                     </div>
@@ -497,25 +331,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             
                 <li class="param">
                     
-                        <code class="param-name">y</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <ul>
-<li>Map tile y coord.</li>
-</ul>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[prevTileData]</code>
+                        <code class="param-name optional">[settings]</code>
                         <span class="type">Object</span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
@@ -524,7 +340,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
 
                     <div class="param-description">
                         <ul>
-<li><code>tileData</code> object for the given map tile coord from previous layer.</li>
+<li>Settings for the action.</li>
 </ul>
 
                     </div>
@@ -543,9 +359,9 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             <div class="returns-description">
                 
                     
-                        <span class="type">TileData | Bool</span>:
+                        <span class="type">Boolean</span>:
                     
-                    <p>false if nothing to render</p>
+                    <p><code>true</code> if the action can be performed.</p>
 
                 
             </div>
@@ -556,8 +372,8 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
 </div>
 
                 
-                    <div id="method_getTileData" class="method item">
-    <h3 class="name"><code>getTileData</code></h3>
+                    <div id="method_canPerformActionOnTarget" class="method item">
+    <h3 class="name"><code>canPerformActionOnTarget</code></h3>
 
     
         <div class="args">
@@ -565,19 +381,19 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             
                 <li class="arg">
                     
-                        <code>x</code>
+                        <code>action</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>y</code>
+                        <code>target</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code class="optional">[prevTileData]</code>
+                        <code class="optional">[settings]</code>
                     
                 </li>
             
@@ -587,7 +403,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
 
     
         <span class="returns-inline">
-            <span class="type">TileData | Bool</span>
+            <span class="type">Boolean</span>
         </span>
     
 
@@ -614,7 +430,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             
         
         
-        <a href="../files/src_renderer-layer.js.html#l78"><code>src&#x2F;renderer-layer.js:78</code></a>
+        <a href="../files/src_mixins_action-interface.js.html#l84"><code>src&#x2F;mixins&#x2F;action-interface.js:84</code></a>
         
         </p>
 
@@ -625,7 +441,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
     </div>
 
     <div class="description">
-        <p>Get layer&#39;s <code>tileData</code> for a given map tile coord.</p>
+        <p>Checks if source can perform an action on target with given settings.</p>
 
     </div>
 
@@ -637,15 +453,15 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             
                 <li class="param">
                     
-                        <code class="param-name">x</code>
-                        <span class="type">Number</span>
+                        <code class="param-name">action</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li>Map tile x coord.</li>
+<li>The action to check.</li>
 </ul>
 
                     </div>
@@ -655,7 +471,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             
                 <li class="param">
                     
-                        <code class="param-name">y</code>
+                        <code class="param-name">target</code>
                         <span class="type">Object</span>
                     
 
@@ -663,7 +479,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
 
                     <div class="param-description">
                         <ul>
-<li>Map tile y coord.</li>
+<li>The target object to check against.</li>
 </ul>
 
                     </div>
@@ -673,7 +489,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             
                 <li class="param">
                     
-                        <code class="param-name optional">[prevTileData]</code>
+                        <code class="param-name optional">[settings]</code>
                         <span class="type">Object</span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
@@ -682,11 +498,32 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
 
                     <div class="param-description">
                         <ul>
-<li><code>tileData</code> object for the given map tile coord from previous layer.</li>
+<li>Settings for the action.</li>
 </ul>
 
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[skipCanPerformAction]</code>
+                                    <span class="type">Object</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>If true skips checking that <code>this.canPerformAction(action, settings) == true</code></li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -701,9 +538,9 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             <div class="returns-description">
                 
                     
-                        <span class="type">TileData | Bool</span>:
+                        <span class="type">Boolean</span>:
                     
-                    <p>false if nothing to render</p>
+                    <p><code>true</code> if the action can be performed on target.</p>
 
                 
             </div>
@@ -714,8 +551,8 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
 </div>
 
                 
-                    <div id="method_mergeTileData" class="method item">
-    <h3 class="name"><code>mergeTileData</code></h3>
+                    <div id="method_getTargetsForAction" class="method item">
+    <h3 class="name"><code>getTargetsForAction</code></h3>
 
     
         <div class="args">
@@ -723,13 +560,13 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             
                 <li class="arg">
                     
-                        <code>tileData1</code>
+                        <code>action</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>tileData2</code>
+                        <code class="optional">[settings]</code>
                     
                 </li>
             
@@ -739,7 +576,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
 
     
         <span class="returns-inline">
-            <span class="type">TileData</span>
+            <span class="type">Array</span>
         </span>
     
 
@@ -766,7 +603,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
             
         
         
-        <a href="../files/src_renderer-layer.js.html#l107"><code>src&#x2F;renderer-layer.js:107</code></a>
+        <a href="../files/src_mixins_action-interface.js.html#l36"><code>src&#x2F;mixins&#x2F;action-interface.js:36</code></a>
         
         </p>
 
@@ -777,8 +614,7 @@ Optionally modifying the <code>prevTileData</code> object param if <code>this.me
     </div>
 
     <div class="description">
-        <p>Merges 2 <code>tileData</code> objects.
-Used to Merges layers of the same tile before drawing them.</p>
+        <p>Returns a list of valid targets to perform an action on.</p>
 
     </div>
 
@@ -790,15 +626,15 @@ Used to Merges layers of the same tile before drawing them.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">tileData1</code>
-                        <span class="type">TileData</span>
+                        <code class="param-name">action</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li><code>tileData</code> to merge to.</li>
+<li>The action to get targets for.</li>
 </ul>
 
                     </div>
@@ -808,15 +644,16 @@ Used to Merges layers of the same tile before drawing them.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">tileData2</code>
-                        <span class="type">TileData</span>
+                        <code class="param-name optional">[settings]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
                         <ul>
-<li><code>tileData</code> to merge from, properties with values on tileData2 replace matching properties on tileData1</li>
+<li>Settings for the action.</li>
 </ul>
 
                     </div>
@@ -835,9 +672,9 @@ Used to Merges layers of the same tile before drawing them.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type">TileData</span>:
+                        <span class="type">Array</span>:
                     
-                    <p>A new <code>tileData</code> object with merged values.</p>
+                    <p>Array of valid targets.</p>
 
                 
             </div>
@@ -848,62 +685,230 @@ Used to Merges layers of the same tile before drawing them.</p>
 </div>
 
                 
+                    <div id="method_performAction" class="method item">
+    <h3 class="name"><code>performAction</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>action</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>target</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[settings]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_mixins_action-interface.js.html#l114"><code>src&#x2F;mixins&#x2F;action-interface.js:114</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Performs an action on target with given settings.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">action</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The action to perform.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">target</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The target object to perform the action on.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[settings]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Settings for the action.</li>
+</ul>
+
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[skipCanPerformAction]</code>
+                                    <span class="type">Object</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>If true skips checking that <code>this.canPerformAction(action, settings) == true</code></li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[skipCanPerformActionOnTarget]</code>
+                                    <span class="type">Object</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>If true skips checking that <code>this.skipCanPerformActionOnTarget(action, target, settings) == true</code></li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <p><code>true</code> if the action has been successfully completed.</p>
+
+                
             </div>
-        
-
-        
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Properties</h2>
-
-                
-                    <div id="property_afterDraw" class="property item">
-    <h3 class="name"><code>afterDraw</code></h3>
-    <span class="type">Function <code>function(x, y, tileData, ctx)</code></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_renderer-layer.js.html#l71"><code>src&#x2F;renderer-layer.js:71</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>After draw function. Ignored if <code>this.draw = false</code>.</p>
-
-    </div>
-
-    
-
+        </div>
     
 
     
 </div>
 
                 
-                    <div id="property_beforeDraw" class="property item">
-    <h3 class="name"><code>beforeDraw</code></h3>
-    <span class="type">Function <code>function(x, y, tileData, ctx)</code></span>
+                    <div id="method_setPerformableAction" class="method item">
+    <h3 class="name"><code>setPerformableAction</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>action</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>implementation</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
 
     
 
@@ -924,9 +929,10 @@ Used to Merges layers of the same tile before drawing them.</p>
             
         
         
-        <a href="../files/src_renderer-layer.js.html#l64"><code>src&#x2F;renderer-layer.js:64</code></a>
+        <a href="../files/src_mixins_action-interface.js.html#l13"><code>src&#x2F;mixins&#x2F;action-interface.js:13</code></a>
         
         </p>
+
 
         
 
@@ -934,237 +940,55 @@ Used to Merges layers of the same tile before drawing them.</p>
     </div>
 
     <div class="description">
-        <p>Before draw function. Ignored if <code>this.draw = false</code>.</p>
+        <p>Sets a performable action implementation on object.</p>
 
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
 
-    
-
-    
-</div>
-
-                
-                    <div id="property_cancelTileDrawWhenNotFound" class="property item">
-    <h3 class="name"><code>cancelTileDrawWhenNotFound</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
+            <ul class="params-list">
             
-                
-                <p>
-                
-                Defined in
-                
+                <li class="param">
+                    
+                        <code class="param-name">action</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>The action name.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
             
-        
-        
-        <a href="../files/src_renderer-layer.js.html#l50"><code>src&#x2F;renderer-layer.js:50</code></a>
-        
-        </p>
+                <li class="param">
+                    
+                        <code class="param-name">implementation</code>
+                        <span class="type"><a href="../classes/PerformableAction.html" class="crosslink">PerformableAction</a></span>
+                    
 
-        
+                    
 
-        
-    </div>
+                    <div class="param-description">
+                        <ul>
+<li>Object to set as the action implementation.
+or a string to lookup an implementation <code>RL.PerformableActions[implementation]</code>.</li>
+</ul>
 
-    <div class="description">
-        <p>If true, when <code>this.getTileData(x, y)</code> returns a value that evaluates to false, all tile layers above this one are not drawn by the <code>Renderer</code> for this map tile coord.</p>
+                    </div>
 
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_draw" class="property item">
-    <h3 class="name"><code>draw</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
+                    
+                </li>
             
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_renderer-layer.js.html#l57"><code>src&#x2F;renderer-layer.js:57</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>If true, <code>tileData</code> is drawn to the canvas after processing this layer.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_game" class="property item">
-    <h3 class="name"><code>game</code></h3>
-    <span class="type"><a href="../classes/Game.html" class="crosslink">Game</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_renderer-layer.js.html#l27"><code>src&#x2F;renderer-layer.js:27</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Game instance this obj is attached to.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_mergeWithPrevLayer" class="property item">
-    <h3 class="name"><code>mergeWithPrevLayer</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_renderer-layer.js.html#l42"><code>src&#x2F;renderer-layer.js:42</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>If true, <code>this.getTileData()</code> will merge the <code>tileData</code> it would otherwise return with the <code>prevTileData</code> param (if provided).
-objects are  from this layer should be merged with layers below before drawing.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_type" class="property item">
-    <h3 class="name"><code>type</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_renderer-layer.js.html#l34"><code>src&#x2F;renderer-layer.js:34</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The type of <code>RendererLayer</code> this is.
-When created this object is merged with the value of <code>RendererLayer.Types[type]</code>. See constructor.</p>
-
-    </div>
-
+            </ul>
+        </div>
     
 
     
@@ -1174,6 +998,8 @@ When created this object is merged with the value of <code>RendererLayer.Types[t
 
                 
             </div>
+        
+
         
 
         

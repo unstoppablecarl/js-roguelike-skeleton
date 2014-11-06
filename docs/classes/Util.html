@@ -67,6 +67,10 @@
             
                 <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
             
+                <li><a href="../classes/PerformableAction.html">PerformableAction</a></li>
+            
+                <li><a href="../classes/PerformableActionInterface.html">PerformableActionInterface</a></li>
+            
                 <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Renderer.html">Renderer</a></li>
@@ -74,6 +78,10 @@
                 <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
             
                 <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
+            
+                <li><a href="../classes/ResolvableAction.html">ResolvableAction</a></li>
+            
+                <li><a href="../classes/ResolvableActionInterface.html">ResolvableActionInterface</a></li>
             
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
@@ -136,7 +144,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_util.js.html#l33"><code>src&#x2F;util.js:33</code></a>
+            Defined in: <a href="../files/src_util.js.html#l44"><code>src&#x2F;util.js:44</code></a>
         </div>
     
 
@@ -248,6 +256,15 @@
                             </li>
                         
                             <li class="index-item property">
+                                <a href="#property_DIRECTIONS_OPPOSITES">DIRECTIONS_OPPOSITES</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
                                 <a href="#property_DIRECTIONS_TO_OFFSETS">DIRECTIONS_TO_OFFSETS</a>
 
                                 
@@ -334,7 +351,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l170"><code>src&#x2F;util.js:170</code></a>
+        <a href="../files/src_util.js.html#l201"><code>src&#x2F;util.js:201</code></a>
         
         </p>
 
@@ -485,7 +502,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l138"><code>src&#x2F;util.js:138</code></a>
+        <a href="../files/src_util.js.html#l169"><code>src&#x2F;util.js:169</code></a>
         
         </p>
 
@@ -618,7 +635,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l152"><code>src&#x2F;util.js:152</code></a>
+        <a href="../files/src_util.js.html#l183"><code>src&#x2F;util.js:183</code></a>
         
         </p>
 
@@ -792,7 +809,7 @@
             
         
         
-        <a href="../files/src_util.js.html#l118"><code>src&#x2F;util.js:118</code></a>
+        <a href="../files/src_util.js.html#l149"><code>src&#x2F;util.js:149</code></a>
         
         </p>
 
@@ -930,7 +947,7 @@ It&#39;s in-order, so the last source will override properties of the same name 
             
         
         
-        <a href="../files/src_util.js.html#l98"><code>src&#x2F;util.js:98</code></a>
+        <a href="../files/src_util.js.html#l129"><code>src&#x2F;util.js:129</code></a>
         
         </p>
 
@@ -1046,7 +1063,7 @@ It&#39;s in-order, so the last source will override properties of the same name 
             
         
         
-        <a href="../files/src_util.js.html#l40"><code>src&#x2F;util.js:40</code></a>
+        <a href="../files/src_util.js.html#l51"><code>src&#x2F;util.js:51</code></a>
         
         </p>
 
@@ -1110,7 +1127,7 @@ Used to match property keys of <code>Util.DIRECTIONS_TO_OFFSETS</code>.</p>
             
         
         
-        <a href="../files/src_util.js.html#l57"><code>src&#x2F;util.js:57</code></a>
+        <a href="../files/src_util.js.html#l68"><code>src&#x2F;util.js:68</code></a>
         
         </p>
 
@@ -1151,6 +1168,73 @@ Used to match property keys of <code>Util.DIRECTIONS_TO_OFFSETS</code>.</p>
 </div>
 
                 
+                    <div id="property_DIRECTIONS_OPPOSITES" class="property item">
+    <h3 class="name"><code>DIRECTIONS_OPPOSITES</code></h3>
+    <span class="type">Object</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util.js.html#l109"><code>src&#x2F;util.js:109</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Maps direction names their opposite direction name.</p>
+
+    </div>
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>{
+   up:           {x:  0, y: -1},
+   up_right:     {x:  1, y: -1},
+   right:        {x:  1, y:  0},
+   down_right:   {x:  1, y:  1},
+   down:         {x:  0, y:  1},
+   down_left:    {x: -1, y:  1},
+   left:         {x: -1, y:  0},
+   up_left:      {x: -1, y: -1}
+}</code></pre>
+
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="property_DIRECTIONS_TO_OFFSETS" class="property item">
     <h3 class="name"><code>DIRECTIONS_TO_OFFSETS</code></h3>
     <span class="type">Object</span>
@@ -1178,7 +1262,7 @@ Used to match property keys of <code>Util.DIRECTIONS_TO_OFFSETS</code>.</p>
             
         
         
-        <a href="../files/src_util.js.html#l78"><code>src&#x2F;util.js:78</code></a>
+        <a href="../files/src_util.js.html#l89"><code>src&#x2F;util.js:89</code></a>
         
         </p>
 
@@ -1200,15 +1284,15 @@ Used to match property keys of <code>Util.DIRECTIONS_TO_OFFSETS</code>.</p>
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>{
-   up:           {x:  0, y: -1},
-   up_right:     {x:  1, y: -1},
-   right:        {x:  1, y:  0},
-   down_right:   {x:  1, y:  1},
-   down:         {x:  0, y:  1},
-   down_left:    {x: -1, y:  1},
-   left:         {x: -1, y:  0},
-   up_left:      {x: -1, y: -1}
-}</code></pre>
+    &#39;up&#39;: &#39;down&#39;,
+    &#39;down&#39;: &#39;up&#39;,
+    &#39;left&#39;: &#39;right&#39;,
+    &#39;right&#39;: &#39;left&#39;,
+    &#39;up_right&#39;: &#39;down_left&#39;,
+    &#39;down_left&#39;: &#39;up_right&#39;,
+    &#39;up_left&#39;: &#39;down_right&#39;,
+    &#39;down_right&#39;: &#39;up_left&#39;
+};</code></pre>
 
             </div>
         </div>

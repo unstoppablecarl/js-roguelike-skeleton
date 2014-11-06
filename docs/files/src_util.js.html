@@ -67,6 +67,10 @@
             
                 <li><a href="../classes/ObjectManager.html">ObjectManager</a></li>
             
+                <li><a href="../classes/PerformableAction.html">PerformableAction</a></li>
+            
+                <li><a href="../classes/PerformableActionInterface.html">PerformableActionInterface</a></li>
+            
                 <li><a href="../classes/Player.html">Player</a></li>
             
                 <li><a href="../classes/Renderer.html">Renderer</a></li>
@@ -74,6 +78,10 @@
                 <li><a href="../classes/RendererLayer.html">RendererLayer</a></li>
             
                 <li><a href="../classes/RendererLayer.Types.html">RendererLayer.Types</a></li>
+            
+                <li><a href="../classes/ResolvableAction.html">ResolvableAction</a></li>
+            
+                <li><a href="../classes/ResolvableActionInterface.html">ResolvableActionInterface</a></li>
             
                 <li><a href="../classes/Tile.html">Tile</a></li>
             
@@ -164,6 +172,17 @@
         &#x27;up_left&#x27;
     ];
 
+    var DIRECTIONS_TO_OPPOSITES = {
+        &#x27;up&#x27;: &#x27;down&#x27;,
+        &#x27;down&#x27;: &#x27;up&#x27;,
+        &#x27;left&#x27;: &#x27;right&#x27;,
+        &#x27;right&#x27;: &#x27;left&#x27;,
+        &#x27;up_right&#x27;: &#x27;down_left&#x27;,
+        &#x27;down_left&#x27;: &#x27;up_right&#x27;,
+        &#x27;up_left&#x27;: &#x27;down_right&#x27;,
+        &#x27;down_right&#x27;: &#x27;up_left&#x27;
+    };
+
     /**
     * Utility functions.
     * @class Util
@@ -217,6 +236,26 @@
          * @final
          * @example
          *     {
+         *         &#x27;up&#x27;: &#x27;down&#x27;,
+         *         &#x27;down&#x27;: &#x27;up&#x27;,
+         *         &#x27;left&#x27;: &#x27;right&#x27;,
+         *         &#x27;right&#x27;: &#x27;left&#x27;,
+         *         &#x27;up_right&#x27;: &#x27;down_left&#x27;,
+         *         &#x27;down_left&#x27;: &#x27;up_right&#x27;,
+         *         &#x27;up_left&#x27;: &#x27;down_right&#x27;,
+         *         &#x27;down_right&#x27;: &#x27;up_left&#x27;
+         *     };
+         */
+        DIRECTIONS_TO_OFFSETS: DIRECTIONS_TO_OFFSETS,
+
+        /**
+         * Maps direction names their opposite direction name.
+         * @property DIRECTIONS_OPPOSITES
+         * @type {Object}
+         * @static
+         * @final
+         * @example
+         *     {
          *        up:           {x:  0, y: -1},
          *        up_right:     {x:  1, y: -1},
          *        right:        {x:  1, y:  0},
@@ -227,7 +266,7 @@
          *        up_left:      {x: -1, y: -1}
          *     }
          */
-        DIRECTIONS_TO_OFFSETS: DIRECTIONS_TO_OFFSETS,
+        DIRECTIONS_TO_OPPOSITES: DIRECTIONS_TO_OPPOSITES,
 
         /**
         * Merges settings with default values.
