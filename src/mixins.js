@@ -11,12 +11,14 @@
      * @static
      */
     var Mixins = {
+
         /**
          * Adds the funcitonality required for a `Renderer` or `RendererLayer` to retrieve `TileDrawData` from an object.
          * @class TileDraw
          * @static
          */
         TileDraw: {
+
             /**
              * Returns as `tileData`object used by `Renderer` objects to draw tiles.
              * @method getTileDrawData
