@@ -222,7 +222,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src/mixins/action-interface.js",
-            "line": 160,
+            "line": 169,
             "description": "Surface API to handle {{#crossLink \"ResolvableAction\"}}{{/crossLink}} implementations.\nThis allows a source object and target object to have separate action resolution logic without directly referencing eachother.\nSee also {{#crossLink \"PerformableActionInterface\"}}{{/crossLink}}, {{#crossLink \"PerformableAction\"}}{{/crossLink}}",
             "static": 1
         },
@@ -1011,7 +1011,7 @@
         },
         {
             "file": "src/mixins/action-interface.js",
-            "line": 84,
+            "line": 87,
             "description": "Checks if source can perform an action on target with given settings.",
             "itemtype": "method",
             "name": "canPerformActionOnTarget",
@@ -1049,7 +1049,7 @@
         },
         {
             "file": "src/mixins/action-interface.js",
-            "line": 114,
+            "line": 120,
             "description": "Performs an action on target with given settings.",
             "itemtype": "method",
             "name": "performAction",
@@ -1093,7 +1093,7 @@
         },
         {
             "file": "src/mixins/action-interface.js",
-            "line": 169,
+            "line": 178,
             "description": "Sets a resolvable action implementation on object.",
             "itemtype": "method",
             "name": "setResolvableAction",
@@ -1114,7 +1114,7 @@
         },
         {
             "file": "src/mixins/action-interface.js",
-            "line": 190,
+            "line": 199,
             "description": "Checks if a target can resolve an action with given source and settings. `this` is the target.",
             "itemtype": "method",
             "name": "canResolveAction",
@@ -1144,7 +1144,7 @@
         },
         {
             "file": "src/mixins/action-interface.js",
-            "line": 212,
+            "line": 224,
             "description": "Resolves an action on target from source with given settings.",
             "itemtype": "method",
             "name": "performAction",
@@ -3572,7 +3572,7 @@
         },
         {
             "file": "src/object-manager.js",
-            "line": 110,
+            "line": 114,
             "description": "Resets this entityManager.",
             "itemtype": "method",
             "name": "reset",
@@ -3580,7 +3580,7 @@
         },
         {
             "file": "src/object-manager.js",
-            "line": 119,
+            "line": 123,
             "description": "Sets the size of the map to manage objects within.",
             "itemtype": "method",
             "name": "setSize",
@@ -3600,7 +3600,7 @@
         },
         {
             "file": "src/object-manager.js",
-            "line": 129,
+            "line": 133,
             "description": "Loads object data from an array of strings.",
             "itemtype": "method",
             "name": "loadEntitiesFromArrayString",
@@ -3636,7 +3636,7 @@
         },
         {
             "file": "src/object-manager.js",
-            "line": 183,
+            "line": 187,
             "description": "Creates a new object instance of given type.",
             "itemtype": "method",
             "name": "makeNewObjectFromType",
@@ -3655,7 +3655,7 @@
         },
         {
             "file": "src/object-manager.js",
-            "line": 193,
+            "line": 197,
             "description": "Calls the `object.update()` method on all objects. Removes `object.dead == true` objects.\nTypically called after a player has resolved their actions.\nNot all object managers need to upade the objects they manage.",
             "params": [
                 {

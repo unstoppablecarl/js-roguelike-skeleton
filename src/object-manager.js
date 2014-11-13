@@ -98,13 +98,17 @@
         */
         move: function(x, y, object) {
             var existing = this.get(object.x, object.y);
-            if(existing !== object || this.objects.indexOf(object) === -1){
+            if(existing !== object){
+                throw new Error({error: 'Attempting to move object not in correct position in Object manager', x: x, y: y, object: object});
+            }
+
+            if(this.objects.indexOf(object) === -1){
                 throw new Error({error: 'Attempting to move object not in Object manager', x: x, y: y, object: object});
             }
             this.map.remove(object.x, object.y);
+            this.map.set(x, y, object);
             object.x = x;
             object.y = y;
-            this.map.set(x, y, object);
         },
 
         /**
