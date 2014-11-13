@@ -67,7 +67,10 @@
          * @return {Boolean} `true` if the action can be performed.
          */
         canPerformAction: function(action, settings){
-            var handler = this.performableActions && this.performableActions[action];
+            if(!this.performableActions){
+                return false;
+            }
+            var handler = this.performableActions[action];
             if(!handler){
                 return false;
             }
@@ -91,7 +94,10 @@
          * @return {Boolean} `true` if the action can be performed on target.
          */
         canPerformActionOnTarget: function(action, target, settings){
-            var handler = this.performableActions && this.performableActions[action];
+            if(!this.performableActions){
+                return false;
+            }
+            var handler = this.performableActions[action];
             if(!handler){
                 return false;
             }
@@ -122,7 +128,10 @@
          * @return {Boolean} `true` if the action has been successfully completed.
          */
         performAction: function(action, target, settings){
-            var handler = this.performableActions && this.performableActions[action];
+            if(!this.performableActions){
+                return false;
+            }
+            var handler = this.performableActions[action];
             if(!handler){
                 return false;
             }
@@ -196,7 +205,10 @@
          * @return {Boolean} `true` if action was successfully resolved
          */
         canResolveAction: function(action, source, settings){
-            var handler = this.resolvableActions && this.resolvableActions[action];
+            if(!this.resolvableActions){
+                return false;
+            }
+            var handler = this.resolvableActions[action];
             if(!handler){
                 return false;
             }
@@ -219,7 +231,10 @@
          * @return {Boolean} `true` if the action was successfully resolved.
          */
         resolveAction: function(action, source, settings){
-            var handler = this.resolvableActions && this.resolvableActions[action];
+            if(!this.resolvableActions){
+                return false;
+            }
+            var handler = this.resolvableActions[action];
             if(!handler){
                 return false;
             }
