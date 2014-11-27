@@ -87,26 +87,6 @@
         DIRECTIONS_8: DIRECTIONS_8,
 
         /**
-         * Maps direction names to coord offsets.
-         * @property DIRECTIONS_TO_OFFSETS
-         * @type {Object}
-         * @static
-         * @final
-         * @example
-         *     {
-         *         'up': 'down',
-         *         'down': 'up',
-         *         'left': 'right',
-         *         'right': 'left',
-         *         'up_right': 'down_left',
-         *         'down_left': 'up_right',
-         *         'up_left': 'down_right',
-         *         'down_right': 'up_left'
-         *     };
-         */
-        DIRECTIONS_TO_OFFSETS: DIRECTIONS_TO_OFFSETS,
-
-        /**
          * Maps direction names their opposite direction name.
          * @property DIRECTIONS_OPPOSITES
          * @type {Object}
@@ -123,6 +103,26 @@
          *        left:         {x: -1, y:  0},
          *        up_left:      {x: -1, y: -1}
          *     }
+         */
+        DIRECTIONS_TO_OFFSETS: DIRECTIONS_TO_OFFSETS,
+
+        /**
+         * Maps direction names to coord offsets.
+         * @property DIRECTIONS_TO_OFFSETS
+         * @type {Object}
+         * @static
+         * @final
+         * @example
+         *     {
+         *         'up': 'down',
+         *         'down': 'up',
+         *         'left': 'right',
+         *         'right': 'left',
+         *         'up_right': 'down_left',
+         *         'down_left': 'up_right',
+         *         'up_left': 'down_right',
+         *         'down_right': 'up_left'
+         *     };
          */
         DIRECTIONS_TO_OPPOSITES: DIRECTIONS_TO_OPPOSITES,
 
