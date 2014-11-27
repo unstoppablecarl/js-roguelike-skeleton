@@ -157,7 +157,7 @@
         /**
         * Handles the behavior of a player or other entity attempting to move into the tile coord this entity is currently occupying.
         * @method bump
-        * @param {Player|Entity} entity - The player or entity attemplting to move into this entity's tile.
+        * @param {Player|Entity} entity - The player or entity attempting to move into this entity's tile.
         * @return {Bool} true if bumping this entity completes the action of the bumping entity.
         */
         bump: function(entity){
