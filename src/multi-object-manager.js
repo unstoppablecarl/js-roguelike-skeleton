@@ -220,7 +220,6 @@
         * @param {String} [defaultType] - If set, all characters in `mapData` not found in `charToType` will be replaced by an object with `defaultType`.
         * @example
 
-            // 'P' will be ignored and a floor tile will be placed at that position
             var mapData = [
                 '####',
                 '#..#',
