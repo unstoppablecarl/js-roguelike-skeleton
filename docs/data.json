@@ -506,7 +506,7 @@
             "extension_for": [],
             "file": "src/mixins.js",
             "line": 4,
-            "description": "Mixins. Collections of properties to be mixed into objects.\nFunctionality is placed in a mixin so that it can be shared by multiple objects without repeating the same code.\nModifiactions to mixin functionality will be reflected in all objects using this mixin.\nIf the mixin code was copied and pasted, code changes would need to be made in multiple places.\nNo flexibility is lost as objects with mixins added to them may still override or extend the mixed in functionality.",
+            "description": "Mixins. Collections of properties to be mixed into objects.\nFunctionality is placed in a mixin so that it can be shared by multiple objects without repeating the same code.\nModifications to mixin functionality will be reflected in all objects using this mixin.\nIf the mixin code was copied and pasted, code changes would need to be made in multiple places.\nNo flexibility is lost as objects with mixins added to them may still override or extend the mixed in functionality.",
             "static": 1
         },
         "TileDraw": {
@@ -523,7 +523,7 @@
             ],
             "file": "src/mixins.js",
             "line": 15,
-            "description": "Adds the funcitonality required for a `Renderer` or `RendererLayer` to retrieve `TileDrawData` from an object.",
+            "description": "Adds the functionality required for a `Renderer` or `RendererLayer` to retrieve `TileDrawData` from an object.",
             "static": 1
         },
         "Mouse": {
@@ -2030,7 +2030,7 @@
             "params": [
                 {
                     "name": "entity",
-                    "description": "- The player or entity attemplting to move into this entity's tile.",
+                    "description": "- The player or entity attempting to move into this entity's tile.",
                     "type": "Player|Entity"
                 }
             ],
@@ -3411,13 +3411,13 @@
                 }
             ],
             "example": [
-                "\n\n           // 'P' will be ignored and a floor tile will be placed at that position\n           var mapData = [\n               '####',\n               '#..#',\n               '#.Z#',\n               '####',\n           ],\n           charToType = {\n               'Z': 'zombie'\n           };\n\n           entityManager.loadTilesFromArrayString(mapData, charToType);\n"
+                "\n\n           var mapData = [\n               '####',\n               '#..#',\n               '#.Z#',\n               '####',\n           ],\n           charToType = {\n               'Z': 'zombie'\n           };\n\n           entityManager.loadTilesFromArrayString(mapData, charToType);\n"
             ],
             "class": "MultiObjectManager"
         },
         {
             "file": "src/multi-object-manager.js",
-            "line": 260,
+            "line": 259,
             "description": "Creates a new object instance.",
             "itemtype": "method",
             "name": "makeNewObjectFromType",
@@ -3436,7 +3436,7 @@
         },
         {
             "file": "src/multi-object-manager.js",
-            "line": 270,
+            "line": 269,
             "description": "Calls the `object.update()` method on all objects. Removes `object.dead == true` objects.\nTypically called after a player has resolved their actions.\nNot all object managers need to upade the objects they manage.",
             "params": [
                 {
@@ -4633,7 +4633,7 @@
             "params": [
                 {
                     "name": "entity",
-                    "description": "- The player or entity attemplting to move into this tile.",
+                    "description": "- The player or entity attempting to move into this tile.",
                     "type": "Object"
                 }
             ],
@@ -4695,20 +4695,6 @@
         {
             "file": "src/util.js",
             "line": 89,
-            "description": "Maps direction names to coord offsets.",
-            "itemtype": "property",
-            "name": "DIRECTIONS_TO_OFFSETS",
-            "type": "{Object}",
-            "static": 1,
-            "final": 1,
-            "example": [
-                "\n    {\n        'up': 'down',\n        'down': 'up',\n        'left': 'right',\n        'right': 'left',\n        'up_right': 'down_left',\n        'down_left': 'up_right',\n        'up_left': 'down_right',\n        'down_right': 'up_left'\n    };"
-            ],
-            "class": "Util"
-        },
-        {
-            "file": "src/util.js",
-            "line": 109,
             "description": "Maps direction names their opposite direction name.",
             "itemtype": "property",
             "name": "DIRECTIONS_OPPOSITES",
@@ -4717,6 +4703,20 @@
             "final": 1,
             "example": [
                 "\n    {\n       up:           {x:  0, y: -1},\n       up_right:     {x:  1, y: -1},\n       right:        {x:  1, y:  0},\n       down_right:   {x:  1, y:  1},\n       down:         {x:  0, y:  1},\n       down_left:    {x: -1, y:  1},\n       left:         {x: -1, y:  0},\n       up_left:      {x: -1, y: -1}\n    }"
+            ],
+            "class": "Util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 109,
+            "description": "Maps direction names to coord offsets.",
+            "itemtype": "property",
+            "name": "DIRECTIONS_TO_OFFSETS",
+            "type": "{Object}",
+            "static": 1,
+            "final": 1,
+            "example": [
+                "\n    {\n        'up': 'down',\n        'down': 'up',\n        'left': 'right',\n        'right': 'left',\n        'up_right': 'down_left',\n        'down_left': 'up_right',\n        'up_left': 'down_right',\n        'down_right': 'up_left'\n    };"
             ],
             "class": "Util"
         },

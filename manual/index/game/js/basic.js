@@ -56,9 +56,6 @@ game.entityManager.add(5, 9, 'zombie');
 game.player.x = 3;
 game.player.y = 3;
 
-game.lighting.set(3, 14, 255, 0, 0);
-game.lighting.set(7, 14, 0, 0, 255);
-
 // make the view a little smaller
 game.renderer.resize(10, 14);
 
