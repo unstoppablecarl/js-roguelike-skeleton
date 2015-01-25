@@ -103,6 +103,18 @@
         bgColor: null,
 
         /**
+         * Optional callback called when added to an `ObjectManager` or `MultiObjectManager`.
+         * @metod onAdd
+         */
+        onAdd: false,
+
+        /**
+         * Optional callback called when removed from an `ObjectManager` or `MultiObjectManager`.
+         * @metod onRemve
+         */
+        onRemve: false,
+
+        /**
         * Handles the behavior of a player or other entity attempting to move into this tile. Only used if this.passable = false.
         * @method bump
         * @param {Object} entity - The player or entity attempting to move into this tile.

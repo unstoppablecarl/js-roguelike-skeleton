@@ -59,7 +59,10 @@
         */
         get: function(x, y, filter) {
             if(filter){
-                return this.map.get(x, y).filter(filter);
+                var result = this.map.get(x, y);
+                if(result){
+                    return result.filter(filter);
+                }
             }
             return this.map.get(x, y);
         },
@@ -131,6 +134,9 @@
             this.objects.push(obj);
             var arr = this.map.get(x, y);
             arr.push(obj);
+            if(obj.onAdd){
+                obj.onAdd();
+            }
             return obj;
         },
 
@@ -145,6 +151,23 @@
             arr.splice(index, 1);
             index = this.objects.indexOf(obj);
             this.objects.splice(index, 1);
+            if(obj.onRemove){
+                obj.onRemove();
+            }
+        },
+
+        /**
+         * Remove all objects from given location.
+         * @method removeAt
+         * @param {Number} x - Tile map x coord.
+         * @param {Number} y - Tile map y coord.
+         * @param {Function} [filter] - A function to filter the objects removed `function(object){  return true }`.
+         */
+        removeAt: function(x, y, filter){
+            var arr = this.map.get(x, y, filter);
+            for(var i = arr.length - 1; i >= 0; i--){
+                this.remove(arr[i]);
+            }
         },
 
         /**
@@ -193,9 +216,9 @@
         /**
          * Same as `this.map.getAdjacent`, but merges all results into on flat array.
          * @method getAdjacent
-         * @param {Number} x
-         * @param {Number} y
-         * @param {Object} settings
+         * @param {Number} x - Map tile x coord.
+         * @param {Number} y - Map tile y coord;
+         * @param {Object} [settings]
          * @return {Array}
          */
         getAdjacent: function(x, y, settings){
