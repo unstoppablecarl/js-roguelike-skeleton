@@ -42,35 +42,35 @@
         /**
         * Game instance this obj is attached to.
         * @property game
-        * @type Game
+        * @type {Game}
         */
         game: null,
 
         /**
         * Array2d storing Lighting data.
         * @property lightingMap
-        * @type Array2d
+        * @type {Array2d}
         */
         lightingMap: null,
 
         /**
         * Reflectivity of wall tiles.
         * @property defaultWallReflectivity
-        * @type Number
+        * @type {Number}
         */
         defaultWallReflectivity: 0.1,
 
         /**
         * Reflectivity of floor tiles.
         * @property defaultFloorReflectivity
-        * @type Number
+        * @type {Number}
         */
         defaultFloorReflectivity: 0.1,
 
         /**
         * Ambient light
         * @property ambientLight
-        * @type Array
+        * @type {Array}
         */
         ambientLight: [100, 100, 100],
 
@@ -78,7 +78,7 @@
         * ROT.FOV instance
         * @property _fov
         * @private
-        * @type ROT.FOV
+        * @type {ROT.FOV}
         */
         _fov: null,
 
@@ -86,16 +86,28 @@
         * ROT.Lighting instance
         * @property _lighting
         * @private
-        * @type ROT.Lighting
+        * @type {ROT.Lighting}
         */
         _lighting: null,
+
+        /**
+        * If lighting data has changed and needs to be recalculated.
+        * @property _dirty
+        * @private
+        * @type {Bool}
+        */
+        _dirty: false,
 
         /**
         * Calculates the Lighting data relative to given coords;
         * @method update
         */
         update: function(){
-            this._lighting.compute(this.lightingMap.set);
+            if(this._dirty){
+                this.lightingMap.reset();
+                this._lighting.compute(this.lightingMap.set);
+                this._dirty = false;
+            }
         },
 
         /**
@@ -163,18 +175,24 @@
         */
         set: function(x, y, r, g, b){
             this._lighting.setLight(x, y, [r, g, b]);
+            this._dirty = true;
         },
 
         /**
         * @method remove
+        * @param {Number} x - Map tile x coord.
+        * @param {Number} y - Map tile y coord.
         */
         remove: function(x, y){
             this._lighting.setLight(x, y);
+            this._dirty = true;
         },
 
         /**
         * Returns the reflectivity value of a tile
         * @method getTileReflectivity
+        * @param {Number} x - Map tile x coord.
+        * @param {Number} y - Map tile y coord.
         */
         getTileReflectivity: function(x, y){
             var tile = this.game.map.get(x, y);
@@ -197,6 +215,8 @@
         /**
         * Checks if a tile blocks line of sight
         * @method checkVisible
+        * @param {Number} x - Map tile x coord.
+        * @param {Number} y - Map tile y coord.
         */
         checkVisible: function(x, y){
             var tile = this.game.map.get(x, y);
@@ -211,6 +231,7 @@
         */
         setSize: function(width, height){
             this.lightingMap.setSize(width, height);
+            this._dirty = true;
         }
 
     };
