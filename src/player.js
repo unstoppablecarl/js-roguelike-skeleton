@@ -26,7 +26,7 @@
         };
 
         if(this.init){
-            this.init();
+            this.init(game);
         }
     };
 
@@ -54,6 +54,13 @@
         * @type String
         */
         name: 'Player',
+
+        /**
+        * Optional Callback. Called when the entity is first created. Intended to be assigned by Entity.Types.
+        * @method init
+        * @param {Game} game - Game instance this obj is attached to.
+        */
+        init: false,
 
         /**
         * The map tile coordinate position of the player on the x axis.

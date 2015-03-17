@@ -1,6 +1,8 @@
 (function(root) {
     'use strict';
 
+	var entId = 0;
+
     /**
     * Represents an entity in the game. Usually a character or enemy.
     * Manages state (position, health, stats, etc)
@@ -17,8 +19,10 @@
         var typeData = Entity.Types[type];
         RL.Util.merge(this, typeData);
 
-        if(this.initialize){
-            this.initialize();
+        this.id = entId++;
+
+        if(this.init){
+            this.init(game, type);
         }
     };
 
@@ -33,6 +37,12 @@
         game: null,
 
         /**
+         * Unique id for this entity.
+         * @type {Number}
+         */
+        id: null,
+
+        /**
         * The type of entity this is.
         * When created this object is merged with the value of Entity.Types[type].
         * @property type
@@ -42,11 +52,11 @@
 
         /**
         * Called when the entity is first created. Intended to be assigned by Entity.Types.
-        * @method initialize
+        * @method init
+        * @param {Game} game - Game instance this obj is attached to.
+        * @param {String} type - Type of entity. When created this object is merged with the value of Entity.Types[type].
         */
-        initialize: function(){
-
-        },
+        init: false,
 
         /**
         * Name used when referencing or describing this entity.

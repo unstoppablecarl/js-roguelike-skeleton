@@ -1,6 +1,8 @@
 (function(root) {
     'use strict';
 
+    var tileId = 0;
+
     /**
     * Represents a tile in the game map.
     * @class Tile
@@ -19,6 +21,12 @@
 
         var typeData = Tile.Types[type];
         RL.Util.merge(this, typeData);
+
+        this.id = tileId++;
+
+        if(this.init){
+            this.init(game, type, x, y);
+        }
     };
 
     Tile.prototype = {
@@ -32,12 +40,28 @@
         game: null,
 
         /**
+         * Unique id for this tile.
+         * @type {Number}
+         */
+        id: null,
+
+        /**
         * The type of entity this is.
         * When created this object is merged with the value of `Tile.Types[type]`. See constructor.
         * @property type
         * @type {String}
         */
         type: null,
+
+        /**
+        * Optional Callback. Called when the entity is first created. Intended to be assigned by Entity.Types.
+        * @method init
+        * @param {Game} game - Game instance this obj is attached to.
+        * @param {String} type - Type of tile. When created this object is merged with the value of Tile.Types[type].
+        * @param {Number} x - The map tile coordinate position of this tile on the x axis.
+        * @param {Number} y - The map tile coordinate position of this tile on the y axis.
+        */
+        init: false,
 
         /**
         * Display name for this tile.

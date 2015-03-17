@@ -28,8 +28,8 @@
             // merge could be used instead of Object.create but is less desirable
             // RL.Util.merge(this.performableAction.Types[action], implementation);
 
-            if(this.performableActions[action].initialize){
-                this.performableActions[action].initialize.call(this);
+            if(this.performableActions[action].init){
+                this.performableActions[action].init.call(this);
             }
         },
 
@@ -191,8 +191,8 @@
             // merge could be used instead of Object.create but is less desirable
             // RL.Util.merge(this.resolvableAction.Types[action], implementation);
 
-            if(this.resolvableActions[action].initialize){
-                this.resolvableActions[action].initialize.call(this);
+            if(this.resolvableActions[action].init){
+                this.resolvableActions[action].init.call(this);
             }
         },
 
