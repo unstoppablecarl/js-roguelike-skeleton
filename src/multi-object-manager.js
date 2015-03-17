@@ -164,7 +164,7 @@
          * @param {Function} [filter] - A function to filter the objects removed `function(object){  return true }`.
          */
         removeAt: function(x, y, filter){
-            var arr = this.map.get(x, y, filter);
+            var arr = this.get(x, y, filter);
             for(var i = arr.length - 1; i >= 0; i--){
                 this.remove(arr[i]);
             }
