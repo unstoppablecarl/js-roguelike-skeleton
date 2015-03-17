@@ -36,7 +36,7 @@
         * The dom element being rendered to and listened to for mouse events.
         * @property _boundElement
         * @protected
-        * @type HTMLElement
+        * @type {HTMLElement}
         */
         _boundElement: null,
 
