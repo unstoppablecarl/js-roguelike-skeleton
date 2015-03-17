@@ -12,10 +12,6 @@
         light_g: 100,
         light_b: 255,
 
-        initialize: function(){
-
-        },
-
         /**
         * Gets the adjustment coord from a direction string.
         * @method directionToAdjustCoord

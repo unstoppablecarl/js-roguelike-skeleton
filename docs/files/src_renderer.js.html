@@ -150,9 +150,10 @@
     * @param {Game} game - Game instance this obj is attached to.
     * @param {Number} width - Width of the map view in tiles.
     * @param {Number} height - Height of the map view in tiles.
+    * @param {Number} tileSize - Width and height of tiles when drawn.
     * @param {String} [canvasClassName=&#x27;renderer&#x27;] - Css class name for the canvas element.
     */
-    var Renderer = function Renderer(game, width, height, canvasClassName) {
+    var Renderer = function Renderer(game, width, height, tileSize, canvasClassName) {
         this.layers = [];
         this.game = game;
         this.canvas = document.createElement(&#x27;canvas&#x27;);
@@ -160,6 +161,7 @@
         this.canvas.className = canvasClassName || &#x27;renderer&#x27;;
         this.buffer = this.canvas.cloneNode();
         this.bufferCtx = this.buffer.getContext(&#x27;2d&#x27;);
+        this.tileSize = tileSize || this.tileSize;
         this.resize(width, height);
 
     };

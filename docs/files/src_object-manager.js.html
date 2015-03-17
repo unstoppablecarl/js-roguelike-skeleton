@@ -217,6 +217,9 @@
             obj.y = y;
             this.objects.push(obj);
             this.map.set(x, y, obj);
+            if(obj.onAdd){
+                obj.onAdd();
+            }
             return obj;
         },
 
@@ -229,6 +232,9 @@
             this.map.remove(object.x, object.y);
             var index = this.objects.indexOf(object);
             this.objects.splice(index, 1);
+            if(object.onRemove){
+                object.onRemove();
+            }
         },
 
         /**
@@ -340,7 +346,7 @@
         * Calls the &#x60;object.update()&#x60; method on all objects. Removes &#x60;object.dead == true&#x60; objects.
         * Typically called after a player has resolved their actions.
         * Not all object managers need to upade the objects they manage.
-        * @param {Object} [excludeObject] - excludeObject will be skipped if found in &#x60;this.objects&#x60;.
+        * @param {Object} [excludeObject] - excludeObject will be skipped if found in &#x60;this.objects&#x60;. Typically used to skip the player object.
         * @method update
         */
         update: function(excludeObject) {

@@ -419,6 +419,13 @@ Handles adding, removing, moving objects within the game.</p>
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_removeAt">removeAt</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_reset">reset</a>
 
                                 
@@ -542,7 +549,7 @@ Handles adding, removing, moving objects within the game.</p>
             
         
         
-        <a href="../files/src_multi-object-manager.js.html#l116"><code>src&#x2F;multi-object-manager.js:116</code></a>
+        <a href="../files/src_multi-object-manager.js.html#l119"><code>src&#x2F;multi-object-manager.js:119</code></a>
         
         </p>
 
@@ -818,7 +825,7 @@ Handles adding, removing, moving objects within the game.</p>
             
                 <li class="arg">
                     
-                        <code>settings</code>
+                        <code class="optional">[settings]</code>
                     
                 </li>
             
@@ -855,7 +862,7 @@ Handles adding, removing, moving objects within the game.</p>
             
         
         
-        <a href="../files/src_multi-object-manager.js.html#l193"><code>src&#x2F;multi-object-manager.js:193</code></a>
+        <a href="../files/src_multi-object-manager.js.html#l216"><code>src&#x2F;multi-object-manager.js:216</code></a>
         
         </p>
 
@@ -885,7 +892,10 @@ Handles adding, removing, moving objects within the game.</p>
                     
 
                     <div class="param-description">
-                         
+                        <ul>
+<li>Map tile x coord.</li>
+</ul>
+
                     </div>
 
                     
@@ -900,7 +910,10 @@ Handles adding, removing, moving objects within the game.</p>
                     
 
                     <div class="param-description">
-                         
+                        <ul>
+<li>Map tile y coord;</li>
+</ul>
+
                     </div>
 
                     
@@ -908,8 +921,9 @@ Handles adding, removing, moving objects within the game.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">settings</code>
+                        <code class="param-name optional">[settings]</code>
                         <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
@@ -1001,7 +1015,7 @@ Handles adding, removing, moving objects within the game.</p>
             
         
         
-        <a href="../files/src_multi-object-manager.js.html#l67"><code>src&#x2F;multi-object-manager.js:67</code></a>
+        <a href="../files/src_multi-object-manager.js.html#l70"><code>src&#x2F;multi-object-manager.js:70</code></a>
         
         </p>
 
@@ -1157,7 +1171,7 @@ Handles adding, removing, moving objects within the game.</p>
             
         
         
-        <a href="../files/src_multi-object-manager.js.html#l92"><code>src&#x2F;multi-object-manager.js:92</code></a>
+        <a href="../files/src_multi-object-manager.js.html#l95"><code>src&#x2F;multi-object-manager.js:95</code></a>
         
         </p>
 
@@ -1309,7 +1323,7 @@ Handles adding, removing, moving objects within the game.</p>
             
         
         
-        <a href="../files/src_multi-object-manager.js.html#l215"><code>src&#x2F;multi-object-manager.js:215</code></a>
+        <a href="../files/src_multi-object-manager.js.html#l238"><code>src&#x2F;multi-object-manager.js:238</code></a>
         
         </p>
 
@@ -1460,7 +1474,7 @@ Handles adding, removing, moving objects within the game.</p>
             
         
         
-        <a href="../files/src_multi-object-manager.js.html#l259"><code>src&#x2F;multi-object-manager.js:259</code></a>
+        <a href="../files/src_multi-object-manager.js.html#l282"><code>src&#x2F;multi-object-manager.js:282</code></a>
         
         </p>
 
@@ -1575,7 +1589,7 @@ Handles adding, removing, moving objects within the game.</p>
             
         
         
-        <a href="../files/src_multi-object-manager.js.html#l150"><code>src&#x2F;multi-object-manager.js:150</code></a>
+        <a href="../files/src_multi-object-manager.js.html#l173"><code>src&#x2F;multi-object-manager.js:173</code></a>
         
         </p>
 
@@ -1702,7 +1716,7 @@ Handles adding, removing, moving objects within the game.</p>
             
         
         
-        <a href="../files/src_multi-object-manager.js.html#l137"><code>src&#x2F;multi-object-manager.js:137</code></a>
+        <a href="../files/src_multi-object-manager.js.html#l143"><code>src&#x2F;multi-object-manager.js:143</code></a>
         
         </p>
 
@@ -1734,6 +1748,146 @@ Handles adding, removing, moving objects within the game.</p>
                     <div class="param-description">
                         <ul>
 <li>The objity to be removed.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_removeAt" class="method item">
+    <h3 class="name"><code>removeAt</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[filter]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_multi-object-manager.js.html#l159"><code>src&#x2F;multi-object-manager.js:159</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Remove all objects from given location.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Tile map x coord.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">y</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>Tile map y coord.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[filter]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>A function to filter the objects removed <code>function(object){  return true }</code>.</li>
 </ul>
 
                     </div>
@@ -1783,7 +1937,7 @@ Handles adding, removing, moving objects within the game.</p>
             
         
         
-        <a href="../files/src_multi-object-manager.js.html#l164"><code>src&#x2F;multi-object-manager.js:164</code></a>
+        <a href="../files/src_multi-object-manager.js.html#l187"><code>src&#x2F;multi-object-manager.js:187</code></a>
         
         </p>
 
@@ -1854,7 +2008,7 @@ Handles adding, removing, moving objects within the game.</p>
             
         
         
-        <a href="../files/src_multi-object-manager.js.html#l177"><code>src&#x2F;multi-object-manager.js:177</code></a>
+        <a href="../files/src_multi-object-manager.js.html#l200"><code>src&#x2F;multi-object-manager.js:200</code></a>
         
         </p>
 
@@ -1963,7 +2117,7 @@ Handles adding, removing, moving objects within the game.</p>
             
         
         
-        <a href="../files/src_multi-object-manager.js.html#l269"><code>src&#x2F;multi-object-manager.js:269</code></a>
+        <a href="../files/src_multi-object-manager.js.html#l292"><code>src&#x2F;multi-object-manager.js:292</code></a>
         
         </p>
 

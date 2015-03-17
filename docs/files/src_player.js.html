@@ -168,7 +168,7 @@
         };
 
         if(this.init){
-            this.init();
+            this.init(game);
         }
     };
 
@@ -196,6 +196,13 @@
         * @type String
         */
         name: &#x27;Player&#x27;,
+
+        /**
+        * Optional Callback. Called when the entity is first created. Intended to be assigned by Entity.Types.
+        * @method init
+        * @param {Game} game - Game instance this obj is attached to.
+        */
+        init: false,
 
         /**
         * The map tile coordinate position of the player on the x axis.
@@ -259,6 +266,18 @@
         * @type bool
         */
         dead: false,
+
+        /**
+         * Optional callback called when added to an &#x60;ObjectManager&#x60; or &#x60;MultiObjectManager&#x60;.
+         * @metod onAdd
+         */
+        onAdd: false,
+
+        /**
+         * Optional callback called when removed from an &#x60;ObjectManager&#x60; or &#x60;MultiObjectManager&#x60;.
+         * @metod onRemve
+         */
+        onRemve: false,
 
         /**
         * Updates this.fov

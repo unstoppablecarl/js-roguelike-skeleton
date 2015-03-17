@@ -143,6 +143,8 @@
 (function(root) {
     &#x27;use strict&#x27;;
 
+    var tileId = 0;
+
     /**
     * Represents a tile in the game map.
     * @class Tile
@@ -161,6 +163,12 @@
 
         var typeData = Tile.Types[type];
         RL.Util.merge(this, typeData);
+
+        this.id = tileId++;
+
+        if(this.init){
+            this.init(game, type, x, y);
+        }
     };
 
     Tile.prototype = {
@@ -174,12 +182,28 @@
         game: null,
 
         /**
+         * Unique id for this tile.
+         * @type {Number}
+         */
+        id: null,
+
+        /**
         * The type of entity this is.
         * When created this object is merged with the value of &#x60;Tile.Types[type]&#x60;. See constructor.
         * @property type
         * @type {String}
         */
         type: null,
+
+        /**
+        * Optional Callback. Called when the entity is first created. Intended to be assigned by Entity.Types.
+        * @method init
+        * @param {Game} game - Game instance this obj is attached to.
+        * @param {String} type - Type of tile. When created this object is merged with the value of Tile.Types[type].
+        * @param {Number} x - The map tile coordinate position of this tile on the x axis.
+        * @param {Number} y - The map tile coordinate position of this tile on the y axis.
+        */
+        init: false,
 
         /**
         * Display name for this tile.
@@ -243,6 +267,18 @@
         * @type {String|bool}
         */
         bgColor: null,
+
+        /**
+         * Optional callback called when added to an &#x60;ObjectManager&#x60; or &#x60;MultiObjectManager&#x60;.
+         * @metod onAdd
+         */
+        onAdd: false,
+
+        /**
+         * Optional callback called when removed from an &#x60;ObjectManager&#x60; or &#x60;MultiObjectManager&#x60;.
+         * @metod onRemve
+         */
+        onRemve: false,
 
         /**
         * Handles the behavior of a player or other entity attempting to move into this tile. Only used if this.passable = false.

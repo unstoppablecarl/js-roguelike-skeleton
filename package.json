@@ -1,6 +1,6 @@
 {
   "name": "rl-js-skeleton",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A roguelike micro-framework for JS beginners. Designed to give a well designed and organized starting point for developers new to programming and or JS. It does NOT provide map generation tools, other libraries like rot.js can be used to serve that purpose.",
   "scripts": {
     "docs": "./node_modules/yuidocjs/lib/cli.js"

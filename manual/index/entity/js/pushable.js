@@ -7,9 +7,6 @@
         color: '#808080',
         bgColor: '#222',
 
-        initialize: function(){
-
-        },
         bump: function(entity){
             // bumping entity is the player
             if(entity === this.game.player){
