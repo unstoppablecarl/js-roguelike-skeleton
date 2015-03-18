@@ -14,7 +14,7 @@
     var Console = function Console(game, messageHistoryCount, elClassName) {
         this.el = document.createElement('div');
         this.el.className = elClassName || 'console';
-        this.messageHistoryCount = messageHistoryCount || 5;
+        this.messageHistoryCount = messageHistoryCount || this.messageHistoryCount;
         this.game = game;
     };
 
