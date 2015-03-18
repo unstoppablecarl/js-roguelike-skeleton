@@ -8,12 +8,14 @@
      * @param {Game}        game
      * @param {Entity}      entity
      * @param {Object}      [settings]
-     * @param {Bool}        [settings.limitToFov=true]      - If true only targets within this.entity's fov will be valid.
-     * @param {Number}      [settings.range=1]              - Max distance in tiles target can be from entity.
-     * @param {Array}       [settings.validTypes=Array]     - Array of valid target object types. Checked using `target instanceof type`.
-     * @param {Bool}        [settings.includeTiles=false]   - If true tile objects are can be valid targets.
-     * @param {Bool}        [settings.includeSelf=false]    - If true entity may target themself.
-     * @param {Function}    [settings.filter=false]         - Function to filter objects when checking if they are valid. `function(obj){ return true }` . Targets must still be a valid type.
+     * @param {Bool}        [settings.limitToFov=true]                  - If true only targets within this.entity's fov will be valid.
+     * @param {Bool}        [settings.limitToNonDiagonalAdjacent=false] - If true diagonally adjacent targets are not valid (only used if `range = 1`).
+     * @param {Number}      [settings.range=1]                          - Max distance in tiles target can be from entity.
+     * @param {Array}       [settings.validTypes=Array]                 - Array of valid target object types. Checked using `target instanceof type`.
+     * @param {Bool}        [settings.includeTiles=false]               - If true tile objects are can be valid targets.
+     * @param {Bool}        [settings.includeSelf=false]                - If true entity may target themself.
+     * @param {Bool}        [settings.prepareValidTargets=true]         - If true valid targets are wraped in an object with x, y, range, value properties.
+     * @param {Function}    [settings.filter=false]                     - Function to filter objects when checking if they are valid. `function(obj){ return true }` . Targets must still be a valid type.
      */
     var ValidTargetsFinder = function(game, entity, settings){
         this.game = game;
@@ -27,6 +29,7 @@
         this.validTypes                 = settings.validTypes                   || [];
         this.includeTiles               = settings.includeTiles                 || this.includeTiles;
         this.includeSelf                = settings.includeSelf                  || this.includeSelf;
+        this.prepareValidTargets        = settings.prepareValidTargets          || this.prepareValidTargets;
         this.filter                     = settings.filter                       || this.filter;
     };
 
@@ -92,6 +95,13 @@
         includeSelf: false,
 
         /**
+         * If true valid targets are wraped in an object with x, y, range, value properties.
+         * @property prepareValidTargets
+         * @type {Boolean}
+         */
+        prepareValidTargets: true,
+
+        /**
          * Function to filter objects when checking if they are valid. `function(obj){ return true }` .
          * Targets must still be an instance of this.validTypes.
          * @property filter
@@ -131,22 +141,36 @@
                     var fovTile = fovTiles[i];
                     // if no max range, if there is a max range check it
                     if(!this.range || fovTile.range <= this.range){
+
+                        // if including tile objects in result but not preparing them
+                        if(this.includeTiles && !this.prepareValidTargets){
+                            fovTile = fovTile.value;
+                        }
                         tiles.push(fovTile);
                     }
                 }
             } else {
                 var x = this.entity.x,
                     y = this.entity.y;
-                if(this.limitToNonDiagonalAdjacent){
-                    tiles = this.game.map.getAdjacent(x, y, {withDiagonals: false});
-                }
-                else{
+
+                if(this.range === 1){
+                    if(this.limitToNonDiagonalAdjacent){
+                        tiles = this.game.map.getAdjacent(x, y, {withDiagonals: false});
+                    }
+                    else{
+                        tiles = this.game.map.getAdjacent(x, y);
+                    }
+                } else {
                     tiles = this.game.map.getWithinSquareRadius(x, y, {radius: this.range});
                 }
-                var _this = this;
-                tiles = tiles.map(function(tile){
-                    return _this.prepareTargetObject(tile);
-                });
+
+                // if including tile objects, prepare them
+                if(this.includeTiles && this.prepareValidTargets){
+                    var _this = this;
+                    tiles = tiles.map(function(tile){
+                        return _this.prepareTargetObject(tile);
+                    });
+                }
             }
             return tiles;
         },
