@@ -178,13 +178,7 @@
             
                 <li class="arg">
                     
-                        <code>entity</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[settings]</code>
+                        <code>settings</code>
                     
                 </li>
             
@@ -254,24 +248,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name">entity</code>
-                        <span class="type"><a href="../classes/Entity.html" class="crosslink">Entity</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[settings]</code>
+                        <code class="param-name">settings</code>
                         <span class="type">Object</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
@@ -285,14 +263,63 @@
                             
                             <li class="param">
                                 
-                                    <code class="param-name optional">[limitToFov=true]</code>
+                                    <code class="param-name">x</code>
+                                    <span class="type">Number</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>The x map tile coord to use as the origin of the attack.</li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">y</code>
+                                    <span class="type">Number</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>The y map tile coord to use as the origin of the attack.</li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[limitToFov=false]</code>
+                                    <span class="type"><a href="../classes/FovROT.html" class="crosslink">FovROT</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>If set only targets within the given <code>FovROT</code> will be valid.</li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[limitToNonDiagonalAdjacent=false]</code>
                                     <span class="type">Bool</span>
                                     <span class="flag optional" title="This parameter is optional.">optional</span>
                                 
 
                                 <div class="param-description">
                                     <ul>
-<li>If true only targets within this.entity&#39;s fov will be valid.</li>
+<li>If true diagonally adjacent targets are not valid (only used if <code>range = 1</code>).</li>
 </ul>
 
                                 </div>
@@ -309,7 +336,7 @@
 
                                 <div class="param-description">
                                     <ul>
-<li>Max distance in tiles target can be from entity.</li>
+<li>Max distance in tiles target can be from origin.</li>
 </ul>
 
                                 </div>
@@ -353,14 +380,31 @@
                             
                             <li class="param">
                                 
-                                    <code class="param-name optional">[includeSelf=false]</code>
+                                    <code class="param-name optional">[exclude=false]</code>
+                                    <span class="type">Object | Array</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <ul>
+<li>Object or Array of objects to exclude from results.</li>
+</ul>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[prepareValidTargets=true]</code>
                                     <span class="type">Bool</span>
                                     <span class="flag optional" title="This parameter is optional.">optional</span>
                                 
 
                                 <div class="param-description">
                                     <ul>
-<li>If true entity may target themself.</li>
+<li>If true valid targets are wraped in an object with x, y, range, value properties.</li>
 </ul>
 
                                 </div>
@@ -478,7 +522,7 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_entity">entity</a>
+                                <a href="#property_exclude">exclude</a>
 
                                 
                                 
@@ -493,13 +537,6 @@
                         
                             <li class="index-item property">
                                 <a href="#property_game">game</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_includeSelf">includeSelf</a>
 
                                 
                                 
@@ -527,6 +564,13 @@
                             </li>
                         
                             <li class="index-item property">
+                                <a href="#property_prepareValidTargets">prepareValidTargets</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
                                 <a href="#property_range">range</a>
 
                                 
@@ -535,6 +579,20 @@
                         
                             <li class="index-item property">
                                 <a href="#property_validTypes">validTypes</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_x">x</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_y">y</a>
 
                                 
                                 
@@ -600,7 +658,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l230"><code>src&#x2F;valid-targets-finder.js:230</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l262"><code>src&#x2F;valid-targets-finder.js:262</code></a>
         
         </p>
 
@@ -709,7 +767,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l207"><code>src&#x2F;valid-targets-finder.js:207</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l239"><code>src&#x2F;valid-targets-finder.js:239</code></a>
         
         </p>
 
@@ -808,7 +866,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l102"><code>src&#x2F;valid-targets-finder.js:102</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l120"><code>src&#x2F;valid-targets-finder.js:120</code></a>
         
         </p>
 
@@ -819,7 +877,7 @@
     </div>
 
     <div class="description">
-        <p>Gets all valid targets for this action from position of this.entity</p>
+        <p>Gets all valid targets.</p>
 
     </div>
 
@@ -895,7 +953,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l154"><code>src&#x2F;valid-targets-finder.js:154</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l186"><code>src&#x2F;valid-targets-finder.js:186</code></a>
         
         </p>
 
@@ -1012,7 +1070,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l121"><code>src&#x2F;valid-targets-finder.js:121</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l139"><code>src&#x2F;valid-targets-finder.js:139</code></a>
         
         </p>
 
@@ -1023,7 +1081,7 @@
     </div>
 
     <div class="description">
-        <p>Get tile coords a valid target may be on. Only checking range and entity fov, not objects on the tile.</p>
+        <p>Get tile coords a valid target may be on. Only checking range and fov, not objects on the tile.</p>
 
     </div>
 
@@ -1113,7 +1171,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l174"><code>src&#x2F;valid-targets-finder.js:174</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l206"><code>src&#x2F;valid-targets-finder.js:206</code></a>
         
         </p>
 
@@ -1191,7 +1249,7 @@
                     
 
                     <div class="param-description">
-                        <p>range from this.entity to x,y</p>
+                        <p>range from <code>this.x</code>, <code>this.y</code> to x,y</p>
 
                     </div>
 
@@ -1230,9 +1288,9 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_entity" class="property item">
-    <h3 class="name"><code>entity</code></h3>
-    <span class="type"><a href="../classes/Entity.html" class="crosslink">Entity</a></span>
+                    <div id="property_exclude" class="property item">
+    <h3 class="name"><code>exclude</code></h3>
+    <span class="type">Object | Array</span>
 
     
 
@@ -1253,7 +1311,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l43"><code>src&#x2F;valid-targets-finder.js:43</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l113"><code>src&#x2F;valid-targets-finder.js:113</code></a>
         
         </p>
 
@@ -1263,8 +1321,7 @@
     </div>
 
     <div class="description">
-        <p>Entity to check valid targets from.
-(Uses Entity#x, Entity#y, Entity#fov)</p>
+        <p>Object or Array of objects to exclude from results.</p>
 
     </div>
 
@@ -1299,7 +1356,7 @@
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l94"><code>src&#x2F;valid-targets-finder.js:94</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l105"><code>src&#x2F;valid-targets-finder.js:105</code></a>
         
         </p>
 
@@ -1345,7 +1402,7 @@ Targets must still be an instance of this.validTypes.</p>
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l36"><code>src&#x2F;valid-targets-finder.js:36</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l41"><code>src&#x2F;valid-targets-finder.js:41</code></a>
         
         </p>
 
@@ -1356,51 +1413,6 @@ Targets must still be an instance of this.validTypes.</p>
 
     <div class="description">
         <p>Game instance this obj is attached to.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_includeSelf" class="property item">
-    <h3 class="name"><code>includeSelf</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_valid-targets-finder.js.html#l87"><code>src&#x2F;valid-targets-finder.js:87</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>If true entity may target themself.</p>
 
     </div>
 
@@ -1435,7 +1447,7 @@ Targets must still be an instance of this.validTypes.</p>
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l80"><code>src&#x2F;valid-targets-finder.js:80</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l91"><code>src&#x2F;valid-targets-finder.js:91</code></a>
         
         </p>
 
@@ -1459,7 +1471,7 @@ Targets must still be an instance of this.validTypes.</p>
                 
                     <div id="property_limitToFov" class="property item">
     <h3 class="name"><code>limitToFov</code></h3>
-    <span class="type">Boolean</span>
+    <span class="type"><a href="../classes/FovROT.html" class="crosslink">FovROT</a></span>
 
     
 
@@ -1480,7 +1492,7 @@ Targets must still be an instance of this.validTypes.</p>
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l51"><code>src&#x2F;valid-targets-finder.js:51</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l62"><code>src&#x2F;valid-targets-finder.js:62</code></a>
         
         </p>
 
@@ -1490,7 +1502,7 @@ Targets must still be an instance of this.validTypes.</p>
     </div>
 
     <div class="description">
-        <p>If true, to be valid a target must be in <code>this.entity</code> fov.</p>
+        <p>If set only targets within the given <code>FovROT</code> will be valid.</p>
 
     </div>
 
@@ -1525,7 +1537,7 @@ Targets must still be an instance of this.validTypes.</p>
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l58"><code>src&#x2F;valid-targets-finder.js:58</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l69"><code>src&#x2F;valid-targets-finder.js:69</code></a>
         
         </p>
 
@@ -1536,6 +1548,51 @@ Targets must still be an instance of this.validTypes.</p>
 
     <div class="description">
         <p>Limit results to non-diagonal adjacent tiles</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_prepareValidTargets" class="property item">
+    <h3 class="name"><code>prepareValidTargets</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets-finder.js.html#l98"><code>src&#x2F;valid-targets-finder.js:98</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If true valid targets are wraped in an object with x, y, range, value properties.</p>
 
     </div>
 
@@ -1570,7 +1627,7 @@ Targets must still be an instance of this.validTypes.</p>
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l65"><code>src&#x2F;valid-targets-finder.js:65</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l76"><code>src&#x2F;valid-targets-finder.js:76</code></a>
         
         </p>
 
@@ -1580,7 +1637,7 @@ Targets must still be an instance of this.validTypes.</p>
     </div>
 
     <div class="description">
-        <p>Max distance in tiles target can be from <code>this.entity</code>.</p>
+        <p>Max distance in tiles target can be from origin.</p>
 
     </div>
 
@@ -1615,7 +1672,7 @@ Targets must still be an instance of this.validTypes.</p>
             
         
         
-        <a href="../files/src_valid-targets-finder.js.html#l72"><code>src&#x2F;valid-targets-finder.js:72</code></a>
+        <a href="../files/src_valid-targets-finder.js.html#l83"><code>src&#x2F;valid-targets-finder.js:83</code></a>
         
         </p>
 
@@ -1627,6 +1684,96 @@ Targets must still be an instance of this.validTypes.</p>
     <div class="description">
         <p>Array of valid target object types. Checked using <code>target instanceof type</code>.
 If set to an empty array or a value evaluating to false, all types are considered valid.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_x" class="property item">
+    <h3 class="name"><code>x</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets-finder.js.html#l48"><code>src&#x2F;valid-targets-finder.js:48</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The x map tile coord to use as the origin of this target finder.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_y" class="property item">
+    <h3 class="name"><code>y</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_valid-targets-finder.js.html#l55"><code>src&#x2F;valid-targets-finder.js:55</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The y map tile coord to use as the origin of this target finder.</p>
 
     </div>
 

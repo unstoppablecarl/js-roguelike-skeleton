@@ -824,26 +824,37 @@
                     "type": "Game"
                 },
                 {
-                    "name": "entity",
-                    "description": "",
-                    "type": "Entity"
-                },
-                {
                     "name": "settings",
                     "description": "",
                     "type": "Object",
-                    "optional": true,
                     "props": [
                         {
+                            "name": "x",
+                            "description": "- The x map tile coord to use as the origin of the attack.",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "y",
+                            "description": "- The y map tile coord to use as the origin of the attack.",
+                            "type": "Number"
+                        },
+                        {
                             "name": "limitToFov",
-                            "description": "- If true only targets within this.entity's fov will be valid.",
+                            "description": "- If set only targets within the given `FovROT` will be valid.",
+                            "type": "FovROT",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "limitToNonDiagonalAdjacent",
+                            "description": "- If true diagonally adjacent targets are not valid (only used if `range = 1`).",
                             "type": "Bool",
                             "optional": true,
-                            "optdefault": "true"
+                            "optdefault": "false"
                         },
                         {
                             "name": "range",
-                            "description": "- Max distance in tiles target can be from entity.",
+                            "description": "- Max distance in tiles target can be from origin.",
                             "type": "Number",
                             "optional": true,
                             "optdefault": "1"
@@ -863,11 +874,18 @@
                             "optdefault": "false"
                         },
                         {
-                            "name": "includeSelf",
-                            "description": "- If true entity may target themself.",
-                            "type": "Bool",
+                            "name": "exclude",
+                            "description": "- Object or Array of objects to exclude from results.",
+                            "type": "Object|Array",
                             "optional": true,
                             "optdefault": "false"
+                        },
+                        {
+                            "name": "prepareValidTargets",
+                            "description": "- If true valid targets are wraped in an object with x, y, range, value properties.",
+                            "type": "Bool",
+                            "optional": true,
+                            "optdefault": "true"
                         },
                         {
                             "name": "filter",
@@ -5060,7 +5078,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 36,
+            "line": 41,
             "description": "Game instance this obj is attached to.",
             "itemtype": "property",
             "name": "game",
@@ -5069,25 +5087,34 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 43,
-            "description": "Entity to check valid targets from.\n(Uses Entity#x, Entity#y, Entity#fov)",
+            "line": 48,
+            "description": "The x map tile coord to use as the origin of this target finder.",
             "itemtype": "property",
-            "name": "entity",
-            "type": "{Entity}",
+            "name": "x",
+            "type": "{Number}",
             "class": "ValidTargetsFinder"
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 51,
-            "description": "If true, to be valid a target must be in `this.entity` fov.",
+            "line": 55,
+            "description": "The y map tile coord to use as the origin of this target finder.",
+            "itemtype": "property",
+            "name": "y",
+            "type": "{Number}",
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 62,
+            "description": "If set only targets within the given `FovROT` will be valid.",
             "itemtype": "property",
             "name": "limitToFov",
-            "type": "{Boolean}",
+            "type": "{FovROT}",
             "class": "ValidTargetsFinder"
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 58,
+            "line": 69,
             "description": "Limit results to non-diagonal adjacent tiles",
             "itemtype": "property",
             "name": "limitToNonDiagonalAdjacent",
@@ -5096,8 +5123,8 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 65,
-            "description": "Max distance in tiles target can be from `this.entity`.",
+            "line": 76,
+            "description": "Max distance in tiles target can be from origin.",
             "itemtype": "property",
             "name": "range",
             "type": "{Number}",
@@ -5105,7 +5132,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 72,
+            "line": 83,
             "description": "Array of valid target object types. Checked using `target instanceof type`.\nIf set to an empty array or a value evaluating to false, all types are considered valid.",
             "itemtype": "property",
             "name": "validTypes",
@@ -5114,7 +5141,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 80,
+            "line": 91,
             "description": "If true tile objects are can be valid targets.",
             "itemtype": "property",
             "name": "includeTiles",
@@ -5123,16 +5150,16 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 87,
-            "description": "If true entity may target themself.",
+            "line": 98,
+            "description": "If true valid targets are wraped in an object with x, y, range, value properties.",
             "itemtype": "property",
-            "name": "includeSelf",
+            "name": "prepareValidTargets",
             "type": "{Boolean}",
             "class": "ValidTargetsFinder"
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 94,
+            "line": 105,
             "description": "Function to filter objects when checking if they are valid. `function(obj){ return true }` .\nTargets must still be an instance of this.validTypes.",
             "itemtype": "property",
             "name": "filter",
@@ -5141,8 +5168,17 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 102,
-            "description": "Gets all valid targets for this action from position of this.entity",
+            "line": 113,
+            "description": "Object or Array of objects to exclude from results.",
+            "itemtype": "property",
+            "name": "exclude",
+            "type": "{Object|Array}",
+            "class": "ValidTargetsFinder"
+        },
+        {
+            "file": "src/valid-targets-finder.js",
+            "line": 120,
+            "description": "Gets all valid targets.",
             "itemtype": "method",
             "name": "getValidTargets",
             "return": {
@@ -5153,8 +5189,8 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 121,
-            "description": "Get tile coords a valid target may be on. Only checking range and entity fov, not objects on the tile.",
+            "line": 139,
+            "description": "Get tile coords a valid target may be on. Only checking range and fov, not objects on the tile.",
             "itemtype": "method",
             "name": "getValidTargetTiles",
             "return": {
@@ -5165,7 +5201,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 154,
+            "line": 186,
             "description": "Get valid target objects on a tile coord.",
             "itemtype": "method",
             "name": "getValidTargetsAtPosition",
@@ -5189,7 +5225,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 174,
+            "line": 206,
             "description": "Wraps a target object in a container object with x, y, range",
             "itemtype": "method",
             "name": "prepareTargetObject",
@@ -5215,7 +5251,7 @@
                 },
                 {
                     "name": "range",
-                    "description": "range from this.entity to x,y",
+                    "description": "range from `this.x`, `this.y` to x,y",
                     "type": "Number",
                     "optional": true
                 }
@@ -5228,7 +5264,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 207,
+            "line": 239,
             "description": "Checks if a target object is an instance of a type in `this.validTypes`.",
             "itemtype": "method",
             "name": "checkValidType",
@@ -5247,7 +5283,7 @@
         },
         {
             "file": "src/valid-targets-finder.js",
-            "line": 230,
+            "line": 262,
             "description": "Checks if an object is a valid target for this action.",
             "itemtype": "method",
             "name": "checkValidTarget",
@@ -5468,7 +5504,7 @@
         },
         {
             "message": "replacing incorrect tag: propery with property",
-            "line": " src/valid-targets-finder.js:58"
+            "line": " src/valid-targets-finder.js:69"
         },
         {
             "message": "Missing item type\nUnique id for this entity.",

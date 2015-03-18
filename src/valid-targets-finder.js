@@ -5,24 +5,26 @@
      * Gets a list of valid targets filtered by provided criteria.
      * @class ValidTargetsFinder
      * @constructor
-     * @param {Game}        game
-     * @param {Entity}      entity
-     * @param {Object}      [settings]
-     * @param {Bool}        [settings.limitToFov=true]                  - If true only targets within this.entity's fov will be valid.
-     * @param {Bool}        [settings.limitToNonDiagonalAdjacent=false] - If true diagonally adjacent targets are not valid (only used if `range = 1`).
-     * @param {Number}      [settings.range=1]                          - Max distance in tiles target can be from entity.
-     * @param {Array}       [settings.validTypes=Array]                 - Array of valid target object types. Checked using `target instanceof type`.
-     * @param {Bool}        [settings.includeTiles=false]               - If true tile objects are can be valid targets.
-     * @param {Bool}        [settings.includeSelf=false]                - If true entity may target themself.
-     * @param {Bool}        [settings.prepareValidTargets=true]         - If true valid targets are wraped in an object with x, y, range, value properties.
-     * @param {Function}    [settings.filter=false]                     - Function to filter objects when checking if they are valid. `function(obj){ return true }` . Targets must still be a valid type.
+     * @param {Game}         game
+     * @param {Object}       settings
+     * @param {Number}       settings.x                                  - The x map tile coord to use as the origin of the attack.
+     * @param {Number}       settings.y                                  - The y map tile coord to use as the origin of the attack.
+     * @param {FovROT}       [settings.limitToFov=false]                 - If set only targets within the given `FovROT` will be valid.
+     * @param {Bool}         [settings.limitToNonDiagonalAdjacent=false] - If true diagonally adjacent targets are not valid (only used if `range = 1`).
+     * @param {Number}       [settings.range=1]                          - Max distance in tiles target can be from origin.
+     * @param {Array}        [settings.validTypes=Array]                 - Array of valid target object types. Checked using `target instanceof type`.
+     * @param {Bool}         [settings.includeTiles=false]               - If true tile objects are can be valid targets.
+     * @param {Object|Array} [settings.exclude=false]                    - Object or Array of objects to exclude from results.
+     * @param {Bool}         [settings.prepareValidTargets=true]         - If true valid targets are wraped in an object with x, y, range, value properties.
+     * @param {Function}     [settings.filter=false]                     - Function to filter objects when checking if they are valid. `function(obj){ return true }` . Targets must still be a valid type.
      */
-    var ValidTargetsFinder = function(game, entity, settings){
+    var ValidTargetsFinder = function(game, settings){
         this.game = game;
-        this.entity = entity;
 
         settings = settings || {};
 
+        this.x                          = settings.x                            || this.x;
+        this.y                          = settings.y                            || this.y;
         this.limitToFov                 = settings.limitToFov                   || this.limitToFov;
         this.limitToNonDiagonalAdjacent = settings.limitToNonDiagonalAdjacent   || this.limitToNonDiagonalAdjacent;
         this.range                      = settings.range                        || this.range;
@@ -44,17 +46,23 @@
         game: null,
 
         /**
-         * Entity to check valid targets from.
-         * (Uses Entity#x, Entity#y, Entity#fov)
-         * @property entity
-         * @type {Entity}
+         * The x map tile coord to use as the origin of this target finder.
+         * @property x
+         * @type {Number}
          */
-        entity: null,
+        x: null,
 
         /**
-         * If true, to be valid a target must be in `this.entity` fov.
+         * The y map tile coord to use as the origin of this target finder.
+         * @property y
+         * @type {Number}
+         */
+        y: null,
+
+        /**
+         * If set only targets within the given `FovROT` will be valid.
          * @property limitToFov
-         * @type {Boolean}
+         * @type {FovROT}
          */
         limitToFov: false,
 
@@ -66,7 +74,7 @@
         limitToNonDiagonalAdjacent: false,
 
         /**
-         * Max distance in tiles target can be from `this.entity`.
+         * Max distance in tiles target can be from origin.
          * @property range
          * @type {Number}
          */
@@ -88,13 +96,6 @@
         includeTiles: false,
 
         /**
-         * If true entity may target themself.
-         * @property includeSelf
-         * @type {Boolean}
-         */
-        includeSelf: false,
-
-        /**
          * If true valid targets are wraped in an object with x, y, range, value properties.
          * @property prepareValidTargets
          * @type {Boolean}
@@ -110,7 +111,14 @@
         filter: false,
 
         /**
-         * Gets all valid targets for this action from position of this.entity
+         * Object or Array of objects to exclude from results.
+         * @property exclude
+         * @type {Object|Array}
+         */
+        exclude: null,
+
+        /**
+         * Gets all valid targets.
          * @method getValidTargets
          * @return {Array}
          */
@@ -129,14 +137,14 @@
         },
 
         /**
-         * Get tile coords a valid target may be on. Only checking range and entity fov, not objects on the tile.
+         * Get tile coords a valid target may be on. Only checking range and fov, not objects on the tile.
          * @method getValidTargetTiles
          * @return {Array} of Tile objects
          */
         getValidTargetTiles: function(){
             var tiles = [];
             if(this.limitToFov){
-                var fovTiles = this.entity.fov.visibleTiles;
+                var fovTiles = this.limitToFov.visibleTiles;
                 for (var i = 0; i < fovTiles.length; i++) {
                     var fovTile = fovTiles[i];
                     // if no max range, if there is a max range check it
@@ -150,8 +158,8 @@
                     }
                 }
             } else {
-                var x = this.entity.x,
-                    y = this.entity.y;
+                var x = this.x,
+                    y = this.y;
 
                 if(this.range === 1){
                     if(this.limitToNonDiagonalAdjacent){
@@ -184,7 +192,7 @@
          */
         getValidTargetsAtPosition: function(x, y){
             var objects = this.game.getObjectsAtPostion(x, y);
-            var range = RL.Util.getDistance(this.entity.x, this.entity.y, x, y);
+            var range = RL.Util.getDistance(this.x, this.y, x, y);
             var _this = this;
             var filtered =  objects.filter(function(target){
                 return _this.checkValidTarget(target);
@@ -201,7 +209,7 @@
          * @param {Object} target
          * @param {Number} [x=target.x]
          * @param {Number} [y=target.y]
-         * @param {Number} [range] range from this.entity to x,y
+         * @param {Number} [range] range from `this.x`, `this.y` to x,y
          * @return {Object} result result object
          *  `
          *  return {
@@ -219,7 +227,7 @@
         prepareTargetObject: function(target, x, y, range){
             x = x || target.x;
             y = y || target.y;
-            range = range || RL.Util.getDistance(this.entity.x, this.entity.y, x, y);
+            range = range || RL.Util.getDistance(this.x, this.y, x, y);
             return {
                 x: x,
                 y: y,
@@ -258,8 +266,14 @@
          * @return {Bool} `true` if valid.
          */
         checkValidTarget: function(target){
-            if(!this.includeSelf && target === this.entity){
-                return false;
+            if(this.exclude){
+                if(target === this.exclude){
+                    return false;
+                }
+                // if exclude is array and target is in it
+                if(Object.isArray(this.exclude) && this.exclude.indexOf(target) !== -1){
+                    return false;
+                }
             }
             if(!this.checkValidType(target)){
                 return false;

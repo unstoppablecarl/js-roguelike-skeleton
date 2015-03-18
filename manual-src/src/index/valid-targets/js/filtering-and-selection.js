@@ -96,7 +96,9 @@
 
     game.entityManager.loadFromArrayString(mapData, entityCharToType);
 
-    var validTargetsFinder = new RL.ValidTargetsFinder(game, game.player, {
+    var validTargetsFinder = new RL.ValidTargetsFinder(game, {
+        x: game.player.x,
+        y: game.player.y,
         range: 10,
         validTypes: [RL.Entity],
         filter: function(target){
