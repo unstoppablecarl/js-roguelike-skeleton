@@ -107,6 +107,12 @@
     };
     var game = makeBasicGame(settings);
 
+    game.renderer.layers = [
+        new RL.RendererLayer(game, 'map',       {draw: false,   mergeWithPrevLayer: false}),
+        new RL.RendererLayer(game, 'entity',    {draw: true,   mergeWithPrevLayer: true}),
+        new RL.RendererLayer(game, 'lighting', {draw: true, mergeWithPrevLayer: false}),
+    ];
+
     // create an instance of entity with the type zombie
     var entity = new RL.Entity(game, 'zombie');
     // add it to the game
